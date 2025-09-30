@@ -38,6 +38,180 @@ services:
     container_name: eboarddb
     ports:
      - 17500:8000
-    network_mode: kafka_default  # dùng network host
+    network_mode: host  # dùng network host
+    restart: always
+#---------------------------------------------------ĐA LUỒNG-----------------------------------------------------------------
+  eboardtb_all:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_all
+    command: python3 eboard_table/eboard_table_all.py
+    network_mode: host
+    restart: always
+    
+  eboardfr_all:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_all
+    command: python3 eboard_foreign/eboard_foreign_all.py
+    network_mode: host
+    restart: always
+
+  indice_all1:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: indice_all1
+    command: python3 indices/indices1.py
+    network_mode: host
+    restart: always
+
+  indice_all2:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: indice_all2
+    command: python3 indices/indices2.py
+    network_mode: host
+    restart: always
+#------------------------------HOSE---------------------------------------
+  eboardtb_hose1:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose1
+    command: python3 eboard_table/eboard_table_hose1.py
+    network_mode: host
     restart: always
  
+  eboardtb_hose2:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose2
+    command: python3 eboard_table/eboard_table_hose2.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose3:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose3
+    command: python3 eboard_table/eboard_table_hose3.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose4:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose4
+    command: python3 eboard_table/eboard_table_hose4.py
+    network_mode: host
+    restart: always
+
+#---------------------------------------------------HNX-------------------------------------
+  eboardtb_hnx1:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnx1
+    command: python3 eboard_table/eboard_table_hnx1.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnx2:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnx2
+    command: python3 eboard_table/eboard_table_hnx2.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnxbond:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnxbond
+    command: python3 eboard_table/eboard_table_hnxbond.py
+    network_mode: host
+    restart: always
+
+#-----------------------------------------------UPCOM--------------------------------------------
+  eboardtb_upcom1:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_upcom1
+    command: python3 eboard_table/eboard_table_upcom1.py
+    network_mode: host
+    restart: always
+
+  eboardtb_upcom2:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_upcom2
+    command: python3 eboard_table/eboard_table_upcom2.py
+    network_mode: host
+    restart: always
+    
+#-------------------------------------------derivatives-------------------------------------------
+  eboardtb_derivatives:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_derivatives
+    command: python3 eboard_table/eboard_table_derivaties.py
+    network_mode: host
+    restart: always
+#-------------------------------------------CW-------------------------------------------
+  eboardtb_cw:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_cw
+    command: python3 eboard_table/eboard_table_cw.py
+    network_mode: host
+    restart: always
+#-------------------------------------------ETFHOSE-------------------------------------------
+  eboardtb_etfhose:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardtb_etfhose
+    command: python3 eboard_table/eboard_table_etfhose.py
+    network_mode: host
+    restart: always
+    
+#---------------------------------------------CONSUMER--------------------------------------------
+  eboard_table_dbws:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboard_table_dbws_ws1_9001
+    command: uvicorn consumer.eboard_table_dbws:app --host 0.0.0.0 --port 9001
+    network_mode: host
+    restart: always
+
+  eboard_foreign_dbws:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboard_foreign_dbws_ws2_9002
+    command: uvicorn consumer.eboard_foreign_dbws:app --host 0.0.0.0 --port 9002
+    network_mode: host
+    restart: always
+
+  indice_dbws:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: indice_dbws_ws3_9003
+    command: uvicorn consumer.indice_dbws:app --host 0.0.0.0 --port 9003
+    network_mode: host
+    restart: always

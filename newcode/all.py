@@ -60,7 +60,7 @@ x_table =  Table(
     Column('sellPrice2', Float), Column('sellVol2', Float),
     Column('sellPrice3', Float), Column('sellVol3', Float),
     Column('totalVol', Float), Column('totalVal', Float),
-    Column('high', Float), Column('low', Float),
+    Column('high', Float), Column('low', Float), Column('open', Float), Column('close', Float),
     schema="history_data"
 )
 
@@ -83,8 +83,8 @@ mi_table = Table(
     Column("point", Float),
     Column("change", Float),
     Column("ratioChange", Float),
-    Column("totalVolume", Float),
-    Column("totalValue", Float),
+    Column("totalVol", Float),
+    Column("totalVal", Float),
     Column("advancers", Integer),
     Column("noChange", Integer),
     Column("decliners", Integer),
@@ -181,6 +181,9 @@ def save_x(result):
             "totalVal": c["totalVal"],
             "high":     c["high"],
             "low":      c["low"],
+            "open":     c["open"],
+            "close":      c["close"],
+            
         }
 
         with engine.begin() as conn:
@@ -232,8 +235,8 @@ def save_mi(result):
             "point":        c["point"],
             "change":       c["change"],
             "ratioChange":  c["ratioChange"],
-            "totalVolume":  c["totalVolume"],
-            "totalValue":   c["totalValue"],
+            "totalVol":  c["totalVol"],
+            "totalVal":   c["totalVal"],
             "advancers":    adv,
             "noChange":     nc,
             "decliners":    dec,
@@ -302,7 +305,9 @@ def on_message_X(message):
                 'totalVol': data['TotalVol'],
                 'totalVal': data['TotalVal'],
                 'high': data['High'] / 1000,
-                'low': data['Low'] / 1000
+                'low': data['Low'] / 1000,
+                'open':data['Open']/1000,
+                'close':data['Close']/1000
             }
 
         }
@@ -339,7 +344,8 @@ def on_message_MI(message):
     try:
         data = orjson.loads(message.get("Content","{}"))
         symbol=data['IndexId']
-        symbol = 'UpcomIndex' if symbol == 'HNXUpcomIndex' else symbol
+        symbol = 'UPCOMINDEX' if symbol == 'HNXUpcomIndex' else symbol
+        symbol = 'HNXINDEX' if symbol == 'HNXIndex' else symbol
 
         result = {
             'function': 'indices',
@@ -348,12 +354,12 @@ def on_message_MI(message):
                 'point': data['IndexValue'],
                 'change': data['Change'],
                 'ratioChange': data['RatioChange'],
-                'totalVolume': data['AllQty'],
-                'totalValue': data['AllValue'],
+                'totalVol': data['AllQty'],
+                'totalVal': data['AllValue'],
                 'advancersDecliners': [
-                    data['Advances'],
+                    data['Advances']+data['Ceilings'],
                     data['NoChanges'],
-                    data['Declines']
+                    data['Declines']+data['Floors']
                 ]
             }
         }

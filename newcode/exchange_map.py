@@ -19,7 +19,7 @@ exchange_map = {
     'HNA', 'HPG', 'HPX', 'HQC', 'HRC', 'HSG', 'HSL', 'HT1', 'HTG',
     'HTI', 'HTL', 'HTN', 'HTV', 'HU1', 'HUB', 'HVH', 'HVN', 'HVX',
     'ICT', 'IDI', 'IJC', 'ILB', 'IMP', 'ITC', 'ITD', 'JVC', 'KBC',
-    'KDC', 'KDH', 'KHG', 'KHP', 'KMR', 'KOS', 'KPF', 'KSB', 'L10',
+    'KDC', 'KDH', 'KHG', 'KHP', 'KMR', 'KOS',  'KSB', 'L10',
     'LAF', 'LBM', 'LCG', 'LDG', 'LGC', 'LGL', 'LHG', 'LIX', 'LM8',
     'LPB', 'LSS', 'MBB', 'MCM', 'MCP', 'MDG', 'MHC', 'MIG', 'MSB',
     'MSH', 'MSN', 'MWG', 'NAB', 'NAF', 'NAV', 'NBB', 'NCT', 'NHA',
@@ -27,7 +27,7 @@ exchange_map = {
     'NVL', 'NVT', 'OCB', 'OGC', 'OPC', 'ORS', 'PAC', 'PAN', 'PC1',
     'PDN', 'PDR', 'PET', 'PGC', 'PGD', 'PGI', 'PGV', 'PHC', 'PHR',
     'PIT', 'PJT', 'PLP', 'PLX', 'PMG', 'PNC', 'PNJ', 'POW', 'PPC',
-    'PSH', 'PTB', 'PTC', 'PTL', 'PVD', 'PVP', 'PVT', 'QCG', 'QNP',
+     'PTB', 'PTC', 'PTL', 'PVD', 'PVP', 'PVT', 'QCG', 'QNP',
     'RAL', 'REE', 'RYG', 'S4A', 'SAB', 'SAM', 'SAV', 'SBA', 'SBG',
     'SBT', 'SBV', 'SC5', 'SCR', 'SCS', 'SFC', 'SFG', 'SFI', 'SGN',
     'SGR', 'SGT', 'SHA', 'SHB', 'SHI', 'SHP', 'SIP', 'SJD', 'SJS',
@@ -42,10 +42,10 @@ exchange_map = {
     'VDS', 'VFG', 'VGC', 'VHC', 'VHM', 'VIB', 'VIC', 'VID', 'VIP',
     'VIX', 'VJC', 'VMD', 'VND', 'VNE', 'VNG', 'VNL', 'VNM', 'VNS',
     'VOS', 'VPB', 'VPD', 'VPG', 'VPH', 'VPI', 'VPS', 'VRC', 'VRE',
-    'VSC', 'VSH', 'VSI', 'VTB', 'VTO', 'VTP', 'YBM', 'YEG', 'VPL','CHP'
+    'VSC', 'VSH', 'VSI', 'VTB', 'VTO', 'VTP', 'YBM', 'YEG', 'VPL','CHP','TAL','VAB',
     ],
 
-    "CQ" : [
+    "CW" : [
     'CACB2404', 'CACB2405', 'CACB2501', 'CACB2502', 'CACB2503', 'CACB2504', 'CACB2505', 'CACB2506','CACB2507','CACB2508','CACB2509','CACB2510','CACB2511',
     'CFPT2402', 'CFPT2404', 'CFPT2405', 'CFPT2407', 'CFPT2501', 'CFPT2502', 'CFPT2503', 'CFPT2504',
     'CFPT2505', 'CFPT2506', 'CFPT2507', 'CFPT2508', 'CFPT2509', 'CFPT2510','CFPT2511','CFPT2512','CFPT2513','CFPT2514','CFPT2515','CFPT2516','CFPT2517','CFPT2518','CFPT2519','CFPT2520','CFPT2521',
@@ -94,21 +94,21 @@ exchange_map = {
     "HNX": [
     'AAV','ADC','ALT','AMC','AME','AMV','API','APS','ARM','ATS','BAB','BAX','BBS','BCC','BCF','BDB','BED',
     'BKC','BNA','BPC','BSC','BST','BTS','BTW','BVS','BXH','C69','CAG','CAN','CAP','CAR','CCR','CDN','CEO',
-    'CET','CIA','CJC','CKV','CLH','CLM','CMC','CMS','CPC','CSC','CST','CTB','CTP','CTT','CVN','CX8','D11',
+    'CET','CIA','CJC','CKV','CLH','CLM','CMC','CMS','CPC','CSC','CST','CTB','CTP','CTT','CX8','D11',
     'DAD','DAE','DC2','DDG','DHP','DHT','DIH','DL1','DNC','DNP','DP3','DS3','DST','DTD','DTG','DTK','DVM',
     'DXP','EBS','ECI','EID','EVS','FID','GDW','GIC','GKM','GLT','GMA','GMX','HAD','HAT','HBS','HCC','HCT',
     'HDA','HEV','HGM','HHC','HJS','HKT','HLC','HLD','HMH','HMR','HOM','HTC','HUT','HVT','ICG','IDC','IDJ',
-    'IDV','INC','INN','IPA','ITQ','IVS','KDM','KHS','KKC','KMT','KSD','KSF','KSQ','KST','KSV','KTS','L14',
+    'IDV','INC','INN','IPA','ITQ','IVS','KDM','KHS','KKC','KMT','KSD','KSF','KST','KSV','KTS','L14',
     'L18','L40','LAS','LBE','LCD','LDP','LHC','LIG','MAC','MAS','MBG','MBS','MCC','MCF','MCO','MDC','MED',
     'MEL','MIC','MKV','MST','MVB','NAG','NAP','NBC','NBP','NBW','NDN','NDX','NET','NFC','NHC','NRC','NSH',
-    'NST','NTH','NTP','NVB','OCH','ONE','PBP','PCE','PCG','PCH','PCT','PDB','PEN','PGN','PGS','PGT','PHN',
+    'NST','NTH','NTP','NVB','OCH','ONE','PBP','PCE','PCH','PCT','PDB','PEN','PGN','PGS','PGT','PHN',
     'PIA','PIC','PJC','PLC','PMB','PMC','PMP','PMS','POT','PPE','PPP','PPS','PPT','PPY','PRC','PRE','PSC',
     'PSD','PSE','PSI','PSW','PTD','PTI','PTS','PTX','PV2','PVB','PVC','PVG','PVI','PVS','QHD','QST','QTC',
     'RCL','S55','S99','SAF','SCG','SCI','SD5','SD9','SDA','SDC','SDG','SDN','SDU','SEB','SED','SFN','SGC',
-    'SGD','SGH','SHE','SHN','SHS','SJ1','SJE','SLS','SMN','SMT','SPC','SPI','SRA','SSM','STC','STP','SVN',
+    'SGD','SGH','SHE','SHN','SHS','SJ1','SJE','SLS','SMN','SMT','SPC','SRA','SSM','STC','STP','SVN',
     'SZB','TA9','TBX','TDT','TET','TFC','THB','THD','THS','THT','TIG','TJC','TKU','TMB','TMC','TMX','TNG',
     'TOT','TPH','TPP','TSB','TTC','TTH','TTL','TTT','TV3','TV4','TVC','TVD','TXM','UNI','V12','V21','VBC',
-    'VC1','VC2','VC3','VC6','VC7','VC9','VCC','VCM','VCS','VDL','VE1','VE3','VE4','VE8','VFS','VGP','VGS',
+    'VC1','VC2','VC3','VC6','VC7','VC9','VCC','VCM','VCS','VDL','VE1','VE3','VE4','VFS','VGP','VGS',
     'VHE','VHL','VIF','VIG','VIT','VLA','VMC','VMS','VNC','VNF','VNR','VNT','VSA','VSM','VTC','VTH','VTJ',
     'VTV','VTZ','WCS','WSS','X20','TD6'],
     
@@ -160,22 +160,23 @@ exchange_map = {
     'SAP', 'SAS', 'SB1', 'SBB', 'SBD', 'SBH', 'SBL', 'SBM', 'SBR', 'SBS','SCC', 'SCD', 'SCJ', 'SCL', 'SCO', 'SCY', 'SD1', 'SD2', 'SD3', 'SD4',
     'SD6', 'SD7', 'SD8', 'SDB', 'SDD', 'SDJ', 'SDK', 'SDP', 'SDT', 'SDV','SDX', 'SDY', 'SEA', 'SEP', 'SGB', 'SGI', 'SGP', 'SGS', 'SHC', 'SHG',
     'SID', 'SIG', 'SII', 'SIV', 'SJC', 'SJF', 'SJG', 'SJM', 'SKH', 'SKN','SKV', 'SLD', 'SNC', 'SNZ', 'SP2', 'SPB', 'SPD', 'SPH', 'SPV', 'SQC',
-    'SRB', 'SSF', 'SSG', 'SSH', 'SSN', 'STH', 'STL', 'STS', 'STT', 'STW','SVG', 'SVH', 'SWC', 'SZE', 'SZG', 'TA6', 'TAB', 'TAL', 'TAN', 'TAR',
+    'SRB', 'SSF', 'SSG', 'SSH', 'SSN', 'STH', 'STL', 'STS', 'STT', 'STW','SVG', 'SVH', 'SWC', 'SZE', 'SZG', 'TA6', 'TAB',  'TAN', 'TAR',
     'TAW', 'TB8', 'TBD', 'TBH', 'TBR', 'TBT', 'TBW', 'TCJ', 'TCK', 'TCW','TDB', 'TDF', 'TDS', 'TED', 'TEL', 'TGG', 'TGP', 'TH1', 'THM', 'THN',
     'THP', 'THU', 'THW', 'TID', 'TIE', 'TIN', 'TIS', 'TKA', 'TKC', 'TKG','TL4', 'TLI', 'TLP', 'TLT', 'TMG', 'TMW', 'TNA', 'TNB', 'TNM', 'TNP',
     'TNS', 'TNV', 'TNW', 'TOP', 'TOS', 'TOW', 'TPS', 'TQN', 'TQW', 'TR1','TRS', 'TRT', 'TRV', 'TS3', 'TS4', 'TSA', 'TSD', 'TSG', 'TSJ', 'TST',
     'TT6', 'TTB', 'TTD', 'TTG', 'TTN', 'TTS', 'TTZ', 'TUG', 'TV1', 'TV6','TVA', 'TVG', 'TVH', 'TVM', 'TVN', 'TW3', 'UCT', 'UDC', 'UDJ', 'UDL',
-    'UEM', 'UMC', 'UPC', 'UPH', 'USC', 'USD', 'UXC', 'V11', 'V15', 'VAB','VAV', 'VBB', 'VBG', 'VBH', 'VC5', 'VCE', 'VCP', 'VCR', 'VCT', 'VCW',
+    'UEM', 'UMC', 'UPC', 'UPH', 'USC', 'USD', 'UXC', 'V11', 'V15', 'VAV', 'VBB', 'VBG', 'VBH', 'VC5', 'VCE', 'VCP', 'VCR', 'VCT', 'VCW',
     'VCX', 'VDB', 'VDG', 'VDN', 'VDT', 'VE2', 'VE9', 'VEA', 'VEC', 'VEF','VES', 'VET', 'VFC', 'VFR', 'VGG', 'VGI', 'VGL', 'VGR', 'VGT', 'VGV',
     'VHD', 'VHF', 'VHG', 'VHH', 'VIE', 'VIH', 'VIM', 'VIN', 'VIR', 'VIW','VKC', 'VKP', 'VLB', 'VLC', 'VLF', 'VLG', 'VLP', 'VLW', 'VMA', 'VMG',
     'VMK', 'VMT', 'VNA', 'VNB', 'VNH', 'VNI', 'VNP', 'VNX', 'VNY', 'VNZ','VOC', 'VPA', 'VPC', 'VPR', 'VPW', 'VQC', 'VRG', 'VSE', 'VSF', 'VSG',
     'VSN', 'VST', 'VTA', 'VTD', 'VTE', 'VTG', 'VTI', 'VTK', 'VTL', 'VTM','VTQ', 'VTR', 'VTS', 'VTX', 'VUA', 'VVN', 'VVS', 'VW3', 'VWS', 'VXB',
-    'VXP', 'VXT', 'WSB', 'WTC', 'X26', 'X77', 'XDH', 'XHC', 'XLV', 'XMC','XMD', 'XMP', 'XPH', 'YBC', 'YTC','PTM', 'AGM'
+    'VXP', 'VXT', 'WSB', 'WTC', 'X26', 'X77', 'XDH', 'XHC', 'XLV', 'XMC','XMD', 'XMP', 'XPH', 'YBC', 'YTC','PTM', 'AGM','KSQ','SPI','PCG','VE8',
+    'CVN','PSH','KPF',
     ],
     
     "DERIVATIVES": [
         '41I1F7000', '41I1F8000', '41I1G3000', 'GB05F2506', 'GB05F2509', 'GB05F2512', 'GB10F2506', 'GB10F2509', 'GB10F2512',
-        'VN30F2505', 'VN30F2506', 'VN30F2509', 'VN30F2512', '41B5G3000', '41BAG3000', '41I1FA000', 'VN30F1M',	'VN30F1Q',	'VN30F2M',	'VN30F2Q'
+        'VN30F2505', 'VN30F2506', 'VN30F2509', 'VN30F2512', '41B5G3000','41B5G6000', '41BAG3000', '41I1FA000','41I1FB000', 'VN30F1M',	'VN30F1Q',	'VN30F2M',	'VN30F2Q'
 
     ],
     
