@@ -59,20 +59,20 @@ services:
     network_mode: host
     restart: always
 
-  indice_all1:
+  indice1:
     build:
       context: ./multithread
       dockerfile: Dockerfile
-    container_name: indice_all1
+    container_name: indice1
     command: python3 indices/indices1.py
     network_mode: host
     restart: always
 
-  indice_all2:
+  indice2:
     build:
       context: ./multithread
       dockerfile: Dockerfile
-    container_name: indice_all2
+    container_name: indice2
     command: python3 indices/indices2.py
     network_mode: host
     restart: always

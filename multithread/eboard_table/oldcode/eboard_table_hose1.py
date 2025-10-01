@@ -6,7 +6,7 @@ from kafka import KafkaProducer
 from ssi_fc_data.fc_md_stream import MarketDataStream
 from ssi_fc_data.fc_md_client import MarketDataClient
 from concurrent.futures import ThreadPoolExecutor    
-from List.exchange import CW
+from List.exchange import HOSE1
 from List.indices_map import indices_map
 
 # DOCKER BUILD
@@ -15,7 +15,7 @@ from List.indices_map import indices_map
 # LOCAL TEST
 KAFKA_BROKER = 'localhost:9092'
 
-list = CW
+symbols = HOSE1
 
 # Tạo Kafka producer chung, threadsafe
 producer = KafkaProducer(
@@ -45,7 +45,7 @@ def get_market_data(message):
             'function':'eboard_table',
             'content': {
                 'symbol': symbol,
-                'exchange': 'CW',
+                'exchange': 'HOSE',
                 'indices':indices,
                 'ceiling': data['Ceiling'] / 1000,
                 'floor': data['Floor'] / 1000,
@@ -82,24 +82,22 @@ def getError(error):
     print(f"⚠️ WebSocket lỗi: {error}")
 
 def stream(symbol): 
-    selected_channel = f"X:{symbol}"
-    mm = MarketDataStream(config, MarketDataClient(config))
-    mm.start(get_market_data, getError, selected_channel)
-
-def main():
-    threads = []
-    for sym in symbols:
-        t = threading.Thread(target=stream, args=(sym,), daemon=True)
-        t.start()
-        threads.append(t)
-
-    try:
-        while True:
+    while True:
+        try:
+            selected_channel = f"X:{symbol}"
+            mm = MarketDataStream(config, MarketDataClient(config))
+            mm.start(get_market_data, getError, selected_channel)
+        except Exception as e:
+            print(f"❌ Lỗi với {symbol}, sẽ reconnect sau 1s: {e}")
             time.sleep(1)
-    except KeyboardInterrupt:
-        print("Stopping...")
+ 
+        except KeyboardInterrupt:
+            print("🛑 Đóng kết nối MarketDataStream...")
 
 if __name__ == "__main__":
-	main()
+    with ThreadPoolExecutor(max_workers=200) as executor:
+        for i, sym in enumerate(symbols):
+            time.sleep(0.01)  # nghỉ 200ms tránh rate limit
+            executor.submit(stream, sym)
 
 

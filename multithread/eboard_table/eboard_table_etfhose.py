@@ -77,25 +77,29 @@ def get_market_data(message):
     # Gửi Kafka
     topic = f"eboard_table_{data['Symbol']}"
     producer.send(topic, result)
-    print(f"[{topic}] {result}")
 
 def getError(error):
     print(f"⚠️ WebSocket lỗi: {error}")
 
 def stream(symbol): 
+    selected_channel = f"X:{symbol}"
+    mm = MarketDataStream(config, MarketDataClient(config))
+    mm.start(get_market_data, getError, selected_channel)
+
+def main():
+    threads = []
+    for sym in symbols:
+        t = threading.Thread(target=stream, args=(sym,), daemon=True)
+        t.start()
+        threads.append(t)
+
     try:
-        selected_channel = f"X:{symbol}"
-        mm = MarketDataStream(config, MarketDataClient(config))
-        mm.start(get_market_data, getError, selected_channel)
         while True:
             time.sleep(1)
- 
     except KeyboardInterrupt:
-        print("🛑 Đóng kết nối MarketDataStream...")
+        print("Stopping...")
 
 if __name__ == "__main__":
-    with ThreadPoolExecutor(max_workers=len(list)) as executor:
-        for sym in list:
-            executor.submit(stream, sym)
+	main()
 
 

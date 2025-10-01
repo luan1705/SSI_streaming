@@ -1,0 +1,1 @@
+docker compose up --build -d  eboard_table_dbws indice_dbws eboard_foreign_dbws

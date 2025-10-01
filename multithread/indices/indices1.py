@@ -15,7 +15,7 @@ import threading
 # LOCAL TEST
 KAFKA_BROKER = 'localhost:9092'
 
-symbols = indice1
+symbols = ['VNINDEX']#indice1
 
 # Tạo Kafka producer chung, threadsafe
 producer = KafkaProducer(
@@ -55,7 +55,6 @@ def get_market_data(message):
     # Gửi Kafka
     topic = f"indice_{symbol}"
     producer.send(topic, result)
-    print(f"[{topic}] {result}")
 
 def getError(error):
     print(f"⚠️ WebSocket lỗi: {error}")
