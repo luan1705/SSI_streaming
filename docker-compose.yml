@@ -41,24 +41,6 @@ services:
     network_mode: host  # dùng network host
     restart: always
 #---------------------------------------------------ĐA LUỒNG-----------------------------------------------------------------
-  eboardtb_all:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_all
-    command: python3 eboard_table/eboard_table_all.py
-    network_mode: host
-    restart: always
-    
-  eboardfr_all:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardfr_all
-    command: python3 eboard_foreign/eboard_foreign_all.py
-    network_mode: host
-    restart: always
-
   indice1:
     build:
       context: ./multithread
@@ -85,6 +67,15 @@ services:
     command: python3 eboard_table/eboard_table_hose1.py
     network_mode: host
     restart: always
+
+  eboardfr_hose1:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose1
+    command: python3 eboard_foreign/eboard_foreign_hose1.py
+    network_mode: host
+    restart: always    
  
   eboardtb_hose2:
     build:
@@ -92,6 +83,15 @@ services:
       dockerfile: Dockerfile
     container_name: eboardtb_hose2
     command: python3 eboard_table/eboard_table_hose2.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose2:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose2
+    command: python3 eboard_foreign/eboard_foreign_hose2.py
     network_mode: host
     restart: always
 
@@ -104,12 +104,30 @@ services:
     network_mode: host
     restart: always
 
+  eboardfr_hose3:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose3
+    command: python3 eboard_foreign/eboard_foreign_hose3.py
+    network_mode: host
+    restart: always
+
   eboardtb_hose4:
     build:
       context: ./multithread
       dockerfile: Dockerfile
     container_name: eboardtb_hose4
     command: python3 eboard_table/eboard_table_hose4.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose4:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose4
+    command: python3 eboard_foreign/eboard_foreign_hose4.py
     network_mode: host
     restart: always
 
@@ -122,6 +140,15 @@ services:
     command: python3 eboard_table/eboard_table_hnx1.py
     network_mode: host
     restart: always
+  
+  eboardfr_hnx1:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_hnx1
+    command: python3 eboard_foreign/eboard_foreign_hnx1.py
+    network_mode: host
+    restart: always
 
   eboardtb_hnx2:
     build:
@@ -132,12 +159,30 @@ services:
     network_mode: host
     restart: always
 
+  eboardfr_hnx2:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_hnx2
+    command: python3 eboard_foreign/eboard_foreign_hnx2.py
+    network_mode: host
+    restart: always
+
   eboardtb_hnxbond:
     build:
       context: ./multithread
       dockerfile: Dockerfile
     container_name: eboardtb_hnxbond
     command: python3 eboard_table/eboard_table_hnxbond.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hnxbond:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_hnxbond
+    command: python3 eboard_foreign/eboard_foreign_hnxbond.py
     network_mode: host
     restart: always
 
@@ -151,12 +196,30 @@ services:
     network_mode: host
     restart: always
 
+  eboardfr_upcom1:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_upcom1
+    command: python3 eboard_foreign/eboard_foreign_upcom1.py
+    network_mode: host
+    restart: always
+
   eboardtb_upcom2:
     build:
       context: ./multithread
       dockerfile: Dockerfile
     container_name: eboardtb_upcom2
     command: python3 eboard_table/eboard_table_upcom2.py
+    network_mode: host
+    restart: always
+
+  eboardfr_upcom2:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_upcom2
+    command: python3 eboard_foreign/eboard_foreign_upcom2.py
     network_mode: host
     restart: always
     
@@ -169,6 +232,16 @@ services:
     command: python3 eboard_table/eboard_table_derivaties.py
     network_mode: host
     restart: always
+
+  eboardfr_derivatives:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_derivatives
+    command: python3 eboard_foreign/eboard_foreign_derivaties.py
+    network_mode: host
+    restart: always
+
 #-------------------------------------------CW-------------------------------------------
   eboardtb_cw:
     build:
@@ -178,6 +251,16 @@ services:
     command: python3 eboard_table/eboard_table_cw.py
     network_mode: host
     restart: always
+
+  eboardfr_cw:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_cw
+    command: python3 eboard_foreign/eboard_foreign_cw.py
+    network_mode: host
+    restart: always
+
 #-------------------------------------------ETFHOSE-------------------------------------------
   eboardtb_etfhose:
     build:
@@ -188,6 +271,16 @@ services:
     network_mode: host
     restart: always
     
+  eboardfr_etfhose:
+    build:
+      context: ./multithread
+      dockerfile: Dockerfile
+    container_name: eboardfr_etfhose
+    command: python3 eboard_foreign/eboard_foreign_etfhose.py
+    network_mode: host
+    restart: always
+
+
 #---------------------------------------------CONSUMER--------------------------------------------
   eboard_table_dbws:
     build:

@@ -8,6 +8,7 @@ from ssi_fc_data.fc_md_client import MarketDataClient
 from concurrent.futures import ThreadPoolExecutor    
 from List.exchange import UPCOM2
 from List.indices_map import indices_map
+import threading
 
 # DOCKER BUILD
 # KAFKA_BROKER = '172.18.0.3:9092'
@@ -15,7 +16,7 @@ from List.indices_map import indices_map
 # LOCAL TEST
 KAFKA_BROKER = 'localhost:9092'
 
-list = UPCOM2
+symbols = UPCOM2
 
 # Tạo Kafka producer chung, threadsafe
 producer = KafkaProducer(

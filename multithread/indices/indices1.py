@@ -60,22 +60,25 @@ def getError(error):
     print(f"⚠️ WebSocket lỗi: {error}")
 
 def stream(symbol): 
-    while True:
-        try:
-            selected_channel = f"MI:{symbol}"
-            mm = MarketDataStream(config, MarketDataClient(config))
-            mm.start(get_market_data, getError, selected_channel)  
-        except Exception as e:
-            print(f"❌ Lỗi với {symbol}, sẽ reconnect sau 1s: {e}")
+    selected_channel = f"MI:{symbol}"
+    mm = MarketDataStream(config, MarketDataClient(config))
+    mm.start(get_market_data, getError, selected_channel)
+
+def main():
+    threads = []
+    for sym in symbols:
+        t = threading.Thread(target=stream, args=(sym,), daemon=True)
+        t.start()
+        threads.append(t)
+
+    try:
+        while True:
             time.sleep(1)
- 
-        except KeyboardInterrupt:
-            print("🛑 Đóng kết nối MarketDataStream...")
+    except KeyboardInterrupt:
+        print("Stopping...")
 
 if __name__ == "__main__":
-    with ThreadPoolExecutor(max_workers=50) as executor:
-        for i, sym in enumerate(symbols):
-            time.sleep(0.01)  # nghỉ 200ms tránh rate limit
-            executor.submit(stream, sym)
+	main()
+
 
 

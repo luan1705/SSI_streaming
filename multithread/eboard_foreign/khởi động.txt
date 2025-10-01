@@ -1,0 +1,1 @@
+docker compose up --build -d   eboardfr_hose1 eboardfr_hose2 eboardfr_hose3 eboardfr_hose4 eboardfr_hnx1 eboardfr_hnx2 eboardfr_hnxbond eboardfr_upcom1 eboardfr_upcom2 eboardfr_derivatives eboardfr_cw eboardfr_etfhose 

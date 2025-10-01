@@ -8,6 +8,7 @@ from ssi_fc_data.fc_md_client import MarketDataClient
 from concurrent.futures import ThreadPoolExecutor    
 from List.exchange import HNX1
 from List.indices_map import indices_map
+import threading
 
 # DOCKER BUILD
 # KAFKA_BROKER = '172.18.0.3:9092'

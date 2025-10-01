@@ -8,6 +8,7 @@ from ssi_fc_data.fc_md_client import MarketDataClient
 from concurrent.futures import ThreadPoolExecutor    
 from List.exchange import HOSE1
 from List.indices_map import indices_map
+import threading
 
 # DOCKER BUILD
 # KAFKA_BROKER = '172.18.0.3:9092'
@@ -15,7 +16,7 @@ from List.indices_map import indices_map
 # LOCAL TEST
 KAFKA_BROKER = 'localhost:9092'
 
-list = HOSE1
+symbols = HOSE1
 
 # Tạo Kafka producer chung, threadsafe
 producer = KafkaProducer(
@@ -59,19 +60,22 @@ def getError(error):
     print(f"⚠️ WebSocket lỗi: {error}")
 
 def stream(symbol): 
+    selected_channel = f"R:{symbol}"
+    mm = MarketDataStream(config, MarketDataClient(config))
+    mm.start(get_market_data, getError, selected_channel)
+
+def main():
+    threads = []
+    for sym in symbols:
+        t = threading.Thread(target=stream, args=(sym,), daemon=True)
+        t.start()
+        threads.append(t)
+
     try:
-        selected_channel = f"R:{symbol}"
-        mm = MarketDataStream(config, MarketDataClient(config))
-        mm.start(get_market_data, getError, selected_channel)
         while True:
             time.sleep(1)
- 
     except KeyboardInterrupt:
-        print("🛑 Đóng kết nối MarketDataStream...")
+        print("Stopping...")
 
 if __name__ == "__main__":
-    with ThreadPoolExecutor(max_workers=len(list)) as executor:
-        for sym in list:
-            executor.submit(stream, sym)
-
-
+	main()
