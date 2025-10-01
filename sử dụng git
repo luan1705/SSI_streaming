@@ -1,6 +1,6 @@
 
 đẩy code lên githubL:
-gitpush 'comment ở đây'
+./gitpush.sh 'comment ở đây'
 
 5️⃣ Cách dùng gitpull
 
