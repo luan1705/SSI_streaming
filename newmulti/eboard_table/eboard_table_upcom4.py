@@ -1,0 +1,123 @@
+# producer_x_keep_result.py
+import os, json, time, logging, signal, sys, redis
+from ssi_fc_data.fc_md_stream import MarketDataStream
+from ssi_fc_data.fc_md_client import MarketDataClient
+
+# ====== IMPORTS THEO DỰ ÁN CỦA BẠN ======
+from List import config
+from List.upsert import upsert_x
+from List.exchange import UPCOM4
+from List.indices_map import indices_map
+# =========================================
+
+# ---------- Cấu hình qua ENV ----------
+REDIS_URL   = "redis://default:%40Vns123456@videv.cloud:6379/1"
+STREAM_CODE = "X:" + "-".join(UPCOM4)
+CHANNEL = "ebtb_upcom_4"
+# --------------------------------------
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+r = redis.from_url(REDIS_URL, decode_responses=True)
+
+def publish(payload: dict):
+    """Publish sang Redis để Hub WS (1 port) broadcast."""
+    if "source" not in payload:
+        payload["source"] = CHANNEL  # nhãn nguồn (client có thể lọc)
+    try:
+        r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
+    except Exception as e:
+        logging.warning("Redis publish fail (%s): %s", CHANNEL, e)
+        
+def find_indices(symbol: str) -> list[str] | None:
+    res = [idx for idx, symbols in indices_map.items() if symbol in symbols]
+    return res or None
+
+def on_message_X(message):
+    try:
+        data = json.loads(message.get("Content","{}"))
+        sym = data["Symbol"]
+        result = {
+            "function": "eboard_table",
+            "content": {
+                "symbol":   sym,
+                "exchange": 'UPCOM',
+                "indices":  find_indices(sym),
+                "ceiling":  data["Ceiling"] / 1000,
+                "floor":    data["Floor"] / 1000,
+                "refPrice": data["RefPrice"] / 1000,
+                "buy": {
+                    "price": [data["BidPrice1"]/1000, data["BidPrice2"]/1000, data["BidPrice3"]/1000],
+                    "vol":   [data["BidVol1"], data["BidVol2"], data["BidVol3"]],
+                },
+                "match": {
+                    "price": data["LastPrice"]/1000,
+                    "vol":   data["LastVol"],
+                    "change": data["Change"]/1000,
+                    "ratioChange": data["RatioChange"],
+                },
+                "sell": {
+                    "price": [data["AskPrice1"]/1000, data["AskPrice2"]/1000, data["AskPrice3"]/1000],
+                    "vol":   [data["AskVol1"], data["AskVol2"], data["AskVol3"]],
+                },
+                "totalVol": data["TotalVol"],
+                "totalVal": data["TotalVal"],
+                "high":  data["High"]/1000,
+                "low":   data["Low"]/1000,
+                "open":  data["Open"]/1000,
+                "close": data["Close"]/1000,
+            }
+        }
+        # Publish result sang Redis để Hub gom về 1 WS port
+        publish(result)
+
+        # save DB
+        c = result["content"]
+        indices = c["indices"]
+        if isinstance(indices, list):
+            indices = "|".join(indices)
+
+        row = {
+            "symbol":   c["symbol"],
+            "exchange": c["exchange"],
+            "indices":  indices,
+            "ceiling":  c["ceiling"],
+            "floor":    c["floor"],
+            "refPrice": c["refPrice"],
+            "buyPrice1": c["buy"]["price"][0], "buyVol1": c["buy"]["vol"][0],
+            "buyPrice2": c["buy"]["price"][1], "buyVol2": c["buy"]["vol"][1],
+            "buyPrice3": c["buy"]["price"][2], "buyVol3": c["buy"]["vol"][2],
+            "matchPrice": c["match"]["price"], "matchVol": c["match"]["vol"],
+            "matchChange": c["match"]["change"], "matchRatioChange": c["match"]["ratioChange"],
+            "sellPrice1": c["sell"]["price"][0], "sellVol1": c["sell"]["vol"][0],
+            "sellPrice2": c["sell"]["price"][1], "sellVol2": c["sell"]["vol"][1],
+            "sellPrice3": c["sell"]["price"][2], "sellVol3": c["sell"]["vol"][2],
+            "totalVol": c["totalVol"], "totalVal": c["totalVal"],
+            "high": c["high"], "low": c["low"], "open": c["open"], "close": c["close"],
+        }
+        upsert_x(row)
+    except Exception:
+        logging.exception("X message error")
+
+def on_error(err):
+    logging.error(f"X stream error: {err}")
+
+def main():
+    logging.info("Producer X | stream=%s | publish=%s", STREAM_CODE, CHANNEL)
+
+    # graceful shutdown
+    signal.signal(signal.SIGINT,  lambda *_: sys.exit(0))
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))
+
+    # Gọi 1 lần, để SDK giữ WS / tự reconnect nội bộ nếu có.
+    mm = MarketDataStream(config, MarketDataClient(config))
+    mm.start(on_message_X, on_error, STREAM_CODE)
+
+    # Nếu start() trả về bình thường (hiếm), giữ tiến trình sống nhàn:
+    try:
+        signal.pause()   # Linux/Unix: chờ tín hiệu, không tốn CPU
+    except AttributeError:
+        while True:
+            time.sleep(3600)
+
+if __name__ == "__main__":
+    main()

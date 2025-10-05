@@ -1,310 +1,549 @@
-version: '3.9'
-
 services:
-
-#   dashboardstream:
-#     build: 
-#         context: ./streaming/dashboard
-#         dockerfile: Dockerfile
-#     container_name: dashboardstream
-#     ports:
-#      - 17000:17000
-#     network_mode: kafka_default  # dùng network host
-    #restart: always
-    
-#   dashboardwebsocket:
-#     build: 
-#         context: ./consumer/websocketDashboard
-#         dockerfile: Dockerfile
-#     container_name: dashboardwebsocket
-#     ports:
-#      - 8000:8000
-#     network_mode: kafka_default  # dùng network host
-#     restart: always
-    
-#   dashboarddatabase:
-#     build:
-#         context: ./consumer/databaseDashboard
-#         dockerfile: Dockerfile
-#     container_name: dashboarddatabase
-#     network_mode: kafka_default  # dùng network host
-#     restart: always
-
-    
-  eboarddb:
-    build: 
-        context: ./newcode
-        dockerfile: Dockerfile
-    container_name: eboarddb
-    ports:
-     - 17500:8000
-    network_mode: host  # dùng network host
-    restart: always
-#---------------------------------------------------ĐA LUỒNG-----------------------------------------------------------------
-  indice1:
+#=============================================WEBSOCKET================================================
+  eboard_table_ws:
     build:
-      context: ./multithread
+      context: ./newmulti
       dockerfile: Dockerfile
-    container_name: indice1
-    command: python3 indices/indices1.py
+    container_name: eboard_table_ws
+    command: uvicorn eboard_table.hub_ws_ebtb:app --host 0.0.0.0 --port 17501
     network_mode: host
     restart: always
 
-  indice2:
+  eboard_foreign_ws:
     build:
-      context: ./multithread
+      context: ./newmulti
       dockerfile: Dockerfile
-    container_name: indice2
-    command: python3 indices/indices2.py
-    network_mode: host
-    restart: always
-#------------------------------HOSE---------------------------------------
-  eboardtb_hose1:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_hose1
-    command: python3 eboard_table/eboard_table_hose1.py
+    container_name: eboard_foreign_ws
+    command: uvicorn eboard_table.hub_ws_ebfr:app --host 0.0.0.0 --port 17502
     network_mode: host
     restart: always
 
-  eboardfr_hose1:
+  indices_ws:
     build:
-      context: ./multithread
+      context: ./newmulti
       dockerfile: Dockerfile
-    container_name: eboardfr_hose1
-    command: python3 eboard_foreign/eboard_foreign_hose1.py
-    network_mode: host
-    restart: always    
- 
-  eboardtb_hose2:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_hose2
-    command: python3 eboard_table/eboard_table_hose2.py
+    container_name: indices_ws
+    command: uvicorn eboard_table.hub_ws_indices:app --host 0.0.0.0 --port 17503
     network_mode: host
     restart: always
 
-  eboardfr_hose2:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardfr_hose2
-    command: python3 eboard_foreign/eboard_foreign_hose2.py
-    network_mode: host
-    restart: always
-
-  eboardtb_hose3:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_hose3
-    command: python3 eboard_table/eboard_table_hose3.py
-    network_mode: host
-    restart: always
-
-  eboardfr_hose3:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardfr_hose3
-    command: python3 eboard_foreign/eboard_foreign_hose3.py
-    network_mode: host
-    restart: always
-
-  eboardtb_hose4:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_hose4
-    command: python3 eboard_table/eboard_table_hose4.py
-    network_mode: host
-    restart: always
-
-  eboardfr_hose4:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardfr_hose4
-    command: python3 eboard_foreign/eboard_foreign_hose4.py
-    network_mode: host
-    restart: always
-
-#---------------------------------------------------HNX-------------------------------------
-  eboardtb_hnx1:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_hnx1
-    command: python3 eboard_table/eboard_table_hnx1.py
-    network_mode: host
-    restart: always
-  
-  eboardfr_hnx1:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardfr_hnx1
-    command: python3 eboard_foreign/eboard_foreign_hnx1.py
-    network_mode: host
-    restart: always
-
-  eboardtb_hnx2:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_hnx2
-    command: python3 eboard_table/eboard_table_hnx2.py
-    network_mode: host
-    restart: always
-
-  eboardfr_hnx2:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardfr_hnx2
-    command: python3 eboard_foreign/eboard_foreign_hnx2.py
-    network_mode: host
-    restart: always
-
-  eboardtb_hnxbond:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_hnxbond
-    command: python3 eboard_table/eboard_table_hnxbond.py
-    network_mode: host
-    restart: always
-
-  eboardfr_hnxbond:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardfr_hnxbond
-    command: python3 eboard_foreign/eboard_foreign_hnxbond.py
-    network_mode: host
-    restart: always
-
-#-----------------------------------------------UPCOM--------------------------------------------
-  eboardtb_upcom1:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_upcom1
-    command: python3 eboard_table/eboard_table_upcom1.py
-    network_mode: host
-    restart: always
-
-  eboardfr_upcom1:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardfr_upcom1
-    command: python3 eboard_foreign/eboard_foreign_upcom1.py
-    network_mode: host
-    restart: always
-
-  eboardtb_upcom2:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_upcom2
-    command: python3 eboard_table/eboard_table_upcom2.py
-    network_mode: host
-    restart: always
-
-  eboardfr_upcom2:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardfr_upcom2
-    command: python3 eboard_foreign/eboard_foreign_upcom2.py
-    network_mode: host
-    restart: always
-    
-#-------------------------------------------derivatives-------------------------------------------
-  eboardtb_derivatives:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardtb_derivatives
-    command: python3 eboard_table/eboard_table_derivaties.py
-    network_mode: host
-    restart: always
-
-  eboardfr_derivatives:
-    build:
-      context: ./multithread
-      dockerfile: Dockerfile
-    container_name: eboardfr_derivatives
-    command: python3 eboard_foreign/eboard_foreign_derivaties.py
-    network_mode: host
-    restart: always
-
-#-------------------------------------------CW-------------------------------------------
+#=============================================PRODUCER================================================
+#---------------------------------------------EBOARD TABLE------------------------------------------------
   eboardtb_cw:
     build:
-      context: ./multithread
+      context: ./newmulti
       dockerfile: Dockerfile
     container_name: eboardtb_cw
     command: python3 eboard_table/eboard_table_cw.py
     network_mode: host
     restart: always
 
+  eboardtb_derivatives:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_derivatives
+    command: python3 eboard_table/eboard_table_derivatives.py
+    network_mode: host
+    restart: always
+
+  eboardtb_etfhose:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_etfhose
+    command: python3 eboard_table/eboard_table_etfhose.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnx1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnx1
+    command: python3 eboard_table/eboard_table_hnx1.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnx2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnx2
+    command: python3 eboard_table/eboard_table_hnx2.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnx3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnx3
+    command: python3 eboard_table/eboard_table_hnx3.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnx4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnx4
+    command: python3 eboard_table/eboard_table_hnx4.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnx5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnx5
+    command: python3 eboard_table/eboard_table_hnx5.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnx6:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnx6
+    command: python3 eboard_table/eboard_table_hnx6.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnx7:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnx7
+    command: python3 eboard_table/eboard_table_hnx7.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnx8:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnx8
+    command: python3 eboard_table/eboard_table_hnx8.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hnxbond:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hnxbond
+    command: python3 eboard_table/eboard_table_hnxbond.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose1
+    command: python3 eboard_table/eboard_table_hose1.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose2
+    command: python3 eboard_table/eboard_table_hose2.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose3
+    command: python3 eboard_table/eboard_table_hose3.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose4
+    command: python3 eboard_table/eboard_table_hose4.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose5
+    command: python3 eboard_table/eboard_table_hose5.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose6:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose6
+    command: python3 eboard_table/eboard_table_hose6.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose7:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose7
+    command: python3 eboard_table/eboard_table_hose7.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose8:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose8
+    command: python3 eboard_table/eboard_table_hose8.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose9:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose9
+    command: python3 eboard_table/eboard_table_hose9.py
+    network_mode: host
+    restart: always
+
+  eboardtb_hose10:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_hose10
+    command: python3 eboard_table/eboard_table_hose10.py
+    network_mode: host
+    restart: always
+
+  eboardtb_upcom1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_upcom1
+    command: python3 eboard_table/eboard_table_upcom1.py
+    network_mode: host
+    restart: always
+
+  eboardtb_upcom2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_upcom2
+    command: python3 eboard_table/eboard_table_upcom2.py
+    network_mode: host
+    restart: always
+
+  eboardtb_upcom3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_upcom3
+    command: python3 eboard_table/eboard_table_upcom3.py
+    network_mode: host
+    restart: always
+
+  eboardtb_upcom4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardtb_upcom4
+    command: python3 eboard_table/eboard_table_upcom4.py
+    network_mode: host
+    restart: always
+
+
+
+#---------------------------------------------EBOARD FOREIGN------------------------------------------------
   eboardfr_cw:
     build:
-      context: ./multithread
+      context: ./newmulti
       dockerfile: Dockerfile
     container_name: eboardfr_cw
     command: python3 eboard_foreign/eboard_foreign_cw.py
     network_mode: host
     restart: always
 
-#-------------------------------------------ETFHOSE-------------------------------------------
-  eboardtb_etfhose:
+  eboardfr_derivatives:
     build:
-      context: ./multithread
+      context: ./newmulti
       dockerfile: Dockerfile
-    container_name: eboardtb_etfhose
-    command: python3 eboard_table/eboard_table_etfhose.py
+    container_name: eboardfr_derivatives
+    command: python3 eboard_foreign/eboard_foreign_derivatives.py
     network_mode: host
     restart: always
-    
+
   eboardfr_etfhose:
     build:
-      context: ./multithread
+      context: ./newmulti
       dockerfile: Dockerfile
     container_name: eboardfr_etfhose
     command: python3 eboard_foreign/eboard_foreign_etfhose.py
     network_mode: host
     restart: always
 
-
-#---------------------------------------------CONSUMER--------------------------------------------
-  eboard_table_dbws:
+  eboardfr_hnx1:
     build:
-      context: ./multithread
+      context: ./newmulti
       dockerfile: Dockerfile
-    container_name: eboard_table_dbws_ws1_9001
-    command: uvicorn consumer.eboard_table_dbws:app --host 0.0.0.0 --port 9001
+    container_name: eboardfr_hnx1
+    command: python3 eboard_foreign/eboard_foreign_hnx1.py
     network_mode: host
     restart: always
 
-  eboard_foreign_dbws:
+  eboardfr_hnx2:
     build:
-      context: ./multithread
+      context: ./newmulti
       dockerfile: Dockerfile
-    container_name: eboard_foreign_dbws_ws2_9002
-    command: uvicorn consumer.eboard_foreign_dbws:app --host 0.0.0.0 --port 9002
+    container_name: eboardfr_hnx2
+    command: python3 eboard_foreign/eboard_foreign_hnx2.py
     network_mode: host
     restart: always
 
-  indice_dbws:
+  eboardfr_hnx3:
     build:
-      context: ./multithread
+      context: ./newmulti
       dockerfile: Dockerfile
-    container_name: indice_dbws_ws3_9003
-    command: uvicorn consumer.indice_dbws:app --host 0.0.0.0 --port 9003
+    container_name: eboardfr_hnx3
+    command: python3 eboard_foreign/eboard_foreign_hnx3.py
     network_mode: host
     restart: always
+
+  eboardfr_hnx4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hnx4
+    command: python3 eboard_foreign/eboard_foreign_hnx4.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hnx5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hnx5
+    command: python3 eboard_foreign/eboard_foreign_hnx5.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hnx6:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hnx6
+    command: python3 eboard_foreign/eboard_foreign_hnx6.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hnx7:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hnx7
+    command: python3 eboard_foreign/eboard_foreign_hnx7.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hnx8:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hnx8
+    command: python3 eboard_foreign/eboard_foreign_hnx8.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hnxbond:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hnxbond
+    command: python3 eboard_foreign/eboard_foreign_hnxbond.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose1
+    command: python3 eboard_foreign/eboard_foreign_hose1.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose2
+    command: python3 eboard_foreign/eboard_foreign_hose2.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose3
+    command: python3 eboard_foreign/eboard_foreign_hose3.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose4
+    command: python3 eboard_foreign/eboard_foreign_hose4.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose5
+    command: python3 eboard_foreign/eboard_foreign_hose5.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose6:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose6
+    command: python3 eboard_foreign/eboard_foreign_hose6.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose7:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose7
+    command: python3 eboard_foreign/eboard_foreign_hose7.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose8:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose8
+    command: python3 eboard_foreign/eboard_foreign_hose8.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose9:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose9
+    command: python3 eboard_foreign/eboard_foreign_hose9.py
+    network_mode: host
+    restart: always
+
+  eboardfr_hose10:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_hose10
+    command: python3 eboard_foreign/eboard_foreign_hose10.py
+    network_mode: host
+    restart: always
+
+  eboardfr_upcom1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_upcom1
+    command: python3 eboard_foreign/eboard_foreign_upcom1.py
+    network_mode: host
+    restart: always
+
+  eboardfr_upcom2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_upcom2
+    command: python3 eboard_foreign/eboard_foreign_upcom2.py
+    network_mode: host
+    restart: always
+
+  eboardfr_upcom3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_upcom3
+    command: python3 eboard_foreign/eboard_foreign_upcom3.py
+    network_mode: host
+    restart: always
+
+  eboardfr_upcom4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: eboardfr_upcom4
+    command: python3 eboard_foreign/eboard_foreign_upcom4.py
+    network_mode: host
+    restart: always
+
+
+#---------------------------------------------INDICES------------------------------------------------
+  indices1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: indices1
+    command: python3 indices/indices1.py
+    network_mode: host
+    restart: always
+    
+  indices2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: indices2
+    command: python3 indices/indices2.py
+    network_mode: host
+    restart: always
+        
+  indices3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: indices3
+    command: python3 indices/indices3.py
+    network_mode: host
+    restart: always
+        
+  indices4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: indices4
+    command: python3 indices/indices4.py
+    network_mode: host
+    restart: always
+        
+  indices5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: indices5
+    command: python3 indices/indices5.py
+    network_mode: host
+    restart: always
+    

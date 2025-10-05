@@ -78,6 +78,7 @@ def get_market_data(message):
     # Gửi Kafka
     topic = f"eboard_table_{data['Symbol']}"
     producer.send(topic, result)
+    print(result)
 
 def getError(error):
     print(f"⚠️ WebSocket lỗi: {error}")
