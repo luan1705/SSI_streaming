@@ -19,13 +19,20 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 r = redis.from_url(REDIS_URL, decode_responses=True)
 
 def publish(payload: dict):
-    """Publish sang Redis để Hub WS (1 port) broadcast."""
+    global r
     if "source" not in payload:
-        payload["source"] = CHANNEL  # nhãn nguồn (client có thể lọc)
+        payload["source"] = CHANNEL
     try:
         r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
     except Exception as e:
         logging.warning("Redis publish fail (%s): %s", CHANNEL, e)
+        try:
+            # reconnect Redis
+            r = get_redis()
+            r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
+            logging.info("Redis reconnected and published successfully")
+        except Exception as e2:
+            logging.error("Redis retry failed: %s", e2)
         
 def on_message_R(message):
     try:
@@ -69,16 +76,16 @@ def main():
     signal.signal(signal.SIGINT,  lambda *_: sys.exit(0))
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))
 
-    # Gọi 1 lần, để SDK giữ WS / tự reconnect nội bộ nếu có.
-    mm = MarketDataStream(config, MarketDataClient(config))
-    mm.start(on_message_R, on_error, STREAM_CODE)
+    connectssi=MarketDataClient(config)
+    while True:
+        try:
+            mm = MarketDataStream(config,connectssi)
+            mm.start(on_message_R, on_error, STREAM_CODE)
+        except Exception as e:
+            logging.error("Stream crashed: %s", e)
 
-    # Nếu start() trả về bình thường (hiếm), giữ tiến trình sống nhàn:
-    try:
-        signal.pause()   # Linux/Unix: chờ tín hiệu, không tốn CPU
-    except AttributeError:
-        while True:
-            time.sleep(3600)
+        logging.info("Disconnected (goodbye). Reconnect in 5s...")
+        time.sleep(2)
 
 if __name__ == "__main__":
     main()
