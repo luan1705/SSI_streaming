@@ -1,0 +1,1121 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 8.57kB done
+#1 DONE 0.0s
+
+#2 [eboardtb_cw internal] load build definition from Dockerfile
+#2 transferring dockerfile: 659B done
+#2 DONE 0.0s
+
+#3 [eboardtb_hose6 internal] load metadata for docker.io/library/python:3.10-slim
+#3 DONE 9.5s
+
+#4 [eboardtb_cw internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [eboardtb_hnx2 1/6] FROM docker.io/library/python:3.10-slim@sha256:77f72bc159950ab208b8bbb9a7b22868984e004ce62966d1ca9268c346c73c64
+#5 resolve docker.io/library/python:3.10-slim@sha256:77f72bc159950ab208b8bbb9a7b22868984e004ce62966d1ca9268c346c73c64 done
+#5 DONE 0.0s
+
+#6 [eboardtb_etfhose internal] load build context
+#6 transferring context: 5.53kB done
+#6 DONE 0.0s
+
+#7 [eboardtb_hnx5 2/6] RUN apt-get update && apt-get install -y tzdata     && ln -snf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime     && echo "Asia/Ho_Chi_Minh" > /etc/timezone     && apt-get clean
+#7 CACHED
+
+#8 [eboardtb_upcom1 3/6] WORKDIR /app
+#8 CACHED
+
+#9 [eboardtb_hose2 4/6] COPY . /app
+#9 DONE 0.1s
+
+#10 [eboardtb_hnx4 5/6] RUN pip install --upgrade pip
+#10 2.315 Requirement already satisfied: pip in /usr/local/lib/python3.10/site-packages (23.0.1)
+#10 20.70 Collecting pip
+#10 21.03   Downloading pip-25.2-py3-none-any.whl (1.8 MB)
+#10 21.27      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 7.5 MB/s eta 0:00:00
+#10 21.38 Installing collected packages: pip
+#10 21.38   Attempting uninstall: pip
+#10 21.38     Found existing installation: pip 23.0.1
+#10 21.63     Uninstalling pip-23.0.1:
+#10 21.87       Successfully uninstalled pip-23.0.1
+#10 23.03 Successfully installed pip-25.2
+#10 23.03 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#10 DONE 23.4s
+
+#11 [eboardtb_derivatives 6/6] RUN pip install -r requirements.txt
+#11 8.283 Collecting fastapi (from -r requirements.txt (line 1))
+#11 9.432   Downloading fastapi-0.118.0-py3-none-any.whl.metadata (28 kB)
+#11 9.725 Collecting ssi-fc-data (from -r requirements.txt (line 5))
+#11 9.760   Downloading ssi_fc_data-2.2.2.tar.gz (11 kB)
+#11 9.801   Preparing metadata (setup.py): started
+#11 10.50   Preparing metadata (setup.py): finished with status 'done'
+#11 10.78 Collecting pandas (from -r requirements.txt (line 8))
+#11 10.81   Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+#11 11.53 Collecting sqlalchemy (from -r requirements.txt (line 9))
+#11 11.56   Downloading sqlalchemy-2.0.43-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.6 kB)
+#11 11.73 Collecting psycopg2-binary (from -r requirements.txt (line 10))
+#11 11.77   Downloading psycopg2_binary-2.9.10-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#11 12.30 Collecting orjson (from -r requirements.txt (line 11))
+#11 12.33   Downloading orjson-3.11.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)
+#11 12.40 Collecting kafka-python (from -r requirements.txt (line 12))
+#11 12.43   Downloading kafka_python-2.2.15-py2.py3-none-any.whl.metadata (10.0 kB)
+#11 12.51 Collecting aiokafka (from -r requirements.txt (line 13))
+#11 12.55   Downloading aiokafka-0.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (17 kB)
+#11 12.62 Collecting redis>=5.0.0 (from -r requirements.txt (line 14))
+#11 12.66   Downloading redis-6.4.0-py3-none-any.whl.metadata (10 kB)
+#11 12.76 Collecting uvicorn[standard] (from -r requirements.txt (line 2))
+#11 12.79   Downloading uvicorn-0.37.0-py3-none-any.whl.metadata (6.6 kB)
+#11 12.90 Collecting starlette<0.49.0,>=0.40.0 (from fastapi->-r requirements.txt (line 1))
+#11 12.93   Downloading starlette-0.48.0-py3-none-any.whl.metadata (6.3 kB)
+#11 13.30 Collecting pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 (from fastapi->-r requirements.txt (line 1))
+#11 13.33   Downloading pydantic-2.11.10-py3-none-any.whl.metadata (68 kB)
+#11 13.40 Collecting typing-extensions>=4.8.0 (from fastapi->-r requirements.txt (line 1))
+#11 13.43   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#11 13.47 Collecting annotated-types>=0.6.0 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1))
+#11 13.50   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+#11 15.22 Collecting pydantic-core==2.33.2 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1))
+#11 15.25   Downloading pydantic_core-2.33.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#11 15.30 Collecting typing-inspection>=0.4.0 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1))
+#11 15.34   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+#11 15.41 Collecting anyio<5,>=3.6.2 (from starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#11 15.44   Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
+#11 15.50 Collecting exceptiongroup>=1.0.2 (from anyio<5,>=3.6.2->starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#11 15.53   Downloading exceptiongroup-1.3.0-py3-none-any.whl.metadata (6.7 kB)
+#11 15.58 Collecting idna>=2.8 (from anyio<5,>=3.6.2->starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#11 15.67   Downloading idna-3.10-py3-none-any.whl.metadata (10 kB)
+#11 15.71 Collecting sniffio>=1.1 (from anyio<5,>=3.6.2->starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#11 15.75   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+#11 15.82 Collecting click>=7.0 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 15.85   Downloading click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
+#11 15.90 Collecting h11>=0.8 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 15.93   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#11 16.28 Collecting httptools>=0.6.3 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 16.32   Downloading httptools-0.6.4-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.6 kB)
+#11 16.39 Collecting python-dotenv>=0.13 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 16.43   Downloading python_dotenv-1.1.1-py3-none-any.whl.metadata (24 kB)
+#11 16.58 Collecting pyyaml>=5.1 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 16.62   Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#11 16.72 Collecting uvloop>=0.15.1 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 16.75   Downloading uvloop-0.21.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#11 17.00 Collecting watchfiles>=0.13 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 17.04   Downloading watchfiles-1.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#11 17.27 Collecting websockets>=10.4 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 17.31   Downloading websockets-15.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#11 17.41 Collecting requests>=2.18.4 (from ssi-fc-data->-r requirements.txt (line 5))
+#11 17.44   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+#11 17.52 Collecting websocket-client>=1.5.2 (from ssi-fc-data->-r requirements.txt (line 5))
+#11 17.56   Downloading websocket_client-1.8.0-py3-none-any.whl.metadata (8.0 kB)
+#11 18.32 Collecting numpy>=1.22.4 (from pandas->-r requirements.txt (line 8))
+#11 18.36   Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+#11 18.42 Collecting python-dateutil>=2.8.2 (from pandas->-r requirements.txt (line 8))
+#11 18.45   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#11 18.56 Collecting pytz>=2020.1 (from pandas->-r requirements.txt (line 8))
+#11 18.59   Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+#11 18.65 Collecting tzdata>=2022.7 (from pandas->-r requirements.txt (line 8))
+#11 18.68   Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+#11 18.97 Collecting greenlet>=1 (from sqlalchemy->-r requirements.txt (line 9))
+#11 19.00   Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+#11 19.05 Collecting async-timeout (from aiokafka->-r requirements.txt (line 13))
+#11 19.08   Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+#11 19.14 Collecting packaging (from aiokafka->-r requirements.txt (line 13))
+#11 19.17   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+#11 19.24 Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 8))
+#11 19.27   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#11 19.48 Collecting charset_normalizer<4,>=2 (from requests>=2.18.4->ssi-fc-data->-r requirements.txt (line 5))
+#11 19.51   Downloading charset_normalizer-3.4.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (36 kB)
+#11 19.61 Collecting urllib3<3,>=1.21.1 (from requests>=2.18.4->ssi-fc-data->-r requirements.txt (line 5))
+#11 19.64   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+#11 19.71 Collecting certifi>=2017.4.17 (from requests>=2.18.4->ssi-fc-data->-r requirements.txt (line 5))
+#11 19.74   Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+#11 19.83 Downloading fastapi-0.118.0-py3-none-any.whl (97 kB)
+#11 19.88 Downloading pydantic-2.11.10-py3-none-any.whl (444 kB)
+#11 19.99 Downloading pydantic_core-2.33.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.0 MB)
+#11 20.21    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 10.2 MB/s  0:00:00
+#11 20.24 Downloading starlette-0.48.0-py3-none-any.whl (73 kB)
+#11 20.29 Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+#11 20.34 Downloading uvicorn-0.37.0-py3-none-any.whl (67 kB)
+#11 20.38 Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+#11 21.54    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 11.0 MB/s  0:00:01
+#11 21.58 Downloading sqlalchemy-2.0.43-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+#11 21.87    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 11.1 MB/s  0:00:00
+#11 21.90 Downloading psycopg2_binary-2.9.10-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+#11 22.41    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 5.8 MB/s  0:00:00
+#11 22.44 Downloading orjson-3.11.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (132 kB)
+#11 22.49 Downloading kafka_python-2.2.15-py2.py3-none-any.whl (309 kB)
+#11 22.55 Downloading aiokafka-0.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+#11 22.65    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 10.9 MB/s  0:00:00
+#11 22.69 Downloading redis-6.4.0-py3-none-any.whl (279 kB)
+#11 22.74 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+#11 22.78 Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+#11 22.81 Downloading click-8.3.0-py3-none-any.whl (107 kB)
+#11 22.86 Downloading exceptiongroup-1.3.0-py3-none-any.whl (16 kB)
+#11 22.90 Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (584 kB)
+#11 22.95    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 584.4/584.4 kB 10.4 MB/s  0:00:00
+#11 22.99 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#11 23.03 Downloading httptools-0.6.4-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (442 kB)
+#11 23.10 Downloading idna-3.10-py3-none-any.whl (70 kB)
+#11 23.14 Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+#11 24.66    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.8/16.8 MB 11.1 MB/s  0:00:01
+#11 24.70 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+#11 24.75 Downloading python_dotenv-1.1.1-py3-none-any.whl (20 kB)
+#11 24.79 Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+#11 24.87 Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (770 kB)
+#11 24.94    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 770.3/770.3 kB 9.9 MB/s  0:00:00
+#11 24.98 Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+#11 25.02 Downloading charset_normalizer-3.4.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (152 kB)
+#11 25.06 Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+#11 25.11 Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
+#11 25.16 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#11 25.20 Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+#11 25.24 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#11 25.28 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+#11 25.32 Downloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+#11 25.39 Downloading uvloop-0.21.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.8 MB)
+#11 25.74    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 11.0 MB/s  0:00:00
+#11 25.77 Downloading watchfiles-1.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (453 kB)
+#11 25.85 Downloading websocket_client-1.8.0-py3-none-any.whl (58 kB)
+#11 25.89 Downloading websockets-15.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (181 kB)
+#11 25.94 Downloading packaging-25.0-py3-none-any.whl (66 kB)
+#11 26.20 Building wheels for collected packages: ssi-fc-data
+#11 26.20   DEPRECATION: Building 'ssi-fc-data' using the legacy setup.py bdist_wheel mechanism, which will be removed in a future version. pip 25.3 will enforce this behaviour change. A possible replacement is to use the standardized build interface by setting the `--use-pep517` option, (possibly combined with `--no-build-isolation`), or adding a `pyproject.toml` file to the source tree of 'ssi-fc-data'. Discussion can be found at https://github.com/pypa/pip/issues/6334
+#11 26.20   Building wheel for ssi-fc-data (setup.py): started
+#11 26.79   Building wheel for ssi-fc-data (setup.py): finished with status 'done'
+#11 26.80   Created wheel for ssi-fc-data: filename=ssi_fc_data-2.2.2-py3-none-any.whl size=16374 sha256=fdba406ff704f5d50b67dce700337acd134472d0db1c500609894b76d64a3071
+#11 26.80   Stored in directory: /root/.cache/pip/wheels/7c/3b/6b/354db34eb5ce38cff6b53d401b08773ede2b81c867ced1474f
+#11 26.80 Successfully built ssi-fc-data
+#11 27.16 Installing collected packages: pytz, kafka-python, websockets, websocket-client, uvloop, urllib3, tzdata, typing-extensions, sniffio, six, pyyaml, python-dotenv, psycopg2-binary, packaging, orjson, numpy, idna, httptools, h11, greenlet, click, charset_normalizer, certifi, async-timeout, annotated-types, uvicorn, typing-inspection, sqlalchemy, requests, redis, python-dateutil, pydantic-core, exceptiongroup, aiokafka, ssi-fc-data, pydantic, pandas, anyio, watchfiles, starlette, fastapi
+#11 39.71 
+#11 39.72 Successfully installed aiokafka-0.12.0 annotated-types-0.7.0 anyio-4.11.0 async-timeout-5.0.1 certifi-2025.10.5 charset_normalizer-3.4.3 click-8.3.0 exceptiongroup-1.3.0 fastapi-0.118.0 greenlet-3.2.4 h11-0.16.0 httptools-0.6.4 idna-3.10 kafka-python-2.2.15 numpy-2.2.6 orjson-3.11.3 packaging-25.0 pandas-2.3.3 psycopg2-binary-2.9.10 pydantic-2.11.10 pydantic-core-2.33.2 python-dateutil-2.9.0.post0 python-dotenv-1.1.1 pytz-2025.2 pyyaml-6.0.3 redis-6.4.0 requests-2.32.5 six-1.17.0 sniffio-1.3.1 sqlalchemy-2.0.43 ssi-fc-data-2.2.2 starlette-0.48.0 typing-extensions-4.15.0 typing-inspection-0.4.2 tzdata-2025.2 urllib3-2.5.0 uvicorn-0.37.0 uvloop-0.21.0 watchfiles-1.1.0 websocket-client-1.8.0 websockets-15.0.1
+#11 39.72 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#11 DONE 40.3s
+
+#12 [eboardtb_hnx2] exporting to image
+#12 exporting layers
+#12 exporting layers 3.9s done
+#12 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#12 naming to docker.io/library/fastapi_websocket-eboardtb_hnx2 0.0s done
+#12 DONE 3.9s
+
+#13 [eboardtb_hose4] exporting to image
+#13 exporting layers 3.9s done
+#13 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#13 naming to docker.io/library/fastapi_websocket-eboardtb_hose4 done
+#13 DONE 3.9s
+
+#14 [eboardtb_hose9] exporting to image
+#14 exporting layers 3.9s done
+#14 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#14 naming to docker.io/library/fastapi_websocket-eboardtb_hose9 0.0s done
+#14 DONE 3.9s
+
+#15 [eboardtb_hnx1] exporting to image
+#15 exporting layers 3.9s done
+#15 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#15 naming to docker.io/library/fastapi_websocket-eboardtb_hnx1 done
+#15 DONE 3.9s
+
+#16 [eboardtb_upcom1] exporting to image
+#16 exporting layers 3.9s done
+#16 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#16 naming to docker.io/library/fastapi_websocket-eboardtb_upcom1 0.0s done
+#16 DONE 3.9s
+
+#17 [eboardtb_hose7] exporting to image
+#17 exporting layers 3.9s done
+#17 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#17 naming to docker.io/library/fastapi_websocket-eboardtb_hose7 0.0s done
+#17 DONE 3.9s
+
+#18 [eboardtb_hnxbond] exporting to image
+#18 exporting layers 3.9s done
+#18 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#18 naming to docker.io/library/fastapi_websocket-eboardtb_hnxbond 0.0s done
+#18 DONE 3.9s
+
+#19 [eboardtb_hnx6] exporting to image
+#19 exporting layers 3.9s done
+#19 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#19 naming to docker.io/library/fastapi_websocket-eboardtb_hnx6 0.0s done
+#19 DONE 3.9s
+
+#20 [eboardtb_hose5] exporting to image
+#20 exporting layers 3.9s done
+#20 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#20 naming to docker.io/library/fastapi_websocket-eboardtb_hose5 0.0s done
+#20 DONE 3.9s
+
+#21 [eboardtb_derivatives] exporting to image
+#21 exporting layers 3.9s done
+#21 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#21 naming to docker.io/library/fastapi_websocket-eboardtb_derivatives 0.0s done
+#21 DONE 3.9s
+
+#22 [eboardtb_upcom4] exporting to image
+#22 exporting layers 3.9s done
+#22 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#22 naming to docker.io/library/fastapi_websocket-eboardtb_upcom4 0.0s done
+#22 DONE 3.9s
+
+#23 [eboardtb_hnx7] exporting to image
+#23 exporting layers 3.9s done
+#23 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#23 naming to docker.io/library/fastapi_websocket-eboardtb_hnx7 0.0s done
+#23 DONE 3.9s
+
+#24 [eboardtb_hose8] exporting to image
+#24 exporting layers 3.9s done
+#24 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#24 naming to docker.io/library/fastapi_websocket-eboardtb_hose8 0.0s done
+#24 DONE 3.9s
+
+#25 [eboardtb_hnx4] exporting to image
+#25 exporting layers 3.9s done
+#25 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#25 naming to docker.io/library/fastapi_websocket-eboardtb_hnx4 0.0s done
+#25 DONE 3.9s
+
+#26 [eboardtb_hnx8] exporting to image
+#26 exporting layers 3.9s done
+#26 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#26 naming to docker.io/library/fastapi_websocket-eboardtb_hnx8 0.0s done
+#26 DONE 3.9s
+
+#27 [eboardtb_hose10] exporting to image
+#27 exporting layers 3.9s done
+#27 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 done
+#27 naming to docker.io/library/fastapi_websocket-eboardtb_hose10 0.0s done
+#27 DONE 3.9s
+
+#28 [eboardtb_hose6] exporting to image
+#28 exporting layers 3.9s done
+#28 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 0.0s done
+#28 naming to docker.io/library/fastapi_websocket-eboardtb_hose6 0.0s done
+#28 DONE 3.9s
+
+#29 [eboardtb_etfhose] exporting to image
+#29 exporting layers 3.9s done
+#29 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 0.0s done
+#29 naming to docker.io/library/fastapi_websocket-eboardtb_etfhose 0.0s done
+#29 DONE 3.9s
+
+#30 [eboardtb_upcom2] exporting to image
+#30 exporting layers 3.9s done
+#30 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 0.0s done
+#30 naming to docker.io/library/fastapi_websocket-eboardtb_upcom2 0.0s done
+#30 DONE 3.9s
+
+#31 [eboardtb_cw] exporting to image
+#31 exporting layers 3.9s done
+#31 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 0.0s done
+#31 naming to docker.io/library/fastapi_websocket-eboardtb_cw 0.0s done
+#31 DONE 3.9s
+
+#32 [eboardtb_hnx5] exporting to image
+#32 exporting layers 3.9s done
+#32 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 0.0s done
+#32 naming to docker.io/library/fastapi_websocket-eboardtb_hnx5 0.0s done
+#32 DONE 3.9s
+
+#33 [eboardtb_hose1] exporting to image
+#33 exporting layers 3.9s done
+#33 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 0.0s done
+#33 naming to docker.io/library/fastapi_websocket-eboardtb_hose1 0.0s done
+#33 DONE 3.9s
+
+#34 [eboardtb_hnx3] exporting to image
+#34 exporting layers 3.9s done
+#34 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 0.0s done
+#34 naming to docker.io/library/fastapi_websocket-eboardtb_hnx3 0.0s done
+#34 DONE 3.9s
+
+#35 [eboardtb_upcom3] exporting to image
+#35 exporting layers 3.9s done
+#35 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 0.0s done
+#35 naming to docker.io/library/fastapi_websocket-eboardtb_upcom3 0.0s done
+#35 DONE 3.9s
+
+#36 [eboardtb_hose2] exporting to image
+#36 exporting layers 3.9s done
+#36 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 0.0s done
+#36 naming to docker.io/library/fastapi_websocket-eboardtb_hose2 0.0s done
+#36 DONE 3.9s
+
+#37 [eboardtb_hose3] exporting to image
+#37 exporting layers 3.9s done
+#37 writing image sha256:ebd29f89fe7550214807a9b5cac8a61bc23591e5aeaed300b3b69fc4b07b5d24 0.0s done
+#37 naming to docker.io/library/fastapi_websocket-eboardtb_hose3 0.0s done
+#37 DONE 3.9s
+
+#38 [eboardtb_hose4] resolving provenance for metadata file
+#38 DONE 0.0s
+
+#39 [eboardtb_upcom3] resolving provenance for metadata file
+#39 DONE 0.0s
+
+#40 [eboardtb_etfhose] resolving provenance for metadata file
+#40 DONE 0.0s
+
+#41 [eboardtb_hnx6] resolving provenance for metadata file
+#41 DONE 0.0s
+
+#42 [eboardtb_hnx8] resolving provenance for metadata file
+#42 DONE 0.0s
+
+#43 [eboardtb_cw] resolving provenance for metadata file
+#43 DONE 0.0s
+
+#44 [eboardtb_upcom2] resolving provenance for metadata file
+#44 DONE 0.0s
+
+#45 [eboardtb_hnx1] resolving provenance for metadata file
+#45 DONE 0.0s
+
+#46 [eboardtb_hose5] resolving provenance for metadata file
+#46 DONE 0.0s
+
+#47 [eboardtb_upcom4] resolving provenance for metadata file
+#47 DONE 0.0s
+
+#48 [eboardtb_upcom1] resolving provenance for metadata file
+#48 DONE 0.0s
+
+#49 [eboardtb_hose1] resolving provenance for metadata file
+#49 DONE 0.0s
+
+#50 [eboardtb_hnx2] resolving provenance for metadata file
+#50 DONE 0.0s
+
+#51 [eboardtb_derivatives] resolving provenance for metadata file
+#51 DONE 0.0s
+
+#52 [eboardtb_hose7] resolving provenance for metadata file
+#52 DONE 0.0s
+
+#53 [eboardtb_hose6] resolving provenance for metadata file
+#53 DONE 0.0s
+
+#54 [eboardtb_hnx5] resolving provenance for metadata file
+#54 DONE 0.0s
+
+#55 [eboardtb_hose9] resolving provenance for metadata file
+#55 DONE 0.0s
+
+#56 [eboardtb_hose10] resolving provenance for metadata file
+#56 DONE 0.0s
+
+#57 [eboardtb_hose2] resolving provenance for metadata file
+#57 DONE 0.0s
+
+#58 [eboardtb_hnx7] resolving provenance for metadata file
+#58 DONE 0.0s
+
+#59 [eboardtb_hose8] resolving provenance for metadata file
+#59 DONE 0.0s
+
+#60 [eboardtb_hnx3] resolving provenance for metadata file
+#60 DONE 0.0s
+
+#61 [eboardtb_hnx4] resolving provenance for metadata file
+#61 DONE 0.0s
+
+#62 [eboardtb_hnxbond] resolving provenance for metadata file
+#62 DONE 0.0s
+
+#63 [eboardtb_hose3] resolving provenance for metadata file
+#63 DONE 0.0s
+ eboardtb_hnx5  Built
+ eboardtb_hnx3  Built
+ eboardtb_hose5  Built
+ eboardtb_hnx6  Built
+ eboardtb_cw  Built
+ eboardtb_hose8  Built
+ eboardtb_hnx2  Built
+ eboardtb_upcom4  Built
+ eboardtb_hose1  Built
+ eboardtb_hnx1  Built
+ eboardtb_hose2  Built
+ eboardtb_etfhose  Built
+ eboardtb_hose6  Built
+ eboardtb_hnx7  Built
+ eboardtb_hose3  Built
+ eboardtb_hose10  Built
+ eboardtb_upcom3  Built
+ eboardtb_upcom1  Built
+ eboardtb_hnx4  Built
+ eboardtb_hose9  Built
+ eboardtb_derivatives  Built
+ eboardtb_upcom2  Built
+ eboardtb_hnx8  Built
+ eboardtb_hnxbond  Built
+ eboardtb_hose4  Built
+ eboardtb_hose7  Built
+ Container eboardtb_hose10  Creating
+ Container eboardtb_cw  Creating
+ Container eboardtb_hnx4  Creating
+ Container eboardtb_upcom3  Creating
+ Container eboardtb_upcom2  Creating
+ Container eboardtb_hnx5  Creating
+ Container eboardtb_derivatives  Creating
+ Container eboardtb_upcom1  Creating
+ Container eboardtb_hnx6  Creating
+ Container eboardtb_hose9  Creating
+ Container eboardtb_hose6  Creating
+ Container eboardtb_hnx1  Creating
+ Container eboardtb_hnx7  Creating
+ Container eboardtb_hose3  Creating
+ Container eboardtb_hnxbond  Creating
+ Container eboardtb_upcom4  Creating
+ Container eboardtb_etfhose  Creating
+ Container eboardtb_hose2  Creating
+ Container eboardtb_hnx3  Creating
+ Container eboardtb_hose4  Creating
+ Container eboardtb_hnx2  Creating
+ Container eboardtb_hose1  Creating
+ Container eboardtb_hose5  Creating
+ Container eboardtb_hnx8  Creating
+ Container eboardtb_hose8  Creating
+ Container eboardtb_hose7  Creating
+ Container eboardtb_hnx5  Created
+ Container eboardtb_hose10  Created
+ Container eboardtb_hose7  Created
+ Container eboardtb_hose5  Created
+ Container eboardtb_hnx7  Created
+ Container eboardtb_hose1  Created
+ Container eboardtb_hnx4  Created
+ Container eboardtb_hose8  Created
+ Container eboardtb_upcom3  Created
+ Container eboardtb_cw  Created
+ Container eboardtb_hose2  Created
+ Container eboardtb_hnx2  Created
+ Container eboardtb_hnx6  Created
+ Container eboardtb_upcom1  Created
+ Container eboardtb_hnx3  Created
+ Container eboardtb_hose4  Created
+ Container eboardtb_hose6  Created
+ Container eboardtb_hose9  Created
+ Container eboardtb_hose3  Created
+ Container eboardtb_hnx1  Created
+ Container eboardtb_hnxbond  Created
+ Container eboardtb_upcom4  Created
+ Container eboardtb_etfhose  Created
+ Container eboardtb_upcom2  Created
+ Container eboardtb_hnx8  Created
+ Container eboardtb_derivatives  Created
+ Container eboardtb_hose4  Starting
+ Container eboardtb_hose7  Starting
+ Container eboardtb_cw  Starting
+ Container eboardtb_hose1  Starting
+ Container eboardtb_etfhose  Starting
+ Container eboardtb_hose9  Starting
+ Container eboardtb_hose5  Starting
+ Container eboardtb_hose3  Starting
+ Container eboardtb_derivatives  Starting
+ Container eboardtb_hnxbond  Starting
+ Container eboardtb_hnx1  Starting
+ Container eboardtb_hose2  Starting
+ Container eboardtb_hnx6  Starting
+ Container eboardtb_hose6  Starting
+ Container eboardtb_hnx2  Starting
+ Container eboardtb_hnx3  Starting
+ Container eboardtb_hnx7  Starting
+ Container eboardtb_upcom1  Starting
+ Container eboardtb_upcom3  Starting
+ Container eboardtb_hnx4  Starting
+ Container eboardtb_hnx5  Starting
+ Container eboardtb_upcom4  Starting
+ Container eboardtb_hose8  Starting
+ Container eboardtb_hose10  Starting
+ Container eboardtb_upcom2  Starting
+ Container eboardtb_hnx8  Starting
+ Container eboardtb_hose9  Started
+ Container eboardtb_upcom3  Started
+ Container eboardtb_hose7  Started
+ Container eboardtb_hose6  Started
+ Container eboardtb_hose3  Started
+ Container eboardtb_hose1  Started
+ Container eboardtb_hnxbond  Started
+ Container eboardtb_hose2  Started
+ Container eboardtb_upcom1  Started
+ Container eboardtb_hnx1  Started
+ Container eboardtb_hnx7  Started
+ Container eboardtb_upcom4  Started
+ Container eboardtb_upcom2  Started
+ Container eboardtb_hose5  Started
+ Container eboardtb_hnx4  Started
+ Container eboardtb_etfhose  Started
+ Container eboardtb_hnx5  Started
+ Container eboardtb_hose10  Started
+ Container eboardtb_hnx3  Started
+ Container eboardtb_derivatives  Started
+ Container eboardtb_hnx6  Started
+ Container eboardtb_hose4  Started
+ Container eboardtb_hose8  Started
+ Container eboardtb_hnx2  Started
+ Container eboardtb_hnx8  Started
+ Container eboardtb_cw  Started
+#1 [internal] load local bake definitions
+#1 reading from stdin 8.57kB done
+#1 DONE 0.0s
+
+#2 [eboardtb_cw internal] load build definition from Dockerfile
+#2 transferring dockerfile: 659B done
+#2 DONE 0.0s
+
+#3 [eboardtb_hnx3 internal] load metadata for docker.io/library/python:3.10-slim
+#3 ...
+
+#4 [auth] library/python:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [eboardtb_hnx3 internal] load metadata for docker.io/library/python:3.10-slim
+#3 DONE 65.9s
+
+#5 [eboardtb_hnx4 internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [eboardtb_hose8 1/6] FROM docker.io/library/python:3.10-slim@sha256:77f72bc159950ab208b8bbb9a7b22868984e004ce62966d1ca9268c346c73c64
+#6 resolve docker.io/library/python:3.10-slim@sha256:77f72bc159950ab208b8bbb9a7b22868984e004ce62966d1ca9268c346c73c64 done
+#6 DONE 0.0s
+
+#7 [eboardtb_hose8 internal] load build context
+#7 transferring context: 322.73kB 0.0s done
+#7 DONE 0.0s
+
+#8 [eboardtb_hose7 2/6] RUN apt-get update && apt-get install -y tzdata     && ln -snf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime     && echo "Asia/Ho_Chi_Minh" > /etc/timezone     && apt-get clean
+#8 CACHED
+
+#9 [eboardtb_hnx8 3/6] WORKDIR /app
+#9 CACHED
+
+#10 [eboardtb_hnx8 4/6] COPY . /app
+#10 DONE 0.0s
+
+#11 [eboardtb_hnx4 5/6] RUN pip install --upgrade pip
+#11 2.459 Requirement already satisfied: pip in /usr/local/lib/python3.10/site-packages (23.0.1)
+#11 25.16 Collecting pip
+#11 26.33   Downloading pip-25.2-py3-none-any.whl (1.8 MB)
+#11 26.58      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 7.2 MB/s eta 0:00:00
+#11 26.67 Installing collected packages: pip
+#11 26.67   Attempting uninstall: pip
+#11 26.68     Found existing installation: pip 23.0.1
+#11 26.99     Uninstalling pip-23.0.1:
+#11 27.22       Successfully uninstalled pip-23.0.1
+#11 28.54 Successfully installed pip-25.2
+#11 28.54 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#11 DONE 28.9s
+
+#12 [eboardtb_hnx7 6/6] RUN pip install -r requirements.txt
+#12 4.303 Collecting fastapi (from -r requirements.txt (line 1))
+#12 64.37   WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f319c51eaa0>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /packages/54/20/54e2bdaad22ca91a59455251998d43094d5c3d3567c52c7c04774b3f43f2/fastapi-0.118.0-py3-none-any.whl.metadata
+#12 67.60   Downloading fastapi-0.118.0-py3-none-any.whl.metadata (28 kB)
+#12 67.92 Collecting ssi-fc-data (from -r requirements.txt (line 5))
+#12 68.19   Downloading ssi_fc_data-2.2.2.tar.gz (11 kB)
+#12 68.24   Preparing metadata (setup.py): started
+#12 69.12   Preparing metadata (setup.py): finished with status 'done'
+#12 69.46 Collecting pandas (from -r requirements.txt (line 8))
+#12 69.50   Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+#12 70.54 Collecting sqlalchemy (from -r requirements.txt (line 9))
+#12 70.58   Downloading sqlalchemy-2.0.43-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.6 kB)
+#12 70.77 Collecting psycopg2-binary (from -r requirements.txt (line 10))
+#12 70.80   Downloading psycopg2_binary-2.9.10-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#12 71.43 Collecting orjson (from -r requirements.txt (line 11))
+#12 71.46   Downloading orjson-3.11.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)
+#12 71.59 Collecting kafka-python (from -r requirements.txt (line 12))
+#12 71.63   Downloading kafka_python-2.2.15-py2.py3-none-any.whl.metadata (10.0 kB)
+#12 71.72 Collecting aiokafka (from -r requirements.txt (line 13))
+#12 71.76   Downloading aiokafka-0.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (17 kB)
+#12 71.85 Collecting redis>=5.0.0 (from -r requirements.txt (line 14))
+#12 71.88   Downloading redis-6.4.0-py3-none-any.whl.metadata (10 kB)
+#12 71.98 Collecting uvicorn[standard] (from -r requirements.txt (line 2))
+#12 72.02   Downloading uvicorn-0.37.0-py3-none-any.whl.metadata (6.6 kB)
+#12 72.11 Collecting starlette<0.49.0,>=0.40.0 (from fastapi->-r requirements.txt (line 1))
+#12 72.15   Downloading starlette-0.48.0-py3-none-any.whl.metadata (6.3 kB)
+#12 72.62 Collecting pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 (from fastapi->-r requirements.txt (line 1))
+#12 72.65   Downloading pydantic-2.11.10-py3-none-any.whl.metadata (68 kB)
+#12 72.73 Collecting typing-extensions>=4.8.0 (from fastapi->-r requirements.txt (line 1))
+#12 72.77   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#12 72.82 Collecting annotated-types>=0.6.0 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1))
+#12 72.85   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+#12 74.27 Collecting pydantic-core==2.33.2 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1))
+#12 74.31   Downloading pydantic_core-2.33.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#12 74.35 Collecting typing-inspection>=0.4.0 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1))
+#12 74.38   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+#12 74.53 Collecting anyio<5,>=3.6.2 (from starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#12 74.56   Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
+#12 74.62 Collecting exceptiongroup>=1.0.2 (from anyio<5,>=3.6.2->starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#12 74.66   Downloading exceptiongroup-1.3.0-py3-none-any.whl.metadata (6.7 kB)
+#12 74.73 Collecting idna>=2.8 (from anyio<5,>=3.6.2->starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#12 74.76   Downloading idna-3.10-py3-none-any.whl.metadata (10 kB)
+#12 74.81 Collecting sniffio>=1.1 (from anyio<5,>=3.6.2->starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#12 74.84   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+#12 74.96 Collecting click>=7.0 (from uvicorn[standard]->-r requirements.txt (line 2))
+#12 75.00   Downloading click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
+#12 75.04 Collecting h11>=0.8 (from uvicorn[standard]->-r requirements.txt (line 2))
+#12 75.08   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#12 75.16 Collecting httptools>=0.6.3 (from uvicorn[standard]->-r requirements.txt (line 2))
+#12 75.20   Downloading httptools-0.6.4-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.6 kB)
+#12 75.26 Collecting python-dotenv>=0.13 (from uvicorn[standard]->-r requirements.txt (line 2))
+#12 75.30   Downloading python_dotenv-1.1.1-py3-none-any.whl.metadata (24 kB)
+#12 75.43 Collecting pyyaml>=5.1 (from uvicorn[standard]->-r requirements.txt (line 2))
+#12 75.46   Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#12 75.57 Collecting uvloop>=0.15.1 (from uvicorn[standard]->-r requirements.txt (line 2))
+#12 75.60   Downloading uvloop-0.21.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#12 75.88 Collecting watchfiles>=0.13 (from uvicorn[standard]->-r requirements.txt (line 2))
+#12 75.92   Downloading watchfiles-1.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#12 76.14 Collecting websockets>=10.4 (from uvicorn[standard]->-r requirements.txt (line 2))
+#12 76.18   Downloading websockets-15.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#12 76.26 Collecting requests>=2.18.4 (from ssi-fc-data->-r requirements.txt (line 5))
+#12 76.30   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+#12 76.36 Collecting websocket-client>=1.5.2 (from ssi-fc-data->-r requirements.txt (line 5))
+#12 76.39   Downloading websocket_client-1.8.0-py3-none-any.whl.metadata (8.0 kB)
+#12 76.90 Collecting numpy>=1.22.4 (from pandas->-r requirements.txt (line 8))
+#12 76.93   Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+#12 76.99 Collecting python-dateutil>=2.8.2 (from pandas->-r requirements.txt (line 8))
+#12 77.03   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#12 77.13 Collecting pytz>=2020.1 (from pandas->-r requirements.txt (line 8))
+#12 77.17   Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+#12 77.22 Collecting tzdata>=2022.7 (from pandas->-r requirements.txt (line 8))
+#12 77.25   Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+#12 77.54 Collecting greenlet>=1 (from sqlalchemy->-r requirements.txt (line 9))
+#12 77.57   Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+#12 77.63 Collecting async-timeout (from aiokafka->-r requirements.txt (line 13))
+#12 77.66   Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+#12 77.74 Collecting packaging (from aiokafka->-r requirements.txt (line 13))
+#12 77.78   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+#12 77.86 Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 8))
+#12 77.89   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#12 78.12 Collecting charset_normalizer<4,>=2 (from requests>=2.18.4->ssi-fc-data->-r requirements.txt (line 5))
+#12 78.15   Downloading charset_normalizer-3.4.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (36 kB)
+#12 78.26 Collecting urllib3<3,>=1.21.1 (from requests>=2.18.4->ssi-fc-data->-r requirements.txt (line 5))
+#12 78.29   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+#12 78.37 Collecting certifi>=2017.4.17 (from requests>=2.18.4->ssi-fc-data->-r requirements.txt (line 5))
+#12 78.41   Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+#12 78.51 Downloading fastapi-0.118.0-py3-none-any.whl (97 kB)
+#12 78.55 Downloading pydantic-2.11.10-py3-none-any.whl (444 kB)
+#12 78.64 Downloading pydantic_core-2.33.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.0 MB)
+#12 78.86    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 15.4 MB/s  0:00:00
+#12 78.90 Downloading starlette-0.48.0-py3-none-any.whl (73 kB)
+#12 78.94 Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+#12 78.99 Downloading uvicorn-0.37.0-py3-none-any.whl (67 kB)
+#12 79.03 Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+#12 80.57    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 8.3 MB/s  0:00:01
+#12 80.61 Downloading sqlalchemy-2.0.43-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+#12 81.07    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 7.0 MB/s  0:00:00
+#12 81.10 Downloading psycopg2_binary-2.9.10-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+#12 81.55    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 6.8 MB/s  0:00:00
+#12 81.59 Downloading orjson-3.11.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (132 kB)
+#12 81.65 Downloading kafka_python-2.2.15-py2.py3-none-any.whl (309 kB)
+#12 81.73 Downloading aiokafka-0.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+#12 81.90    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 6.9 MB/s  0:00:00
+#12 81.94 Downloading redis-6.4.0-py3-none-any.whl (279 kB)
+#12 82.03 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+#12 82.06 Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+#12 82.10 Downloading click-8.3.0-py3-none-any.whl (107 kB)
+#12 82.16 Downloading exceptiongroup-1.3.0-py3-none-any.whl (16 kB)
+#12 82.20 Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (584 kB)
+#12 82.28    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 584.4/584.4 kB 6.9 MB/s  0:00:00
+#12 82.32 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#12 82.36 Downloading httptools-0.6.4-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (442 kB)
+#12 82.48 Downloading idna-3.10-py3-none-any.whl (70 kB)
+#12 82.53 Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+#12 85.36    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.8/16.8 MB 5.9 MB/s  0:00:02
+#12 85.39 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+#12 85.47 Downloading python_dotenv-1.1.1-py3-none-any.whl (20 kB)
+#12 85.51 Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+#12 85.63 Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (770 kB)
+#12 85.77    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 770.3/770.3 kB 5.7 MB/s  0:00:00
+#12 85.80 Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+#12 85.84 Downloading charset_normalizer-3.4.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (152 kB)
+#12 85.90 Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+#12 85.95 Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
+#12 86.02 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#12 86.05 Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+#12 86.09 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#12 86.13 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+#12 86.17 Downloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+#12 86.27 Downloading uvloop-0.21.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.8 MB)
+#12 86.88    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 6.3 MB/s  0:00:00
+#12 86.92 Downloading watchfiles-1.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (453 kB)
+#12 87.02 Downloading websocket_client-1.8.0-py3-none-any.whl (58 kB)
+#12 87.08 Downloading websockets-15.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (181 kB)
+#12 87.15 Downloading packaging-25.0-py3-none-any.whl (66 kB)
+#12 87.44 Building wheels for collected packages: ssi-fc-data
+#12 87.44   DEPRECATION: Building 'ssi-fc-data' using the legacy setup.py bdist_wheel mechanism, which will be removed in a future version. pip 25.3 will enforce this behaviour change. A possible replacement is to use the standardized build interface by setting the `--use-pep517` option, (possibly combined with `--no-build-isolation`), or adding a `pyproject.toml` file to the source tree of 'ssi-fc-data'. Discussion can be found at https://github.com/pypa/pip/issues/6334
+#12 87.44   Building wheel for ssi-fc-data (setup.py): started
+#12 87.91   Building wheel for ssi-fc-data (setup.py): finished with status 'done'
+#12 87.91   Created wheel for ssi-fc-data: filename=ssi_fc_data-2.2.2-py3-none-any.whl size=16374 sha256=0a10e650aceab219c779b6e19a14e6c3ab1bb22e6e96367d07a805060c87e218
+#12 87.91   Stored in directory: /root/.cache/pip/wheels/7c/3b/6b/354db34eb5ce38cff6b53d401b08773ede2b81c867ced1474f
+#12 87.92 Successfully built ssi-fc-data
+#12 88.17 Installing collected packages: pytz, kafka-python, websockets, websocket-client, uvloop, urllib3, tzdata, typing-extensions, sniffio, six, pyyaml, python-dotenv, psycopg2-binary, packaging, orjson, numpy, idna, httptools, h11, greenlet, click, charset_normalizer, certifi, async-timeout, annotated-types, uvicorn, typing-inspection, sqlalchemy, requests, redis, python-dateutil, pydantic-core, exceptiongroup, aiokafka, ssi-fc-data, pydantic, pandas, anyio, watchfiles, starlette, fastapi
+#12 100.3 
+#12 100.3 Successfully installed aiokafka-0.12.0 annotated-types-0.7.0 anyio-4.11.0 async-timeout-5.0.1 certifi-2025.10.5 charset_normalizer-3.4.3 click-8.3.0 exceptiongroup-1.3.0 fastapi-0.118.0 greenlet-3.2.4 h11-0.16.0 httptools-0.6.4 idna-3.10 kafka-python-2.2.15 numpy-2.2.6 orjson-3.11.3 packaging-25.0 pandas-2.3.3 psycopg2-binary-2.9.10 pydantic-2.11.10 pydantic-core-2.33.2 python-dateutil-2.9.0.post0 python-dotenv-1.1.1 pytz-2025.2 pyyaml-6.0.3 redis-6.4.0 requests-2.32.5 six-1.17.0 sniffio-1.3.1 sqlalchemy-2.0.43 ssi-fc-data-2.2.2 starlette-0.48.0 typing-extensions-4.15.0 typing-inspection-0.4.2 tzdata-2025.2 urllib3-2.5.0 uvicorn-0.37.0 uvloop-0.21.0 watchfiles-1.1.0 websocket-client-1.8.0 websockets-15.0.1
+#12 100.3 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#12 DONE 101.1s
+
+#13 [eboardtb_hose3] exporting to image
+#13 exporting layers
+#13 exporting layers 3.7s done
+#13 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#13 naming to docker.io/library/fastapi_websocket-eboardtb_hose3 0.0s done
+#13 DONE 3.8s
+
+#14 [eboardtb_hose1] exporting to image
+#14 exporting layers 3.7s done
+#14 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e done
+#14 naming to docker.io/library/fastapi_websocket-eboardtb_hose1 done
+#14 DONE 3.7s
+
+#15 [eboardtb_hnx6] exporting to image
+#15 exporting layers 3.7s done
+#15 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e done
+#15 naming to docker.io/library/fastapi_websocket-eboardtb_hnx6 0.0s done
+#15 DONE 3.8s
+
+#16 [eboardtb_hose7] exporting to image
+#16 exporting layers 3.7s done
+#16 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e done
+#16 naming to docker.io/library/fastapi_websocket-eboardtb_hose7 0.0s done
+#16 DONE 3.7s
+
+#17 [eboardtb_upcom3] exporting to image
+#17 exporting layers 3.7s done
+#17 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e done
+#17 naming to docker.io/library/fastapi_websocket-eboardtb_upcom3 0.0s done
+#17 DONE 3.8s
+
+#18 [eboardtb_upcom2] exporting to image
+#18 exporting layers 3.7s done
+#18 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e done
+#18 naming to docker.io/library/fastapi_websocket-eboardtb_upcom2 0.0s done
+#18 DONE 3.8s
+
+#19 [eboardtb_hnx4] exporting to image
+#19 exporting layers 3.7s done
+#19 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e done
+#19 naming to docker.io/library/fastapi_websocket-eboardtb_hnx4 0.0s done
+#19 DONE 3.8s
+
+#20 [eboardtb_hnx8] exporting to image
+#20 exporting layers 3.7s done
+#20 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e done
+#20 naming to docker.io/library/fastapi_websocket-eboardtb_hnx8 0.0s done
+#20 DONE 3.8s
+
+#21 [eboardtb_hose6] exporting to image
+#21 exporting layers 3.7s done
+#21 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e done
+#21 naming to docker.io/library/fastapi_websocket-eboardtb_hose6 0.0s done
+#21 DONE 3.8s
+
+#22 [eboardtb_hose4] exporting to image
+#22 exporting layers 3.7s done
+#22 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#22 naming to docker.io/library/fastapi_websocket-eboardtb_hose4 0.0s done
+#22 DONE 3.8s
+
+#23 [eboardtb_hose9] exporting to image
+#23 exporting layers 3.7s done
+#23 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#23 naming to docker.io/library/fastapi_websocket-eboardtb_hose9 0.0s done
+#23 DONE 3.8s
+
+#24 [eboardtb_upcom1] exporting to image
+#24 exporting layers 3.7s done
+#24 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#24 naming to docker.io/library/fastapi_websocket-eboardtb_upcom1 0.0s done
+#24 DONE 3.8s
+
+#25 [eboardtb_hose5] exporting to image
+#25 exporting layers 3.7s done
+#25 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#25 naming to docker.io/library/fastapi_websocket-eboardtb_hose5 0.0s done
+#25 DONE 3.8s
+
+#26 [eboardtb_hnx1] exporting to image
+#26 exporting layers 3.7s done
+#26 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#26 naming to docker.io/library/fastapi_websocket-eboardtb_hnx1 0.0s done
+#26 DONE 3.8s
+
+#27 [eboardtb_hnx3] exporting to image
+#27 exporting layers 3.7s done
+#27 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#27 naming to docker.io/library/fastapi_websocket-eboardtb_hnx3 0.0s done
+#27 DONE 3.8s
+
+#28 [eboardtb_hose8] exporting to image
+#28 exporting layers 3.7s done
+#28 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#28 naming to docker.io/library/fastapi_websocket-eboardtb_hose8 0.0s done
+#28 DONE 3.8s
+
+#29 [eboardtb_cw] exporting to image
+#29 exporting layers 3.7s done
+#29 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#29 naming to docker.io/library/fastapi_websocket-eboardtb_cw 0.0s done
+#29 DONE 3.8s
+
+#30 [eboardtb_upcom4] exporting to image
+#30 exporting layers 3.7s done
+#30 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#30 naming to docker.io/library/fastapi_websocket-eboardtb_upcom4 0.0s done
+#30 DONE 3.8s
+
+#31 [eboardtb_hose2] exporting to image
+#31 exporting layers 3.7s done
+#31 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#31 naming to docker.io/library/fastapi_websocket-eboardtb_hose2 0.0s done
+#31 DONE 3.8s
+
+#32 [eboardtb_hnx7] exporting to image
+#32 exporting layers 3.7s done
+#32 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#32 naming to docker.io/library/fastapi_websocket-eboardtb_hnx7 0.0s done
+#32 DONE 3.8s
+
+#33 [eboardtb_etfhose] exporting to image
+#33 exporting layers 3.7s done
+#33 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#33 naming to docker.io/library/fastapi_websocket-eboardtb_etfhose 0.0s done
+#33 DONE 3.8s
+
+#34 [eboardtb_hose10] exporting to image
+#34 exporting layers 3.7s done
+#34 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#34 naming to docker.io/library/fastapi_websocket-eboardtb_hose10 0.0s done
+#34 DONE 3.8s
+
+#35 [eboardtb_hnxbond] exporting to image
+#35 exporting layers 3.7s done
+#35 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#35 naming to docker.io/library/fastapi_websocket-eboardtb_hnxbond 0.0s done
+#35 DONE 3.8s
+
+#36 [eboardtb_hnx2] exporting to image
+#36 exporting layers 3.7s done
+#36 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#36 naming to docker.io/library/fastapi_websocket-eboardtb_hnx2 0.0s done
+#36 DONE 3.8s
+
+#37 [eboardtb_hnx5] exporting to image
+#37 exporting layers 3.7s done
+#37 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#37 naming to docker.io/library/fastapi_websocket-eboardtb_hnx5 0.0s done
+#37 DONE 3.8s
+
+#38 [eboardtb_derivatives] exporting to image
+#38 exporting layers 3.7s done
+#38 writing image sha256:e37f237a1180a7cd3f1738989d4999dd8abb0a2877d39d950f6b82dd653f5a8e 0.0s done
+#38 naming to docker.io/library/fastapi_websocket-eboardtb_derivatives 0.0s done
+#38 DONE 3.8s
+
+#39 [eboardtb_hose1] resolving provenance for metadata file
+#39 DONE 0.1s
+
+#40 [eboardtb_upcom3] resolving provenance for metadata file
+#40 DONE 0.1s
+
+#41 [eboardtb_upcom2] resolving provenance for metadata file
+#41 DONE 0.1s
+
+#42 [eboardtb_hose3] resolving provenance for metadata file
+#42 DONE 0.0s
+
+#43 [eboardtb_hose8] resolving provenance for metadata file
+#43 DONE 0.1s
+
+#44 [eboardtb_hnx5] resolving provenance for metadata file
+#44 DONE 0.0s
+
+#45 [eboardtb_hnx8] resolving provenance for metadata file
+#45 DONE 0.1s
+
+#46 [eboardtb_hnx1] resolving provenance for metadata file
+#46 DONE 0.1s
+
+#47 [eboardtb_hnx7] resolving provenance for metadata file
+#47 DONE 0.0s
+
+#48 [eboardtb_hnx6] resolving provenance for metadata file
+#48 DONE 0.1s
+
+#49 [eboardtb_hnxbond] resolving provenance for metadata file
+#49 DONE 0.0s
+
+#50 [eboardtb_hnx4] resolving provenance for metadata file
+#50 DONE 0.1s
+
+#51 [eboardtb_hose4] resolving provenance for metadata file
+#51 DONE 0.1s
+
+#52 [eboardtb_hose5] resolving provenance for metadata file
+#52 DONE 0.1s
+
+#53 [eboardtb_hnx3] resolving provenance for metadata file
+#53 DONE 0.1s
+
+#54 [eboardtb_hose10] resolving provenance for metadata file
+#54 DONE 0.0s
+
+#55 [eboardtb_cw] resolving provenance for metadata file
+#55 DONE 0.1s
+
+#56 [eboardtb_hose6] resolving provenance for metadata file
+#56 DONE 0.1s
+
+#57 [eboardtb_upcom1] resolving provenance for metadata file
+#57 DONE 0.1s
+
+#58 [eboardtb_hose9] resolving provenance for metadata file
+#58 DONE 0.1s
+
+#59 [eboardtb_etfhose] resolving provenance for metadata file
+#59 DONE 0.0s
+
+#60 [eboardtb_hnx2] resolving provenance for metadata file
+#60 DONE 0.0s
+
+#61 [eboardtb_derivatives] resolving provenance for metadata file
+#61 DONE 0.0s
+
+#62 [eboardtb_hose2] resolving provenance for metadata file
+#62 DONE 0.1s
+
+#63 [eboardtb_hose7] resolving provenance for metadata file
+#63 DONE 0.1s
+
+#64 [eboardtb_upcom4] resolving provenance for metadata file
+#64 DONE 0.1s
+ eboardtb_hose10  Built
+ eboardtb_hnx6  Built
+ eboardtb_hnx7  Built
+ eboardtb_upcom3  Built
+ eboardtb_cw  Built
+ eboardtb_hnxbond  Built
+ eboardtb_hose6  Built
+ eboardtb_hose1  Built
+ eboardtb_etfhose  Built
+ eboardtb_hnx5  Built
+ eboardtb_hnx4  Built
+ eboardtb_hose3  Built
+ eboardtb_upcom4  Built
+ eboardtb_derivatives  Built
+ eboardtb_hnx8  Built
+ eboardtb_hose5  Built
+ eboardtb_hnx3  Built
+ eboardtb_hose4  Built
+ eboardtb_hnx2  Built
+ eboardtb_hose2  Built
+ eboardtb_hose7  Built
+ eboardtb_hose9  Built
+ eboardtb_upcom1  Built
+ eboardtb_hnx1  Built
+ eboardtb_hose8  Built
+ eboardtb_upcom2  Built
+ Container eboardtb_cw  Recreate
+ Container eboardtb_hose3  Recreate
+ Container eboardtb_etfhose  Recreate
+ Container eboardtb_upcom3  Recreate
+ Container eboardtb_upcom4  Recreate
+ Container eboardtb_hnx3  Recreate
+ Container eboardtb_hnx4  Recreate
+ Container eboardtb_hose4  Recreate
+ Container eboardtb_hnx5  Recreate
+ Container eboardtb_hose9  Recreate
+ Container eboardtb_hnx8  Recreate
+ Container eboardtb_hnx7  Recreate
+ Container eboardtb_upcom1  Recreate
+ Container eboardtb_hose10  Recreate
+ Container eboardtb_hose6  Recreate
+ Container eboardtb_hose5  Recreate
+ Container eboardtb_hnxbond  Recreate
+ Container eboardtb_hose8  Recreate
+ Container eboardtb_upcom2  Recreate
+ Container eboardtb_hnx2  Recreate
+ Container eboardtb_hnx6  Recreate
+ Container eboardtb_hose1  Recreate
+ Container eboardtb_hose2  Recreate
+ Container eboardtb_hnx1  Recreate
+ Container eboardtb_derivatives  Recreate
+ Container eboardtb_hose7  Recreate
+ Container eboardtb_hnx6  Recreated
+ Container eboardtb_etfhose  Recreated
+ Container eboardtb_upcom1  Recreated
+ Container eboardtb_hnx3  Recreated
+ Container eboardtb_derivatives  Recreated
+ Container eboardtb_hose5  Recreated
+ Container eboardtb_upcom3  Recreated
+ Container eboardtb_hnx2  Recreated
+ Container eboardtb_cw  Recreated
+ Container eboardtb_hnx8  Recreated
+ Container eboardtb_hose9  Recreated
+ Container eboardtb_hose4  Recreated
+ Container eboardtb_hose10  Recreated
+ Container eboardtb_hnxbond  Recreated
+ Container eboardtb_hose6  Recreated
+ Container eboardtb_hose7  Recreated
+ Container eboardtb_upcom2  Recreated
+ Container eboardtb_hnx1  Recreated
+ Container eboardtb_hnx7  Recreated
+ Container eboardtb_hose1  Recreated
+ Container eboardtb_upcom4  Recreated
+ Container eboardtb_hose2  Recreated
+ Container eboardtb_hnx4  Recreated
+ Container eboardtb_hose8  Recreated
+ Container eboardtb_hose3  Recreated
+ Container eboardtb_hnx5  Recreated
+ Container eboardtb_hose8  Starting
+ Container eboardtb_hnx8  Starting
+ Container eboardtb_hose2  Starting
+ Container eboardtb_hnx4  Starting
+ Container eboardtb_hnx1  Starting
+ Container eboardtb_hnx5  Starting
+ Container eboardtb_hnx6  Starting
+ Container eboardtb_hose9  Starting
+ Container eboardtb_upcom4  Starting
+ Container eboardtb_derivatives  Starting
+ Container eboardtb_hnx2  Starting
+ Container eboardtb_hose4  Starting
+ Container eboardtb_hose10  Starting
+ Container eboardtb_hnx7  Starting
+ Container eboardtb_hose6  Starting
+ Container eboardtb_hnxbond  Starting
+ Container eboardtb_upcom3  Starting
+ Container eboardtb_etfhose  Starting
+ Container eboardtb_upcom2  Starting
+ Container eboardtb_cw  Starting
+ Container eboardtb_hose5  Starting
+ Container eboardtb_hose3  Starting
+ Container eboardtb_hnx3  Starting
+ Container eboardtb_hose1  Starting
+ Container eboardtb_upcom1  Starting
+ Container eboardtb_hose7  Starting
+ Container eboardtb_hnx8  Started
+ Container eboardtb_hnxbond  Started
+ Container eboardtb_derivatives  Started
+ Container eboardtb_hnx6  Started
+ Container eboardtb_hose7  Started
+ Container eboardtb_hnx7  Started
+ Container eboardtb_hose9  Started
+ Container eboardtb_etfhose  Started
+ Container eboardtb_hose5  Started
+ Container eboardtb_hnx3  Started
+ Container eboardtb_hose1  Started
+ Container eboardtb_hose2  Started
+ Container eboardtb_upcom3  Started
+ Container eboardtb_upcom1  Started
+ Container eboardtb_hose4  Started
+ Container eboardtb_hose6  Started
+ Container eboardtb_cw  Started
+ Container eboardtb_hose3  Started
+ Container eboardtb_hose10  Started
+ Container eboardtb_hnx2  Started
+ Container eboardtb_upcom4  Started
+ Container eboardtb_hose8  Started
+ Container eboardtb_hnx5  Started
+ Container eboardtb_upcom2  Started
+ Container eboardtb_hnx1  Started
+ Container eboardtb_hnx4  Started

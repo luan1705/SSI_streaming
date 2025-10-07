@@ -10,13 +10,22 @@ from List.exchange import HOSE9
 # =========================================
 
 # ---------- Cấu hình qua ENV ----------
-REDIS_URL   = "redis://default:%40Vns123456@videv.cloud:6379/1"
+REDIS_URL   = "redis://default:%40Vns123456@localhost:6379/1"
 STREAM_CODE = "R:" + "-".join(HOSE9)
 CHANNEL = "ebfr_hose_9"
 # --------------------------------------
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-r = redis.from_url(REDIS_URL, decode_responses=True)
+POOL = redis.ConnectionPool.from_url(
+    REDIS_URL,
+    decode_responses=True,
+    socket_timeout=2.5,           # timeout đọc/ghi
+    socket_connect_timeout=2.0,   # timeout connect
+    health_check_interval=30,     # ping định kỳ 30s
+    retry_on_timeout=True,        # retry nhẹ nội bộ
+    max_connections=50,
+)
+r = redis.Redis(connection_pool=POOL)
 
 def publish(payload: dict):
     global r
@@ -28,7 +37,7 @@ def publish(payload: dict):
         logging.warning("Redis publish fail (%s): %s", CHANNEL, e)
         try:
             # reconnect Redis
-            r = get_redis()
+            r = redis.Redis(connection_pool=POOL)
             r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
             logging.info("Redis reconnected and published successfully")
         except Exception as e2:
@@ -68,6 +77,10 @@ def on_message_R(message):
 
 def on_error(err):
     logging.error(f"R stream error: {err}")
+    raise Exception(err)
+
+def on_close():
+    logging.warning("Stream closed, will reconnect...")
 
 def main():
     logging.info("Producer R | stream=%s | publish=%s", STREAM_CODE, CHANNEL)
@@ -80,7 +93,7 @@ def main():
     while True:
         try:
             mm = MarketDataStream(config,connectssi)
-            mm.start(on_message_R, on_error, STREAM_CODE)
+            mm.start(on_message_R, on_error, STREAM_CODE, on_close)
         except Exception as e:
             logging.error("Stream crashed: %s", e)
 
