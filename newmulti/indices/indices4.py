@@ -55,8 +55,13 @@ def on_message_MI(message):
             'content': {
                 'symbol': symbol,
                 'point': data['IndexValue'],
+                'refPoint': data['PriorIndexValue'],
                 'change': data['Change'],
                 'ratioChange': data['RatioChange'],
+                'totalMatchVol': data['TotalQtty'],
+                'totalMatchVal': data['TotalValue'],
+                'totalDealVol': data['TotalQttyPt'],
+                'totalDealVal': data['TotalValuePt'],
                 'totalVol': data['AllQty'],
                 'totalVal': data['AllValue'],
                 'advancersDecliners': [
@@ -83,14 +88,20 @@ def on_message_MI(message):
         row = {
             "symbol":       c["symbol"],
             "point":        c["point"],
+            "refPoint":     c["refPoint"],
             "change":       c["change"],
             "ratioChange":  c["ratioChange"],
+            'totalMatchVol': c['totalMatchVol'],
+            'totalMatchVal': c['totalMatchVal'],
+            'totalDealVol': c['totalDealVol'],
+            'totalDealVal': c['totalDealVal'],
             "totalVol":  c["totalVol"],
             "totalVal":   c["totalVal"],
             "advancers":    adv,
             "noChange":     nc,
             "decliners":    dec,
         }
+        row = {k: (None if (v == 0 or v == "0") else v) for k, v in row.items()}
         upsert_mi(row)
     except Exception:
         logging.exception("MI message error")

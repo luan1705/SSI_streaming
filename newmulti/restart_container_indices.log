@@ -1314,3 +1314,336 @@
  Container indices3  Started
  Container indices2  Started
  Container indices4  Started
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.24kB done
+#1 DONE 0.0s
+
+#2 [indicesolchv2 internal] load build definition from Dockerfile
+#2 transferring dockerfile: 659B done
+#2 DONE 0.0s
+
+#3 [indicesolchv1 internal] load metadata for docker.io/library/python:3.10-slim
+#3 DONE 18.7s
+
+#4 [indicesolchv3 internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [indices5 1/6] FROM docker.io/library/python:3.10-slim@sha256:77f72bc159950ab208b8bbb9a7b22868984e004ce62966d1ca9268c346c73c64
+#5 resolve docker.io/library/python:3.10-slim@sha256:77f72bc159950ab208b8bbb9a7b22868984e004ce62966d1ca9268c346c73c64 done
+#5 DONE 0.0s
+
+#6 [indices4 internal] load build context
+#6 transferring context: 472.77kB 0.0s done
+#6 DONE 0.0s
+
+#7 [indices2 2/6] RUN apt-get update && apt-get install -y tzdata     && ln -snf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime     && echo "Asia/Ho_Chi_Minh" > /etc/timezone     && apt-get clean
+#7 CACHED
+
+#8 [indicesolchv3 3/6] WORKDIR /app
+#8 CACHED
+
+#9 [indices1 4/6] COPY . /app
+#9 DONE 0.0s
+
+#10 [indicesolchv2 5/6] RUN pip install --upgrade pip
+#10 1.723 Requirement already satisfied: pip in /usr/local/lib/python3.10/site-packages (23.0.1)
+#10 17.03 Collecting pip
+#10 18.24   Downloading pip-25.2-py3-none-any.whl (1.8 MB)
+#10 18.54      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 5.9 MB/s eta 0:00:00
+#10 18.63 Installing collected packages: pip
+#10 18.63   Attempting uninstall: pip
+#10 18.63     Found existing installation: pip 23.0.1
+#10 18.89     Uninstalling pip-23.0.1:
+#10 19.12       Successfully uninstalled pip-23.0.1
+#10 20.23 Successfully installed pip-25.2
+#10 20.23 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#10 DONE 20.6s
+
+#11 [indicesolchv1 6/6] RUN pip install -r requirements.txt
+#11 3.747 Collecting fastapi (from -r requirements.txt (line 1))
+#11 4.890   Downloading fastapi-0.118.2-py3-none-any.whl.metadata (28 kB)
+#11 4.983 Collecting ssi-fc-data (from -r requirements.txt (line 5))
+#11 5.019   Downloading ssi_fc_data-2.2.2.tar.gz (11 kB)
+#11 5.062   Preparing metadata (setup.py): started
+#11 5.588   Preparing metadata (setup.py): finished with status 'done'
+#11 5.891 Collecting pandas (from -r requirements.txt (line 8))
+#11 5.923   Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+#11 6.772 Collecting sqlalchemy (from -r requirements.txt (line 9))
+#11 6.808   Downloading sqlalchemy-2.0.43-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.6 kB)
+#11 7.000 Collecting psycopg2-binary (from -r requirements.txt (line 10))
+#11 7.041   Downloading psycopg2_binary-2.9.10-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#11 7.590 Collecting orjson (from -r requirements.txt (line 11))
+#11 7.623   Downloading orjson-3.11.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)
+#11 7.695 Collecting kafka-python (from -r requirements.txt (line 12))
+#11 7.727   Downloading kafka_python-2.2.15-py2.py3-none-any.whl.metadata (10.0 kB)
+#11 7.824 Collecting aiokafka (from -r requirements.txt (line 13))
+#11 7.856   Downloading aiokafka-0.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (17 kB)
+#11 7.949 Collecting redis>=5.0.0 (from -r requirements.txt (line 14))
+#11 7.981   Downloading redis-6.4.0-py3-none-any.whl.metadata (10 kB)
+#11 8.066 Collecting uvicorn[standard] (from -r requirements.txt (line 2))
+#11 8.100   Downloading uvicorn-0.37.0-py3-none-any.whl.metadata (6.6 kB)
+#11 8.187 Collecting starlette<0.49.0,>=0.40.0 (from fastapi->-r requirements.txt (line 1))
+#11 8.219   Downloading starlette-0.48.0-py3-none-any.whl.metadata (6.3 kB)
+#11 8.670 Collecting pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 (from fastapi->-r requirements.txt (line 1))
+#11 8.702   Downloading pydantic-2.12.0-py3-none-any.whl.metadata (83 kB)
+#11 8.777 Collecting typing-extensions>=4.8.0 (from fastapi->-r requirements.txt (line 1))
+#11 8.809   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#11 8.862 Collecting annotated-types>=0.6.0 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1))
+#11 8.894   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+#11 10.51 Collecting pydantic-core==2.41.1 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1))
+#11 10.54   Downloading pydantic_core-2.41.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+#11 10.60 Collecting typing-inspection>=0.4.2 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi->-r requirements.txt (line 1))
+#11 10.64   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+#11 10.71 Collecting anyio<5,>=3.6.2 (from starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#11 10.74   Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
+#11 10.87 Collecting exceptiongroup>=1.0.2 (from anyio<5,>=3.6.2->starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#11 10.90   Downloading exceptiongroup-1.3.0-py3-none-any.whl.metadata (6.7 kB)
+#11 10.96 Collecting idna>=2.8 (from anyio<5,>=3.6.2->starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#11 10.99   Downloading idna-3.10-py3-none-any.whl.metadata (10 kB)
+#11 11.04 Collecting sniffio>=1.1 (from anyio<5,>=3.6.2->starlette<0.49.0,>=0.40.0->fastapi->-r requirements.txt (line 1))
+#11 11.07   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+#11 11.16 Collecting click>=7.0 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 11.19   Downloading click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
+#11 11.25 Collecting h11>=0.8 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 11.29   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#11 11.42 Collecting httptools>=0.6.3 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 11.46   Downloading httptools-0.6.4-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.6 kB)
+#11 11.54 Collecting python-dotenv>=0.13 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 11.57   Downloading python_dotenv-1.1.1-py3-none-any.whl.metadata (24 kB)
+#11 11.76 Collecting pyyaml>=5.1 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 11.79   Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#11 12.00 Collecting uvloop>=0.15.1 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 12.03   Downloading uvloop-0.21.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#11 12.24 Collecting watchfiles>=0.13 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 12.27   Downloading watchfiles-1.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#11 12.49 Collecting websockets>=10.4 (from uvicorn[standard]->-r requirements.txt (line 2))
+#11 12.52   Downloading websockets-15.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#11 12.61 Collecting requests>=2.18.4 (from ssi-fc-data->-r requirements.txt (line 5))
+#11 12.64   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+#11 12.71 Collecting websocket-client>=1.5.2 (from ssi-fc-data->-r requirements.txt (line 5))
+#11 12.74   Downloading websocket_client-1.9.0-py3-none-any.whl.metadata (8.3 kB)
+#11 13.26 Collecting numpy>=1.22.4 (from pandas->-r requirements.txt (line 8))
+#11 13.29   Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+#11 13.36 Collecting python-dateutil>=2.8.2 (from pandas->-r requirements.txt (line 8))
+#11 13.39   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#11 13.50 Collecting pytz>=2020.1 (from pandas->-r requirements.txt (line 8))
+#11 13.53   Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+#11 13.59 Collecting tzdata>=2022.7 (from pandas->-r requirements.txt (line 8))
+#11 13.63   Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+#11 13.91 Collecting greenlet>=1 (from sqlalchemy->-r requirements.txt (line 9))
+#11 13.95   Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+#11 14.01 Collecting async-timeout (from aiokafka->-r requirements.txt (line 13))
+#11 14.04   Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+#11 14.10 Collecting packaging (from aiokafka->-r requirements.txt (line 13))
+#11 14.14   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+#11 14.23 Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 8))
+#11 14.26   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#11 14.47 Collecting charset_normalizer<4,>=2 (from requests>=2.18.4->ssi-fc-data->-r requirements.txt (line 5))
+#11 14.50   Downloading charset_normalizer-3.4.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (36 kB)
+#11 14.61 Collecting urllib3<3,>=1.21.1 (from requests>=2.18.4->ssi-fc-data->-r requirements.txt (line 5))
+#11 14.64   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+#11 14.72 Collecting certifi>=2017.4.17 (from requests>=2.18.4->ssi-fc-data->-r requirements.txt (line 5))
+#11 14.75   Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+#11 14.84 Downloading fastapi-0.118.2-py3-none-any.whl (97 kB)
+#11 14.88 Downloading pydantic-2.12.0-py3-none-any.whl (459 kB)
+#11 14.97 Downloading pydantic_core-2.41.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+#11 15.16    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 11.2 MB/s  0:00:00
+#11 15.19 Downloading starlette-0.48.0-py3-none-any.whl (73 kB)
+#11 15.23 Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+#11 15.27 Downloading uvicorn-0.37.0-py3-none-any.whl (67 kB)
+#11 15.31 Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+#11 16.45    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 11.2 MB/s  0:00:01
+#11 16.48 Downloading sqlalchemy-2.0.43-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+#11 16.80    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 10.1 MB/s  0:00:00
+#11 16.84 Downloading psycopg2_binary-2.9.10-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+#11 17.15    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 10.0 MB/s  0:00:00
+#11 17.18 Downloading orjson-3.11.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (132 kB)
+#11 17.23 Downloading kafka_python-2.2.15-py2.py3-none-any.whl (309 kB)
+#11 17.30 Downloading aiokafka-0.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+#11 17.41    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 10.3 MB/s  0:00:00
+#11 17.44 Downloading redis-6.4.0-py3-none-any.whl (279 kB)
+#11 17.50 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+#11 17.54 Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+#11 17.58 Downloading click-8.3.0-py3-none-any.whl (107 kB)
+#11 17.62 Downloading exceptiongroup-1.3.0-py3-none-any.whl (16 kB)
+#11 17.66 Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (584 kB)
+#11 17.72    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 584.4/584.4 kB 11.3 MB/s  0:00:00
+#11 17.75 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#11 17.79 Downloading httptools-0.6.4-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (442 kB)
+#11 17.87 Downloading idna-3.10-py3-none-any.whl (70 kB)
+#11 17.91 Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+#11 19.45    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.8/16.8 MB 10.9 MB/s  0:00:01
+#11 19.48 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+#11 19.53 Downloading python_dotenv-1.1.1-py3-none-any.whl (20 kB)
+#11 19.57 Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+#11 19.65 Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (770 kB)
+#11 19.72    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 770.3/770.3 kB 10.7 MB/s  0:00:00
+#11 19.76 Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+#11 19.80 Downloading charset_normalizer-3.4.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (152 kB)
+#11 19.85 Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+#11 19.89 Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
+#11 19.95 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#11 19.98 Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+#11 20.02 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#11 20.06 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+#11 20.10 Downloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+#11 20.16 Downloading uvloop-0.21.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.8 MB)
+#11 20.50    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 11.3 MB/s  0:00:00
+#11 20.53 Downloading watchfiles-1.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (453 kB)
+#11 20.61 Downloading websocket_client-1.9.0-py3-none-any.whl (82 kB)
+#11 20.66 Downloading websockets-15.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (181 kB)
+#11 20.71 Downloading packaging-25.0-py3-none-any.whl (66 kB)
+#11 21.20 Building wheels for collected packages: ssi-fc-data
+#11 21.20   DEPRECATION: Building 'ssi-fc-data' using the legacy setup.py bdist_wheel mechanism, which will be removed in a future version. pip 25.3 will enforce this behaviour change. A possible replacement is to use the standardized build interface by setting the `--use-pep517` option, (possibly combined with `--no-build-isolation`), or adding a `pyproject.toml` file to the source tree of 'ssi-fc-data'. Discussion can be found at https://github.com/pypa/pip/issues/6334
+#11 21.20   Building wheel for ssi-fc-data (setup.py): started
+#11 21.71   Building wheel for ssi-fc-data (setup.py): finished with status 'done'
+#11 21.71   Created wheel for ssi-fc-data: filename=ssi_fc_data-2.2.2-py3-none-any.whl size=16374 sha256=b7a7e4f939eada08eb2493d85f4f18bccdb6df8970fe2c3449d8467fa5388a64
+#11 21.71   Stored in directory: /root/.cache/pip/wheels/7c/3b/6b/354db34eb5ce38cff6b53d401b08773ede2b81c867ced1474f
+#11 21.72 Successfully built ssi-fc-data
+#11 21.97 Installing collected packages: pytz, kafka-python, websockets, websocket-client, uvloop, urllib3, tzdata, typing-extensions, sniffio, six, pyyaml, python-dotenv, psycopg2-binary, packaging, orjson, numpy, idna, httptools, h11, greenlet, click, charset_normalizer, certifi, async-timeout, annotated-types, uvicorn, typing-inspection, sqlalchemy, requests, redis, python-dateutil, pydantic-core, exceptiongroup, aiokafka, ssi-fc-data, pydantic, pandas, anyio, watchfiles, starlette, fastapi
+#11 33.27 
+#11 33.28 Successfully installed aiokafka-0.12.0 annotated-types-0.7.0 anyio-4.11.0 async-timeout-5.0.1 certifi-2025.10.5 charset_normalizer-3.4.3 click-8.3.0 exceptiongroup-1.3.0 fastapi-0.118.2 greenlet-3.2.4 h11-0.16.0 httptools-0.6.4 idna-3.10 kafka-python-2.2.15 numpy-2.2.6 orjson-3.11.3 packaging-25.0 pandas-2.3.3 psycopg2-binary-2.9.10 pydantic-2.12.0 pydantic-core-2.41.1 python-dateutil-2.9.0.post0 python-dotenv-1.1.1 pytz-2025.2 pyyaml-6.0.3 redis-6.4.0 requests-2.32.5 six-1.17.0 sniffio-1.3.1 sqlalchemy-2.0.43 ssi-fc-data-2.2.2 starlette-0.48.0 typing-extensions-4.15.0 typing-inspection-0.4.2 tzdata-2025.2 urllib3-2.5.0 uvicorn-0.37.0 uvloop-0.21.0 watchfiles-1.1.0 websocket-client-1.9.0 websockets-15.0.1
+#11 33.28 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#11 DONE 33.9s
+
+#12 [indicesolchv4] exporting to image
+#12 exporting layers
+#12 exporting layers 4.0s done
+#12 writing image sha256:2aa5bf8a6247bd8b8e3a9b40d796c545b0e504a72dae9fe6e80108e02745f895 done
+#12 naming to docker.io/library/fastapi_websocket-indicesolchv4 done
+#12 DONE 4.0s
+
+#13 [indicesolchv1] exporting to image
+#13 exporting layers 4.0s done
+#13 writing image sha256:2aa5bf8a6247bd8b8e3a9b40d796c545b0e504a72dae9fe6e80108e02745f895 done
+#13 naming to docker.io/library/fastapi_websocket-indicesolchv1 done
+#13 DONE 4.0s
+
+#14 [indices1] exporting to image
+#14 exporting layers 4.0s done
+#14 writing image sha256:2aa5bf8a6247bd8b8e3a9b40d796c545b0e504a72dae9fe6e80108e02745f895 done
+#14 naming to docker.io/library/fastapi_websocket-indices1 done
+#14 DONE 4.0s
+
+#15 [indicesolchv5] exporting to image
+#15 exporting layers 4.0s done
+#15 writing image sha256:2aa5bf8a6247bd8b8e3a9b40d796c545b0e504a72dae9fe6e80108e02745f895 done
+#15 naming to docker.io/library/fastapi_websocket-indicesolchv5 done
+#15 DONE 4.0s
+
+#16 [indices4] exporting to image
+#16 exporting layers 4.0s done
+#16 writing image sha256:2aa5bf8a6247bd8b8e3a9b40d796c545b0e504a72dae9fe6e80108e02745f895 done
+#16 naming to docker.io/library/fastapi_websocket-indices4 done
+#16 DONE 4.0s
+
+#17 [indices5] exporting to image
+#17 exporting layers 4.0s done
+#17 writing image sha256:2aa5bf8a6247bd8b8e3a9b40d796c545b0e504a72dae9fe6e80108e02745f895 done
+#17 naming to docker.io/library/fastapi_websocket-indices5 done
+#17 DONE 4.0s
+
+#18 [indices2] exporting to image
+#18 exporting layers 4.0s done
+#18 writing image sha256:2aa5bf8a6247bd8b8e3a9b40d796c545b0e504a72dae9fe6e80108e02745f895 done
+#18 naming to docker.io/library/fastapi_websocket-indices2 done
+#18 DONE 4.0s
+
+#19 [indicesolchv3] exporting to image
+#19 exporting layers 4.0s done
+#19 writing image sha256:2aa5bf8a6247bd8b8e3a9b40d796c545b0e504a72dae9fe6e80108e02745f895 done
+#19 naming to docker.io/library/fastapi_websocket-indicesolchv3 done
+#19 DONE 4.1s
+
+#20 [indicesolchv2] exporting to image
+#20 exporting layers 4.0s done
+#20 writing image sha256:2aa5bf8a6247bd8b8e3a9b40d796c545b0e504a72dae9fe6e80108e02745f895 done
+#20 naming to docker.io/library/fastapi_websocket-indicesolchv2 done
+#20 DONE 4.0s
+
+#21 [indices3] exporting to image
+#21 exporting layers 4.0s done
+#21 writing image sha256:2aa5bf8a6247bd8b8e3a9b40d796c545b0e504a72dae9fe6e80108e02745f895 done
+#21 naming to docker.io/library/fastapi_websocket-indices3 done
+#21 DONE 4.1s
+
+#22 [indicesolchv5] resolving provenance for metadata file
+#22 DONE 0.0s
+
+#23 [indicesolchv1] resolving provenance for metadata file
+#23 DONE 0.0s
+
+#24 [indices2] resolving provenance for metadata file
+#24 DONE 0.0s
+
+#25 [indices4] resolving provenance for metadata file
+#25 DONE 0.0s
+
+#26 [indices5] resolving provenance for metadata file
+#26 DONE 0.0s
+
+#27 [indicesolchv3] resolving provenance for metadata file
+#27 DONE 0.0s
+
+#28 [indicesolchv2] resolving provenance for metadata file
+#28 DONE 0.0s
+
+#29 [indicesolchv4] resolving provenance for metadata file
+#29 DONE 0.0s
+
+#30 [indices1] resolving provenance for metadata file
+#30 DONE 0.0s
+
+#31 [indices3] resolving provenance for metadata file
+#31 DONE 0.0s
+ indices3  Built
+ indices1  Built
+ indices5  Built
+ indicesolchv2  Built
+ indices2  Built
+ indicesolchv3  Built
+ indices4  Built
+ indicesolchv1  Built
+ indicesolchv4  Built
+ indicesolchv5  Built
+ Container indices4  Creating
+ Container indicesolchv5  Creating
+ Container indicesolchv2  Creating
+ Container indicesolchv1  Creating
+ Container indices5  Creating
+ Container indices1  Creating
+ Container indicesolchv4  Creating
+ Container indices3  Creating
+ Container indices2  Creating
+ Container indicesolchv3  Creating
+ Container indicesolchv2  Created
+ Container indicesolchv1  Created
+ Container indicesolchv5  Created
+ Container indices1  Created
+ Container indices2  Created
+ Container indicesolchv3  Created
+ Container indicesolchv4  Created
+ Container indices3  Created
+ Container indices5  Created
+ Container indices4  Created
+ Container indicesolchv1  Starting
+ Container indices2  Starting
+ Container indices1  Starting
+ Container indicesolchv3  Starting
+ Container indices3  Starting
+ Container indicesolchv2  Starting
+ Container indices4  Starting
+ Container indices5  Starting
+ Container indicesolchv4  Starting
+ Container indicesolchv5  Starting
+ Container indices5  Started
+ Container indices4  Started
+ Container indices1  Started
+ Container indicesolchv5  Started
+ Container indices3  Started
+ Container indicesolchv4  Started
+ Container indicesolchv1  Started
+ Container indices2  Started
+ Container indicesolchv2  Started
+ Container indicesolchv3  Started

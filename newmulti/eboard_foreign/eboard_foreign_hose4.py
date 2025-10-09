@@ -71,6 +71,7 @@ def on_message_R(message):
             "buyVal":    c["buyVal"],
             "sellVal":   c["sellVal"],
         }
+        row = {k: (None if (v == 0 or v == "0") else v) for k, v in row.items()}
         upsert_r(row)
     except Exception:
         logging.exception("R message error")

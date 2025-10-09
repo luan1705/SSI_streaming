@@ -110,6 +110,7 @@ def on_message_X(message):
             "totalVol": c["totalVol"], "totalVal": c["totalVal"],
             "high": c["high"], "low": c["low"], "open": c["open"], "close": c["close"],
         }
+        row = {k: (None if (v == 0 or v == "0") else v) for k, v in row.items()}
         upsert_x(row)
     except Exception:
         logging.exception("X message error")

@@ -547,3 +547,48 @@ services:
     network_mode: host
     restart: always
     
+#---------------------------------------------OLCHV------------------------------------------------
+  indicesolchv1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: indicesolchv1
+    command: python3 indices/indices_olchv_1.py
+    network_mode: host
+    restart: always
+
+  indicesolchv2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: indicesolchv2
+    command: python3 indices/indices_olchv_2.py
+    network_mode: host
+    restart: always
+
+  indicesolchv3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: indicesolchv3
+    command: python3 indices/indices_olchv_3.py
+    network_mode: host
+    restart: always
+
+  indicesolchv4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: indicesolchv4
+    command: python3 indices/indices_olchv_4.py
+    network_mode: host
+    restart: always
+
+  indicesolchv5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    container_name: indicesolchv5
+    command: python3 indices/indices_olchv_5.py
+    network_mode: host
+    restart: always

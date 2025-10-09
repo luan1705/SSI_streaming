@@ -5,14 +5,14 @@ from ssi_fc_data.fc_md_client import MarketDataClient
 
 # ====== IMPORTS THEO DỰ ÁN CỦA BẠN ======
 from List import confighao as config
-from List.upsert import upsert_r
-from List.exchange import HNX5
+from List.upsert import upsert_mi
+from List.indice import indice2
 # =========================================
 
 # ---------- Cấu hình qua ENV ----------
 REDIS_URL   = "redis://default:%40Vns123456@localhost:6379/1"
-STREAM_CODE = "R:" + "-".join(HNX5)
-CHANNEL = "ebfr_hnx_5"
+STREAM_CODE = "B:" + "-".join(indice2)
+CHANNEL = "indices_olchv_2"
 # --------------------------------------
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -42,20 +42,24 @@ def publish(payload: dict):
             logging.info("Redis reconnected and published successfully")
         except Exception as e2:
             logging.error("Redis retry failed: %s", e2)
-        
-def on_message_R(message):
+
+def on_message_MI(message):
     try:
         data = json.loads(message.get("Content","{}"))
         symbol=data['Symbol']
+        symbol = 'UPCOMINDEX' if symbol == 'HNXUpcomIndex' else symbol
+        symbol = 'HNXINDEX' if symbol == 'HNXIndex' else symbol
+
         result = {
-            'function': 'eboard_foreign',
+            'function': 'indices_olchv',
             'content': {
                 'symbol': symbol,
-                'buyVol': data['BuyVol'],
-                'sellVol': data['SellVol'],
-                'room': data['CurrentRoom'],
-                'buyVal': data['BuyVal'] ,
-                'sellVal': data['SellVal']
+                'open': data['Open'],
+                'close': data['Close'],
+                'high': data['High'],
+                'low': data['Low'],
+                'vol': data['Volume'],
+                'val': data['Value']
             }
         }
         # Publish result sang Redis để Hub gom về 1 WS port
@@ -65,26 +69,27 @@ def on_message_R(message):
         c = result["content"]
         row = {
             "symbol": c["symbol"],
-            "buyVol":    c["buyVol"],
-            "sellVol":   c["sellVol"],
-            "room":   c["room"],
-            "buyVal":    c["buyVal"],
-            "sellVal":   c["sellVal"],
+            "open":   c["open"],
+            "close":  c["close"],
+            "high":   c["high"],
+            "low":    c["low"],
+            "vol":    c["vol"],
+            "val":    c["val"],
         }
         row = {k: (None if (v == 0 or v == "0") else v) for k, v in row.items()}
-        upsert_r(row)
+        upsert_mi(row)
     except Exception:
-        logging.exception("R message error")
+        logging.exception("MI message error")
 
 def on_error(err):
-    logging.error(f"R stream error: {err}")
+    logging.error(f"MI stream error: {err}")
     raise Exception(err)
 
 def on_close():
     logging.warning("Stream closed, will reconnect...")
 
 def main():
-    logging.info("Producer R | stream=%s | publish=%s", STREAM_CODE, CHANNEL)
+    logging.info("Producer MI | stream=%s | publish=%s", STREAM_CODE, CHANNEL)
 
     # graceful shutdown
     signal.signal(signal.SIGINT,  lambda *_: sys.exit(0))
@@ -94,7 +99,7 @@ def main():
     while True:
         try:
             mm = MarketDataStream(config,connectssi)
-            mm.start(on_message_R, on_error, STREAM_CODE, on_close)
+            mm.start(on_message_MI, on_error, STREAM_CODE, on_close)
         except Exception as e:
             logging.error("Stream crashed: %s", e)
 
