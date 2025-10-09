@@ -64,6 +64,7 @@ mi_table = Table(
     schema="history_data"
 )
 
+
 metadata.create_all(engine)
 
 # ============ Upsert helpers ============
