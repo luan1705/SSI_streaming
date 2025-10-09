@@ -4,7 +4,7 @@ from ssi_fc_data.fc_md_stream import MarketDataStream
 from ssi_fc_data.fc_md_client import MarketDataClient
 
 # ====== IMPORTS THEO DỰ ÁN CỦA BẠN ======
-from List import config
+from List import confighao as config
 from List.upsert import upsert_r
 from List.exchange import DERIVATIVES
 # =========================================
@@ -16,14 +16,14 @@ CHANNEL = "ebfr_derivatives"
 # --------------------------------------
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-POOL = redis.ConnectionPool.from_url(
+POOL = redis.BlockingConnectionPool.from_url(
     REDIS_URL,
     decode_responses=True,
     socket_timeout=2.5,           # timeout đọc/ghi
     socket_connect_timeout=2.0,   # timeout connect
     health_check_interval=30,     # ping định kỳ 30s
-    retry_on_timeout=True,        # retry nhẹ nội bộ
-    max_connections=50,
+    max_connections=3,            # Mỗi container chỉ tối đa 3 socket tới Redis
+    timeout=1.0,                  # Khi pool bận, chờ tối đa 1s để lấy connection (không drop)
 )
 r = redis.Redis(connection_pool=POOL)
 
