@@ -19,7 +19,7 @@ class WebsocketTransport(BaseTransport):
     def __init__(self,
             url="",
             headers=None,
-            keep_alive_interval=15,
+            keep_alive_interval=30,
             reconnection_handler=None,
             verify_ssl=True,               # bật verify SSL mặc định
             skip_negotiation=False,
@@ -55,12 +55,23 @@ class WebsocketTransport(BaseTransport):
 
         if len(self.logger.handlers) > 0:
             websocket.enableTrace(self.enable_trace, self.logger.handlers[0])
+        
+        self.keep_alive_interval = int(keep_alive_interval)  # s (mặc định 15)
+        self.server_timeout = 5400                              # s (có thể đưa thành tham số)
+        self._watchdog_grace = 30                              # s
+        self._last_rx_ts = 0.0
+        self._last_tx_ts = 0.0
+        self._stop_evt = threading.Event()
+        self._hb_thread = None
+        self._consumer_thread = None
+        self._in_queue = Queue()  # tránh block on_message
     
     def is_running(self):
         return self.state != ConnectionState.disconnected
 
     def stop(self):
         self._stopping = True
+        self._stop_evt.set() 
         try:
             if self.state == ConnectionState.connected:
                 try:
@@ -73,6 +84,17 @@ class WebsocketTransport(BaseTransport):
                     self._ws.close()
                 except Exception:
                     pass
+            # << THÊM: join các thread phụ
+            try:
+                if self._hb_thread and self._hb_thread.is_alive():
+                    self._hb_thread.join(timeout=1.0)
+            except Exception:
+                pass
+            try:
+                if self._consumer_thread and self._consumer_thread.is_alive():
+                    self._consumer_thread.join(timeout=1.0)
+            except Exception:
+                pass
         finally:
             self.state = ConnectionState.disconnected
             self.handshake_received = False
@@ -109,34 +131,58 @@ class WebsocketTransport(BaseTransport):
             
         def _runner():
             try:
-                self._ws.run_forever(
-                    sslopt=(
-                        {"cert_reqs": ssl.CERT_REQUIRED, "ca_certs": certifi.where()}
-                        if self.verify_ssl else
-                        {"cert_reqs": ssl.CERT_NONE}
-                    ),
-                    ping_interval=20,   # chống idle-timeout LB/CF/ALB
-                    ping_timeout=10,
-                    sockopt=[
-                        (socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1),
+                # (tuỳ chọn) đặt socket timeout toàn cục, tương đương ý nghĩa bạn muốn
+                websocket.setdefaulttimeout(60)
+        
+                # chuẩn bị sslopt như cũ
+                sslopt = (
+                    {"cert_reqs": ssl.CERT_REQUIRED, "ca_certs": certifi.where()}
+                    if self.verify_ssl else
+                    {"cert_reqs": ssl.CERT_NONE}
+                )
+        
+                # một số hệ (Windows/macOS) có thể không có TCP_KEEP* -> bọc try
+                sockopt = [
+                    (socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1),
+                ]
+                try:
+                    sockopt += [
                         (socket.IPPROTO_TCP, socket.TCP_KEEPIDLE, 30),
                         (socket.IPPROTO_TCP, socket.TCP_KEEPINTVL, 10),
                         (socket.IPPROTO_TCP, socket.TCP_KEEPCNT, 3),
-                    ],
-                    # ping_payload="ping",  # bật nếu server yêu cầu payload cụ thể
+                    ]
+                except Exception:
+                    pass
+        
+                self._ws.run_forever(
+                    sslopt=sslopt,
+                    ping_interval=0,    # tắt WS ping để khỏi timeout giả
+                    ping_timeout=None,
+                    # timeout=60,       # <-- GỠ DÒNG NÀY
+                    sockopt=sockopt,
                 )
             finally:
                 if self._last_error:
-                    self._errq.put(self._last_error)
-                    self._last_error = None
+                    self._errq.put(self._last_error); self._last_error = None
                 elif not self._stopping:
-                    # chỉ báo lỗi nếu KHÔNG phải dừng chủ động
                     self._errq.put(HubConnectionError("WS stopped"))
                 self._stopping = False
+
 
         self._thread = threading.Thread(target=_runner)
         self._thread.daemon = True
         self._thread.start()
+        # Heartbeat + watchdog
+        if not self._hb_thread or not self._hb_thread.is_alive():
+            self._stop_evt.clear()
+            self._hb_thread = threading.Thread(target=self._heartbeat_loop, name="ws-hb", daemon=True)
+            self._hb_thread.start()
+
+        # Consumer tách xử lý nặng khỏi on_message
+        if not self._consumer_thread or not self._consumer_thread.is_alive():
+            self._consumer_thread = threading.Thread(target=self._consumer_loop, name="ws-consumer", daemon=True)
+            self._consumer_thread.start()
+
         return True
 
     def check_and_raise(self, timeout: float = 0.0):
@@ -203,6 +249,19 @@ class WebsocketTransport(BaseTransport):
     def on_open(self, _):
         self.logger.debug("-- web socket open --")
         self.state = ConnectionState.connected
+
+        # Mốc thời gian để heartbeat/watchdog
+        now = time.time()
+        self._last_rx_ts = now
+        self._last_tx_ts = now
+
+        # (Tuỳ server) SignalR JSON protocol handshake; bỏ nếu bạn không dùng JSON
+        try:
+            hs = dumps({"protocol": "json", "version": 1}) + "\x1e"
+            self._ws.send(hs)
+        except Exception:
+            self.logger.debug("handshake send failed", exc_info=True)
+
         try:
             self.connection_checker.start()
         except Exception:
@@ -220,6 +279,7 @@ class WebsocketTransport(BaseTransport):
         self._last_error = HubConnectionError(
             f"WS closed code={close_status_code} reason={close_reason}"
         )
+        self._stop_evt.set()   # << THÊM
         try:
             # đảm bảo run_forever thoát
             self._ws.close()
@@ -250,15 +310,67 @@ class WebsocketTransport(BaseTransport):
         self.state = ConnectionState.disconnected
         # KHÔNG raise – ghi lại để _runner đẩy ra ngoài
         self._last_error = HubConnectionError(str(error))
+        self._stop_evt.set()
         try:
             self._ws.close()
         except Exception:
             pass
 
     def on_message(self, app, raw_message):
-        self.logger.debug("Message received{0}".format(raw_message))
-        if len(raw_message) > 0:
-            return self._on_message(raw_message)
+        self._last_rx_ts = time.time()
+        try:
+            self._in_queue.put_nowait(raw_message)
+        except Exception:
+            pass
+        # Không gọi trực tiếp self._on_message ở đây
+
+    def _consumer_loop(self):
+        while not self._stop_evt.is_set():
+            try:
+                msg = self._in_queue.get(timeout=0.5)
+            except Empty:
+                continue
+            try:
+                if msg:
+                    self._on_message(msg)
+            except Exception:
+                self.logger.error("handle payload failed", exc_info=True)
+
+    def _heartbeat_loop(self):
+        """
+        Gửi SignalR ping (type=6) định kỳ và watchdog khi server im quá lâu.
+        """
+        # JSON protocol: mỗi frame kết thúc bằng RS = 0x1E
+        ping_frame = dumps({"type": 6}) + "\x1e"
+
+        while not self._stop_evt.is_set():
+            now = time.time()
+
+            # Watchdog: im lặng > server_timeout + grace -> đóng để trigger reconnect
+            idle = now - self._last_rx_ts
+            if self.state == ConnectionState.connected and idle > (self.server_timeout + self._watchdog_grace):
+                self.logger.error(f"watchdog: no server activity for {idle:.1f}s => reconnect")
+                try:
+                    if self._ws is not None:
+                        self._ws.close()
+                except Exception:
+                    pass
+                self._stop_evt.set()
+                break
+
+            # Heartbeat: gửi ping type=6 mỗi keep_alive_interval giây
+            since_tx = now - self._last_tx_ts
+            if self.state == ConnectionState.connected and since_tx >= self.keep_alive_interval:
+                try:
+                    if self._ws is not None:
+                        self._ws.send(ping_frame)
+                        self._last_tx_ts = now
+                except Exception:
+                    self.logger.error("send SignalR ping failed", exc_info=True)
+
+            time.sleep(1)
+
+
 
     def send(self, message):
         self.logger.debug("Sending message {0}".format(message))

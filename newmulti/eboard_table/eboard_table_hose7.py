@@ -149,6 +149,8 @@ def get_data_from_redis(symbol):
 def on_message_X(message):
     try:
         data = json.loads(message.get("Content","{}"))
+        if data["RatioChange"] == -100:
+            return 
         sym = data["Symbol"]
         stock = get_data_from_redis(sym)
         result, close_up_ma10, close_up_ma20, close_up_ma50, close_down_ma10, close_down_ma20, close_down_ma50, \
@@ -213,10 +215,7 @@ def on_message_X(message):
             }
         }
         # Publish result sang Redis để Hub gom về 1 WS port
-        if result["content"]["match"]["ratioChange"] == -100:
-            return
-        else:
-            publish(result)
+        publish(result)
 
         # save DB
         c = result["content"]
