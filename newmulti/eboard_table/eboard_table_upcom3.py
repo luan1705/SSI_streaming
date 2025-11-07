@@ -2,7 +2,7 @@
 import os, json, time, logging, signal, sys, redis
 from ssi_fc_data.fc_md_stream import MarketDataStream
 from ssi_fc_data.fc_md_client import MarketDataClient
-from datetime import datetime, time as dtime
+from datetime import datetime, time as dtime , timezone
 from zoneinfo import ZoneInfo
 import pandas as pd
 
@@ -47,104 +47,38 @@ def publish(payload: dict):
             logging.info("Redis reconnected and published successfully")
         except Exception as e2:
             logging.error("Redis retry failed: %s", e2)
+
+def _next_9pm_unix(tz_name: str = "Asia/Ho_Chi_Minh") -> int:
+    tz = ZoneInfo(tz_name)
+    now = datetime.now(tz)
+    target = now.replace(hour=21, minute=0, second=0, microsecond=0)
+    if now >= target:
+        target += timedelta(days=1)
+    return int(target.timestamp())
+
+def save_redis_alert(row: dict, tz_name: str = "Asia/Ho_Chi_Minh") -> bool:
+    """
+    Overwrite hoàn toàn (upsert kiểu replace): luôn chỉ còn 1 JSON mới nhất.
+    Key: alert_function:{symbol}
+    Hết hạn đúng 21:00 (giờ địa phương).
+    """
+    symbol = (row.get("symbol") or "").strip()
+    if not symbol:
+        return False
+
+    key = f"alert_function:{symbol}"
+    payload = json.dumps(row, ensure_ascii=False)
+
+    # Ghi đè (không merge)
+    r.set(key, payload)
+
+    # Đặt hết hạn đúng 21:00 hôm nay (hoặc ngày mai nếu đã quá 21:00)
+    r.expireat(key, _next_9pm_unix(tz_name))
+    return True
         
 def find_indices(symbol: str) -> list[str] | None:
     res = [idx for idx, symbols in indices_map.items() if symbol in symbols]
     return res or None
-
-def indicators(data, new_close, new_volume):
-    # Thêm dữ liệu mới vào DataFrame
-    new_data = pd.DataFrame({'close': [new_close], 'volume': [new_volume]})
-    data = pd.concat([data, new_data], ignore_index=True)
-
-    # tính MA 10,20,50
-    data['MA10'] = round(data['close'].rolling(window=10).mean(),2)
-    data['MA20'] = round(data['close'].rolling(window=20).mean(),2)
-    data['MA50'] = round(data['close'].rolling(window=50).mean(),2)
-
-    #tính MACD
-    data['EMA_12'] = data['close'].ewm(span=12, adjust=False).mean()
-    data['EMA_26'] = data['close'].ewm(span=26, adjust=False).mean()
-    data['MACD'] = data['EMA_12'] - data['EMA_26']
-    data['signal_Line'] = data['MACD'].ewm(span=9, adjust=False).mean()
-    data['histogram'] = data['MACD'] - data['signal_Line']
-
-    #tính volume TB 10,20,50
-    data['volume_10'] = round(data['volume'].rolling(20).mean(),2)
-    data['volume_20'] = round(data['volume'].rolling(20).mean(),2)
-    data['volume_50'] = round(data['volume'].rolling(50).mean(),2)
-    
-    # tính RSI
-    delta = data['close'].diff()
-    avg_gain = delta.where(delta > 0, 0).ewm(alpha=1/14, min_periods=1, adjust=False).mean()
-    avg_loss = -delta.where(delta < 0, 0).ewm(alpha=1/14, min_periods=1, adjust=False).mean()
-    rs = avg_gain / avg_loss
-    data['RSI'] = round((100 - (100/(1 + rs))),2)
-
-    # tính MFI
-    tp = (data['close'] + data['close'] + data['close']) / 3
-    mf = tp * data['volume'] 
-    positive_mf = mf.where(tp.diff() > 0, 0)
-    negative_mf = mf.where(tp.diff() < 0, 0)
-    positive_mf_sum = positive_mf.rolling(window=14).sum()
-    negative_mf_sum = negative_mf.rolling(window=14).sum()
-    mfr = positive_mf_sum / negative_mf_sum
-    data['MFI'] = round((100 - (100 / (1 + mfr))),2)
-
-
-    close_up_ma10 = False
-    close_up_ma20 = False
-    close_up_ma50 = False
-
-    close_down_ma10 = False
-    close_down_ma20 = False
-    close_down_ma50 = False
-
-    macd_cross_up = False
-    macd_cross_down = False
-
-    # MA cắt lên
-    if data['close'].iloc[-2] < data['MA20'].iloc[-2] and data['close'].iloc[-1] >= data['MA20'].iloc[-1]:
-        close_up_ma10 = True
-    if data['close'].iloc[-2] < data['MA20'].iloc[-2] and data['close'].iloc[-1]  >= data['MA20'].iloc[-1]:
-        close_up_ma20 = True
-    if data['close'].iloc[-2] < data['MA50'].iloc[-2] and data['close'].iloc[-1]  >= data['MA50'].iloc[-1]:
-        close_up_ma20 = True
-
-    # MA cắt xuống
-    if data['close'].iloc[-2] > data['MA20'].iloc[-2] and data['close'].iloc[-1]  <= data['MA20'].iloc[-1]:
-        close_down_ma10 = True
-    if data['close'].iloc[-2] > data['MA20'].iloc[-2] and data['close'].iloc[-1]  <= data['MA20'].iloc[-1]:
-        close_down_ma20 = True
-    if data['close'].iloc[-2] > data['MA50'].iloc[-2] and data['close'].iloc[-1]  <= data['MA50'].iloc[-1]:
-        close_down_ma50 = True
-
-    #MACD cắt lên
-    if data['MACD'].iloc[-2] < data['signal_Line'].iloc[-2] and data['MACD'].iloc[-1] >= data['signal_Line'].iloc[-1]:
-        macd_cross_up = True
-
-    #MACD cắt xuống
-    if data['MACD'].iloc[-2] > data['signal_Line'].iloc[-2] and data['MACD'].iloc[-1] <= data['signal_Line'].iloc[-1]:
-        macd_cross_down = False
-
-    return data, close_up_ma10, close_up_ma20, close_up_ma50, close_down_ma10, close_down_ma20, close_down_ma50, macd_cross_up, macd_cross_down
-
-def get_data_from_redis(symbol):
-    try:
-        redis_key = f"history_tradingview: {symbol}"
-        values = r.lrange(redis_key, 0, -1)
-
-        # Parse JSON thành dict
-        records = [json.loads(v) for v in values]
-
-        # Tạo DataFrame
-        df = pd.DataFrame(records)
-        df['close'] = df['close'].astype(float)
-        df['time'] = pd.to_datetime(df['time'])
-        return df
-    except Exception as e:
-        print(f"Lỗi Redis với {symbol}: {e}")
-        return None
 
 def on_message_X(message):
     try:
@@ -152,13 +86,6 @@ def on_message_X(message):
         if data["RatioChange"] == -100:
             return 
         sym = data["Symbol"]
-        stock = get_data_from_redis(sym)
-        result, close_up_ma10, close_up_ma20, close_up_ma50, close_down_ma10, close_down_ma20, close_down_ma50, \
-        macd_cross_up, macd_cross_down = indicators(
-                stock,
-                data['Close'] / 1000,
-                data['TotalVol']
-            )
         time = datetime.strptime(data['TradingDate'] + ' ' + data['Time'], '%d/%m/%Y %H:%M:%S')
         time = time.strftime("%Y-%m-%d %H:%M:%S")
         
@@ -193,45 +120,7 @@ def on_message_X(message):
                 "open":  data["Open"]/1000,
                 "close": data["Close"]/1000,
 
-                'Side': data['Side'],
 
-                # dữ liệu chỉ báo
-                'close_up_ma10': close_up_ma10,
-                'close_up_ma20': close_up_ma20,
-                'close_up_ma50': close_up_ma50,
-                'close_down_ma10': close_down_ma10,
-                'close_down_ma20': close_down_ma20,
-                'close_down_ma50': close_down_ma50,
-                'macd_cross_up': macd_cross_up,
-                'macd_cross_down': macd_cross_down,
-                'RSI': result['RSI'].iloc[-1],
-                'MFI': result['MFI'].iloc[-1],
-                'MA10': result['MA10'].iloc[-1],
-                'MA20': result['MA20'].iloc[-1],
-                'MA50': result['MA50'].iloc[-1],
-                'volume_10': result['volume_10'].iloc[-1],
-                'volume_20': result['volume_20'].iloc[-1],
-                'volume_50': result['volume_50'].iloc[-1],
-
-                'Side': data['Side'],
-
-                # dữ liệu chỉ báo
-                'close_up_ma10': close_up_ma10,
-                'close_up_ma20': close_up_ma20,
-                'close_up_ma50': close_up_ma50,
-                'close_down_ma10': close_down_ma10,
-                'close_down_ma20': close_down_ma20,
-                'close_down_ma50': close_down_ma50,
-                'macd_cross_up': macd_cross_up,
-                'macd_cross_down': macd_cross_down,
-                'RSI': result['RSI'].iloc[-1],
-                'MFI': result['MFI'].iloc[-1],
-                'MA10': result['MA10'].iloc[-1],
-                'MA20': result['MA20'].iloc[-1],
-                'MA50': result['MA50'].iloc[-1],
-                'volume_10': result['volume_10'].iloc[-1],
-                'volume_20': result['volume_20'].iloc[-1],
-                'volume_50': result['volume_50'].iloc[-1],
             }
         }
         # Publish result sang Redis để Hub gom về 1 WS port
@@ -263,6 +152,7 @@ def on_message_X(message):
         }
         # row = {k: (None if (v == 0 or v == "0") else v) for k, v in row.items()}
         upsert_eboard(row)
+        save_redis_alert(row)
     except Exception:
         logging.exception(f"X message error - {sym}")
 

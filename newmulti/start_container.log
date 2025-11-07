@@ -30280,3 +30280,1832 @@
  Container eboardfr_hnx1  Started
  Container eboardfr_upcom2  Started
  Container eboardfr_hnx5  Started
+#1 [internal] load local bake definitions
+#1 reading from stdin 27.67kB done
+#1 DONE 0.0s
+
+#2 [eboardfr_hose5 internal] load build definition from Dockerfile
+#2 transferring dockerfile: 659B 0.0s done
+#2 DONE 0.1s
+
+#3 [eboardfr_upcom4 internal] load metadata for docker.io/library/python:3.10-slim
+#3 DONE 8.3s
+
+#4 [eboardtb_hose10 internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [eboardfr_hnx4 1/6] FROM docker.io/library/python:3.10-slim@sha256:2a8c7d9efdae9b636de80a187a4ce31374ffb3883a7be06232d25a96e8538bf4
+#5 DONE 0.0s
+
+#6 [eboardtb_hose10 internal] load build context
+#6 transferring context: 1.71MB 0.1s done
+#6 DONE 0.1s
+
+#7 [indices2 2/6] RUN apt-get update && apt-get install -y tzdata     && ln -snf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime     && echo "Asia/Ho_Chi_Minh" > /etc/timezone     && apt-get clean
+#7 CACHED
+
+#8 [indices2 3/6] WORKDIR /app
+#8 CACHED
+
+#9 [eboardfr_etfhose 4/6] COPY . /app
+#9 DONE 0.1s
+
+#10 [eboardtb_upcom3 5/6] RUN pip install --upgrade pip
+#10 1.922 Requirement already satisfied: pip in /usr/local/lib/python3.10/site-packages (23.0.1)
+#10 2.230 Collecting pip
+#10 2.427   Downloading pip-25.3-py3-none-any.whl (1.8 MB)
+#10 2.889      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 3.9 MB/s eta 0:00:00
+#10 3.006 Installing collected packages: pip
+#10 3.006   Attempting uninstall: pip
+#10 3.007     Found existing installation: pip 23.0.1
+#10 3.243     Uninstalling pip-23.0.1:
+#10 3.444       Successfully uninstalled pip-23.0.1
+#10 4.346 Successfully installed pip-25.3
+#10 4.347 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#10 DONE 4.8s
+
+#11 [eboardfr_upcom4 6/6] RUN pip install -r requirements.txt
+#11 1.755 Collecting pandas (from -r requirements.txt (line 8))
+#11 1.980   Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+#11 3.040 Collecting sqlalchemy (from -r requirements.txt (line 9))
+#11 3.111   Downloading sqlalchemy-2.0.44-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.5 kB)
+#11 3.374 Collecting psycopg2-binary (from -r requirements.txt (line 10))
+#11 3.423   Downloading psycopg2_binary-2.9.11-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+#11 3.521 Collecting redis>=5.0.0 (from -r requirements.txt (line 11))
+#11 3.574   Downloading redis-7.0.1-py3-none-any.whl.metadata (12 kB)
+#11 3.736 Collecting requests (from -r requirements.txt (line 12))
+#11 3.806   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+#11 3.889 Collecting websocket-client (from -r requirements.txt (line 13))
+#11 3.948   Downloading websocket_client-1.9.0-py3-none-any.whl.metadata (8.3 kB)
+#11 4.541 Collecting numpy>=1.22.4 (from pandas->-r requirements.txt (line 8))
+#11 4.612   Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+#11 4.703 Collecting python-dateutil>=2.8.2 (from pandas->-r requirements.txt (line 8))
+#11 4.758   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#11 4.898 Collecting pytz>=2020.1 (from pandas->-r requirements.txt (line 8))
+#11 4.965   Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+#11 5.040 Collecting tzdata>=2022.7 (from pandas->-r requirements.txt (line 8))
+#11 5.110   Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+#11 5.483 Collecting greenlet>=1 (from sqlalchemy->-r requirements.txt (line 9))
+#11 5.542   Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+#11 5.696 Collecting typing-extensions>=4.6.0 (from sqlalchemy->-r requirements.txt (line 9))
+#11 5.743   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#11 5.820 Collecting async-timeout>=4.0.3 (from redis>=5.0.0->-r requirements.txt (line 11))
+#11 5.890   Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+#11 6.182 Collecting charset_normalizer<4,>=2 (from requests->-r requirements.txt (line 12))
+#11 6.242   Downloading charset_normalizer-3.4.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+#11 6.362 Collecting idna<4,>=2.5 (from requests->-r requirements.txt (line 12))
+#11 6.414   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+#11 6.552 Collecting urllib3<3,>=1.21.1 (from requests->-r requirements.txt (line 12))
+#11 6.605   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+#11 6.710 Collecting certifi>=2017.4.17 (from requests->-r requirements.txt (line 12))
+#11 6.780   Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+#11 6.857 Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 8))
+#11 6.922   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#11 6.987 Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+#11 9.887    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 4.5 MB/s  0:00:02
+#11 9.948 Downloading sqlalchemy-2.0.44-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+#11 10.82    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 3.6 MB/s  0:00:00
+#11 10.87 Downloading psycopg2_binary-2.9.11-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.2 MB)
+#11 12.32    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 2.9 MB/s  0:00:01
+#11 12.38 Downloading redis-7.0.1-py3-none-any.whl (339 kB)
+#11 12.56 Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+#11 12.64 Downloading charset_normalizer-3.4.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+#11 12.75 Downloading idna-3.11-py3-none-any.whl (71 kB)
+#11 12.83 Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+#11 12.92 Downloading websocket_client-1.9.0-py3-none-any.whl (82 kB)
+#11 12.99 Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+#11 13.03 Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
+#11 13.14 Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (584 kB)
+#11 13.39    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 584.4/584.4 kB 2.2 MB/s  0:00:00
+#11 13.45 Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+#11 24.08    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.8/16.8 MB 1.6 MB/s  0:00:10
+#11 24.13 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+#11 24.27 Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+#11 24.52 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#11 24.58 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#11 24.64 Downloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+#11 25.15 Installing collected packages: pytz, websocket-client, urllib3, tzdata, typing-extensions, six, psycopg2-binary, numpy, idna, greenlet, charset_normalizer, certifi, async-timeout, sqlalchemy, requests, redis, python-dateutil, pandas
+#11 36.94 
+#11 36.95 Successfully installed async-timeout-5.0.1 certifi-2025.10.5 charset_normalizer-3.4.4 greenlet-3.2.4 idna-3.11 numpy-2.2.6 pandas-2.3.3 psycopg2-binary-2.9.11 python-dateutil-2.9.0.post0 pytz-2025.2 redis-7.0.1 requests-2.32.5 six-1.17.0 sqlalchemy-2.0.44 typing-extensions-4.15.0 tzdata-2025.2 urllib3-2.5.0 websocket-client-1.9.0
+#11 36.95 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#11 DONE 37.3s
+
+#12 [eboardtb_hose5] exporting to image
+#12 exporting layers
+#12 ...
+
+#13 [eboardtb_hnx2] exporting to image
+#13 exporting layers 2.9s done
+#13 writing image sha256:c3209b9eaad902ce490636e62b6c410225eadb576bb107f8c7d62bf637d17b5e done
+#13 naming to docker.io/library/fastapi-newmulti:latest done
+#13 DONE 2.9s
+
+#14 [indices2] exporting to image
+#14 exporting layers 2.9s done
+#14 writing image sha256:ee210e90814b334fab0757832ac638a1f4327df038308c7bf73459ea7ffe5c93 done
+#14 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#14 DONE 2.9s
+
+#15 [eboardfr_hnx4] exporting to image
+#15 exporting layers 2.9s done
+#15 writing image sha256:cdbdb63a2b304e4f9cebfd4f835db16188ffc41d1719951458ff6e697456a2b4 done
+#15 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#15 DONE 2.9s
+
+#16 [eboardtb_hose7] exporting to image
+#16 exporting layers 2.9s done
+#16 writing image sha256:d7efe6e4f8bbd0839b87a37bbc4156b2498978d031b9449538a66a6cfb8297a8 done
+#16 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#16 DONE 2.9s
+
+#17 [eboardfr_hose5] exporting to image
+#17 exporting layers 2.9s done
+#17 writing image sha256:b04d4ede7ef577fc2c32532b087d61af2108b3a7fe823a74156f3cafbf76b9b3 done
+#17 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#17 DONE 2.9s
+
+#18 [indices5] exporting to image
+#18 exporting layers 2.9s done
+#18 writing image sha256:6269c0742558eae1e6d43c80b1bcc26345454858e9d0fde72a928064b1996486 done
+#18 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#18 DONE 2.9s
+
+#19 [eboardtb_upcom3] exporting to image
+#19 exporting layers 2.9s done
+#19 writing image sha256:e8cabf1117fa938d3d226127ba83c383426859f5d093f6456ddc6f3f3cb92f9f done
+#19 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#19 DONE 2.9s
+
+#20 [eboardtb_hose10] exporting to image
+#20 exporting layers 2.9s done
+#20 writing image sha256:393631b25ba8e21ac143486fbfef33dfc81b6fb758e6b3ff606896e06084cd5f done
+#20 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#20 DONE 2.9s
+
+#21 [eboardfr_hnx2] exporting to image
+#21 exporting layers 2.9s done
+#21 writing image sha256:978103581a9c316b41b339d8d0b863e9feab47f0606960aff5ba084a70f658a4 done
+#21 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#21 DONE 2.9s
+
+#22 [eboardfr_hose9] exporting to image
+#22 exporting layers 2.9s done
+#22 writing image sha256:e56eacc274e42da74e7f200c64bbc6ec9b19b0725b59f11688cafe1482ce5b92 0.0s done
+#22 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#22 DONE 2.9s
+
+#23 [eboardtb_hnx8] exporting to image
+#23 exporting layers 2.9s done
+#23 writing image sha256:e1ef4f74223102b242b8d939135607d29aaf0776e2f15d24ea66433e8ee8745e 0.0s done
+#23 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#23 DONE 2.9s
+
+#24 [eboardfr_hnx3] exporting to image
+#24 exporting layers 2.9s done
+#24 writing image sha256:8eee33b4b21c8a5a1a31026aab403e03b7c5509ee09fbbe0564cb66b1f7d8928 0.0s done
+#24 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#24 DONE 2.9s
+
+#25 [eboardtb_upcom2] exporting to image
+#25 exporting layers 2.9s done
+#25 writing image sha256:6a8ca68af5a12ae5d578bef0ee7d8573699bdd38abd74c768605189420a41612 0.0s done
+#25 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#25 DONE 3.0s
+
+#26 [eboardfr_upcom2] exporting to image
+#26 exporting layers 2.9s done
+#26 writing image sha256:9912572c1bd91efcaa64753017a50bb8386b2b7a109b37a2e6da8d12ef8ff585 0.0s done
+#26 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#26 DONE 3.0s
+
+#27 [eboardtb_hose2] exporting to image
+#27 exporting layers 2.9s done
+#27 writing image sha256:8509d016087d655be8b6cf8d547ff10577ecf77c1569f8f20e15eeb6528ba261 0.0s done
+#27 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#27 DONE 3.0s
+
+#28 [eboardfr_upcom1] exporting to image
+#28 exporting layers 2.9s done
+#28 writing image sha256:337f6dfe10a96d633fbdc7f62ce93d1a90620bf6d6ded3e3e2075fd7c534241f 0.0s done
+#28 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#28 DONE 3.0s
+
+#12 [eboardtb_hose5] exporting to image
+#12 exporting layers 2.9s done
+#12 writing image sha256:b9097fed7591736f077ebbadb57f893dc6b7f79a1703d8e9138e22fba6871ac5 0.0s done
+#12 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#12 DONE 3.0s
+
+#29 [eboardtb_cw] exporting to image
+#29 exporting layers 2.9s done
+#29 writing image sha256:3b7a8804eb2e964cd90b42b2cc4535559a722ec0db572799f64c48f9ed28a0b4 0.0s done
+#29 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#29 DONE 3.0s
+
+#30 [eboardtb_hose6] exporting to image
+#30 exporting layers 2.9s done
+#30 writing image sha256:03b19c126e607d6ec21d8c8b0e47e13f28da3769481398d899d9091326eb0980 0.0s done
+#30 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#30 DONE 3.0s
+
+#31 [eboardtb_hose4] exporting to image
+#31 exporting layers 2.9s done
+#31 writing image sha256:13edca70da7a33800927e1daadcd2d9717610e3e9e7f4fb0da7de649268fedf3 0.0s done
+#31 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#31 DONE 3.0s
+
+#32 [eboardtb_hose9] exporting to image
+#32 exporting layers 2.9s done
+#32 writing image sha256:0c63bfceff32171bd57cc9b258ea5e809c5b712376db56b8312a82fe4cd63bff 0.0s done
+#32 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#32 DONE 3.0s
+
+#33 [eboardfr_hose4] exporting to image
+#33 exporting layers 2.9s done
+#33 writing image sha256:f7978ec76e2b19c314c3bcc6ae876c2636c31a44f4881085eb84593f80c19c9b 0.0s done
+#33 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#33 DONE 3.0s
+
+#34 [eboardfr_hose7] exporting to image
+#34 exporting layers 2.9s done
+#34 writing image sha256:a60448e993f1c878cdbc0a69d5fc4d81b04b088590afa008981e6f94cc7e722b 0.0s done
+#34 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#34 DONE 3.0s
+
+#35 [eboardfr_hnx1] exporting to image
+#35 exporting layers 2.9s done
+#35 writing image sha256:204d12f6cc0000718609e258feed41eadc4954df6adb29c377809efa2b70f390 0.0s done
+#35 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#35 DONE 3.0s
+
+#36 [eboardfr_hose1] exporting to image
+#36 exporting layers 2.9s done
+#36 writing image sha256:c8aeb33b07d3fddbe6dff8bbabf7327c26763bb2b019fd3f34294c43275f3c48 0.0s done
+#36 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#36 DONE 3.0s
+
+#37 [eboardtb_upcom4] exporting to image
+#37 exporting layers 2.9s done
+#37 writing image sha256:8e88d3aaecb5af4621142266c253cd16452b7a5e85fc582d71ef1b12d6d26af1 0.0s done
+#37 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#37 DONE 3.0s
+
+#38 [indices3] exporting to image
+#38 exporting layers 2.9s done
+#38 writing image sha256:40273b4cd49d9de01ca14f955100584636bd101a0d081b65af81797748c8579f 0.0s done
+#38 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#38 DONE 3.0s
+
+#39 [eboardtb_hnxbond] exporting to image
+#39 exporting layers 2.9s done
+#39 writing image sha256:778ae55c5ef266a77d439ec2a0ca462915ea1dc52bc17b23e807f628da492d1e 0.0s done
+#39 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#39 DONE 3.0s
+
+#40 [eboardtb_etfhose] exporting to image
+#40 exporting layers 2.9s done
+#40 writing image sha256:db07196fbd909b90b27f22d2bc892831a8a9fa6188a48155762aaa9accbca912 0.0s done
+#40 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#40 DONE 3.0s
+
+#41 [eboardtb_hose3] exporting to image
+#41 exporting layers 2.9s done
+#41 writing image sha256:28fa30f313f041406923fabe8687bcd9363ed0ebf3c751ff03d773c2dfe78005 0.0s done
+#41 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#41 DONE 3.0s
+
+#42 [eboardtb_hose1] exporting to image
+#42 exporting layers 2.9s done
+#42 writing image sha256:59c19c37f23364168c8aa8a9449a28d8667dd4af7a0549225cbe1b4b3d968fe8 0.0s done
+#42 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#42 DONE 3.0s
+
+#43 [eboardfr_upcom4] exporting to image
+#43 exporting layers 2.9s done
+#43 writing image sha256:98b60f993536c7ca773174b0c96a1c7645a72d85f203c286e2d98be23f39e9eb 0.0s done
+#43 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#43 DONE 3.0s
+
+#44 [eboardtb_upcom1] exporting to image
+#44 exporting layers 2.9s done
+#44 writing image sha256:dd7de7bbd99e6450f2c53ea5361b7a43fe1b515fa214d6c5989075219bc74179 0.0s done
+#44 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#44 DONE 3.0s
+
+#45 [eboardtb_derivatives] exporting to image
+#45 exporting layers 2.9s done
+#45 writing image sha256:cf3dfb12e61ee3ce8ef47e5c6d96848299f90a4db914d3d86149c448d4f0dd74 0.0s done
+#45 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#45 DONE 3.0s
+
+#46 [eboardfr_derivatives] exporting to image
+#46 exporting layers 2.9s done
+#46 writing image sha256:487c51eccf2b63ee96f3dc6789d2dc277eced4fead6046dd0758aec048850d72 0.0s done
+#46 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#46 DONE 3.0s
+
+#47 [indices4] exporting to image
+#47 exporting layers 2.9s done
+#47 writing image sha256:c567abd7a3e2a33cf12dd742f552ccb2875504d6c7c6d099be185b4ab06120cf 0.0s done
+#47 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#47 DONE 3.0s
+
+#48 [eboardfr_hnx7] exporting to image
+#48 exporting layers 2.9s done
+#48 writing image sha256:8dfd3acb9ca570b692db1f305db13d8b1b0790b8852f4ebb9dd38ef7836f56c6 0.0s done
+#48 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#48 DONE 3.0s
+
+#49 [eboardtb_hose8] exporting to image
+#49 exporting layers 2.9s done
+#49 writing image sha256:a3b965986dca11b59bcfd5305d2a92ed7e9a81254bf003889bb50894d728b258 0.0s done
+#49 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#49 DONE 3.0s
+
+#50 [eboardtb_hnx6] exporting to image
+#50 exporting layers 2.9s done
+#50 writing image sha256:3584f7140f8436bb079ba735d2c762ee352bed87e8d7cabf4b7f3815db83c281 0.0s done
+#50 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#50 DONE 3.0s
+
+#51 [eboardfr_cw] exporting to image
+#51 exporting layers 2.9s done
+#51 writing image sha256:b1bba39edcc15888eb987a89fdbe9694e4a77a5c13cff9e77287443098ef7f6c 0.0s done
+#51 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#51 DONE 3.0s
+
+#52 [eboardfr_hose8] exporting to image
+#52 exporting layers 2.9s done
+#52 writing image sha256:f6883a49987b0340db7e39706f804fbf171eef1b1ceb083ce009afff047e7f19 0.0s done
+#52 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#52 DONE 3.0s
+
+#53 [eboardtb_hnx4] exporting to image
+#53 exporting layers 2.9s done
+#53 writing image sha256:08673627311034a651768192bbad32ca04c49975923b8a3182ad8c50d21399e8 0.0s done
+#53 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#53 DONE 3.0s
+
+#54 [eboardtb_hnx5] exporting to image
+#54 exporting layers 2.9s done
+#54 writing image sha256:451ab7a3ff3053943fd1b3654ea1d1f0dfb30c928bcfd6a9b96954470e5610ed 0.0s done
+#54 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#54 DONE 3.0s
+
+#55 [eboardtb_hnx1] exporting to image
+#55 exporting layers 2.9s done
+#55 writing image sha256:3e7e4476e7cecefa4d99b42804801d037ca929bddda3360e595a4963a253b54a 0.0s done
+#55 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#55 DONE 3.0s
+
+#56 [eboardtb_hnx3] exporting to image
+#56 exporting layers 2.9s done
+#56 writing image sha256:353b35e5470e117d0f7ea4aa23c6733c37c67d0d249885479f6f8a1f64bce873 0.0s done
+#56 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#56 DONE 3.0s
+
+#57 [eboardfr_hose2] exporting to image
+#57 exporting layers 2.9s done
+#57 writing image sha256:a4d047e78ec5fc865d833f06c4e5c17f6c9ba559b0d4fe4a4a3c48babd3bb01d 0.0s done
+#57 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#57 DONE 3.0s
+
+#58 [eboardfr_hnxbond] exporting to image
+#58 exporting layers 2.9s done
+#58 writing image sha256:682815ea445124fed09e5fa7083bea82c85535508e496deedcc967e9723342fe 0.0s done
+#58 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#58 DONE 3.0s
+
+#59 [eboardfr_hnx8] exporting to image
+#59 exporting layers 2.9s done
+#59 writing image sha256:a9eb222a028f265754190cad3239a5b23c0437862fadee67de49e4c4a7f05a0f 0.0s done
+#59 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#59 DONE 3.0s
+
+#60 [eboardfr_hose3] exporting to image
+#60 exporting layers 2.9s done
+#60 writing image sha256:b106d28b433017e1b986d8930c8b65d9c6a1f156c8d5bcdf83a63f6d5a60ee2d 0.0s done
+#60 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#60 DONE 3.0s
+
+#61 [indices1] exporting to image
+#61 exporting layers 2.9s done
+#61 writing image sha256:164a73850f22dedd80813b7f670ae7ea8f49da426d794f898c47dd1d0fbaf512 0.0s done
+#61 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#61 DONE 3.0s
+
+#62 [eboardfr_hose6] exporting to image
+#62 exporting layers 2.9s done
+#62 writing image sha256:d7d73eeead576aaf4af4d2bd9d4eba6645b51055f511c3c77c3def5d01306b28 0.0s done
+#62 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#62 DONE 3.0s
+
+#63 [eboardfr_hnx6] exporting to image
+#63 exporting layers 2.9s done
+#63 writing image sha256:3536b0d423083225c3a9c7ebded950182b076b2fb7fbe4d9d1a9d5a135ce7359 0.0s done
+#63 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#63 DONE 3.0s
+
+#64 [eboardfr_etfhose] exporting to image
+#64 exporting layers 2.9s done
+#64 writing image sha256:4b8707d19fb793333a30797eb0ffb8dc08f20b9a7825cbf4114656dd9e379751 0.0s done
+#64 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#64 DONE 3.0s
+
+#65 [eboardtb_hnx7] exporting to image
+#65 exporting layers 2.9s done
+#65 writing image sha256:02aa45112e56221d67f7571177c09f1763b5948cb8998052a4ae9019002cc6bc 0.0s done
+#65 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#65 DONE 3.0s
+
+#66 [eboardfr_hose10] exporting to image
+#66 exporting layers 2.9s done
+#66 writing image sha256:0ac804d46b6f36600a19958aa92cf085821478ccf8a231c901e75ee2f7103b9f 0.0s done
+#66 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#66 DONE 3.0s
+
+#67 [eboardfr_upcom3] exporting to image
+#67 exporting layers 2.9s done
+#67 writing image sha256:2b8ab0ee164a86e8e46a515f1637749b0c49c248dfaf72b2641e3090206b39a3 0.0s done
+#67 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#67 DONE 3.0s
+
+#68 [eboardfr_hnx5] exporting to image
+#68 exporting layers 2.9s done
+#68 writing image sha256:84fe1e62f477968b76339c0ef1387a54c8ee4bc30e4b7634d9e311e288aa53db 0.0s done
+#68 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#68 DONE 3.0s
+
+#69 [eboardtb_hnx2] resolving provenance for metadata file
+#69 DONE 0.3s
+
+#70 [eboardtb_hose2] resolving provenance for metadata file
+#70 DONE 0.3s
+
+#71 [indices2] resolving provenance for metadata file
+#71 DONE 0.3s
+
+#72 [eboardfr_upcom4] resolving provenance for metadata file
+#72 DONE 0.3s
+
+#73 [eboardfr_hnx4] resolving provenance for metadata file
+#73 DONE 0.3s
+
+#74 [eboardfr_hnx3] resolving provenance for metadata file
+#74 DONE 0.3s
+
+#75 [indices5] resolving provenance for metadata file
+#75 DONE 0.2s
+
+#76 [eboardfr_hnx5] resolving provenance for metadata file
+#76 DONE 0.0s
+
+#77 [eboardfr_hnx2] resolving provenance for metadata file
+#77 DONE 0.2s
+
+#78 [eboardtb_hnx7] resolving provenance for metadata file
+#78 DONE 0.0s
+
+#79 [indices3] resolving provenance for metadata file
+#79 DONE 0.2s
+
+#80 [eboardtb_hose5] resolving provenance for metadata file
+#80 DONE 0.1s
+
+#81 [eboardfr_hose4] resolving provenance for metadata file
+#81 DONE 0.2s
+
+#82 [eboardfr_upcom2] resolving provenance for metadata file
+#82 DONE 0.0s
+
+#83 [eboardtb_hnx4] resolving provenance for metadata file
+#83 DONE 0.1s
+
+#84 [eboardfr_upcom1] resolving provenance for metadata file
+#84 DONE 0.2s
+
+#85 [eboardtb_hnx5] resolving provenance for metadata file
+#85 DONE 0.1s
+
+#86 [eboardfr_upcom3] resolving provenance for metadata file
+#86 DONE 0.3s
+
+#87 [eboardtb_cw] resolving provenance for metadata file
+#87 DONE 0.2s
+
+#88 [eboardfr_hnx8] resolving provenance for metadata file
+#88 DONE 0.1s
+
+#89 [eboardfr_hose3] resolving provenance for metadata file
+#89 DONE 0.1s
+
+#90 [eboardtb_hose4] resolving provenance for metadata file
+#90 DONE 0.2s
+
+#91 [eboardtb_hnxbond] resolving provenance for metadata file
+#91 DONE 0.2s
+
+#92 [eboardtb_hose7] resolving provenance for metadata file
+#92 DONE 0.3s
+
+#93 [eboardfr_hnxbond] resolving provenance for metadata file
+#93 DONE 0.1s
+
+#94 [eboardfr_hose6] resolving provenance for metadata file
+#94 DONE 0.3s
+
+#95 [eboardfr_hnx1] resolving provenance for metadata file
+#95 DONE 0.2s
+
+#96 [eboardtb_upcom3] resolving provenance for metadata file
+#96 DONE 0.2s
+
+#97 [eboardtb_upcom4] resolving provenance for metadata file
+#97 DONE 0.2s
+
+#98 [eboardtb_hose9] resolving provenance for metadata file
+#98 DONE 0.2s
+
+#99 [eboardfr_hnx6] resolving provenance for metadata file
+#99 DONE 0.1s
+
+#100 [eboardtb_hose3] resolving provenance for metadata file
+#100 DONE 0.2s
+
+#101 [indices4] resolving provenance for metadata file
+#101 DONE 0.1s
+
+#102 [eboardfr_hose9] resolving provenance for metadata file
+#102 DONE 0.2s
+
+#103 [eboardtb_hose6] resolving provenance for metadata file
+#103 DONE 0.2s
+
+#104 [eboardfr_cw] resolving provenance for metadata file
+#104 DONE 0.1s
+
+#105 [eboardtb_hose1] resolving provenance for metadata file
+#105 DONE 0.0s
+
+#106 [eboardtb_upcom2] resolving provenance for metadata file
+#106 DONE 0.1s
+
+#107 [eboardfr_hose5] resolving provenance for metadata file
+#107 DONE 0.3s
+
+#108 [eboardfr_hose1] resolving provenance for metadata file
+#108 DONE 0.2s
+
+#109 [eboardtb_hnx6] resolving provenance for metadata file
+#109 DONE 0.1s
+
+#110 [eboardtb_hnx8] resolving provenance for metadata file
+#110 DONE 0.3s
+
+#111 [eboardtb_hnx1] resolving provenance for metadata file
+#111 DONE 0.1s
+
+#112 [eboardtb_hnx3] resolving provenance for metadata file
+#112 DONE 0.1s
+
+#113 [eboardfr_hnx7] resolving provenance for metadata file
+#113 DONE 0.2s
+
+#114 [eboardfr_hose8] resolving provenance for metadata file
+#114 DONE 0.1s
+
+#115 [eboardtb_etfhose] resolving provenance for metadata file
+#115 DONE 0.2s
+
+#116 [indices1] resolving provenance for metadata file
+#116 DONE 0.1s
+
+#117 [eboardfr_hose2] resolving provenance for metadata file
+#117 DONE 0.1s
+
+#118 [eboardfr_etfhose] resolving provenance for metadata file
+#118 DONE 0.1s
+
+#119 [eboardfr_derivatives] resolving provenance for metadata file
+#119 DONE 0.2s
+
+#120 [eboardfr_hose7] resolving provenance for metadata file
+#120 DONE 0.2s
+
+#121 [eboardtb_hose10] resolving provenance for metadata file
+#121 DONE 0.2s
+
+#122 [eboardtb_upcom1] resolving provenance for metadata file
+#122 DONE 0.3s
+
+#123 [eboardfr_hose10] resolving provenance for metadata file
+#123 DONE 0.1s
+
+#124 [eboardtb_hose8] resolving provenance for metadata file
+#124 DONE 0.2s
+
+#125 [eboardtb_derivatives] resolving provenance for metadata file
+#125 DONE 0.2s
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ Network fastapi_websocket_appnet  Creating
+ Network fastapi_websocket_appnet  Created
+ Container eboardtb_derivatives  Creating
+ Container eboardtb_hose1  Creating
+ Container eboardtb_hnx4  Creating
+ Container eboardfr_hose6  Creating
+ Container eboardtb_hose7  Creating
+ Container eboardfr_cw  Creating
+ Container eboardtb_hose6  Creating
+ Container eboardtb_hnx8  Creating
+ Container eboardfr_hose7  Creating
+ Container eboardfr_hose1  Creating
+ Container eboardfr_hose4  Creating
+ Container eboardtb_cw  Creating
+ Container eboardtb_hose10  Creating
+ Container indices2  Creating
+ Container eboardfr_upcom4  Creating
+ Container eboardtb_hose9  Creating
+ Container eboardtb_etfhose  Creating
+ Container indices1  Creating
+ Container eboardtb_upcom1  Creating
+ Container eboardfr_hose10  Creating
+ Container eboardtb_upcom3  Creating
+ Container eboardfr_hnx2  Creating
+ Container eboardfr_hnx3  Creating
+ Container eboardfr_hnx7  Creating
+ Container eboardtb_hose2  Creating
+ Container eboardfr_hose9  Creating
+ Container eboardtb_hnxbond  Creating
+ Container eboardfr_derivatives  Creating
+ Container eboardtb_hnx1  Creating
+ Container eboardtb_upcom2  Creating
+ Container eboardtb_hose8  Creating
+ Container eboardtb_upcom4  Creating
+ Container eboardfr_upcom2  Creating
+ Container eboardfr_upcom1  Creating
+ Container eboardfr_hnx6  Creating
+ Container eboardtb_hose4  Creating
+ Container indices4  Creating
+ Container eboardfr_hnx5  Creating
+ Container eboardfr_hnx4  Creating
+ Container eboardfr_hose3  Creating
+ Container eboardtb_hnx3  Creating
+ Container eboardtb_hose3  Creating
+ Container eboardfr_hnx8  Creating
+ Container eboardfr_hnx1  Creating
+ Container eboardfr_hose2  Creating
+ Container indices5  Creating
+ Container eboardtb_hose5  Creating
+ Container eboardfr_hnxbond  Creating
+ Container eboardfr_etfhose  Creating
+ Container eboardtb_hnx2  Creating
+ Container eboardfr_hose8  Creating
+ Container eboardtb_hnx5  Creating
+ Container eboardtb_hnx6  Creating
+ Container eboardfr_hose5  Creating
+ Container indices3  Creating
+ Container eboardfr_upcom3  Creating
+ Container eboardtb_hnx7  Creating
+ Container eboardtb_hnx8  Created
+ Container eboardtb_hose6  Created
+ Container eboardfr_hnx7  Created
+ Container indices2  Created
+ Container eboardfr_hose7  Created
+ Container eboardtb_hnx4  Created
+ Container eboardfr_hnx3  Created
+ Container eboardtb_hose7  Created
+ Container eboardtb_hose10  Created
+ Container eboardtb_hose9  Created
+ Container eboardtb_derivatives  Created
+ Container eboardtb_hose1  Created
+ Container eboardfr_hose6  Created
+ Container eboardfr_hose1  Created
+ Container eboardfr_hose4  Created
+ Container eboardfr_cw  Created
+ Container eboardfr_hose2  Created
+ Container eboardfr_hnx2  Created
+ Container eboardfr_derivatives  Created
+ Container eboardfr_hnxbond  Created
+ Container indices4  Created
+ Container eboardtb_upcom2  Created
+ Container eboardfr_hose8  Created
+ Container eboardfr_hose10  Created
+ Container eboardfr_upcom4  Created
+ Container eboardfr_upcom1  Created
+ Container eboardtb_hnx1  Created
+ Container eboardtb_upcom1  Created
+ Container eboardtb_hnx6  Created
+ Container eboardfr_hnx1  Created
+ Container eboardtb_etfhose  Created
+ Container eboardtb_hnxbond  Created
+ Container eboardtb_hnx5  Created
+ Container eboardfr_hose9  Created
+ Container eboardfr_hnx5  Created
+ Container eboardtb_cw  Created
+ Container eboardfr_hose5  Created
+ Container eboardfr_upcom2  Created
+ Container eboardtb_hnx3  Created
+ Container eboardtb_upcom3  Created
+ Container eboardfr_hnx8  Created
+ Container eboardtb_hose8  Created
+ Container eboardfr_hose3  Created
+ Container eboardtb_hose4  Created
+ Container eboardfr_hnx4  Created
+ Container eboardtb_hnx7  Created
+ Container indices5  Created
+ Container eboardfr_etfhose  Created
+ Container indices3  Created
+ Container eboardtb_hose2  Created
+ Container eboardfr_upcom3  Created
+ Container eboardfr_hnx6  Created
+ Container eboardtb_hose3  Created
+ Container eboardtb_upcom4  Created
+ Container eboardtb_hose5  Created
+ Container indices1  Created
+ Container eboardtb_hnx2  Created
+ Container eboardtb_upcom2  Starting
+ Container eboardtb_etfhose  Starting
+ Container eboardtb_hnx2  Starting
+ Container eboardfr_hnx1  Starting
+ Container eboardtb_hose3  Starting
+ Container eboardfr_hose4  Starting
+ Container eboardfr_hnx4  Starting
+ Container eboardfr_hose10  Starting
+ Container eboardfr_hose3  Starting
+ Container eboardfr_hnx5  Starting
+ Container eboardfr_derivatives  Starting
+ Container eboardfr_hnx2  Starting
+ Container eboardfr_etfhose  Starting
+ Container eboardtb_hnx8  Starting
+ Container indices2  Starting
+ Container eboardtb_hose4  Starting
+ Container eboardfr_hnx7  Starting
+ Container indices3  Starting
+ Container eboardtb_upcom3  Starting
+ Container eboardfr_hnx3  Starting
+ Container eboardtb_hose7  Starting
+ Container eboardfr_hnx8  Starting
+ Container eboardtb_hnx5  Starting
+ Container eboardtb_derivatives  Starting
+ Container eboardtb_upcom1  Starting
+ Container eboardfr_hose2  Starting
+ Container eboardtb_hose10  Starting
+ Container eboardfr_hnx6  Starting
+ Container eboardfr_hose1  Starting
+ Container eboardtb_hnxbond  Starting
+ Container eboardtb_hnx3  Starting
+ Container eboardfr_hose6  Starting
+ Container eboardfr_hose5  Starting
+ Container eboardfr_upcom2  Starting
+ Container eboardtb_hose9  Starting
+ Container eboardfr_upcom4  Starting
+ Container eboardtb_hose8  Starting
+ Container eboardtb_upcom4  Starting
+ Container eboardtb_hose1  Starting
+ Container eboardfr_hnxbond  Starting
+ Container eboardtb_hnx4  Starting
+ Container eboardtb_cw  Starting
+ Container indices4  Starting
+ Container indices1  Starting
+ Container eboardfr_upcom1  Starting
+ Container eboardtb_hose6  Starting
+ Container eboardtb_hnx7  Starting
+ Container eboardfr_upcom3  Starting
+ Container indices5  Starting
+ Container eboardfr_hose9  Starting
+ Container eboardtb_hnx1  Starting
+ Container eboardfr_cw  Starting
+ Container eboardtb_hose5  Starting
+ Container eboardfr_hose7  Starting
+ Container eboardfr_hose8  Starting
+ Container eboardtb_hnx6  Starting
+ Container eboardtb_hose2  Starting
+ Container eboardfr_hose6  Started
+ Container eboardfr_hnxbond  Started
+ Container eboardfr_cw  Started
+ Container eboardfr_derivatives  Started
+ Container eboardfr_hose9  Started
+ Container eboardfr_hose4  Started
+ Container eboardtb_upcom1  Started
+ Container eboardtb_hose4  Started
+ Container eboardfr_upcom2  Started
+ Container eboardfr_hose3  Started
+ Container eboardtb_hnx3  Started
+ Container eboardfr_upcom1  Started
+ Container eboardtb_hose7  Started
+ Container eboardfr_hnx6  Started
+ Container eboardtb_derivatives  Started
+ Container indices4  Started
+ Container eboardfr_upcom4  Started
+ Container eboardtb_hnx8  Started
+ Container eboardfr_hnx1  Started
+ Container eboardtb_hnx2  Started
+ Container eboardtb_hose10  Started
+ Container eboardtb_hnx5  Started
+ Container eboardtb_hnx1  Started
+ Container eboardtb_hose6  Started
+ Container eboardfr_upcom3  Started
+ Container eboardfr_hnx2  Started
+ Container eboardtb_upcom2  Started
+ Container eboardfr_hnx3  Started
+ Container eboardtb_hose2  Started
+ Container eboardtb_upcom3  Started
+ Container eboardfr_hose2  Started
+ Container eboardtb_hnxbond  Started
+ Container eboardfr_hose1  Started
+ Container eboardfr_hnx4  Started
+ Container eboardfr_hose7  Started
+ Container eboardtb_cw  Started
+ Container indices2  Started
+ Container eboardfr_etfhose  Started
+ Container eboardfr_hnx7  Started
+ Container eboardtb_hose1  Started
+ Container eboardfr_hnx8  Started
+ Container eboardfr_hnx5  Started
+ Container indices5  Started
+ Container eboardtb_etfhose  Started
+ Container indices1  Started
+ Container eboardtb_hnx7  Started
+ Container eboardtb_hose5  Started
+ Container eboardtb_upcom4  Started
+ Container eboardtb_hose9  Started
+ Container eboardfr_hose8  Started
+ Container eboardfr_hose5  Started
+ Container eboardtb_hnx4  Started
+ Container eboardtb_hose8  Started
+ Container eboardtb_hnx6  Started
+ Container indices3  Started
+ Container eboardfr_hose10  Started
+ Container eboardtb_hose3  Started
+#1 [internal] load local bake definitions
+#1 reading from stdin 27.67kB done
+#1 DONE 0.0s
+
+#2 [eboardfr_derivatives internal] load build definition from Dockerfile
+#2 transferring dockerfile: 659B 0.0s done
+#2 DONE 0.0s
+
+#3 [eboardtb_hose1 internal] load metadata for docker.io/library/python:3.10-slim
+#3 DONE 2.6s
+
+#4 [eboardtb_hose2 internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [eboardfr_derivatives 1/6] FROM docker.io/library/python:3.10-slim@sha256:2a8c7d9efdae9b636de80a187a4ce31374ffb3883a7be06232d25a96e8538bf4
+#5 DONE 0.0s
+
+#6 [eboardfr_hose7 internal] load build context
+#6 transferring context: 2.96MB 0.1s done
+#6 DONE 0.1s
+
+#7 [eboardtb_hnx2 2/6] RUN apt-get update && apt-get install -y tzdata     && ln -snf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime     && echo "Asia/Ho_Chi_Minh" > /etc/timezone     && apt-get clean
+#7 CACHED
+
+#8 [eboardtb_hnx2 3/6] WORKDIR /app
+#8 CACHED
+
+#7 [eboardfr_hnx1 2/6] RUN apt-get update && apt-get install -y tzdata     && ln -snf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime     && echo "Asia/Ho_Chi_Minh" > /etc/timezone     && apt-get clean
+#7 CACHED
+
+#9 [eboardfr_hnx5 4/6] COPY . /app
+#9 DONE 0.1s
+
+#10 [eboardtb_hose8 5/6] RUN pip install --upgrade pip
+#10 2.339 Requirement already satisfied: pip in /usr/local/lib/python3.10/site-packages (23.0.1)
+#10 2.592 Collecting pip
+#10 2.824   Downloading pip-25.3-py3-none-any.whl (1.8 MB)
+#10 3.111      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 6.2 MB/s eta 0:00:00
+#10 3.209 Installing collected packages: pip
+#10 3.209   Attempting uninstall: pip
+#10 3.210     Found existing installation: pip 23.0.1
+#10 3.575     Uninstalling pip-23.0.1:
+#10 3.893       Successfully uninstalled pip-23.0.1
+#10 5.007 Successfully installed pip-25.3
+#10 5.007 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#10 DONE 5.4s
+
+#11 [eboardfr_hose8 6/6] RUN pip install -r requirements.txt
+#11 1.243 Collecting pandas (from -r requirements.txt (line 8))
+#11 1.403   Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+#11 2.211 Collecting sqlalchemy (from -r requirements.txt (line 9))
+#11 2.260   Downloading sqlalchemy-2.0.44-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.5 kB)
+#11 2.474 Collecting psycopg2-binary (from -r requirements.txt (line 10))
+#11 2.518   Downloading psycopg2_binary-2.9.11-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+#11 2.596 Collecting redis>=5.0.0 (from -r requirements.txt (line 11))
+#11 2.640   Downloading redis-7.0.1-py3-none-any.whl.metadata (12 kB)
+#11 2.718 Collecting requests (from -r requirements.txt (line 12))
+#11 2.761   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+#11 2.823 Collecting websocket-client (from -r requirements.txt (line 13))
+#11 2.866   Downloading websocket_client-1.9.0-py3-none-any.whl.metadata (8.3 kB)
+#11 3.310 Collecting numpy>=1.22.4 (from pandas->-r requirements.txt (line 8))
+#11 3.353   Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+#11 3.414 Collecting python-dateutil>=2.8.2 (from pandas->-r requirements.txt (line 8))
+#11 3.457   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#11 3.557 Collecting pytz>=2020.1 (from pandas->-r requirements.txt (line 8))
+#11 3.600   Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+#11 3.653 Collecting tzdata>=2022.7 (from pandas->-r requirements.txt (line 8))
+#11 3.705   Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+#11 3.993 Collecting greenlet>=1 (from sqlalchemy->-r requirements.txt (line 9))
+#11 4.037   Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+#11 4.135 Collecting typing-extensions>=4.6.0 (from sqlalchemy->-r requirements.txt (line 9))
+#11 4.182   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#11 4.230 Collecting async-timeout>=4.0.3 (from redis>=5.0.0->-r requirements.txt (line 11))
+#11 4.273   Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+#11 4.493 Collecting charset_normalizer<4,>=2 (from requests->-r requirements.txt (line 12))
+#11 4.540   Downloading charset_normalizer-3.4.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+#11 4.600 Collecting idna<4,>=2.5 (from requests->-r requirements.txt (line 12))
+#11 4.643   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+#11 4.728 Collecting urllib3<3,>=1.21.1 (from requests->-r requirements.txt (line 12))
+#11 4.771   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+#11 4.842 Collecting certifi>=2017.4.17 (from requests->-r requirements.txt (line 12))
+#11 4.886   Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+#11 4.947 Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 8))
+#11 4.993   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#11 5.048 Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+#11 6.428    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 9.4 MB/s  0:00:01
+#11 6.475 Downloading sqlalchemy-2.0.44-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+#11 6.807    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 9.8 MB/s  0:00:00
+#11 6.853 Downloading psycopg2_binary-2.9.11-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.2 MB)
+#11 7.432    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 7.0 MB/s  0:00:00
+#11 7.477 Downloading redis-7.0.1-py3-none-any.whl (339 kB)
+#11 7.571 Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+#11 7.625 Downloading charset_normalizer-3.4.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+#11 7.694 Downloading idna-3.11-py3-none-any.whl (71 kB)
+#11 7.746 Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+#11 7.808 Downloading websocket_client-1.9.0-py3-none-any.whl (82 kB)
+#11 7.861 Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+#11 7.910 Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
+#11 7.973 Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (584 kB)
+#11 8.053    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 584.4/584.4 kB 7.2 MB/s  0:00:00
+#11 8.097 Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+#11 10.97    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.8/16.8 MB 5.8 MB/s  0:00:02
+#11 11.02 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+#11 11.11 Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+#11 11.27 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#11 11.31 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#11 11.36 Downloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+#11 11.82 Installing collected packages: pytz, websocket-client, urllib3, tzdata, typing-extensions, six, psycopg2-binary, numpy, idna, greenlet, charset_normalizer, certifi, async-timeout, sqlalchemy, requests, redis, python-dateutil, pandas
+#11 21.91 
+#11 21.92 Successfully installed async-timeout-5.0.1 certifi-2025.10.5 charset_normalizer-3.4.4 greenlet-3.2.4 idna-3.11 numpy-2.2.6 pandas-2.3.3 psycopg2-binary-2.9.11 python-dateutil-2.9.0.post0 pytz-2025.2 redis-7.0.1 requests-2.32.5 six-1.17.0 sqlalchemy-2.0.44 typing-extensions-4.15.0 tzdata-2025.2 urllib3-2.5.0 websocket-client-1.9.0
+#11 21.92 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#11 DONE 22.4s
+
+#12 [eboardfr_hnx4] exporting to image
+#12 exporting layers
+#12 ...
+
+#13 [eboardfr_hose10] exporting to image
+#13 exporting layers 3.2s done
+#13 writing image sha256:bc2b8f7b01a007390cc6f8b5bc9741a10c84bcd95e0f2f0e9d7afd6e44ba4b1b done
+#13 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#13 DONE 3.2s
+
+#14 [eboardfr_hose4] exporting to image
+#14 exporting layers 3.2s done
+#14 writing image sha256:23c94cda6c5613eff0e2d9fb86958fc63fd4ff13f91d79d5b3b1ed429b74fbcd done
+#14 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#14 DONE 3.2s
+
+#15 [eboardfr_upcom1] exporting to image
+#15 exporting layers 3.2s done
+#15 writing image sha256:48a9759bcfe8a0e2c149a789be8662d141bd397b6880d2c08d91c1dd0f02cfd8 done
+#15 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#15 DONE 3.2s
+
+#16 [eboardfr_hose5] exporting to image
+#16 exporting layers 3.2s done
+#16 writing image sha256:9d8491cdf6b08d7d1379aa7471ca70b16c87a3d3660662dce71867d13147c733 done
+#16 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#16 DONE 3.2s
+
+#17 [indices4] exporting to image
+#17 exporting layers 3.2s done
+#17 writing image sha256:3274eb099487d6eb5079eaae5e8a390558004f9cb9b76caf7d878f25f3c09917 done
+#17 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#17 DONE 3.2s
+
+#18 [eboardtb_upcom3] exporting to image
+#18 exporting layers 3.2s done
+#18 writing image sha256:b31e476d78b6950f6fd861f006b249238f379b3c08be6b08e8c7b988b1aca47a done
+#18 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#18 DONE 3.2s
+
+#19 [eboardfr_derivatives] exporting to image
+#19 exporting layers 3.2s done
+#19 writing image sha256:c59ad7948a4b73348f688c179b354a371ce159c812120ecef1d8858a323ee540 done
+#19 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#19 DONE 3.2s
+
+#20 [indices5] exporting to image
+#20 exporting layers 3.2s done
+#20 writing image sha256:1a0c8bca06b2cf22452b040ef63fb74504c55c2cdaa68f9e5083572cf8c934a6 done
+#20 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#20 DONE 3.2s
+
+#21 [eboardtb_upcom1] exporting to image
+#21 exporting layers 3.2s done
+#21 writing image sha256:ab110716de5f50f5fc338ad6cdb0eddb94046b86f5adb6b54ba6de118bc8a300 done
+#21 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#21 DONE 3.2s
+
+#22 [eboardtb_hnx4] exporting to image
+#22 exporting layers 3.2s done
+#22 writing image sha256:8f7bc9501e0f4636ff7694f90689ee5a245dc6c27f3909cd9dc058c0221c1801 done
+#22 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#22 DONE 3.2s
+
+#23 [eboardtb_hnx3] exporting to image
+#23 exporting layers 3.2s done
+#23 writing image sha256:a8d51774181253f66518c68f6dc885a050c47db9d1d135d13b11e212baa42c08 done
+#23 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#23 DONE 3.2s
+
+#24 [indices2] exporting to image
+#24 exporting layers 3.2s done
+#24 writing image sha256:57418e60695e78a0d9d0a06d4adab476c2f6a6f87c26819bcf4510f29b8ef721 done
+#24 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#24 DONE 3.3s
+
+#25 [eboardfr_hnx6] exporting to image
+#25 exporting layers 3.2s done
+#25 writing image sha256:3e989ac851382dc9f99f2f5fe0a6cfd11269885e27262f14599672b600032ecc 0.0s done
+#25 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#25 DONE 3.2s
+
+#26 [eboardfr_hnx1] exporting to image
+#26 exporting layers 3.2s done
+#26 writing image sha256:835688f57987622b0a582d0202a8b1b63d05dcbfadb19507a602df9e07903b94 done
+#26 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#26 DONE 3.2s
+
+#27 [eboardtb_hose6] exporting to image
+#27 exporting layers 3.2s done
+#27 writing image sha256:e52cfc78bfac0ef8c7ee56460b37a0b96b7790ce408665b3d67be84ed3cd4fa1 done
+#27 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#27 DONE 3.3s
+
+#28 [eboardtb_hose8] exporting to image
+#28 exporting layers 3.2s done
+#28 writing image sha256:233f1f549ce9227201189929eb6209938c263151dbfce6c507ba54e3fbd79940 0.0s done
+#28 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#28 DONE 3.3s
+
+#29 [eboardtb_hose4] exporting to image
+#29 exporting layers 3.2s done
+#29 writing image sha256:2989845a0ddd49e53e4abf43b69e4eea7844d09b5f8d51b469303306af919cd1 0.0s done
+#29 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#29 DONE 3.3s
+
+#30 [eboardfr_hnx2] exporting to image
+#30 exporting layers 3.2s done
+#30 writing image sha256:732559e544fd0a15ad3824810586a5eb86951e381d51094a752348395b5d832a 0.0s done
+#30 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#30 DONE 3.3s
+
+#31 [eboardtb_hose1] exporting to image
+#31 exporting layers 3.2s done
+#31 writing image sha256:2f3d4bdabdc355013b22fce2f07794cbea9d50c1a72108765627f3dd665cbf9f 0.0s done
+#31 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#31 DONE 3.3s
+
+#12 [eboardfr_hnx4] exporting to image
+#12 exporting layers 3.2s done
+#12 writing image sha256:6da8357c90377ca81ff719f9f19b24203ed56abcdea11ec21029b53d8179b452 0.0s done
+#12 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#12 DONE 3.3s
+
+#32 [eboardfr_hose9] exporting to image
+#32 exporting layers 3.2s done
+#32 writing image sha256:54568d15a88b23aea15d6c8e6f9a9bbe546dba9b9eaf5b9054b66027b7f17ea9 0.0s done
+#32 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#32 DONE 3.3s
+
+#33 [eboardtb_hnx8] exporting to image
+#33 exporting layers 3.2s done
+#33 writing image sha256:c791dc4e66921f61164cfe1d0efb68e93bcea20081684ce4ebad031c3277d3b7 0.0s done
+#33 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#33 DONE 3.3s
+
+#34 [eboardfr_hnx8] exporting to image
+#34 exporting layers 3.2s done
+#34 writing image sha256:019bb32d87cce84f75986ae964a4ff226fdf9a22733fa14bb63c5be1000312c7 0.0s done
+#34 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#34 DONE 3.3s
+
+#35 [eboardtb_etfhose] exporting to image
+#35 exporting layers 3.2s done
+#35 writing image sha256:0a172e111e73d049f3e22c6a0384d09e0ebd767ba5281b164df45f8134f789db 0.0s done
+#35 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#35 DONE 3.3s
+
+#36 [eboardfr_upcom3] exporting to image
+#36 exporting layers 3.2s done
+#36 writing image sha256:616da237dd717d76fcbcce71c0b93a407ac88309f8a0763ec00834646fc40d9f 0.0s done
+#36 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#36 DONE 3.3s
+
+#37 [eboardfr_etfhose] exporting to image
+#37 exporting layers 3.2s done
+#37 writing image sha256:50340355c72f23af3f1435cadbe88e7db840d405cc3e0feb006b37eb6e6ee06a 0.0s done
+#37 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#37 DONE 3.3s
+
+#38 [eboardtb_upcom4] exporting to image
+#38 exporting layers 3.2s done
+#38 writing image sha256:7298ea00344c4df1b0ede305b961a0f47115aede3ce2fbda79d37fdee621c004 0.0s done
+#38 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#38 DONE 3.3s
+
+#39 [eboardfr_upcom4] exporting to image
+#39 exporting layers 3.2s done
+#39 writing image sha256:958a439174290c9125330fb555a112ab34cb8aa220503e073183eb352827c9fb 0.0s done
+#39 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#39 DONE 3.3s
+
+#40 [eboardfr_upcom2] exporting to image
+#40 exporting layers 3.2s done
+#40 writing image sha256:6ad5856856a6fa1494a635e7f0b1d65877deb7efa445f262c7d5064f3d65f201 0.0s done
+#40 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#40 DONE 3.3s
+
+#41 [eboardfr_hose8] exporting to image
+#41 exporting layers 3.2s done
+#41 writing image sha256:059c0a3a49a9d512f66fd8a19863d8bd81ecebbdaa4c23dde94c9a707767c5d3 0.0s done
+#41 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#41 DONE 3.3s
+
+#42 [eboardfr_hnx3] exporting to image
+#42 exporting layers 3.2s done
+#42 writing image sha256:12262ce2bc43b1c43705c74eaedc3aa0e27cab7f40c92a60a7508789f6a49670 0.0s done
+#42 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#42 DONE 3.3s
+
+#43 [eboardtb_cw] exporting to image
+#43 exporting layers 3.2s done
+#43 writing image sha256:d396efd7c561f6f8f5d6e8f283a3f2b2a4e8dd253112cdd85c850bffdb257e3f 0.0s done
+#43 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#43 DONE 3.3s
+
+#44 [eboardtb_hose2] exporting to image
+#44 exporting layers 3.2s done
+#44 writing image sha256:ad81cb910c708da25ffc28f7bcb9eaf95e45db528fb2655473c374006a840529 0.0s done
+#44 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#44 DONE 3.3s
+
+#45 [eboardfr_hose7] exporting to image
+#45 exporting layers 3.2s done
+#45 writing image sha256:e6a9ba9d4e20a7fb1d1045629d343e416c0c931c91b466e3937240edd63c76be 0.0s done
+#45 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#45 DONE 3.3s
+
+#46 [eboardfr_cw] exporting to image
+#46 exporting layers 3.2s done
+#46 writing image sha256:2d7a1369d5ac6f851bb4b2d4c62bd042ce23ed83c2bb0af1d62f84113b2ffe97 0.0s done
+#46 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#46 DONE 3.3s
+
+#47 [eboardfr_hose1] exporting to image
+#47 exporting layers 3.2s done
+#47 writing image sha256:83e770035e09fdd65a84888ae0bd17ad6ba59075ed283d9a7732e0bfcd863c9b 0.0s done
+#47 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#47 DONE 3.3s
+
+#48 [eboardtb_hose10] exporting to image
+#48 exporting layers 3.2s done
+#48 writing image sha256:ade0aaeab30a3b3482c8703ddbeeeb8193d393b2af5cbf7c70cf7c207a049050 0.0s done
+#48 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#48 DONE 3.3s
+
+#49 [indices1] exporting to image
+#49 exporting layers 3.2s done
+#49 writing image sha256:89a303ec13bd176d7a1a04a0ddda2b7017602a5c24749cb72520b97978681f76 0.0s done
+#49 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#49 DONE 3.3s
+
+#50 [eboardtb_derivatives] exporting to image
+#50 exporting layers 3.2s done
+#50 writing image sha256:7cf2b43ac9f9f36e3ba3252eec4edbb340bd8e2a1904b113be008a1e5e8f9113 0.0s done
+#50 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#50 DONE 3.3s
+
+#51 [eboardtb_hnx6] exporting to image
+#51 exporting layers 3.2s done
+#51 writing image sha256:541822d2abde7953358e19222f038c5c9a15e5c516d345a8607888b89770d7e2 0.0s done
+#51 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#51 DONE 3.3s
+
+#52 [eboardtb_hnxbond] exporting to image
+#52 exporting layers 3.2s done
+#52 writing image sha256:0bf354829fa7488f2e299aa4788575d861dc996715692f01dbeeb36b74a799b2 0.0s done
+#52 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#52 DONE 3.3s
+
+#53 [eboardfr_hnxbond] exporting to image
+#53 exporting layers 3.2s done
+#53 writing image sha256:f1b2575488bd54058ec3f13d4495f5d646ef0ca42351f445ed4a359a56b159d2 0.0s done
+#53 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#53 DONE 3.3s
+
+#54 [eboardtb_hose5] exporting to image
+#54 exporting layers 3.2s done
+#54 writing image sha256:79d68f7e3e699a8de4109fc0f789146331859965589d533bccfc0aab36d0df8c 0.0s done
+#54 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#54 DONE 3.3s
+
+#55 [eboardtb_hnx2] exporting to image
+#55 exporting layers 3.2s done
+#55 writing image sha256:fa51527fbe2b4e01302d3b7698bfc760c1cfbed63d45a62a15d9186d2f195164 0.0s done
+#55 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#55 DONE 3.3s
+
+#56 [eboardtb_upcom2] exporting to image
+#56 exporting layers 3.2s done
+#56 writing image sha256:c397c8d27788d3d5a06cd3ab9442d82b856aacaa299d2c3c87e21ccaecad90c3 0.0s done
+#56 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#56 DONE 3.3s
+
+#57 [eboardfr_hnx7] exporting to image
+#57 exporting layers 3.2s done
+#57 writing image sha256:b4b2bfe83574f5d92b857ae5ccc39e04caa60e93e19f7817ed6ab4ddd3f725d8 0.0s done
+#57 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#57 DONE 3.3s
+
+#58 [eboardfr_hose6] exporting to image
+#58 exporting layers 3.2s done
+#58 writing image sha256:6bb2c425956fc7804cdd75465eb126f689707908c890a6805f84cc91b2ff4805 0.0s done
+#58 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#58 DONE 3.3s
+
+#59 [eboardtb_hose9] exporting to image
+#59 exporting layers 3.2s done
+#59 writing image sha256:1c351434b9ef6880b9ea039d0a450c344354d536855f85e11969c5ce129df172 0.0s done
+#59 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#59 DONE 3.3s
+
+#60 [eboardfr_hose2] exporting to image
+#60 exporting layers 3.2s done
+#60 writing image sha256:8e07e16be65c6f7c94753c989bf7892b969df2246bece399e1f5b925e3e3820a 0.0s done
+#60 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#60 DONE 3.3s
+
+#61 [indices3] exporting to image
+#61 exporting layers 3.2s done
+#61 writing image sha256:0c2636a40ed349fc9a35c00d5c5cc46b932c302fa4b3c70d449e481ec0db8417 0.0s done
+#61 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#61 DONE 3.3s
+
+#62 [eboardtb_hose3] exporting to image
+#62 exporting layers 3.2s done
+#62 writing image sha256:8111c2b1ca9e809b45d87e9d065f078ad326a59ca715823191d7f4c828d00460 0.0s done
+#62 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#62 DONE 3.3s
+
+#63 [eboardtb_hnx1] exporting to image
+#63 exporting layers 3.2s done
+#63 writing image sha256:fa996d4e7aaa8b063f185ed5adef3ddd9db0db955a1bc71e53a75bf6a5e24f4f 0.0s done
+#63 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#63 DONE 3.3s
+
+#64 [eboardfr_hnx5] exporting to image
+#64 exporting layers 3.2s done
+#64 writing image sha256:f8dc4b47b5c26b73a312ed326a7f35f955cd428148dc679705899e8fc6922e46 0.0s done
+#64 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#64 DONE 3.3s
+
+#65 [eboardtb_hnx5] exporting to image
+#65 exporting layers 3.2s done
+#65 writing image sha256:5a81d8d1da41c9f179ef475b1711160d3f4ac85215fda19241c97f803f575882 0.0s done
+#65 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#65 DONE 3.3s
+
+#66 [eboardfr_hose3] exporting to image
+#66 exporting layers 3.2s done
+#66 writing image sha256:a72923991fa70a7dbdb122155ecf8eaa54ac59d497737d9ce2b30315f807bd62 0.0s done
+#66 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#66 DONE 3.4s
+
+#67 [eboardtb_hnx7] exporting to image
+#67 exporting layers 3.2s done
+#67 writing image sha256:4db6e3f3313a2092bc3881763b770d75d8734fd625746c31da8b5105fee191a7 0.0s done
+#67 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#67 DONE 3.3s
+
+#68 [eboardtb_hose7] exporting to image
+#68 exporting layers 3.2s done
+#68 writing image sha256:261f8805fc62d48b79625c5088ff03eab007142e47efed4c3aa9eecece15b20e 0.0s done
+#68 naming to docker.io/library/fastapi-newmulti:latest 0.0s done
+#68 DONE 3.4s
+
+#69 [eboardfr_hose10] resolving provenance for metadata file
+#69 DONE 0.3s
+
+#70 [eboardfr_upcom2] resolving provenance for metadata file
+#70 DONE 0.2s
+
+#71 [eboardfr_hnx3] resolving provenance for metadata file
+#71 DONE 0.1s
+
+#72 [eboardtb_cw] resolving provenance for metadata file
+#72 DONE 0.2s
+
+#73 [eboardtb_hose8] resolving provenance for metadata file
+#73 DONE 0.2s
+
+#74 [eboardtb_hnxbond] resolving provenance for metadata file
+#74 DONE 0.2s
+
+#75 [eboardtb_hose3] resolving provenance for metadata file
+#75 DONE 0.1s
+
+#76 [eboardtb_hnx4] resolving provenance for metadata file
+#76 DONE 0.2s
+
+#77 [eboardfr_hnx2] resolving provenance for metadata file
+#77 DONE 0.2s
+
+#78 [eboardtb_hnx1] resolving provenance for metadata file
+#78 DONE 0.1s
+
+#79 [eboardtb_hose10] resolving provenance for metadata file
+#79 DONE 0.1s
+
+#80 [eboardtb_hnx6] resolving provenance for metadata file
+#80 DONE 0.3s
+
+#81 [indices1] resolving provenance for metadata file
+#81 DONE 0.2s
+
+#82 [eboardfr_derivatives] resolving provenance for metadata file
+#82 DONE 0.3s
+
+#83 [eboardfr_upcom1] resolving provenance for metadata file
+#83 DONE 0.3s
+
+#84 [eboardtb_hose9] resolving provenance for metadata file
+#84 DONE 0.1s
+
+#85 [eboardfr_hose3] resolving provenance for metadata file
+#85 DONE 0.1s
+
+#86 [eboardtb_hose7] resolving provenance for metadata file
+#86 DONE 0.1s
+
+#87 [eboardfr_hnx7] resolving provenance for metadata file
+#87 DONE 0.1s
+
+#88 [eboardtb_hose5] resolving provenance for metadata file
+#88 DONE 0.1s
+
+#89 [indices2] resolving provenance for metadata file
+#89 DONE 0.3s
+
+#90 [eboardfr_hose6] resolving provenance for metadata file
+#90 DONE 0.1s
+
+#91 [eboardtb_derivatives] resolving provenance for metadata file
+#91 DONE 0.2s
+
+#92 [eboardtb_etfhose] resolving provenance for metadata file
+#92 DONE 0.2s
+
+#93 [eboardtb_upcom3] resolving provenance for metadata file
+#93 DONE 0.3s
+
+#94 [eboardfr_hose4] resolving provenance for metadata file
+#94 DONE 0.3s
+
+#95 [indices5] resolving provenance for metadata file
+#95 DONE 0.3s
+
+#96 [indices4] resolving provenance for metadata file
+#96 DONE 0.3s
+
+#97 [eboardfr_hose5] resolving provenance for metadata file
+#97 DONE 0.3s
+
+#98 [eboardtb_hose4] resolving provenance for metadata file
+#98 DONE 0.2s
+
+#99 [eboardtb_hose2] resolving provenance for metadata file
+#99 DONE 0.2s
+
+#100 [eboardtb_hnx5] resolving provenance for metadata file
+#100 DONE 0.1s
+
+#101 [eboardtb_hnx3] resolving provenance for metadata file
+#101 DONE 0.3s
+
+#102 [eboardfr_hose7] resolving provenance for metadata file
+#102 DONE 0.2s
+
+#103 [eboardtb_upcom2] resolving provenance for metadata file
+#103 DONE 0.1s
+
+#104 [eboardtb_hnx2] resolving provenance for metadata file
+#104 DONE 0.1s
+
+#105 [eboardfr_hose9] resolving provenance for metadata file
+#105 DONE 0.2s
+
+#106 [eboardtb_hose1] resolving provenance for metadata file
+#106 DONE 0.3s
+
+#107 [eboardfr_hnxbond] resolving provenance for metadata file
+#107 DONE 0.3s
+
+#108 [eboardfr_hnx4] resolving provenance for metadata file
+#108 DONE 0.1s
+
+#109 [indices3] resolving provenance for metadata file
+#109 DONE 0.1s
+
+#110 [eboardtb_hnx8] resolving provenance for metadata file
+#110 DONE 0.2s
+
+#111 [eboardfr_hose1] resolving provenance for metadata file
+#111 DONE 0.2s
+
+#112 [eboardfr_hnx1] resolving provenance for metadata file
+#112 DONE 0.3s
+
+#113 [eboardfr_etfhose] resolving provenance for metadata file
+#113 DONE 0.2s
+
+#114 [eboardtb_upcom4] resolving provenance for metadata file
+#114 DONE 0.2s
+
+#115 [eboardtb_hose6] resolving provenance for metadata file
+#115 DONE 0.1s
+
+#116 [eboardfr_upcom4] resolving provenance for metadata file
+#116 DONE 0.2s
+
+#117 [eboardtb_upcom1] resolving provenance for metadata file
+#117 DONE 0.3s
+
+#118 [eboardfr_hnx8] resolving provenance for metadata file
+#118 DONE 0.3s
+
+#119 [eboardtb_hnx7] resolving provenance for metadata file
+#119 DONE 0.1s
+
+#120 [eboardfr_hose8] resolving provenance for metadata file
+#120 DONE 0.2s
+
+#121 [eboardfr_hnx5] resolving provenance for metadata file
+#121 DONE 0.1s
+
+#122 [eboardfr_upcom3] resolving provenance for metadata file
+#122 DONE 0.3s
+
+#123 [eboardfr_hnx6] resolving provenance for metadata file
+#123 DONE 0.3s
+
+#124 [eboardfr_hose2] resolving provenance for metadata file
+#124 DONE 0.1s
+
+#125 [eboardfr_cw] resolving provenance for metadata file
+#125 DONE 0.2s
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ fastapi-newmulti:latest  Built
+ Container eboardtb_hose10  Creating
+ Container eboardtb_hose7  Creating
+ Container eboardtb_hose8  Creating
+ Container eboardtb_hose4  Creating
+ Container eboardtb_hose9  Creating
+ Container eboardfr_upcom1  Creating
+ Container eboardtb_hnxbond  Creating
+ Container eboardtb_hnx2  Creating
+ Container eboardtb_hose5  Creating
+ Container eboardfr_hnx4  Creating
+ Container eboardtb_hose2  Creating
+ Container eboardtb_hose6  Creating
+ Container eboardfr_hnxbond  Creating
+ Container eboardfr_hnx8  Creating
+ Container eboardtb_etfhose  Creating
+ Container indices5  Creating
+ Container indices4  Creating
+ Container eboardfr_hnx6  Creating
+ Container eboardfr_hnx3  Creating
+ Container eboardfr_hose9  Creating
+ Container eboardfr_hose7  Creating
+ Container eboardfr_upcom2  Creating
+ Container indices3  Creating
+ Container eboardfr_hose3  Creating
+ Container eboardfr_upcom3  Creating
+ Container eboardfr_hose6  Creating
+ Container eboardfr_hose2  Creating
+ Container eboardtb_upcom1  Creating
+ Container eboardtb_upcom3  Creating
+ Container eboardtb_hnx6  Creating
+ Container eboardtb_upcom4  Creating
+ Container eboardtb_cw  Creating
+ Container eboardtb_hose1  Recreate
+ Container eboardfr_hnx7  Creating
+ Container eboardfr_hose1  Creating
+ Container eboardtb_hnx1  Creating
+ Container eboardfr_hnx2  Creating
+ Container eboardfr_hose10  Creating
+ Container eboardtb_hnx5  Creating
+ Container indices1  Creating
+ Container eboardfr_etfhose  Creating
+ Container eboardtb_hnx7  Creating
+ Container eboardfr_hose5  Creating
+ Container eboardfr_hnx1  Creating
+ Container eboardfr_derivatives  Creating
+ Container eboardfr_hose8  Creating
+ Container eboardtb_hnx4  Creating
+ Container eboardtb_upcom2  Creating
+ Container eboardtb_hnx8  Creating
+ Container eboardtb_hnx3  Creating
+ Container eboardfr_upcom4  Creating
+ Container eboardfr_hnx5  Creating
+ Container indices2  Creating
+ Container eboardfr_hose4  Creating
+ Container eboardtb_hose3  Creating
+ Container eboardfr_cw  Creating
+ Container eboardtb_derivatives  Creating
+ Container eboardfr_hnx3  Created
+ Container eboardtb_hose5  Created
+ Container eboardtb_hose2  Created
+ Container eboardtb_hose9  Created
+ Container indices4  Created
+ Container eboardtb_hnxbond  Created
+ Container eboardtb_hose8  Created
+ Container eboardtb_hose10  Created
+ Container eboardfr_hose6  Created
+ Container eboardfr_hnx4  Created
+ Container eboardfr_hose2  Created
+ Container eboardtb_hnx2  Created
+ Container eboardtb_hose4  Created
+ Container eboardfr_hose3  Created
+ Container eboardtb_etfhose  Created
+ Container eboardtb_hnx1  Created
+ Container eboardtb_hnx8  Created
+ Container indices1  Created
+ Container eboardfr_hnx8  Created
+ Container eboardtb_hnx5  Created
+ Container eboardtb_upcom3  Created
+ Container eboardtb_cw  Created
+ Container eboardfr_hose10  Created
+ Container eboardtb_hose6  Created
+ Container eboardtb_upcom1  Created
+ Container eboardtb_hnx6  Created
+ Container eboardfr_upcom4  Created
+ Container eboardfr_hnx5  Created
+ Container eboardtb_hnx4  Created
+ Container eboardfr_hose5  Created
+ Container eboardfr_cw  Created
+ Container eboardtb_upcom2  Created
+ Container eboardfr_hnxbond  Created
+ Container eboardfr_hose4  Created
+ Container eboardfr_upcom2  Created
+ Container eboardtb_hose3  Created
+ Container eboardfr_hose7  Created
+ Container indices3  Created
+ Container eboardfr_hnx7  Created
+ Container eboardfr_hose9  Created
+ Container indices2  Created
+ Container eboardfr_hose8  Created
+ Container eboardfr_upcom3  Created
+ Container eboardfr_derivatives  Created
+ Container indices5  Created
+ Container eboardfr_hose1  Created
+ Container eboardtb_hnx7  Created
+ Container eboardtb_hose7  Created
+ Container eboardtb_derivatives  Created
+ Container eboardfr_hnx1  Created
+ Container eboardfr_upcom1  Created
+ Container eboardtb_upcom4  Created
+ Container eboardtb_hnx3  Created
+ Container eboardfr_etfhose  Created
+ Container eboardfr_hnx6  Created
+ Container eboardfr_hnx2  Created
+ Container eboardtb_hose1  Recreated
+ Container eboardfr_hnx6  Starting
+ Container eboardfr_hnx4  Starting
+ Container eboardfr_upcom1  Starting
+ Container eboardfr_hnx3  Starting
+ Container eboardtb_hnx4  Starting
+ Container eboardtb_hnx6  Starting
+ Container eboardtb_hose3  Starting
+ Container eboardtb_hnx8  Starting
+ Container indices3  Starting
+ Container eboardtb_upcom2  Starting
+ Container eboardtb_etfhose  Starting
+ Container eboardtb_hose5  Starting
+ Container indices5  Starting
+ Container eboardfr_hose10  Starting
+ Container eboardfr_hnx1  Starting
+ Container eboardfr_hose6  Starting
+ Container eboardtb_upcom1  Starting
+ Container eboardtb_derivatives  Starting
+ Container indices1  Starting
+ Container eboardfr_upcom3  Starting
+ Container eboardtb_hnx3  Starting
+ Container eboardtb_hnx2  Starting
+ Container eboardfr_hose7  Starting
+ Container eboardfr_hose9  Starting
+ Container eboardtb_hose9  Starting
+ Container eboardfr_hnx5  Starting
+ Container eboardtb_hose1  Starting
+ Container eboardtb_hose2  Starting
+ Container eboardtb_upcom3  Starting
+ Container eboardtb_upcom4  Starting
+ Container eboardtb_hose10  Starting
+ Container eboardtb_hose4  Starting
+ Container eboardfr_hose8  Starting
+ Container eboardfr_hnx2  Starting
+ Container indices4  Starting
+ Container eboardtb_hnxbond  Starting
+ Container indices2  Starting
+ Container eboardfr_hose1  Starting
+ Container eboardtb_hose8  Starting
+ Container eboardtb_cw  Starting
+ Container eboardfr_hnx7  Starting
+ Container eboardfr_cw  Starting
+ Container eboardfr_hnx8  Starting
+ Container eboardfr_etfhose  Starting
+ Container eboardtb_hose6  Starting
+ Container eboardfr_hnxbond  Starting
+ Container eboardtb_hose7  Starting
+ Container eboardtb_hnx5  Starting
+ Container eboardfr_hose2  Starting
+ Container eboardfr_hose5  Starting
+ Container eboardfr_upcom4  Starting
+ Container eboardtb_hnx7  Starting
+ Container eboardtb_hnx1  Starting
+ Container eboardfr_hose4  Starting
+ Container eboardfr_derivatives  Starting
+ Container eboardfr_upcom2  Starting
+ Container eboardfr_hose3  Starting
+ Container eboardfr_hnx6  Started
+ Container eboardfr_hnx4  Started
+ Container eboardfr_hnx8  Started
+ Container eboardtb_etfhose  Started
+ Container eboardtb_hose7  Started
+ Container eboardfr_upcom4  Started
+ Container indices5  Started
+ Container eboardtb_hnx6  Started
+ Container eboardtb_hose6  Started
+ Container eboardfr_upcom3  Started
+ Container eboardfr_hose1  Started
+ Container eboardfr_hose8  Started
+ Container eboardfr_derivatives  Started
+ Container eboardfr_upcom2  Started
+ Container eboardtb_upcom4  Started
+ Container eboardtb_cw  Started
+ Container indices4  Started
+ Container eboardfr_hose3  Started
+ Container eboardtb_hose1  Started
+ Container eboardfr_hose2  Started
+ Container eboardtb_derivatives  Started
+ Container eboardfr_hose10  Started
+ Container eboardfr_hnx5  Started
+ Container eboardfr_hose5  Started
+ Container eboardtb_hnx3  Started
+ Container eboardtb_hose2  Started
+ Container eboardfr_hose4  Started
+ Container eboardtb_hnx8  Started
+ Container eboardfr_hnx1  Started
+ Container indices2  Started
+ Container eboardtb_upcom3  Started
+ Container indices3  Started
+ Container eboardtb_hose4  Started
+ Container eboardfr_etfhose  Started
+ Container eboardtb_hose5  Started
+ Container eboardfr_upcom1  Started
+ Container eboardtb_hnx1  Started
+ Container eboardtb_upcom1  Started
+ Container eboardfr_hose7  Started
+ Container eboardtb_hnxbond  Started
+ Container eboardtb_hose3  Started
+ Container eboardfr_hnx7  Started
+ Container eboardtb_hnx7  Started
+ Container eboardfr_hnx3  Started
+ Container eboardtb_upcom2  Started
+ Container eboardtb_hnx5  Started
+ Container eboardtb_hnx2  Started
+ Container eboardfr_cw  Started
+ Container eboardfr_hnx2  Started
+ Container eboardtb_hnx4  Started
+ Container eboardfr_hose9  Started
+ Container eboardtb_hose8  Started
+ Container eboardtb_hose10  Started
+ Container eboardfr_hnxbond  Started
+ Container indices1  Started
+ Container eboardtb_hose9  Started
+ Container eboardfr_hose6  Started
