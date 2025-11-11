@@ -32,6 +32,29 @@ POOL = redis.BlockingConnectionPool.from_url(
 )
 r = redis.Redis(connection_pool=POOL)
 
+# ---- Helpers & cấu hình tối giản ----
+def null0(v):
+    return None if (v == 0 or v == "0" or (isinstance(v, float) and abs(v) < 1e-12)) else v
+
+def normalize_buy_sell(content: dict):
+    """Chỉ đổi 0 -> null cho BUY/SELL (price & vol)."""
+    bs = content.get("buy", {})
+    if "price" in bs: bs["price"] = [null0(x) for x in bs["price"]]
+    if "vol"   in bs: bs["vol"]   = [null0(x) for x in bs["vol"]]
+    ss = content.get("sell", {})
+    if "price" in ss: ss["price"] = [null0(x) for x in ss["price"]]
+    if "vol"   in ss: ss["vol"]   = [null0(x) for x in ss["vol"]]
+
+# chỉ buy/sell price & vol của row (tự sinh 1..3 để khỏi phải gõ tay)
+ROW_ZERO_NULL_FIELDS = (
+    {f"buyPrice{i}" for i in range(1,4)} |
+    {f"buyVol{i}"   for i in range(1,4)} |
+    {f"sellPrice{i}" for i in range(1,4)} |
+    {f"sellVol{i}"   for i in range(1,4)}
+)
+
+
+
 def publish(payload: dict):
     global r
     if "source" not in payload:
@@ -122,6 +145,7 @@ def on_message_X(message):
 
             }
         }
+        normalize_buy_sell(result["content"])
         # Publish result sang Redis để Hub gom về 1 WS port
         publish(result)
 
@@ -149,7 +173,7 @@ def on_message_X(message):
             "totalVol": c["totalVol"], "totalVal": c["totalVal"],
             "high": c["high"], "low": c["low"], "open": c["open"], "close": c["close"],
         }
-        # row = {k: (None if (v == 0 or v == "0") else v) for k, v in row.items()}
+        row = {k: (null0(v) if k in ROW_ZERO_NULL_FIELDS else v) for k, v in row.items()}
         upsert_eboard(row)
         save_redis_alert(row)
     except Exception:
