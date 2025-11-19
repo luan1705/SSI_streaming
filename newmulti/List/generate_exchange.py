@@ -87,7 +87,7 @@ SOURCES = [
 HEADERS = {
     'authority': 'iboard-query.ssi.com.vn',
     'accept': 'application/json, text/plain, */*',
-    'accept-encoding': 'gzip, deflate, br, zstd',
+    'accept-encoding': 'gzip, deflate',#, br, zstd',
     'accept-language': 'en-US,en;q=0.9',
     'content-type': 'application/json',
     'origin': 'https://iboard.ssi.com.vn',
