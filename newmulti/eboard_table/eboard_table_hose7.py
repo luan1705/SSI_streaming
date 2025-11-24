@@ -175,7 +175,7 @@ def on_message_X(message):
         }
         row = {k: (null0(v) if k in ROW_ZERO_NULL_FIELDS else v) for k, v in row.items()}
         upsert_eboard(row)
-        save_redis_alert(row)
+        # save_redis_alert(row)
     except Exception:
         logging.exception("X message error")
 

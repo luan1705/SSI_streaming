@@ -638,6 +638,23 @@ services:
       - appnet
     restart: unless-stopped
 
+
+
+#---------------------------------------------ALERT_FUNCTION------------------------------------------------
+  alert_function:
+    build:
+      context: ./alert_function
+      dockerfile: Dockerfile
+    image: alert_function:latest
+    container_name: alert_function
+    command: python3 alert_function.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+# =============================================bổ sung ở đây============================================
+
+#
 networks:
   appnet:
     driver: bridge
