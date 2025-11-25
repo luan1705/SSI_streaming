@@ -89,14 +89,14 @@ def save_redis_alert(row: dict, tz_name: str = "Asia/Ho_Chi_Minh") -> bool:
     if not symbol:
         return False
 
-    key = f"alert_function:{symbol}"
+    key = f"latest_message:{symbol}"
     payload = json.dumps(row, ensure_ascii=False)
 
     # Ghi đè (không merge)
     r.set(key, payload)
 
     # Đặt hết hạn đúng 21:00 hôm nay (hoặc ngày mai nếu đã quá 21:00)
-    r.expireat(key, _next_9pm_unix(tz_name))
+    # r.expireat(key, _next_9pm_unix(tz_name))
     return True
         
 def find_indices(symbol: str) -> list[str] | None:
@@ -175,7 +175,7 @@ def on_message_X(message):
         }
         row = {k: (null0(v) if k in ROW_ZERO_NULL_FIELDS else v) for k, v in row.items()}
         upsert_eboard(row)
-        # save_redis_alert(row)
+        save_redis_alert(row)
     except Exception:
         logging.exception("X message error")
 

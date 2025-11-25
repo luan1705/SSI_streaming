@@ -61,15 +61,15 @@ def caculate_indicators(data: pd.DataFrame, new_tick: dict) -> pd.DataFrame:
     macd_cross_down = False
 
     # MA cắt lên
-    if data['close'].iloc[-2] < data['MA20'].iloc[-2] and data['close'].iloc[-1] >= data['MA20'].iloc[-1]:
+    if data['close'].iloc[-2] < data['MA10'].iloc[-2] and data['close'].iloc[-1] >= data['MA10'].iloc[-1]:
         close_up_ma10 = True
     if data['close'].iloc[-2] < data['MA20'].iloc[-2] and data['close'].iloc[-1]  >= data['MA20'].iloc[-1]:
         close_up_ma20 = True
     if data['close'].iloc[-2] < data['MA50'].iloc[-2] and data['close'].iloc[-1]  >= data['MA50'].iloc[-1]:
-        close_up_ma20 = True
+        close_up_ma50 = True
 
     # MA cắt xuống
-    if data['close'].iloc[-2] > data['MA20'].iloc[-2] and data['close'].iloc[-1]  <= data['MA20'].iloc[-1]:
+    if data['close'].iloc[-2] > data['MA10'].iloc[-2] and data['close'].iloc[-1]  <= data['MA10'].iloc[-1]:
         close_down_ma10 = True
     if data['close'].iloc[-2] > data['MA20'].iloc[-2] and data['close'].iloc[-1]  <= data['MA20'].iloc[-1]:
         close_down_ma20 = True
@@ -84,5 +84,14 @@ def caculate_indicators(data: pd.DataFrame, new_tick: dict) -> pd.DataFrame:
     if data['MACD'].iloc[-2] > data['Signal_Line'].iloc[-2] and data['MACD'].iloc[-1] <= data['Signal_Line'].iloc[-1]:
         macd_cross_down = True
 
-    return data, close_up_ma10, close_up_ma20, close_up_ma50, close_down_ma10, close_down_ma20, close_down_ma50, macd_cross_up, macd_cross_down
+    # status MA
+    status_up_ma10 = bool(data['close'].iloc[-1] >= data['MA10'].iloc[-1])
+    status_up_ma20 = bool(data['close'].iloc[-1] >= data['MA20'].iloc[-1])
+    status_up_ma50 = bool(data['close'].iloc[-1] >= data['MA50'].iloc[-1])
+
+    # status MACD
+    status_up_macd = bool(data['MACD'].iloc[-1] >= data['Signal_Line'].iloc[-1])
+
+    return (data, close_up_ma10, close_up_ma20, close_up_ma50, close_down_ma10, close_down_ma20,
+    close_down_ma50, macd_cross_up, macd_cross_down, status_up_ma10, status_up_ma20, status_up_ma50, status_up_macd)
 

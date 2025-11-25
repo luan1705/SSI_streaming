@@ -366,3 +366,8 @@ sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate
 2025-11-24 08:30:03,175 [INFO] ✅ HNXINDEX -> refPoint=263.13
 2025-11-24 08:30:03,176 [INFO] ✅ Hoàn thành tạo file refpoint.py.
 2025-11-24 08:30:03,177 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-25 08:30:02,892 [INFO] ✅ UPCOMINDEX -> refPoint=118.96
+2025-11-25 08:30:02,894 [INFO] ✅ HNXINDEX -> refPoint=261.22
+2025-11-25 08:30:02,903 [INFO] ✅ HNX30 -> refPoint=571.06
+2025-11-25 08:30:02,904 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-25 08:30:02,905 [INFO] 🔒 Đã đóng kết nối DB
