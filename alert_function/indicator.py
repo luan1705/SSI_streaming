@@ -48,50 +48,26 @@ def caculate_indicators(data: pd.DataFrame, new_tick: dict) -> pd.DataFrame:
     mfr = positive_mf_sum / negative_mf_sum
     data['MFI'] = round((100 - (100 / (1 + mfr))),2)
 
+    #Cát lên
+    ma10_cross_up = bool(data['close'].iloc[-2] < data['MA10'].iloc[-2] and data['close'].iloc[-1] >= data['MA10'].iloc[-1])
+    ma20_cross_up = bool(data['close'].iloc[-2] < data['MA20'].iloc[-2] and data['close'].iloc[-1]  >= data['MA20'].iloc[-1])
+    ma50_cross_up = bool(data['close'].iloc[-2] < data['MA50'].iloc[-2] and data['close'].iloc[-1]  >= data['MA50'].iloc[-1])
+    macd_cross_up = bool(data['MACD'].iloc[-2] < data['Signal_Line'].iloc[-2] and data['MACD'].iloc[-1] >= data['Signal_Line'].iloc[-1])
+    
+    #Cắt xuống
+    ma10_cross_down = bool(data['close'].iloc[-2] > data['MA10'].iloc[-2] and data['close'].iloc[-1]  <= data['MA10'].iloc[-1])
+    ma20_cross_down = bool(data['close'].iloc[-2] > data['MA20'].iloc[-2] and data['close'].iloc[-1]  <= data['MA20'].iloc[-1])
+    ma50_cross_down = bool(data['close'].iloc[-2] > data['MA50'].iloc[-2] and data['close'].iloc[-1]  <= data['MA50'].iloc[-1])
+    macd_cross_down = bool(data['MACD'].iloc[-2] > data['Signal_Line'].iloc[-2] and data['MACD'].iloc[-1] <= data['Signal_Line'].iloc[-1])
 
-    close_up_ma10 = False
-    close_up_ma20 = False
-    close_up_ma50 = False
+    # nằm trên
+    ma10_above = bool(data['close'].iloc[-1] >= data['MA10'].iloc[-1])
+    ma20_above = bool(data['close'].iloc[-1] >= data['MA20'].iloc[-1])
+    ma50_above = bool(data['close'].iloc[-1] >= data['MA50'].iloc[-1])
+    macd_above = bool(data['MACD'].iloc[-1] >= data['Signal_Line'].iloc[-1])
 
-    close_down_ma10 = False
-    close_down_ma20 = False
-    close_down_ma50 = False
-
-    macd_cross_up = False
-    macd_cross_down = False
-
-    # MA cắt lên
-    if data['close'].iloc[-2] < data['MA10'].iloc[-2] and data['close'].iloc[-1] >= data['MA10'].iloc[-1]:
-        close_up_ma10 = True
-    if data['close'].iloc[-2] < data['MA20'].iloc[-2] and data['close'].iloc[-1]  >= data['MA20'].iloc[-1]:
-        close_up_ma20 = True
-    if data['close'].iloc[-2] < data['MA50'].iloc[-2] and data['close'].iloc[-1]  >= data['MA50'].iloc[-1]:
-        close_up_ma50 = True
-
-    # MA cắt xuống
-    if data['close'].iloc[-2] > data['MA10'].iloc[-2] and data['close'].iloc[-1]  <= data['MA10'].iloc[-1]:
-        close_down_ma10 = True
-    if data['close'].iloc[-2] > data['MA20'].iloc[-2] and data['close'].iloc[-1]  <= data['MA20'].iloc[-1]:
-        close_down_ma20 = True
-    if data['close'].iloc[-2] > data['MA50'].iloc[-2] and data['close'].iloc[-1]  <= data['MA50'].iloc[-1]:
-        close_down_ma50 = True
-
-    #MACD cắt lên
-    if data['MACD'].iloc[-2] < data['Signal_Line'].iloc[-2] and data['MACD'].iloc[-1] >= data['Signal_Line'].iloc[-1]:
-        macd_cross_up = True
-
-    #MACD cắt xuống
-    if data['MACD'].iloc[-2] > data['Signal_Line'].iloc[-2] and data['MACD'].iloc[-1] <= data['Signal_Line'].iloc[-1]:
-        macd_cross_down = True
-
-    # status MA
-    status_up_ma10 = bool(data['close'].iloc[-1] >= data['MA10'].iloc[-1])
-    status_up_ma20 = bool(data['close'].iloc[-1] >= data['MA20'].iloc[-1])
-    status_up_ma50 = bool(data['close'].iloc[-1] >= data['MA50'].iloc[-1])
-
-    # status MACD
-    status_up_macd = bool(data['MACD'].iloc[-1] >= data['Signal_Line'].iloc[-1])
-
-    return (data, close_up_ma10, close_up_ma20, close_up_ma50, close_down_ma10, close_down_ma20,
-    close_down_ma50, macd_cross_up, macd_cross_down, status_up_ma10, status_up_ma20, status_up_ma50, status_up_macd)
+    return (data, 
+            ma10_cross_up, ma20_cross_up, ma50_cross_up,macd_cross_up,
+            ma10_cross_down, ma20_cross_down, ma50_cross_down, macd_cross_down,
+            ma10_above, ma20_above, ma50_above, macd_above)
 

@@ -53,10 +53,9 @@ def main():
                 # Thêm tick mới + tính lại indicator
                 (
                     df,
-                    close_up_ma10, close_up_ma20, close_up_ma50,
-                    close_down_ma10, close_down_ma20, close_down_ma50,
-                    macd_cross_up, macd_cross_down,
-                    status_up_ma10, status_up_ma20, status_up_ma50, status_up_macd
+                    ma10_cross_up, ma20_cross_up, ma50_cross_up, macd_cross_up,
+                    ma10_cross_down, ma20_cross_down, ma50_cross_down,macd_cross_down,
+                    ma10_above, ma20_above, ma50_above, macd_above
                 ) = caculate_indicators(df, data)
     
                 time_str = df["time"].iloc[-1].strftime("%Y-%m-%d %H:%M:%S")
@@ -78,10 +77,18 @@ def main():
                     'volume_10': df['volume_10'].iloc[-1],
                     'volume_20': df['volume_20'].iloc[-1],
                     'volume_50': df['volume_50'].iloc[-1],
-                    "status_up_ma10": status_up_ma10,
-                    "status_up_ma20": status_up_ma20,
-                    "status_up_ma50": status_up_ma50,
-                    "status_up_macd": status_up_macd,
+                    "ma10_cross_up": ma10_cross_up,
+                    "ma20_cross_up": ma20_cross_up,
+                    "ma50_cross_up": ma50_cross_up,
+                    "ma10_cross_down": ma10_cross_down,
+                    "ma20_cross_down": ma20_cross_down,
+                    "ma50_cross_down": ma50_cross_down,
+                    "macd_cross_up": macd_cross_up,
+                    "macd_cross_down": macd_cross_down,
+                    "ma10_above": ma10_above,
+                    "ma20_above": ma20_above,
+                    "ma50_above": ma50_above,
+                    "macd_above": macd_above,
                 }
 
                 status_envelope = {"function": "alert_status",
@@ -98,12 +105,12 @@ def main():
                 # ================= TRIGGER: chỉ bắn khi False -> True =================
                 # 1. trạng thái trigger hiện tại
                 current_trigger_state = {
-                    "close_up_ma10": close_up_ma10,
-                    "close_up_ma20": close_up_ma20,
-                    "close_up_ma50": close_up_ma50,
-                    "close_down_ma10": close_down_ma10,
-                    "close_down_ma20": close_down_ma20,
-                    "close_down_ma50": close_down_ma50,
+                    "ma10_cross_up": ma10_cross_up,
+                    "ma20_cross_up": ma20_cross_up,
+                    "ma50_cross_up": ma50_cross_up,
+                    "ma10_cross_down": ma10_cross_down,
+                    "ma20_cross_down": ma20_cross_down,
+                    "ma50_cross_down": ma50_cross_down,
                     "macd_cross_up": macd_cross_up,
                     "macd_cross_down": macd_cross_down,
                 }
