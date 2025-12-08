@@ -1,7 +1,7 @@
 # common_shared.py
 import logging
 from datetime import date
-from sqlalchemy import create_engine, MetaData, Table, Column, String, Float, Integer
+from sqlalchemy import create_engine, MetaData, Table, Column, String, Float, Integer, text
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 # ============ Logging ============
@@ -146,6 +146,28 @@ def upsert_mi(row: dict):
         stmt = pg_insert(mi_table).values([row])
         update_dict = {k: getattr(stmt.excluded, k) for k in row.keys() if k != "symbol"}
         conn.execute(stmt.on_conflict_do_update(index_elements=["symbol"], set_=update_dict))
+
+def update_price_now(price_now: dict):
+    symbol = price_now.get("symbol")
+    value  = price_now.get("price_now")
+
+    if not symbol:
+        logging.error("update_price_now: missing symbol")
+        return 0
+
+    sql = text("""
+        UPDATE market_data.break_out_break_down
+        SET price_now = :value
+        WHERE symbol = :symbol;
+    """)
+
+    try:
+        with engine.begin() as conn:
+            result = conn.execute(sql, {"symbol": symbol, "value": value})
+        return result.rowcount   # số dòng update được
+    except Exception as e:
+        logging.error(f"update_price_now error: {e}")
+        return 0
 
 
 

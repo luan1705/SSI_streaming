@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 
 # ====== IMPORTS THEO DỰ ÁN CỦA BẠN ======
 from List import configvi as config
-from List.upsert import upsert_eboard
+from List.upsert import upsert_eboard, update_price_now
 from List.exchange import HNXBOND
 from List.indices_map import indices_map
 import threading
@@ -141,6 +141,11 @@ def on_message_X(message):
         }
         row = {k: (null0(v) if k in ROW_ZERO_NULL_FIELDS else v) for k, v in row.items()}
         upsert_eboard(row)
+        
+        price_now ={"symbol":   sym,
+                    "price_now": data["LastPrice"]/1000}
+        update_price_now(price_now)
+
     except Exception:
         logging.exception("X message error")
 

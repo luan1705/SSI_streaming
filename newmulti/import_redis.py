@@ -20,7 +20,7 @@ POOL = redis.BlockingConnectionPool.from_url(
     socket_timeout=2.5,           # timeout đọc/ghi
     socket_connect_timeout=2.0,   # timeout connect
     health_check_interval=30,     # ping định kỳ 30s
-    max_connections=3,            # Mỗi container chỉ tối đa 3 socket tới Redis
+    max_connections=30,            # Mỗi container chỉ tối đa 3 socket tới Redis
     timeout=1.0,                  # Khi pool bận, chờ tối đa 1s để lấy connection (không drop)
 )
 r = redis.Redis(connection_pool=POOL)
@@ -32,10 +32,11 @@ SCHEMA = "history_tradingview"
 # Hàm lấy dữ liệu từ PostgreSQL và lưu vào Redis
 def get_data_and_cache(symbol):
     query = text(f"""
-        SELECT "close", "time", "volume"
+        SELECT "time", "symbol", "open", "high", "low", "close", "volume"
         FROM "{SCHEMA}"."{symbol}_1D"
+        WHERE "time"::date != CURRENT_DATE
         ORDER BY time DESC
-        LIMIT 50
+        LIMIT 200
     """)
     try:
         df = pd.read_sql(query, con=engine)
@@ -44,11 +45,15 @@ def get_data_and_cache(symbol):
             redis_list = [
                 json.dumps({
                     "time": row["time"].strftime("%Y-%m-%d %H:%M:%S"),
+                    "symbol": row["symbol"],
+                    "open": row["open"],
+                    "high": row["high"],
+                    "low": row["low"],
                     "close": row["close"],
                     "volume": row["volume"]
                 }) for _, row in df.iterrows()
             ]
-            redis_key = f"{SCHEMA}: {symbol}"
+            redis_key = f"{SCHEMA}:{symbol}"
             r.delete(redis_key)
             r.rpush(redis_key, *redis_list)
             print(f"✅ Đã lưu Redis: {symbol}")
@@ -56,7 +61,7 @@ def get_data_and_cache(symbol):
         else:
             print(f"⚠️ Không có dữ liệu: {symbol}")
     except Exception as e:
-        print(f"Lỗi {symbol}: {e}")
+        print(f"Lỗi {symbol}:{e}")
     return None
 
 # Hàm chạy đa luồng

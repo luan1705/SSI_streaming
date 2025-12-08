@@ -8,7 +8,7 @@ import pandas as pd
 
 # ====== IMPORTS THEO DỰ ÁN CỦA BẠN ======
 from List import configminh as config
-from List.upsert import upsert_eboard
+from List.upsert import upsert_eboard, update_price_now
 from List.exchange import UPCOM2
 from List.indices_map import indices_map
 import threading
@@ -79,24 +79,24 @@ def _next_9pm_unix(tz_name: str = "Asia/Ho_Chi_Minh") -> int:
         target += timedelta(days=1)
     return int(target.timestamp())
 
-def save_redis_alert(row: dict, tz_name: str = "Asia/Ho_Chi_Minh") -> bool:
+def save_redis_alert(msg: dict, tz_name: str = "Asia/Ho_Chi_Minh") -> bool:
     """
     Overwrite hoàn toàn (upsert kiểu replace): luôn chỉ còn 1 JSON mới nhất.
-    Key: alert_function:{symbol}
-    Hết hạn đúng 21:00 (giờ địa phương).
+    Key: latest_message:{symbol}
     """
-    symbol = (row.get("symbol") or "").strip()
+    # Lấy symbol từ content
+    content = msg.get("content") or {}
+    symbol = (content.get("symbol") or "").strip()
     if not symbol:
+        logging.warning(f"save_redis_alert: missing symbol in msg={msg}")
         return False
 
     key = f"latest_message:{symbol}"
-    payload = json.dumps(row, ensure_ascii=False)
+    payload = json.dumps(msg, ensure_ascii=False)
 
-    # Ghi đè (không merge)
     r.set(key, payload)
-
-    # Đặt hết hạn đúng 21:00 hôm nay (hoặc ngày mai nếu đã quá 21:00)
     # r.expireat(key, _next_9pm_unix(tz_name))
+    # logging.info(f"Saved alert to Redis key={key}")
     return True
         
 def find_indices(symbol: str) -> list[str] | None:
@@ -175,7 +175,12 @@ def on_message_X(message):
         }
         row = {k: (null0(v) if k in ROW_ZERO_NULL_FIELDS else v) for k, v in row.items()}
         upsert_eboard(row)
-        save_redis_alert(row)
+        save_redis_alert(result)
+
+        price_now ={"symbol":   sym,
+                    "price_now": data["LastPrice"]/1000}
+        update_price_now(price_now)
+
     except Exception:
         logging.exception(f"X message error - {sym}")
 
