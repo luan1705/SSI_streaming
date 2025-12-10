@@ -1,4 +1,5 @@
 # Data processing & DB
 pandas
 redis>=5.0.0
+requests
 

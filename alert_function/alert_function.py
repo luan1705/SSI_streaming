@@ -5,6 +5,9 @@ import pandas as pd
 from indicator import caculate_indicators
 import math
 from collections.abc import Mapping, Sequence
+import requests
+
+WEBHOOK_URL = "https://n8n.videv.cloud/webhook/redis_alert" 
 
 # ✅ NEW: hàm đổi NaN / inf -> None (lúc json.dumps sẽ ra null)
 def to_native(o):
@@ -48,8 +51,8 @@ def main():
     pubsub = r.pubsub()
     pubsub.psubscribe("ebtb_hose*", "ebtb_hnx*", "ebtb_upcom*")
     print("STATUS CONSUMER: listening on streaming:* ...")
-    try:
-        while True:
+    while True:
+        try:
             msg = pubsub.get_message(ignore_subscribe_messages=True, timeout=1.0)
 
             # Không có gì thì bỏ qua, loop tiếp
@@ -171,8 +174,8 @@ def main():
                 }
                 trigger_json = json.dumps(trigger_envelope)
                 r.publish("alert_function", trigger_json)
-    except Exception as e:
-        print(f"Lỗi alert function:", e)
+        except Exception as e:
+            print(f"Lỗi alert function:", e)
 
 if __name__ == "__main__":
     main()

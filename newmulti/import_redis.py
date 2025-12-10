@@ -66,7 +66,7 @@ def get_data_and_cache(symbol):
 
 # Hàm chạy đa luồng
 def run_multithreaded_cache():
-    with ThreadPoolExecutor(max_workers=20) as executor:
+    with ThreadPoolExecutor(max_workers=15) as executor:
         futures = [executor.submit(get_data_and_cache, symbol) for symbol in symbol_list]
 
         for future in as_completed(futures):

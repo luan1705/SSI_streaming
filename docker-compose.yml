@@ -652,6 +652,17 @@ services:
       - appnet
     restart: unless-stopped
 
+  alert_webhook:
+    build:
+      context: ./alert_function
+      dockerfile: Dockerfile
+    image: alert_webhook:latest
+    container_name: alert_webhook
+    command: python3 alert_webhook.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
 # =============================================bổ sung ở đây============================================
 
 #
