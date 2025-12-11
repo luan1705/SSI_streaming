@@ -65,8 +65,8 @@ HOSE9 = [
 HOSE10 = [
     "VDS",	"VFG",	"VGC",	"VHC",	"VHM",	"VIB",	"VIC",	"VID",	"VIP",	"VIX",
     "VJC",	"VMD",	"VND",	"VNE",	"VNG",	"VNL",	"VNM",	"VNS",	"VOS",	"VPB",
-    "VPD",	"VPG",	"VPH",	"VPI",	"VPL",	"VPS",	"VRC",	"VRE",	"VSC",	"VSH",
-    "VSI",	"VTB",	"VTO",	"VTP",	"VVS",	"YBM",	"YEG",
+    "VPD",	"VPG",	"VPH",	"VPI",	"VPL",	"VPS",	"VPX",	"VRC",	"VRE",	"VSC",
+    "VSH",	"VSI",	"VTB",	"VTO",	"VTP",	"VVS",	"YBM",	"YEG",
 ]
 # <HOSE END>
 

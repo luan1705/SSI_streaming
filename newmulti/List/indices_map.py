@@ -25,7 +25,7 @@ indices_map = {
         'TNI','TNT','TPB','TPC','TRA','TRC','TSC','TTA','TTE','TTF','TV2','TVB','TVS','TVT','TYA','UIC',
         'VAB','VAF','VCA','VCB','VCF','VCG','VCI','VDP','VDS','VFG','VGC','VHC','VHM','VIB','VIC','VID',
         'VIP','VIX','VJC','VMD','VND','VNE','VNG','VNL','VNM','VNS','VOS','VPB','VPD','VPG','VPH','VPI',
-        'VPL','VPS','VRC','VRE','VSC','VSH','VSI','VTB','VTO','VTP','VVS','YBM','YEG',
+        'VPL','VPS','VPX','VRC','VRE','VSC','VSH','VSI','VTB','VTO','VTP','VVS','YBM','YEG',
 ],
     'HNXINDEX': [
         'AAV','ADC','ALT','AMC','AME','AMV','API','APS','ARM','ATS','BAB','BAX','BBS','BCC','BCF','BED',
