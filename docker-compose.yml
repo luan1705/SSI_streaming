@@ -36,6 +36,14 @@ x-alert: &alert
   networks: [appnet]
   restart: unless-stopped
 
+x-db-writer: &db_writer
+  build:
+    context: ./db_writer
+    dockerfile: Dockerfile
+  image: db_writer:latest
+  networks: [appnet]
+  restart: unless-stopped
+
 services:
   #---------------------------------------------EBOARD TABLE------------------------------------------------
   ebtb_cw:
@@ -135,6 +143,13 @@ services:
     image: alert_webhook:latest
     container_name: alert_webhook
     command: ["python3", "-u", "alert_webhook.py"]
+
+  #---------------------------------------------DB_WRITER------------------------------------------------
+
+  db_writer:
+    <<: *db_writer
+    container_name: db_writer
+    command: ["python3", "-u", "db_writer.py"]
 
 networks:
   appnet:

@@ -34,7 +34,7 @@ r = redis.Redis(connection_pool=POOL)
 
 
 def get_data_from_redis(symbol: str) -> pd.DataFrame:
-    redis_key = f"history_tradingview:{symbol}"
+    redis_key = f"ohlcv:{symbol}"
     values = r.lrange(redis_key, 0, -1)
 
     if not values:

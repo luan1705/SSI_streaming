@@ -3,7 +3,7 @@ from ssi_fc_data.fc_md_stream import MarketDataStream
 from ssi_fc_data.fc_md_client import MarketDataClient
 
 from List import confighao as config
-from List.upsert import update_eboard
+#from List.upsert import update_eboard
 from List.exchange import EBOARD_GROUPS
 # =========================================
 GROUP_KEY = os.getenv("EBOARD_GROUP")
@@ -66,18 +66,18 @@ def on_message_R(message):
         # Publish result sang Redis để Hub gom về 1 WS port
         publish(result)
 
-        # save DB
-        c = result["content"]
-        row = {
-            "symbol": c["symbol"],
-            "foreignBuyVol":    c["buyVol"],
-            "foreignSellVol":   c["sellVol"],
-            "foreignRoom":   c["room"],
-            "foreignBuyVal":    c["buyVal"],
-            "foreignSellVal":   c["sellVal"],
-        }
-        # row = {k: (None if (v == 0 or v == "0") else v) for k, v in row.items()}
-        update_eboard(row)
+        # # save DB
+        # c = result["content"]
+        # row = {
+        #     "symbol": c["symbol"],
+        #     "foreignBuyVol":    c["buyVol"],
+        #     "foreignSellVol":   c["sellVol"],
+        #     "foreignRoom":   c["room"],
+        #     "foreignBuyVal":    c["buyVal"],
+        #     "foreignSellVal":   c["sellVal"],
+        # }
+        # # row = {k: (None if (v == 0 or v == "0") else v) for k, v in row.items()}
+        # update_eboard(row)
     except Exception:
         logging.exception("R message error")
 
@@ -108,7 +108,7 @@ def main():
                 RECONNECT.clear()
         except Exception as e:
             logging.error("Stream crashed: %s", e)
-            time.sleep(2)
+            time.sleep(1)
 
 if __name__ == "__main__":
     main()

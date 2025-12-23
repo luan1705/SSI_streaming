@@ -12,7 +12,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # ================== CẤU HÌNH ==================
-PG_URL = 'postgresql://vnsfintech:%40Vns123456@videv.cloud:5432/vnsfintech'
+PG_URL = "postgresql+psycopg2://vnsfintech:Vns_123456@videv.cloud:5433/vnsfintech"
 
 # Danh sách symbol cần lấy refPoint (dùng thẳng, không map)
 SYMBOLS = ["HNXINDEX", "UPCOMINDEX", "HNX30"]

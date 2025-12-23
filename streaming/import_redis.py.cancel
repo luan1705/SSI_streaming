@@ -10,7 +10,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from List.exchange import total_list
 
 # Kết nối DB
-engine = create_engine('postgresql://vnsfintech:%40Vns123456@videv.cloud:5432/vnsfintech')
+engine = create_engine("postgresql+psycopg2://vnsfintech:Vns_123456@videv.cloud:5433/vnsfintech")
 
 # Kết nối Redis
 REDIS_URL   = "redis://default:%40Vns123456@videv.cloud:6379/1"
@@ -27,7 +27,7 @@ r = redis.Redis(connection_pool=POOL)
 
 # Danh sách mã
 symbol_list = total_list
-SCHEMA = "history_tradingview"
+SCHEMA = "ohlcv"
 
 # Hàm lấy dữ liệu từ PostgreSQL và lưu vào Redis
 def get_data_and_cache(symbol):

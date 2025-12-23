@@ -7,8 +7,8 @@ from zoneinfo import ZoneInfo
 
 # ====== IMPORTS THEO DỰ ÁN CỦA BẠN ======
 from List import configvi as config
-from List.upsert import upsert_eboard, update_price_now
-from List.exchange import EBOARD_GROUPS2
+#from List.upsert import upsert_eboard, update_price_now
+from List.exchange import EBOARD_GROUPS2, EXCHANGE_LISTS
 from List.indices_map import indices_map
 import threading
 # =========================================
@@ -77,6 +77,14 @@ def find_indices(symbol: str) -> list[str] | None:
     res = [idx for idx, symbols in indices_map.items() if symbol in symbols]
     return res or None
 
+_SYMBOL2EX = {s: ex for ex, lst in EXCHANGE_LISTS.items() for s in lst}
+
+def get_exchange(symbol: str):
+    if not symbol:
+        return None
+    return _SYMBOL2EX.get(symbol.strip().upper())
+
+
 def on_message_X(message):
     try:
         data = json.loads(message.get("Content","{}"))
@@ -87,7 +95,7 @@ def on_message_X(message):
             "function": "eboard_table",
             "content": {
                 "symbol":   sym,
-                "exchange": 'CW',
+                "exchange": get_exchange(sym),
                 "indices":  find_indices(sym),
                 "ceiling":  data["Ceiling"] / 1000,
                 "floor":    data["Floor"] / 1000,
@@ -118,36 +126,36 @@ def on_message_X(message):
         # Publish result sang Redis để Hub gom về 1 WS port
         publish(result)
 
-        # save DB
-        c = result["content"]
-        indices = c["indices"]
-        if isinstance(indices, list):
-            indices = "|".join(indices)
+        # # save DB
+        # c = result["content"]
+        # indices = c["indices"]
+        # if isinstance(indices, list):
+        #     indices = "|".join(indices)
 
-        row = {
-            "symbol":   c["symbol"],
-            "exchange": c["exchange"],
-            "indices":  indices,
-            "ceiling":  c["ceiling"],
-            "floor":    c["floor"],
-            "refPrice": c["refPrice"],
-            "buyPrice1": c["buy"]["price"][0], "buyVol1": c["buy"]["vol"][0],
-            "buyPrice2": c["buy"]["price"][1], "buyVol2": c["buy"]["vol"][1],
-            "buyPrice3": c["buy"]["price"][2], "buyVol3": c["buy"]["vol"][2],
-            "matchPrice": c["match"]["price"], "matchVol": c["match"]["vol"],
-            "matchChange": c["match"]["change"], "matchRatioChange": c["match"]["ratioChange"],
-            "sellPrice1": c["sell"]["price"][0], "sellVol1": c["sell"]["vol"][0],
-            "sellPrice2": c["sell"]["price"][1], "sellVol2": c["sell"]["vol"][1],
-            "sellPrice3": c["sell"]["price"][2], "sellVol3": c["sell"]["vol"][2],
-            "totalVol": c["totalVol"], "totalVal": c["totalVal"],
-            "high": c["high"], "low": c["low"], "open": c["open"], "close": c["close"],
-        }
-        row = {k: (null0(v) if k in ROW_ZERO_NULL_FIELDS else v) for k, v in row.items()}
-        upsert_eboard(row)
+        # row = {
+        #     "symbol":   c["symbol"],
+        #     # "exchange": c["exchange"],
+        #     # "indices":  indices,
+        #     "ceiling":  c["ceiling"],
+        #     "floor":    c["floor"],
+        #     "refPrice": c["refPrice"],
+        #     "buyPrice1": c["buy"]["price"][0], "buyVol1": c["buy"]["vol"][0],
+        #     "buyPrice2": c["buy"]["price"][1], "buyVol2": c["buy"]["vol"][1],
+        #     "buyPrice3": c["buy"]["price"][2], "buyVol3": c["buy"]["vol"][2],
+        #     "matchPrice": c["match"]["price"], "matchVol": c["match"]["vol"],
+        #     "matchChange": c["match"]["change"], "matchRatioChange": c["match"]["ratioChange"],
+        #     "sellPrice1": c["sell"]["price"][0], "sellVol1": c["sell"]["vol"][0],
+        #     "sellPrice2": c["sell"]["price"][1], "sellVol2": c["sell"]["vol"][1],
+        #     "sellPrice3": c["sell"]["price"][2], "sellVol3": c["sell"]["vol"][2],
+        #     "totalVol": c["totalVol"], "totalVal": c["totalVal"],
+        #     "high": c["high"], "low": c["low"], "open": c["open"], "close": c["close"],
+        # }
+        # row = {k: (null0(v) if k in ROW_ZERO_NULL_FIELDS else v) for k, v in row.items()}
+        # upsert_eboard(row)
         
-        price_now ={"symbol":   sym,
-                    "price_now": data["LastPrice"]/1000}
-        update_price_now(price_now)
+        # price_now ={"symbol":   sym,
+        #             "price_now": data["LastPrice"]/1000}
+        # update_price_now(price_now)
 
     except Exception:
         logging.exception("X message error")
@@ -180,7 +188,7 @@ def main():
                 
         except Exception as e:
             logging.error("Stream crashed: %s", e)
-            time.sleep(2)
+            time.sleep(1)
 
 if __name__ == "__main__":
     main()

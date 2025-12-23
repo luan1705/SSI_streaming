@@ -12,7 +12,7 @@ logging.basicConfig(
 
 # ============ DB ============
 engine = create_engine(
-    "postgresql+psycopg2://vnsfintech:%40Vns123456@videv.cloud:5432/vnsfintech",
+    "postgresql+psycopg2://vnsfintech:Vns_123456@videv.cloud:5433/vnsfintech",
     echo=False,
     pool_pre_ping=True,
 )
@@ -53,8 +53,8 @@ metadata = MetaData()
 eboard=Table(
     "eboard", metadata,
     Column('symbol', String, primary_key=True),
-    Column('exchange', String),
-    Column('indices', String),
+    # Column('exchange', String),
+    # Column('indices', String),
     Column('ceiling', Float),
     Column('floor', Float),
     Column('refPrice', Float),
@@ -73,11 +73,11 @@ eboard=Table(
     Column("foreignRoom", Float),
     Column("foreignBuyVal", Float),
     Column("foreignSellVal", Float),
-    schema="history_data"
+    schema="details"
 )
 
 mi_table = Table(
-    "indices", metadata,
+    "vietnam", metadata,
     Column("symbol", String, primary_key=True),
     Column("point", Float),
     Column("refPoint", Float),
@@ -97,13 +97,13 @@ mi_table = Table(
     Column("declinersVal", Float),
     Column("ceiling", Integer),
     Column("floor", Integer),
-    Column("open", Float),
-    Column("close", Float),
-    Column("high", Float),
-    Column("low", Float),
-    Column("vol", Float),
-    Column("val", Float),
-    schema="history_data"
+    # Column("open", Float),
+    # Column("close", Float),
+    # Column("high", Float),
+    # Column("low", Float),
+    # Column("vol", Float),
+    # Column("val", Float),
+    schema="indices"
 )
 
 metadata.create_all(engine)
@@ -156,7 +156,7 @@ def update_price_now(price_now: dict):
         return 0
 
     sql = text("""
-        UPDATE market_data.break_out_break_down
+        UPDATE status.break
         SET price_now = :value
         WHERE symbol = :symbol;
     """)
