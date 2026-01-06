@@ -49,7 +49,7 @@ def get_data_from_redis(symbol: str) -> pd.DataFrame:
 
 def main():
     pubsub = r.pubsub()
-    pubsub.psubscribe("ebtb_hose*", "ebtb_hnx*", "ebtb_upcom*")
+    pubsub.subscribe("asset")
     print("STATUS CONSUMER: listening on streaming:* ...")
     while True:
         try:
@@ -60,14 +60,16 @@ def main():
                 continue
 
             # Bỏ qua message hệ thống
-            if msg["type"] != "pmessage":
+            if msg["type"] != "message":
                 continue
             
             data_str = msg["data"]
             raw = json.loads(data_str)
-            data = raw["content"]
+            data = raw
              # tick: dict realtime từ streaming
-            symbol = data["symbol"]
+            symbol = data.get("symbol")
+            if not (symbol and isinstance(symbol, str) and symbol.isalpha() and len(symbol) == 3):
+                continue
              # Lấy history
             df = get_data_from_redis(symbol)
              # Thêm tick mới + tính lại indicator

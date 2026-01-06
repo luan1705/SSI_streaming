@@ -26,11 +26,10 @@ if not SYMBOL_LIST:
 
 # default channel: indices_1..indices_5 (giống style của mày)
 suffix = GROUP_KEY.replace("indices", "").strip()  # "1".."5"
-DEFAULT_CHANNEL = f"indices_{suffix}" if suffix.isdigit() else GROUP_KEY
 # ------------------------------------------------------
 
 REDIS_URL   = os.getenv("REDIS_URL", "redis://default:%40Vns123456@videv.cloud:6379/1")
-CHANNEL     = os.getenv("INDICES_CHANNEL",DEFAULT_CHANNEL)
+CHANNEL     = "indices"
 PG_URL      = os.getenv("PG_URL", "postgresql+psycopg2://vnsfintech:Vns_123456@videv.cloud:5433/vnsfintech")
 
 STREAM_CODE = "MI:" + "-".join(SYMBOL_LIST)
@@ -101,14 +100,14 @@ def _map_symbol(sym: str) -> str:
     return SYMBOL_MAP.get(sym, sym)
 
 def _get_counts_from_db(index_symbol: str):
-    """(adv, nc, dec) từ eboard."""
+    """(adv, nc, dec) từ asset."""
     pattern = f"%|{index_symbol}|%"
     sql = text("""
         SELECT
           SUM(CASE WHEN "matchChange" > 0 THEN 1 ELSE 0 END)::BIGINT     AS adv,
           SUM(CASE WHEN "matchChange" = 0 THEN 1 ELSE 0 END)::BIGINT     AS nc,
           SUM(CASE WHEN "matchChange" < 0 THEN 1 ELSE 0 END)::BIGINT     AS dec
-        FROM "details"."eboard" left join "info"."stock" using("symbol")
+        FROM "details"."asset" left join "info"."stock" using("symbol")
         WHERE "indices" IS NOT NULL
           AND ('|' || "indices" || '|') LIKE :pat
     """)
@@ -121,14 +120,14 @@ def _get_counts_from_db(index_symbol: str):
     return (int(row["adv"] or 0), int(row["nc"] or 0), int(row["dec"] or 0))
 
 def _get_vals_from_db(index_symbol: str):
-    """(advVal, ncVal, decVal) từ eboard, tổng totalVal theo state."""
+    """(advVal, ncVal, decVal) từ asset, tổng totalVal theo state."""
     pattern = f"%|{index_symbol}|%"
     sql = text("""
         SELECT
           SUM(CASE WHEN "matchChange" > 0  THEN COALESCE("totalVal",0) ELSE 0 END)::DOUBLE PRECISION AS "advVal",
           SUM(CASE WHEN "matchChange" = 0  THEN COALESCE("totalVal",0) ELSE 0 END)::DOUBLE PRECISION AS "ncVal",
           SUM(CASE WHEN "matchChange" < 0  THEN COALESCE("totalVal",0) ELSE 0 END)::DOUBLE PRECISION AS "decVal"
-        FROM "details"."eboard" left join "info"."stock" using("symbol")
+        FROM "details"."asset" left join "info"."stock" using("symbol")
         WHERE "indices" IS NOT NULL
           AND ('|' || "indices" || '|') LIKE :pat
     """)
@@ -152,7 +151,7 @@ def _get_cefl_counts_from_db(index_symbol: str):
         SELECT
           SUM(CASE WHEN "ceiling" IS NOT NULL AND "matchPrice" = "ceiling" THEN 1 ELSE 0 END)::BIGINT AS ceil_cnt,
           SUM(CASE WHEN "floor"   IS NOT NULL AND "matchPrice" = "floor"   THEN 1 ELSE 0 END)::BIGINT AS floor_cnt
-        FROM "details"."eboard" left join "info"."stock" using("symbol")
+        FROM "details"."asset" left join "info"."stock" using("symbol")
         WHERE "indices" IS NOT NULL
           AND ('|' || "indices" || '|') LIKE :pat
     """)
@@ -232,9 +231,7 @@ def on_message_MI(message):
         else:
             rp = data.get('PriorIndexValue')
 
-        result = {
-            'function': 'indices',
-            'content': {
+        result ={
                 'symbol': symbol,
                 'point': data.get('IndexValue'),
                 'refPoint': rp,
@@ -246,53 +243,18 @@ def on_message_MI(message):
                 'totalDealVal': data.get('TotalValuePt'),
                 'totalVol': data.get('AllQty'),
                 'totalVal': data.get('AllValue'),
-                'advancersDecliners': [adv, nc, dec],
-                'advancersDeclinersVal': [advVal, ncVal, decVal],   # ⬅️ THÊM VAL
-                'ceilingFloor': [ceil_cnt, floor_cnt], 
+                'advancers': adv,
+                'noChanges': nc,
+                'decliners': dec,
+                'advancersVal': advVal,
+                'noChangesVal': ncVal,
+                'declinersVal': decVal,
+                'ceiling': ceil_cnt,
+                'floor': floor_cnt,
             }
-        }
 
         # Publish hợp nhất
         publish(result)
-
-        # # Upsert DB (nếu bảng có cột tương ứng)
-        # c = result["content"]
-        # row = {
-        #     "symbol":        c["symbol"],
-        #     "point":         c["point"],
-        #     "refPoint":      c["refPoint"],
-        #     "change":        c["change"],
-        #     "ratioChange":   c["ratioChange"],
-        #     "totalMatchVol": c["totalMatchVol"],
-        #     "totalMatchVal": c["totalMatchVal"],
-        #     "totalDealVol":  c["totalDealVol"],
-        #     "totalDealVal":  c["totalDealVal"],
-        #     "totalVol":      c["totalVol"],
-        #     "totalVal":      c["totalVal"],
-        #     "advancers":     adv,
-        #     "noChange":      nc,
-        #     "decliners":     dec,
-        #     "advancersVal":  advVal,
-        #     "noChangeVal":   ncVal,
-        #     "declinersVal":  decVal,
-        #     "ceiling":       ceil_cnt, 
-        #     "floor":         floor_cnt,            
-        # }
-        # # Trong giờ VN [09:00, 15:00) -> close = point hiện tại
-        # # local_now = _now_vn().time()
-        # # if dtime(9, 0) <= local_now < dtime(15, 0):
-        # #     try:
-        # #         row["close"] = float(c["point"]) if c["point"] is not None else None
-        # #     except Exception:
-        # #         row["close"] = None
-
-        # # 0 -> None (giữ thói quen của bạn; bỏ nếu không cần)
-        # # row = {k: (None if (v == 0 or v == "0") else v) for k, v in row.items()}
-
-        # try:
-        #     upsert_mi(row)
-        # except Exception:
-        #     log.exception("upsert_mi failed")
 
     except Exception:
         log.exception("MI message error")

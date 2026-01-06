@@ -16,7 +16,7 @@ import threading
 # ---------- Cấu hình qua ENV ----------
 REDIS_URL   = "redis://default:%40Vns123456@videv.cloud:6379/1"
 STREAM_CODE = "X:" + "-".join(DERIVATIVES)
-CHANNEL = "ebtb_derivatives"
+CHANNEL = "asset"
 # --------------------------------------
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -33,31 +33,38 @@ r = redis.Redis(connection_pool=POOL)
 
 # ---- Helpers & cấu hình tối giản ----
 def null0(v):
-    return None if (v == 0 or v == "0" or (isinstance(v, float) and abs(v) < 1e-12)) else v
+    """Chỉ đổi 0 -> None (giữ nguyên các giá trị khác)."""
+    try:
+        if v is None:
+            return None
+        if v == 0 or v == "0":
+            return None
+        if isinstance(v, float) and abs(v) < 1e-12:
+            return None
+        return v
+    except Exception:
+        return v
 
 def normalize_buy_sell(content: dict):
-    """Chỉ đổi 0 -> null cho BUY/SELL (price & vol)."""
-    bs = content.get("buy", {})
-    if "price" in bs: bs["price"] = [null0(x) for x in bs["price"]]
-    if "vol"   in bs: bs["vol"]   = [null0(x) for x in bs["vol"]]
-    ss = content.get("sell", {})
-    if "price" in ss: ss["price"] = [null0(x) for x in ss["price"]]
-    if "vol"   in ss: ss["vol"]   = [null0(x) for x in ss["vol"]]
+    """
+    CHỈ xử lý BUY/SELL level 1..3 (giá + vol) theo dạng field phẳng:
+    buyPrice1..3, buyVol1..3, sellPrice1..3, sellVol1..3
+    """
+    for i in range(1, 4):
+        bp = f"buyPrice{i}";  bv = f"buyVol{i}"
+        sp = f"sellPrice{i}"; sv = f"sellVol{i}"
 
-# chỉ buy/sell price & vol của row (tự sinh 1..3 để khỏi phải gõ tay)
-ROW_ZERO_NULL_FIELDS = (
-    {f"buyPrice{i}" for i in range(1,4)} |
-    {f"buyVol{i}"   for i in range(1,4)} |
-    {f"sellPrice{i}" for i in range(1,4)} |
-    {f"sellVol{i}"   for i in range(1,4)}
-)
+        if bp in content: content[bp] = null0(content.get(bp))
+        if bv in content: content[bv] = null0(content.get(bv))
+        if sp in content: content[sp] = null0(content.get(sp))
+        if sv in content: content[sv] = null0(content.get(sv))
 
 
 
 def publish(payload: dict):
     global r
-    if "source" not in payload:
-        payload["source"] = CHANNEL
+    # if "source" not in payload:
+    #     payload["source"] = CHANNEL
     try:
         r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
     except Exception as e:
@@ -75,34 +82,35 @@ def find_indices(symbol: str) -> list[str] | None:
     return res or None
 
 def on_message_X(message):
+    sym=""
     try:
         data = json.loads(message.get("Content","{}"))
-        if data["RatioChange"] == -100:
+        if data.get("RatioChange") == -100:
             return 
         sym = data["Symbol"]
-        result = {
-            "function": "eboard_table",
-            "content": {
+        result ={
                 "symbol":   sym,
-                "exchange": 'DERIVATIVES',
-                "indices":  find_indices(sym),
+                # "exchange": 'DERIVATIVES',
+                # "indices":  find_indices(sym),
                 "ceiling":  data["Ceiling"],
                 "floor":    data["Floor"],
                 "refPrice": data["RefPrice"],
-                "buy": {
-                    "price": [data["BidPrice1"], data["BidPrice2"], data["BidPrice3"]],
-                    "vol":   [data["BidVol1"], data["BidVol2"], data["BidVol3"]],
-                },
-                "match": {
-                    "price": data["LastPrice"],
-                    "vol":   data["LastVol"],
-                    "change": data["Change"],
-                    "ratioChange": data["RatioChange"],
-                },
-                "sell": {
-                    "price": [data["AskPrice1"], data["AskPrice2"], data["AskPrice3"]],
-                    "vol":   [data["AskVol1"], data["AskVol2"], data["AskVol3"]],
-                },
+                "buyPrice3": data["BidPrice3"],
+                "buyVol3":   data["BidVol3"],
+                "buyPrice2": data["BidPrice2"],
+                "buyVol2":   data["BidVol2"],
+                "buyPrice1": data["BidPrice1"],
+                "buyVol1":   data["BidVol1"],
+                "matchPrice": data["LastPrice"],
+                "matchVol":   data["LastVol"],
+                "matchChange": round(data["Change"], 2),
+                "matchRatioChange": data["RatioChange"],
+                "sellPrice1": data["AskPrice1"],
+                "sellVol1":   data["AskVol1"],
+                "sellPrice2": data["AskPrice2"],
+                "sellVol2":   data["AskVol2"],
+                "sellPrice3": data["AskPrice3"],
+                "sellVol3":   data["AskVol3"],
                 "totalVol": data["TotalVol"],
                 "totalVal": data["TotalVal"],
                 "high":  data["High"],
@@ -110,44 +118,12 @@ def on_message_X(message):
                 "open":  data["Open"],
                 "close": data["Close"],
             }
-        }
-        normalize_buy_sell(result["content"])
+        normalize_buy_sell(result)
         # Publish result sang Redis để Hub gom về 1 WS port
         publish(result)
 
-        # # save DB
-        # c = result["content"]
-        # indices = c["indices"]
-        # if isinstance(indices, list):
-        #     indices = "|".join(indices)
-
-        # row = {
-        #     "symbol":   c["symbol"],
-        #     # "exchange": c["exchange"],
-        #     # "indices":  indices,
-        #     "ceiling":  c["ceiling"],
-        #     "floor":    c["floor"],
-        #     "refPrice": c["refPrice"],
-        #     "buyPrice1": c["buy"]["price"][0], "buyVol1": c["buy"]["vol"][0],
-        #     "buyPrice2": c["buy"]["price"][1], "buyVol2": c["buy"]["vol"][1],
-        #     "buyPrice3": c["buy"]["price"][2], "buyVol3": c["buy"]["vol"][2],
-        #     "matchPrice": c["match"]["price"], "matchVol": c["match"]["vol"],
-        #     "matchChange": c["match"]["change"], "matchRatioChange": c["match"]["ratioChange"],
-        #     "sellPrice1": c["sell"]["price"][0], "sellVol1": c["sell"]["vol"][0],
-        #     "sellPrice2": c["sell"]["price"][1], "sellVol2": c["sell"]["vol"][1],
-        #     "sellPrice3": c["sell"]["price"][2], "sellVol3": c["sell"]["vol"][2],
-        #     "totalVol": c["totalVol"], "totalVal": c["totalVal"],
-        #     "high": c["high"], "low": c["low"], "open": c["open"], "close": c["close"],
-        # }
-        # row = {k: (null0(v) if k in ROW_ZERO_NULL_FIELDS else v) for k, v in row.items()}
-        # upsert_eboard(row)
-        
-        # price_now ={"symbol":   sym,
-        #             "price_now": data["LastPrice"]}
-        # update_price_now(price_now)
-
     except Exception:
-        logging.exception("X message error")
+        logging.exception("X message error - %s", sym)
 
 RECONNECT = threading.Event()
 

@@ -17,7 +17,7 @@ DB_URL    = os.getenv("DB_URL", "postgresql+psycopg2://vnsfintech:Vns_123456@vid
 
 PATTERNS = os.getenv(
     "PATTERNS",
-    "ebtb*,ebfr*,indices*"
+    "asset,indices"
 ).split(",")
 
 # Flush config
@@ -53,17 +53,17 @@ engine = create_engine(
 )
 
 md = MetaData()
-eboard      = Table("eboard", md, schema="details", autoload_with=engine)
+asset      = Table("asset", md, schema="details", autoload_with=engine)
 indices_tbl = Table("vietnam", md, schema="indices", autoload_with=engine)
 
 SQL_UPDATE_FOREIGN = text("""
-    UPDATE details.eboard
+    UPDATE details.asset
     SET
-      "foreignBuyVol"  = :buyVol,
-      "foreignSellVol" = :sellVol,
-      "foreignRoom"    = :room,
-      "foreignBuyVal"  = :buyVal,
-      "foreignSellVal" = :sellVal
+      "foreignBuyVol"  = COALESCE(:foreignBuyVol,  "foreignBuyVol"),
+      "foreignSellVol" = COALESCE(:foreignSellVol, "foreignSellVol"),
+      "foreignRoom"    = COALESCE(:foreignRoom,    "foreignRoom"),
+      "foreignBuyVal"  = COALESCE(:foreignBuyVal,  "foreignBuyVal"),
+      "foreignSellVal" = COALESCE(:foreignSellVal, "foreignSellVal")
     WHERE symbol = :symbol
 """)
 
@@ -77,20 +77,7 @@ SQL_UPSERT_PRICE_NOW = text("""
 # ======================
 # Mapping functions (giữ của bạn)
 # ======================
-def content_to_row_eboard_table(content: dict) -> dict:
-    buy   = content.get("buy") or {}
-    sell  = content.get("sell") or {}
-    match = content.get("match") or {}
-
-    buy_price  = (buy.get("price")  or [])
-    buy_vol    = (buy.get("vol")    or [])
-    sell_price = (sell.get("price") or [])
-    sell_vol   = (sell.get("vol")   or [])
-
-    buy_price  = (buy_price  + [None, None, None])[:3]
-    buy_vol    = (buy_vol    + [None, None, None])[:3]
-    sell_price = (sell_price + [None, None, None])[:3]
-    sell_vol   = (sell_vol   + [None, None, None])[:3]
+def content_to_row_asset_table(content: dict) -> dict:
 
     return {
         "symbol": content.get("symbol"),
@@ -98,18 +85,18 @@ def content_to_row_eboard_table(content: dict) -> dict:
         "floor":    content.get("floor"),
         "refPrice": content.get("refPrice"),
 
-        "buyPrice1": buy_price[0], "buyVol1": buy_vol[0],
-        "buyPrice2": buy_price[1], "buyVol2": buy_vol[1],
-        "buyPrice3": buy_price[2], "buyVol3": buy_vol[2],
+        "buyPrice1": content.get("buyPrice1"), "buyVol1": content.get("buyVol1"),
+        "buyPrice2": content.get("buyPrice2"), "buyVol2": content.get("buyVol2"),
+        "buyPrice3": content.get("buyPrice3"), "buyVol3": content.get("buyVol3"),
 
-        "matchPrice": match.get("price"),
-        "matchVol": match.get("vol"),
-        "matchChange": match.get("change"),
-        "matchRatioChange": match.get("ratioChange"),
+        "matchPrice": content.get("matchPrice"),
+        "matchVol": content.get("matchVol"),
+        "matchChange": content.get("matchChange"),
+        "matchRatioChange": content.get("matchRatioChange"),
 
-        "sellPrice1": sell_price[0], "sellVol1": sell_vol[0],
-        "sellPrice2": sell_price[1], "sellVol2": sell_vol[1],
-        "sellPrice3": sell_price[2], "sellVol3": sell_vol[2],
+        "sellPrice1": content.get("sellPrice1"), "sellVol1": content.get("sellVol1"),
+        "sellPrice2": content.get("sellPrice2"), "sellVol2": content.get("sellVol2"),
+        "sellPrice3": content.get("sellPrice3"), "sellVol3": content.get("sellVol3"),
 
         "totalVol": content.get("totalVol"),
         "totalVal": content.get("totalVal"),
@@ -121,13 +108,6 @@ def content_to_row_eboard_table(content: dict) -> dict:
     }
 
 def content_to_row_indices(content: dict) -> dict:
-    a  = (content.get("advancersDecliners") or [])
-    av = (content.get("advancersDeclinersVal") or [])
-    cf = (content.get("ceilingFloor") or [])
-
-    a  = (a  + [None, None, None])[:3]
-    av = (av + [None, None, None])[:3]
-    cf = (cf + [None, None])[:2]
 
     return {
         "symbol": content.get("symbol"),
@@ -143,16 +123,15 @@ def content_to_row_indices(content: dict) -> dict:
         "totalVol": content.get("totalVol"),
         "totalVal": content.get("totalVal"),
 
-        "advancers": a[0],
-        "noChange": a[1],
-        "decliners": a[2],
+        "advancers": content.get("advancers"),
+        "noChanges": content.get("noChanges"),
+        "decliners": content.get("decliners"),
+        "advancersVal": content.get("advancersVal"),
+        "noChangesVal": content.get("noChangesVal"),
+        "declinersVal": content.get("declinersVal"),
 
-        "advancersVal": av[0],
-        "noChangeVal": av[1],
-        "declinersVal": av[2],
-
-        "ceiling": cf[0],
-        "floor": cf[1],
+        "ceiling": content.get("ceiling"),
+        "floor": content.get("floor"),
     }
 
 # ======================
@@ -161,11 +140,21 @@ def content_to_row_indices(content: dict) -> dict:
 def upsert_many(conn, tbl: Table, rows: list[dict], pk: str = "symbol"):
     if not rows:
         return
+
+    # chỉ update các cột xuất hiện trong batch rows
+    cols_in_rows = set().union(*(r.keys() for r in rows))
+    cols_in_rows.discard(pk)
+
     stmt = pg_insert(tbl).values(rows)
-    # update tất cả column trừ pk
-    update_dict = {c.name: getattr(stmt.excluded, c.name) for c in tbl.columns if c.name != pk}
-    stmt = stmt.on_conflict_do_update(index_elements=[pk], set_=update_dict)
+    update_dict = {c: getattr(stmt.excluded, c) for c in cols_in_rows if c in tbl.c}
+
+    if update_dict:
+        stmt = stmt.on_conflict_do_update(index_elements=[pk], set_=update_dict)
+    else:
+        stmt = stmt.on_conflict_do_nothing(index_elements=[pk])
+
     conn.execute(stmt)
+
 
 # ======================
 # Main (coalesce + flush)
@@ -176,7 +165,7 @@ def main():
     logging.info("DB_WRITER(BATCH) listening patterns=%s ...", PATTERNS)
 
     # coalesce buffers: chỉ giữ latest theo symbol
-    eboard_buf: dict[str, dict]  = {}
+    asset_buf: dict[str, dict]  = {}
     indices_buf: dict[str, dict] = {}
     foreign_buf: dict[str, dict] = {}
     price_buf: dict[str, float]  = {}
@@ -186,14 +175,14 @@ def main():
     processed = 0
 
     def flush():
-        nonlocal last_flush, eboard_buf, indices_buf, foreign_buf, price_buf
+        nonlocal last_flush, asset_buf, indices_buf, foreign_buf, price_buf
 
-        if not (eboard_buf or indices_buf or foreign_buf or price_buf):
+        if not (asset_buf or indices_buf or foreign_buf or price_buf):
             last_flush = time.time()
             return
 
         # snapshot rồi clear nhanh để không chặn ingest
-        e_rows = list(eboard_buf.values());  eboard_buf.clear()
+        e_rows = list(asset_buf.values());  asset_buf.clear()
         i_rows = list(indices_buf.values()); indices_buf.clear()
         f_rows = list(foreign_buf.values()); foreign_buf.clear()
         p_rows = [{"symbol": k, "value": v} for k, v in price_buf.items()]; price_buf.clear()
@@ -201,8 +190,8 @@ def main():
         t0 = time.time()
         try:
             with engine.begin() as conn:
-                # upsert eboard / indices theo lô
-                upsert_many(conn, eboard, e_rows, pk="symbol")
+                # upsert asset / indices theo lô
+                upsert_many(conn, asset, e_rows, pk="symbol")
                 upsert_many(conn, indices_tbl, i_rows, pk="symbol")
 
                 # foreign: executemany update (nhanh)
@@ -242,37 +231,39 @@ def main():
         except Exception:
             continue
 
-        fn = raw.get("function")
-        content = raw.get("content") or {}
+        channel = msg.get("channel")
+        content = (raw.get("content") if isinstance(raw, dict) and "content" in raw else raw) or {}
         symbol = content.get("symbol")
 
         # ===== coalesce into buffers =====
-        if fn == "eboard_table" and symbol:
-            row = content_to_row_eboard_table(content)
-            eboard_buf[symbol] = row
+        if channel == "asset" and symbol:
+            # ====== asset (asset) ======
+            if "matchPrice" in content:
+                row = content_to_row_asset_table(content)
+                asset_buf[symbol] = row
 
-            match = content.get("match") or {}
-            px = match.get("price")
-            if px is not None:
-                price_buf[symbol] = px
+                px = content.get("matchPrice")
+                if px is not None:
+                    price_buf[symbol] = px
 
-        elif fn == "eboard_foreign" and symbol:
-            foreign_buf[symbol] = {
-                "symbol": symbol,
-                "buyVol":  content.get("buyVol"),
-                "sellVol": content.get("sellVol"),
-                "room":    content.get("room"),
-                "buyVal":  content.get("buyVal"),
-                "sellVal": content.get("sellVal"),
-            }
+            # ====== FOREIGN (asset) ======
+            elif any(k in content for k in ("foreignBuyVol", "foreignSellVol", "foreignRoom", "foreignBuyVal", "foreignSellVal")):
+                foreign_buf[symbol] = {
+                    "symbol": symbol,
+                    "foreignBuyVol":  content.get("foreignBuyVol"),
+                    "foreignSellVol": content.get("foreignSellVol"),
+                    "foreignRoom":    content.get("foreignRoom"),
+                    "foreignBuyVal":  content.get("foreignBuyVal"),
+                    "foreignSellVal": content.get("foreignSellVal"),
+                }
 
-        elif fn == "indices" and symbol:
+        elif channel == "indices" and symbol:
             indices_buf[symbol] = content_to_row_indices(content)
 
         processed += 1
 
         # tránh buffer phình nếu DB quá chậm
-        if (len(eboard_buf) + len(indices_buf) + len(foreign_buf) + len(price_buf)) >= MAX_BUFFER_SIZE:
+        if (len(asset_buf) + len(indices_buf) + len(foreign_buf) + len(price_buf)) >= MAX_BUFFER_SIZE:
             flush()
 
         # flush theo thời gian
@@ -282,7 +273,7 @@ def main():
         # log throughput
         if time.time() - last_log >= 5:
             logging.info("processed=%d buffers: e=%d i=%d f=%d p=%d",
-                         processed, len(eboard_buf), len(indices_buf), len(foreign_buf), len(price_buf))
+                         processed, len(asset_buf), len(indices_buf), len(foreign_buf), len(price_buf))
             last_log = time.time()
 
 if __name__ == "__main__":

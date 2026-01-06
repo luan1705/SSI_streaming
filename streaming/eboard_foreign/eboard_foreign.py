@@ -17,7 +17,7 @@ if not SYMBOL_LIST:
 # ---------- Cấu hình qua ENV ----------
 REDIS_URL   = "redis://default:%40Vns123456@videv.cloud:6379/1"
 STREAM_CODE = "R:" + "-".join(SYMBOL_LIST)
-CHANNEL = f"ebfr_{GROUP_KEY}"
+CHANNEL = "asset"
 # --------------------------------------
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -34,8 +34,8 @@ r = redis.Redis(connection_pool=POOL)
 
 def publish(payload: dict):
     global r
-    if "source" not in payload:
-        payload["source"] = CHANNEL
+    # if "source" not in payload:
+    #     payload["source"] = CHANNEL
     try:
         r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
     except Exception as e:
@@ -47,37 +47,35 @@ def publish(payload: dict):
             logging.info("Redis reconnected and published successfully")
         except Exception as e2:
             logging.error("Redis retry failed: %s", e2)
+
+def null0(v):
+    """0 -> None (null). Giữ nguyên các giá trị khác."""
+    try:
+        if v is None:
+            return None
+        if v == 0 or v == "0":
+            return None
+        if isinstance(v, float) and abs(v) < 1e-12:
+            return None
+        return v
+    except Exception:
+        return v
         
 def on_message_R(message):
     try:
         data = json.loads(message.get("Content","{}"))
         symbol=data['Symbol']
         result = {
-            'function': 'eboard_foreign',
-            'content': {
                 'symbol': symbol,
-                'buyVol': data['BuyVol'],
-                'sellVol': data['SellVol'],
-                'room': data['CurrentRoom'],
-                'buyVal': data['BuyVal'] ,
-                'sellVal': data['SellVal']
+                "foreignBuyVol":  null0(data.get("BuyVol")),
+                "foreignSellVol": null0(data.get("SellVol")),
+                "foreignRoom":    null0(data.get("CurrentRoom")),
+                "foreignBuyVal":  null0(data.get("BuyVal")),
+                "foreignSellVal": null0(data.get("SellVal")),
             }
-        }
         # Publish result sang Redis để Hub gom về 1 WS port
         publish(result)
 
-        # # save DB
-        # c = result["content"]
-        # row = {
-        #     "symbol": c["symbol"],
-        #     "foreignBuyVol":    c["buyVol"],
-        #     "foreignSellVol":   c["sellVol"],
-        #     "foreignRoom":   c["room"],
-        #     "foreignBuyVal":    c["buyVal"],
-        #     "foreignSellVal":   c["sellVal"],
-        # }
-        # # row = {k: (None if (v == 0 or v == "0") else v) for k, v in row.items()}
-        # update_eboard(row)
     except Exception:
         logging.exception("R message error")
 

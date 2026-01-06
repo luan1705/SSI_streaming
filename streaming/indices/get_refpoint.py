@@ -37,14 +37,14 @@ ENGINE = create_engine(
 # ================== HÀM ĐỌC DB ==================
 def tradingview(symbol: str) -> pd.DataFrame:
     """
-    Lấy close mới nhất từ bảng history_tradingview."<symbol>_1D"
+    Lấy close mới nhất từ bảng ohlcv."<symbol>_1D"
     Trả về DataFrame có cột 'close' (1 dòng) hoặc DataFrame rỗng nếu lỗi/không có bảng.
     """
     if symbol not in ALLOWED_SYMBOLS:
         log.error("Symbol không nằm trong whitelist: %s", symbol)
         return pd.DataFrame()
 
-    table_name = f'history_tradingview."{symbol}_1D"'
+    table_name = f'ohlcv."{symbol}_1D"'
     sql = f"""
             SELECT "symbol","close","time"
             FROM {table_name}
