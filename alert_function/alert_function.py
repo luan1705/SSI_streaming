@@ -6,6 +6,7 @@ from indicator import caculate_indicators
 import math
 from collections.abc import Mapping, Sequence
 import requests
+from upsert_alert import upsert_alert_status
 
 WEBHOOK_URL = "https://n8n.videv.cloud/webhook/redis_alert" 
 
@@ -91,7 +92,7 @@ def main():
                 "low": df["low"].iloc[-1],
                 "close": df["close"].iloc[-1],
                 "volume": df["volume"].iloc[-1],
-                 "MA10": df["MA10"].iloc[-1],
+                "MA10": df["MA10"].iloc[-1],
                 "MA20": df["MA20"].iloc[-1],
                 "MA50": df["MA50"].iloc[-1],
                 'RSI': df['RSI'].iloc[-1],
@@ -132,6 +133,7 @@ def main():
             r.set(redis_key, status_json)
             # 👉 Publish alert ra pubsub channel "alert_function"
             r.publish("alert_function", status_json)
+            upsert_alert_status(status_content)
             print(status_content)
          # ================= TRIGGER: chỉ bắn khi False -> True =================
             # 1. trạng thái trigger hiện tại
@@ -177,7 +179,7 @@ def main():
                 trigger_json = json.dumps(trigger_envelope)
                 r.publish("alert_function", trigger_json)
         except Exception as e:
-            print(f"Lỗi alert function:", e)
+            print(f"Lỗi alert function {symbol}:", e)
 
 if __name__ == "__main__":
     main()

@@ -107,7 +107,7 @@ def _get_counts_from_db(index_symbol: str):
           SUM(CASE WHEN "matchChange" > 0 THEN 1 ELSE 0 END)::BIGINT     AS adv,
           SUM(CASE WHEN "matchChange" = 0 THEN 1 ELSE 0 END)::BIGINT     AS nc,
           SUM(CASE WHEN "matchChange" < 0 THEN 1 ELSE 0 END)::BIGINT     AS dec
-        FROM "details"."asset" left join "info"."stock" using("symbol")
+        FROM "details"."asset" left join "info"."asset" using("symbol")
         WHERE "indices" IS NOT NULL
           AND ('|' || "indices" || '|') LIKE :pat
     """)
@@ -127,7 +127,7 @@ def _get_vals_from_db(index_symbol: str):
           SUM(CASE WHEN "matchChange" > 0  THEN COALESCE("totalVal",0) ELSE 0 END)::DOUBLE PRECISION AS "advVal",
           SUM(CASE WHEN "matchChange" = 0  THEN COALESCE("totalVal",0) ELSE 0 END)::DOUBLE PRECISION AS "ncVal",
           SUM(CASE WHEN "matchChange" < 0  THEN COALESCE("totalVal",0) ELSE 0 END)::DOUBLE PRECISION AS "decVal"
-        FROM "details"."asset" left join "info"."stock" using("symbol")
+        FROM "details"."asset" left join "info"."asset" using("symbol")
         WHERE "indices" IS NOT NULL
           AND ('|' || "indices" || '|') LIKE :pat
     """)
@@ -151,7 +151,7 @@ def _get_cefl_counts_from_db(index_symbol: str):
         SELECT
           SUM(CASE WHEN "ceiling" IS NOT NULL AND "matchPrice" = "ceiling" THEN 1 ELSE 0 END)::BIGINT AS ceil_cnt,
           SUM(CASE WHEN "floor"   IS NOT NULL AND "matchPrice" = "floor"   THEN 1 ELSE 0 END)::BIGINT AS floor_cnt
-        FROM "details"."asset" left join "info"."stock" using("symbol")
+        FROM "details"."asset" left join "info"."asset" using("symbol")
         WHERE "indices" IS NOT NULL
           AND ('|' || "indices" || '|') LIKE :pat
     """)

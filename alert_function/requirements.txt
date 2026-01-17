@@ -2,4 +2,5 @@
 pandas
 redis>=5.0.0
 requests
-
+sqlalchemy
+psycopg2-binary
