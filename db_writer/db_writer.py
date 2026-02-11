@@ -131,7 +131,7 @@ def content_to_row_indices(content: dict) -> dict:
         "declinersVal": content.get("declinersVal"),
 
         "ceiling": content.get("ceiling"),
-        "floor": content.get("floor"),
+        "floor": content.get("floor")
     }
 
 # ======================

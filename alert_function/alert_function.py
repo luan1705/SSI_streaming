@@ -85,8 +85,8 @@ def main():
             ) = caculate_indicators(df, data)
             time_str = df["time"].iloc[-1].strftime("%Y-%m-%d %H:%M:%S")
             status_content = {
-                "time": time_str,
                 "symbol": symbol,
+                "time": time_str,
                 "open": df["open"].iloc[-1],
                 "high": df["high"].iloc[-1],
                 "low": df["low"].iloc[-1],
@@ -123,16 +123,13 @@ def main():
                 "bb_upper_above": bb_upper_above,
                 "bb_lower_below": bb_lower_below,
             }
-            status_envelope = {"function": "alert_status",
-                                "content": status_content,
-                                "source": "alert_status",
-                            }
+            status_envelope = status_content
             status_json = json.dumps(to_native(status_envelope), ensure_ascii=False)
             # Lưu trạng thái cuối cùng theo symbol
             redis_key = f"alert_status_state:{symbol}"
             r.set(redis_key, status_json)
-            # 👉 Publish alert ra pubsub channel "alert_function"
-            r.publish("alert_function", status_json)
+            # 👉 Publish alert ra pubsub channel "alert_status"
+            r.publish("alert_status", status_json)
             upsert_alert_status(status_content)
             print(status_content)
          # ================= TRIGGER: chỉ bắn khi False -> True =================
@@ -168,16 +165,12 @@ def main():
          # 4. nếu có event mới chuyển từ False -> True thì mới publish
             if events_to_fire:
                 trigger_envelope = {
-                    "function": "alert_trigger",
-                    "content": {
                         "symbol": symbol,
                         "time": time_str,
                         "event": events_to_fire,
-                    },
-                    "source": "alert_trigger",
-                }
+                    }
                 trigger_json = json.dumps(trigger_envelope)
-                r.publish("alert_function", trigger_json)
+                r.publish("alert_trigger", trigger_json)
         except Exception as e:
             print(f"Lỗi alert function {symbol}:", e)
 
