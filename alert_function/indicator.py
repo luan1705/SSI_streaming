@@ -107,6 +107,6 @@ def caculate_indicators(data: pd.DataFrame, new_tick: dict) -> pd.DataFrame:
             ma10_above, ma20_above, ma50_above, macd_above,
             bb_upper_cross_up, bb_upper_cross_down,
             bb_lower_cross_down, bb_lower_cross_up,
-            bb_upper_above, bb_lower_below
+            bb_upper_above, bb_lower_below, upper_curr, lower_curr
             )
 

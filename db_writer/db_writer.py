@@ -17,7 +17,7 @@ DB_URL    = os.getenv("DB_URL", "postgresql+psycopg2://vnsfintech:Vns_123456@vid
 
 PATTERNS = os.getenv(
     "PATTERNS",
-    "asset,indices"
+    "asset,active,indices"
 ).split(",")
 
 # Flush config
@@ -55,6 +55,7 @@ engine = create_engine(
 md = MetaData()
 asset      = Table("asset", md, schema="details", autoload_with=engine)
 indices_tbl = Table("vietnam", md, schema="indices", autoload_with=engine)
+active_tbl = Table("asset", md, schema="info", autoload_with=engine)
 
 SQL_UPDATE_FOREIGN = text("""
     UPDATE details.asset
@@ -134,6 +135,12 @@ def content_to_row_indices(content: dict) -> dict:
         "floor": content.get("floor")
     }
 
+def content_to_row_active(content: dict) -> dict:
+    return {
+        "symbol": content.get("symbol"),
+        "active": content.get("active"),
+    }
+
 # ======================
 # Batch helpers
 # ======================
@@ -166,6 +173,7 @@ def main():
 
     # coalesce buffers: chỉ giữ latest theo symbol
     asset_buf: dict[str, dict]  = {}
+    active_buf: dict[str, dict]  = {}
     indices_buf: dict[str, dict] = {}
     foreign_buf: dict[str, dict] = {}
     price_buf: dict[str, float]  = {}
@@ -175,14 +183,15 @@ def main():
     processed = 0
 
     def flush():
-        nonlocal last_flush, asset_buf, indices_buf, foreign_buf, price_buf
+        nonlocal last_flush, asset_buf, active_buf, indices_buf, foreign_buf, price_buf
 
-        if not (asset_buf or indices_buf or foreign_buf or price_buf):
+        if not (asset_buf or active_buf or indices_buf or foreign_buf or price_buf):
             last_flush = time.time()
             return
 
         # snapshot rồi clear nhanh để không chặn ingest
         e_rows = list(asset_buf.values());  asset_buf.clear()
+        a_rows = list(active_buf.values()); active_buf.clear()
         i_rows = list(indices_buf.values()); indices_buf.clear()
         f_rows = list(foreign_buf.values()); foreign_buf.clear()
         p_rows = [{"symbol": k, "value": v} for k, v in price_buf.items()]; price_buf.clear()
@@ -192,6 +201,7 @@ def main():
             with engine.begin() as conn:
                 # upsert asset / indices theo lô
                 upsert_many(conn, asset, e_rows, pk="symbol")
+                upsert_many(conn, active_tbl, a_rows, pk="symbol")
                 upsert_many(conn, indices_tbl, i_rows, pk="symbol")
 
                 # foreign: executemany update (nhanh)
@@ -208,7 +218,7 @@ def main():
         dt = (time.time() - t0) * 1000
         last_flush = time.time()
         if dt > 200:
-            logging.warning("flush took %.1fms (e=%d i=%d f=%d p=%d)", dt, len(e_rows), len(i_rows), len(f_rows), len(p_rows))
+            logging.warning("flush took %.1fms (e=%d a=%d i=%d f=%d p=%d)", dt, len(e_rows), len(a_rows), len(i_rows), len(f_rows), len(p_rows))
 
     while True:
         # blocking hơn get_message loop (ít CPU)
@@ -256,6 +266,8 @@ def main():
                     "foreignBuyVal":  content.get("foreignBuyVal"),
                     "foreignSellVal": content.get("foreignSellVal"),
                 }
+        elif channel == "active" and symbol:
+            active_buf[symbol] = content_to_row_active(content)
 
         elif channel == "indices" and symbol:
             indices_buf[symbol] = content_to_row_indices(content)
@@ -263,7 +275,7 @@ def main():
         processed += 1
 
         # tránh buffer phình nếu DB quá chậm
-        if (len(asset_buf) + len(indices_buf) + len(foreign_buf) + len(price_buf)) >= MAX_BUFFER_SIZE:
+        if (len(asset_buf) + len(active_buf) + len(indices_buf) + len(foreign_buf) + len(price_buf)) >= MAX_BUFFER_SIZE:
             flush()
 
         # flush theo thời gian
@@ -272,8 +284,8 @@ def main():
 
         # log throughput
         if time.time() - last_log >= 5:
-            logging.info("processed=%d buffers: e=%d i=%d f=%d p=%d",
-                         processed, len(asset_buf), len(indices_buf), len(foreign_buf), len(price_buf))
+            logging.info("processed=%d buffers: e=%d a=%d i=%d f=%d p=%d",
+                         processed, len(asset_buf), len(active_buf), len(indices_buf), len(foreign_buf), len(price_buf))
             last_log = time.time()
 
 if __name__ == "__main__":

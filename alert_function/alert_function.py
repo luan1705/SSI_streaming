@@ -7,6 +7,8 @@ import math
 from collections.abc import Mapping, Sequence
 import requests
 from upsert_alert import upsert_alert_status
+# from SSI_streaming.streaming.List.indices_map import indices_map
+# from SSI_streaming.streaming.List.exchange import EXCHANGE_LISTS
 
 WEBHOOK_URL = "https://n8n.videv.cloud/webhook/redis_alert" 
 
@@ -81,12 +83,16 @@ def main():
                 ma10_above, ma20_above, ma50_above, macd_above,
                 bb_upper_cross_up, bb_upper_cross_down,
                 bb_lower_cross_down, bb_lower_cross_up,
-                bb_upper_above, bb_lower_below
+                bb_upper_above, bb_lower_below, upper_curr, lower_curr
             ) = caculate_indicators(df, data)
             time_str = df["time"].iloc[-1].strftime("%Y-%m-%d %H:%M:%S")
+
             status_content = {
                 "symbol": symbol,
                 "time": time_str,
+                "exchange": df["exchange"].iloc[-2],
+                "indices": df["indices"].iloc[-2],
+
                 "open": df["open"].iloc[-1],
                 "high": df["high"].iloc[-1],
                 "low": df["low"].iloc[-1],
@@ -97,31 +103,35 @@ def main():
                 "MA50": df["MA50"].iloc[-1],
                 'RSI': df['RSI'].iloc[-1],
                 'MFI': df['MFI'].iloc[-1],
+                "macd": round(df["MACD"].iloc[-1],2),
+                "signal_line": round(df["Signal_Line"].iloc[-1],2),
+                "BB_upper": round(upper_curr,2),
+                "BB_lower": round(lower_curr,2),
+                # "macd2": round(df["MACD"].iloc[-2],2),
+                # "signal_line2": round(df["Signal_Line"].iloc[-2],2),
+                                
                 'volume_10': df['volume_10'].iloc[-1],
                 'volume_20': df['volume_20'].iloc[-1],
                 'volume_50': df['volume_50'].iloc[-1],
+
                 "ma10_cross_up": ma10_cross_up,
-                "ma20_cross_up": ma20_cross_up,
-                "ma50_cross_up": ma50_cross_up,
                 "ma10_cross_down": ma10_cross_down,
+                "ma20_cross_up": ma20_cross_up,
                 "ma20_cross_down": ma20_cross_down,
+                "ma50_cross_up": ma50_cross_up,
                 "ma50_cross_down": ma50_cross_down,
-                "macd1": round(df["MACD"].iloc[-1],2),
-                "signal_line1": round(df["Signal_Line"].iloc[-1],2),
-                "macd2": round(df["MACD"].iloc[-2],2),
-                "signal_line2": round(df["Signal_Line"].iloc[-2],2),
                 "macd_cross_up": macd_cross_up,
                 "macd_cross_down": macd_cross_down,
-                "ma10_above": ma10_above,
-                "ma20_above": ma20_above,
-                "ma50_above": ma50_above,
-                "macd_above": macd_above,
+                # "ma10_above": ma10_above,
+                # "ma20_above": ma20_above,
+                # "ma50_above": ma50_above,
+                # "macd_above": macd_above,
                 "bb_upper_cross_up": bb_upper_cross_up,
                 "bb_upper_cross_down": bb_upper_cross_down,
                 "bb_lower_cross_down": bb_lower_cross_down,
                 "bb_lower_cross_up": bb_lower_cross_up,
-                "bb_upper_above": bb_upper_above,
-                "bb_lower_below": bb_lower_below,
+                # "bb_upper_above": bb_upper_above,
+                # "bb_lower_below": bb_lower_below,
             }
             status_envelope = status_content
             status_json = json.dumps(to_native(status_envelope), ensure_ascii=False)

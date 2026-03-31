@@ -1,4 +1,5 @@
 import os, json, time, logging, signal, sys, redis
+# from unittest import result
 from ssi_fc_data.fc_md_stream import MarketDataStream
 from ssi_fc_data.fc_md_client import MarketDataClient
 from datetime import datetime, time as dtime , timezone
@@ -22,6 +23,7 @@ if not SYMBOL_LIST:
 REDIS_URL   = "redis://default:%40Vns123456@videv.cloud:6379/1"
 STREAM_CODE = "X:" + "-".join(SYMBOL_LIST)
 CHANNEL = "asset"
+ACTIVE_CHANNEL = "active"
 # --------------------------------------
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -64,21 +66,18 @@ def normalize_buy_sell(content: dict):
         if sp in content: content[sp] = null0(content.get(sp))
         if sv in content: content[sv] = null0(content.get(sv))
 
-def publish(payload: dict):
+def publish(payload: dict, channel: str = CHANNEL):
     global r
-    # if "source" not in payload:
-    #     payload["source"] = CHANNEL
     try:
-        r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
+        r.publish(channel, json.dumps(payload, ensure_ascii=False))
     except Exception as e:
-        logging.warning("Redis publish fail (%s): %s", CHANNEL, e)
+        logging.warning("Redis publish fail (%s): %s", channel, e)
         try:
-            # reconnect Redis
             r = redis.Redis(connection_pool=POOL)
-            r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
+            r.publish(channel, json.dumps(payload, ensure_ascii=False))
             logging.info("Redis reconnected and published successfully")
         except Exception as e2:
-            logging.error("Redis retry failed: %s", e2)
+            logging.error("Redis retry failed (%s): %s", channel, e2)
 
 def save_redis_alert(msg: dict, tz_name: str = "Asia/Ho_Chi_Minh") -> bool:
     """
@@ -150,9 +149,14 @@ def on_message_X(message):
                 "open":  data["Open"]/1000,
                 "close": data["Close"]/1000,
             }
+        active = {
+                "symbol":   sym,
+                "active": True 
+        }
         normalize_buy_sell(result)
         # Publish result sang Redis để Hub gom về 1 WS port
-        publish(result)
+        publish(result, CHANNEL)
+        publish(active, ACTIVE_CHANNEL)
         save_redis_alert(result)
 
 

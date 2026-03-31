@@ -20,7 +20,7 @@ SOURCES = [
         "data_path": ["data"],
         "symbol_field": "stockSymbol",
         "symbol_len_max": 3,
-        "chunk_size": 40,
+        "chunk_size": 44,
         "per_line": 10,
         "single_var": False,   # <-- CHIA
     },
