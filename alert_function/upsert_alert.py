@@ -1,6 +1,6 @@
 import logging
 from datetime import date
-from sqlalchemy import create_engine, MetaData, Table, Column, String, Float, Integer, text, Boolean
+from sqlalchemy import create_engine, MetaData, Table, Column, String, Float, Integer, text, Boolean, DateTime
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 import numpy as np
 import pandas as pd
@@ -22,46 +22,102 @@ metadata = MetaData()
 alert_status=Table(
     "alert_status", metadata,
     Column('symbol', String, primary_key=True),
+    Column("time", DateTime),
+    Column("open", Float),
+    Column("high", Float),
+    Column("low", Float),
+    Column("close", Float),
     # --- indicators ---
-    Column("MA10", Float),
-    Column("MA20", Float),
-    Column("MA50", Float),
+    Column("sma10", Float),
+    Column("sma20", Float),
+    Column("sma50", Float),
+    Column("ema10", Float),
+    Column("ema20", Float),
+    Column("ema50", Float),
+
     Column("RSI", Float),
     Column("MFI", Float),
 
+    Column("macd", Float),
+    Column("signal_line", Float),
+
+    Column("bb_upper", Float),
+    Column("bb_lower", Float),
+
+    Column("volume", Float),
     Column("volume_10", Float),
     Column("volume_20", Float),
     Column("volume_50", Float),
 
-    # --- MA crosses ---
-    Column("ma10_cross_up", Boolean),
-    Column("ma20_cross_up", Boolean),
-    Column("ma50_cross_up", Boolean),
-    Column("ma10_cross_down", Boolean),
-    Column("ma20_cross_down", Boolean),
-    Column("ma50_cross_down", Boolean),
+    Column("pivot", Float),
 
-    # --- MACD ---
-    # Column("macd1", Float),
-    # Column("signal_line1", Float),
-    # Column("macd2", Float),
-    # Column("signal_line2", Float),
-    Column("macd_cross_up", Boolean),
-    Column("macd_cross_down", Boolean),
+    Column("close_cross_up_sma10", Boolean),
+    Column("close_cross_up_sma20", Boolean),
+    Column("close_cross_up_sma50", Boolean),
+    Column("close_cross_down_sma10", Boolean),
+    Column("close_cross_down_sma20", Boolean),
+    Column("close_cross_down_sma50", Boolean),
 
-    # --- above/below states ---
-    Column("ma10_above", Boolean),
-    Column("ma20_above", Boolean),
-    Column("ma50_above", Boolean),
-    Column("macd_above", Boolean),
+    Column("pivot_cross_up_sma10", Boolean),
+    Column("pivot_cross_up_sma20", Boolean),
+    Column("pivot_cross_up_sma50", Boolean),
+    Column("pivot_cross_down_sma10", Boolean),
+    Column("pivot_cross_down_sma20", Boolean),
+    Column("pivot_cross_down_sma50", Boolean),
 
-    # --- Bollinger conditions ---
-    Column("bb_upper_cross_up", Boolean),
-    Column("bb_upper_cross_down", Boolean),
-    Column("bb_lower_cross_down", Boolean),
-    Column("bb_lower_cross_up", Boolean),
-    Column("bb_upper_above", Boolean),
-    Column("bb_lower_below", Boolean),
+    Column("sma10_cross_up_sma20", Boolean),
+    Column("sma10_cross_down_sma20", Boolean),
+    Column("sma10_cross_up_sma50", Boolean),
+    Column("sma10_cross_down_sma50", Boolean),
+    Column("sma20_cross_up_sma50", Boolean),
+    Column("sma20_cross_down_sma50", Boolean),
+
+    Column("close_cross_up_ema10", Boolean),
+    Column("close_cross_up_ema20", Boolean),
+    Column("close_cross_up_ema50", Boolean),
+    Column("close_cross_down_ema10", Boolean),
+    Column("close_cross_down_ema20", Boolean),
+    Column("close_cross_down_ema50", Boolean),
+
+    Column("pivot_cross_up_ema10", Boolean),
+    Column("pivot_cross_up_ema20", Boolean),
+    Column("pivot_cross_up_ema50", Boolean),
+    Column("pivot_cross_down_ema10", Boolean),
+    Column("pivot_cross_down_ema20", Boolean),
+    Column("pivot_cross_down_ema50", Boolean),
+
+    Column("ema10_cross_up_ema20", Boolean),
+    Column("ema10_cross_down_ema20", Boolean),
+    Column("ema10_cross_up_ema50", Boolean),
+    Column("ema10_cross_down_ema50", Boolean),
+    Column("ema20_cross_up_ema50", Boolean),
+    Column("ema20_cross_down_ema50", Boolean),
+
+    Column("macd_cross_up_signal", Boolean),
+    Column("macd_cross_down_signal", Boolean),
+    Column("macd_cross_up_zero", Boolean),
+    Column("macd_cross_down_zero", Boolean),
+
+    Column("close_cross_up_bb_upper", Boolean),
+    Column("close_cross_down_bb_upper", Boolean),
+    Column("close_cross_up_bb_lower", Boolean),
+    Column("close_cross_down_bb_lower", Boolean),
+
+    Column("pivot_cross_up_bb_upper", Boolean),
+    Column("pivot_cross_down_bb_upper", Boolean),
+    Column("pivot_cross_up_bb_lower", Boolean),
+    Column("pivot_cross_down_bb_lower", Boolean),
+
+    Column("stoch_cross_up", Boolean),
+    Column("stoch_cross_down", Boolean),
+
+    Column("tk_cross_up_ks", Boolean),
+    Column("tk_cross_down_ks", Boolean),
+
+    Column("close_cross_up_cloud", Boolean),
+    Column("close_cross_down_cloud", Boolean),
+    Column("pivot_cross_up_cloud", Boolean),
+    Column("pivot_cross_down_cloud", Boolean),
 
     schema="status"
 )
@@ -86,6 +142,7 @@ def _py(v):
     return v
 
 def upsert_alert_status(row: dict):
+    row = {str(k): v for k, v in row.items()}
     allowed = set(alert_status.c.keys())
     clean = {k: _py(row.get(k)) for k in allowed if k in row}
 

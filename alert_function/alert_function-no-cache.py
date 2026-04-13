@@ -35,7 +35,6 @@ POOL = redis.BlockingConnectionPool.from_url(
 )
 r = redis.Redis(connection_pool=POOL)
 
-history_cache = {}
 
 def get_data_from_redis(symbol: str) -> pd.DataFrame:
     redis_key = f"ohlcv:{symbol}"
@@ -49,12 +48,6 @@ def get_data_from_redis(symbol: str) -> pd.DataFrame:
     df = pd.DataFrame(records)
     df["time"] = pd.to_datetime(df["time"])
     return df
-
-def get_symbol_df(symbol: str) -> pd.DataFrame:
-    if symbol not in history_cache:
-        history_cache[symbol] = get_data_from_redis(symbol)
-
-    return history_cache[symbol].copy()
 
 
 def main():
@@ -100,7 +93,7 @@ def main():
 
             for symbol, data in latest_by_symbol.items():
                 # Lấy history
-                df =  get_symbol_df(symbol)
+                df = get_data_from_redis(symbol)
                 # Thêm tick mới + tính lại indicator
                 (
                     df, EMA10, EMA20, EMA50, SMA10, SMA20, SMA50, RSI, MFI,
