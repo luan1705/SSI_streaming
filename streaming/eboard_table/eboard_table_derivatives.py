@@ -18,6 +18,7 @@ REDIS_URL   = "redis://default:%40Vns123456@videv.cloud:6379/1"
 STREAM_CODE = "X:" + "-".join(DERIVATIVES)
 CHANNEL = "asset"
 ACTIVE_CHANNEL = "active"
+ALERT_FUNCTION_CHANNEL = os.getenv("ALERT_FUNCTION_CHANNEL", "alert_function")
 # --------------------------------------
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -83,9 +84,8 @@ def on_message_X(message):
     sym=""
     try:
         data = json.loads(message.get("Content","{}"))
-        if data.get("RatioChange") == -100:
-            return 
         sym = data["Symbol"]
+        ratio_change = None if data.get("RatioChange") == -100 else data.get("RatioChange")
         result ={
                 "symbol":   sym,
                 # "exchange": 'DERIVATIVES',
@@ -102,7 +102,7 @@ def on_message_X(message):
                 "matchPrice": data["LastPrice"],
                 "matchVol":   data["LastVol"],
                 "matchChange": round(data["Change"], 2),
-                "matchRatioChange": data["RatioChange"],
+                "matchRatioChange": ratio_change,
                 "sellPrice1": data["AskPrice1"],
                 "sellVol1":   data["AskVol1"],
                 "sellPrice2": data["AskPrice2"],
@@ -123,6 +123,7 @@ def on_message_X(message):
         normalize_buy_sell(result)
         # Publish result sang Redis để Hub gom về 1 WS port
         publish(result, CHANNEL)
+        publish(result, ALERT_FUNCTION_CHANNEL)
         publish(active, ACTIVE_CHANNEL)
 
     except Exception:

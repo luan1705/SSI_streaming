@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 
 # ====== IMPORTS THEO DỰ ÁN CỦA BẠN ======
-from List import configminh as config
+from List import configviet as config
 #from List.upsert import upsert_eboard, update_price_now
 from List.exchange import EBOARD_GROUPS1, EXCHANGE_LISTS
 from List.indices_map import indices_map
@@ -24,6 +24,7 @@ REDIS_URL   = "redis://default:%40Vns123456@videv.cloud:6379/1"
 STREAM_CODE = "X:" + "-".join(SYMBOL_LIST)
 CHANNEL = "asset"
 ACTIVE_CHANNEL = "active"
+ALERT_FUNCTION_CHANNEL = os.getenv("ALERT_FUNCTION_CHANNEL", "alert_function")
 # --------------------------------------
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -156,6 +157,7 @@ def on_message_X(message):
         normalize_buy_sell(result)
         # Publish result sang Redis để Hub gom về 1 WS port
         publish(result, CHANNEL)
+        publish(result, ALERT_FUNCTION_CHANNEL)
         publish(active, ACTIVE_CHANNEL)
         save_redis_alert(result)
 

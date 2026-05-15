@@ -36,6 +36,13 @@ x-alert: &alert
   networks: [appnet]
   restart: unless-stopped
 
+x-alert-worker: &alert_worker
+  <<: *alert
+  image: alert_function:latest
+  command: ["python3", "-u", "alert_function-worker.py"]
+  volumes:
+    - ./streaming/List:/app/streaming/List:ro
+
 x-db-writer: &db_writer
   build:
     context: ./db_writer
@@ -64,34 +71,35 @@ services:
   ebtb_derivatives:
     <<: *table_derivatives
     container_name: ebtb_derivatives
+    environment: { ALERT_FUNCTION_CHANNEL: "alert_function23" }
 
   # HOSE 1 → 10
-  ebtb_hose1:  { <<: *table_exchange, container_name: ebtb_hose1,  environment: { EBOARD_GROUP: "hose1" } }
-  ebtb_hose2:  { <<: *table_exchange, container_name: ebtb_hose2,  environment: { EBOARD_GROUP: "hose2" } }
-  ebtb_hose3:  { <<: *table_exchange, container_name: ebtb_hose3,  environment: { EBOARD_GROUP: "hose3" } }
-  ebtb_hose4:  { <<: *table_exchange, container_name: ebtb_hose4,  environment: { EBOARD_GROUP: "hose4" } }
-  ebtb_hose5:  { <<: *table_exchange, container_name: ebtb_hose5,  environment: { EBOARD_GROUP: "hose5" } }
-  ebtb_hose6:  { <<: *table_exchange, container_name: ebtb_hose6,  environment: { EBOARD_GROUP: "hose6" } }
-  ebtb_hose7:  { <<: *table_exchange, container_name: ebtb_hose7,  environment: { EBOARD_GROUP: "hose7" } }
-  ebtb_hose8:  { <<: *table_exchange, container_name: ebtb_hose8,  environment: { EBOARD_GROUP: "hose8" } }
-  ebtb_hose9:  { <<: *table_exchange, container_name: ebtb_hose9,  environment: { EBOARD_GROUP: "hose9" } }
-  ebtb_hose10: { <<: *table_exchange, container_name: ebtb_hose10, environment: { EBOARD_GROUP: "hose10" } }
+  ebtb_hose1:  { <<: *table_exchange, container_name: ebtb_hose1,  environment: { EBOARD_GROUP: "hose1", ALERT_FUNCTION_CHANNEL: "alert_function1" } }
+  ebtb_hose2:  { <<: *table_exchange, container_name: ebtb_hose2,  environment: { EBOARD_GROUP: "hose2", ALERT_FUNCTION_CHANNEL: "alert_function2" } }
+  ebtb_hose3:  { <<: *table_exchange, container_name: ebtb_hose3,  environment: { EBOARD_GROUP: "hose3", ALERT_FUNCTION_CHANNEL: "alert_function3" } }
+  ebtb_hose4:  { <<: *table_exchange, container_name: ebtb_hose4,  environment: { EBOARD_GROUP: "hose4", ALERT_FUNCTION_CHANNEL: "alert_function4" } }
+  ebtb_hose5:  { <<: *table_exchange, container_name: ebtb_hose5,  environment: { EBOARD_GROUP: "hose5", ALERT_FUNCTION_CHANNEL: "alert_function5" } }
+  ebtb_hose6:  { <<: *table_exchange, container_name: ebtb_hose6,  environment: { EBOARD_GROUP: "hose6", ALERT_FUNCTION_CHANNEL: "alert_function6" } }
+  ebtb_hose7:  { <<: *table_exchange, container_name: ebtb_hose7,  environment: { EBOARD_GROUP: "hose7", ALERT_FUNCTION_CHANNEL: "alert_function7" } }
+  ebtb_hose8:  { <<: *table_exchange, container_name: ebtb_hose8,  environment: { EBOARD_GROUP: "hose8", ALERT_FUNCTION_CHANNEL: "alert_function8" } }
+  ebtb_hose9:  { <<: *table_exchange, container_name: ebtb_hose9,  environment: { EBOARD_GROUP: "hose9", ALERT_FUNCTION_CHANNEL: "alert_function9" } }
+  ebtb_hose10: { <<: *table_exchange, container_name: ebtb_hose10, environment: { EBOARD_GROUP: "hose10", ALERT_FUNCTION_CHANNEL: "alert_function10" } }
 
   # HNX 1 → 8
-  ebtb_hnx1: { <<: *table_exchange, container_name: ebtb_hnx1, environment: { EBOARD_GROUP: "hnx1" } }
-  ebtb_hnx2: { <<: *table_exchange, container_name: ebtb_hnx2, environment: { EBOARD_GROUP: "hnx2" } }
-  ebtb_hnx3: { <<: *table_exchange, container_name: ebtb_hnx3, environment: { EBOARD_GROUP: "hnx3" } }
-  ebtb_hnx4: { <<: *table_exchange, container_name: ebtb_hnx4, environment: { EBOARD_GROUP: "hnx4" } }
-  ebtb_hnx5: { <<: *table_exchange, container_name: ebtb_hnx5, environment: { EBOARD_GROUP: "hnx5" } }
-  ebtb_hnx6: { <<: *table_exchange, container_name: ebtb_hnx6, environment: { EBOARD_GROUP: "hnx6" } }
-  ebtb_hnx7: { <<: *table_exchange, container_name: ebtb_hnx7, environment: { EBOARD_GROUP: "hnx7" } }
-  ebtb_hnx8: { <<: *table_exchange, container_name: ebtb_hnx8, environment: { EBOARD_GROUP: "hnx8" } }
+  ebtb_hnx1: { <<: *table_exchange, container_name: ebtb_hnx1, environment: { EBOARD_GROUP: "hnx1", ALERT_FUNCTION_CHANNEL: "alert_function11" } }
+  ebtb_hnx2: { <<: *table_exchange, container_name: ebtb_hnx2, environment: { EBOARD_GROUP: "hnx2", ALERT_FUNCTION_CHANNEL: "alert_function12" } }
+  ebtb_hnx3: { <<: *table_exchange, container_name: ebtb_hnx3, environment: { EBOARD_GROUP: "hnx3", ALERT_FUNCTION_CHANNEL: "alert_function13" } }
+  ebtb_hnx4: { <<: *table_exchange, container_name: ebtb_hnx4, environment: { EBOARD_GROUP: "hnx4", ALERT_FUNCTION_CHANNEL: "alert_function14" } }
+  ebtb_hnx5: { <<: *table_exchange, container_name: ebtb_hnx5, environment: { EBOARD_GROUP: "hnx5", ALERT_FUNCTION_CHANNEL: "alert_function15" } }
+  ebtb_hnx6: { <<: *table_exchange, container_name: ebtb_hnx6, environment: { EBOARD_GROUP: "hnx6", ALERT_FUNCTION_CHANNEL: "alert_function16" } }
+  ebtb_hnx7: { <<: *table_exchange, container_name: ebtb_hnx7, environment: { EBOARD_GROUP: "hnx7", ALERT_FUNCTION_CHANNEL: "alert_function17" } }
+  ebtb_hnx8: { <<: *table_exchange, container_name: ebtb_hnx8, environment: { EBOARD_GROUP: "hnx8", ALERT_FUNCTION_CHANNEL: "alert_function18" } }
 
   # UPCOM 1 → 4
-  ebtb_upcom1: { <<: *table_exchange, container_name: ebtb_upcom1, environment: { EBOARD_GROUP: "upcom1" } }
-  ebtb_upcom2: { <<: *table_exchange, container_name: ebtb_upcom2, environment: { EBOARD_GROUP: "upcom2" } }
-  ebtb_upcom3: { <<: *table_exchange, container_name: ebtb_upcom3, environment: { EBOARD_GROUP: "upcom3" } }
-  ebtb_upcom4: { <<: *table_exchange, container_name: ebtb_upcom4, environment: { EBOARD_GROUP: "upcom4" } }
+  ebtb_upcom1: { <<: *table_exchange, container_name: ebtb_upcom1, environment: { EBOARD_GROUP: "upcom1", ALERT_FUNCTION_CHANNEL: "alert_function19" } }
+  ebtb_upcom2: { <<: *table_exchange, container_name: ebtb_upcom2, environment: { EBOARD_GROUP: "upcom2", ALERT_FUNCTION_CHANNEL: "alert_function20" } }
+  ebtb_upcom3: { <<: *table_exchange, container_name: ebtb_upcom3, environment: { EBOARD_GROUP: "upcom3", ALERT_FUNCTION_CHANNEL: "alert_function21" } }
+  ebtb_upcom4: { <<: *table_exchange, container_name: ebtb_upcom4, environment: { EBOARD_GROUP: "upcom4", ALERT_FUNCTION_CHANNEL: "alert_function22" } }
 
   #---------------------------------------------EBOARD FOREIGN------------------------------------------------
   ebfr_cw:          { <<: *foreign, container_name: ebfr_cw,          environment: { EBOARD_GROUP: "cw" } }
@@ -132,11 +140,29 @@ services:
   indices5: { <<: *indices, container_name: indices5, environment: { INDICES_GROUP: "indices5" } }
 
   #---------------------------------------------ALERT_FUNCTION------------------------------------------------
-  alert_function:
-    <<: *alert
-    image: alert_function:latest
-    container_name: alert_function
-    command: ["python3", "-u", "alert_function.py"]
+  alert_function1:  { <<: *alert_worker, container_name: alert_function1,  environment: { ALERT_INPUT_CHANNEL: "alert_function1", PRELOAD_GROUP: "hose1" } }
+  alert_function2:  { <<: *alert_worker, container_name: alert_function2,  environment: { ALERT_INPUT_CHANNEL: "alert_function2", PRELOAD_GROUP: "hose2" } }
+  alert_function3:  { <<: *alert_worker, container_name: alert_function3,  environment: { ALERT_INPUT_CHANNEL: "alert_function3", PRELOAD_GROUP: "hose3" } }
+  alert_function4:  { <<: *alert_worker, container_name: alert_function4,  environment: { ALERT_INPUT_CHANNEL: "alert_function4", PRELOAD_GROUP: "hose4" } }
+  alert_function5:  { <<: *alert_worker, container_name: alert_function5,  environment: { ALERT_INPUT_CHANNEL: "alert_function5", PRELOAD_GROUP: "hose5" } }
+  alert_function6:  { <<: *alert_worker, container_name: alert_function6,  environment: { ALERT_INPUT_CHANNEL: "alert_function6", PRELOAD_GROUP: "hose6" } }
+  alert_function7:  { <<: *alert_worker, container_name: alert_function7,  environment: { ALERT_INPUT_CHANNEL: "alert_function7", PRELOAD_GROUP: "hose7" } }
+  alert_function8:  { <<: *alert_worker, container_name: alert_function8,  environment: { ALERT_INPUT_CHANNEL: "alert_function8", PRELOAD_GROUP: "hose8" } }
+  alert_function9:  { <<: *alert_worker, container_name: alert_function9,  environment: { ALERT_INPUT_CHANNEL: "alert_function9", PRELOAD_GROUP: "hose9" } }
+  alert_function10: { <<: *alert_worker, container_name: alert_function10, environment: { ALERT_INPUT_CHANNEL: "alert_function10", PRELOAD_GROUP: "hose10" } }
+  alert_function11: { <<: *alert_worker, container_name: alert_function11, environment: { ALERT_INPUT_CHANNEL: "alert_function11", PRELOAD_GROUP: "hnx1" } }
+  alert_function12: { <<: *alert_worker, container_name: alert_function12, environment: { ALERT_INPUT_CHANNEL: "alert_function12", PRELOAD_GROUP: "hnx2" } }
+  alert_function13: { <<: *alert_worker, container_name: alert_function13, environment: { ALERT_INPUT_CHANNEL: "alert_function13", PRELOAD_GROUP: "hnx3" } }
+  alert_function14: { <<: *alert_worker, container_name: alert_function14, environment: { ALERT_INPUT_CHANNEL: "alert_function14", PRELOAD_GROUP: "hnx4" } }
+  alert_function15: { <<: *alert_worker, container_name: alert_function15, environment: { ALERT_INPUT_CHANNEL: "alert_function15", PRELOAD_GROUP: "hnx5" } }
+  alert_function16: { <<: *alert_worker, container_name: alert_function16, environment: { ALERT_INPUT_CHANNEL: "alert_function16", PRELOAD_GROUP: "hnx6" } }
+  alert_function17: { <<: *alert_worker, container_name: alert_function17, environment: { ALERT_INPUT_CHANNEL: "alert_function17", PRELOAD_GROUP: "hnx7" } }
+  alert_function18: { <<: *alert_worker, container_name: alert_function18, environment: { ALERT_INPUT_CHANNEL: "alert_function18", PRELOAD_GROUP: "hnx8" } }
+  alert_function19: { <<: *alert_worker, container_name: alert_function19, environment: { ALERT_INPUT_CHANNEL: "alert_function19", PRELOAD_GROUP: "upcom1" } }
+  alert_function20: { <<: *alert_worker, container_name: alert_function20, environment: { ALERT_INPUT_CHANNEL: "alert_function20", PRELOAD_GROUP: "upcom2" } }
+  alert_function21: { <<: *alert_worker, container_name: alert_function21, environment: { ALERT_INPUT_CHANNEL: "alert_function21", PRELOAD_GROUP: "upcom3" } }
+  alert_function22: { <<: *alert_worker, container_name: alert_function22, environment: { ALERT_INPUT_CHANNEL: "alert_function22", PRELOAD_GROUP: "upcom4" } }
+  alert_function23: { <<: *alert_worker, container_name: alert_function23, environment: { ALERT_INPUT_CHANNEL: "alert_function23", PRELOAD_GROUP: "derivatives" } }
 
   alert_webhook:
     <<: *alert
