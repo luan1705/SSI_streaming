@@ -5,6 +5,7 @@ from ssi_fc_data.fc_md_client import MarketDataClient
 from datetime import datetime, time as dtime , timezone
 from zoneinfo import ZoneInfo
 import pandas as pd
+from notify import notify
 
 # ====== IMPORTS THEO DỰ ÁN CỦA BẠN ======
 from List import configviet as config
@@ -28,16 +29,54 @@ ALERT_FUNCTION_CHANNEL = os.getenv("ALERT_FUNCTION_CHANNEL", "alert_function")
 # --------------------------------------
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-POOL = redis.BlockingConnectionPool.from_url(
-    REDIS_URL,
-    decode_responses=True,
-    socket_timeout=2.5,           # timeout đọc/ghi
-    socket_connect_timeout=2.0,   # timeout connect
-    health_check_interval=30,     # ping định kỳ 30s
-    max_connections=3,            # Mỗi container chỉ tối đa 3 socket tới Redis
-    timeout=1.0,                  # Khi pool bận, chờ tối đa 1s để lấy connection (không drop)
-)
-r = redis.Redis(connection_pool=POOL)
+POOL = None
+r = None
+
+def create_redis():
+    global POOL
+
+    # clear pool cũ
+    if POOL:
+        try:
+            POOL.disconnect()
+        except Exception:
+            pass
+
+    POOL = redis.BlockingConnectionPool.from_url(
+        REDIS_URL,
+        decode_responses=True,
+
+        socket_timeout=5,
+        socket_connect_timeout=5,
+
+        retry_on_timeout=True,
+        health_check_interval=30,
+
+        max_connections=10,
+        timeout=1.0,
+    )
+
+    return redis.Redis(connection_pool=POOL)
+
+def reconnect_redis():
+    global r
+
+    logging.warning("Reconnecting Redis...")
+
+    try:
+        r = create_redis()
+
+        # force test connect
+        r.ping()
+
+        logging.info("Redis reconnect OK")
+        return True
+
+    except Exception as e:
+        logging.error("Redis reconnect failed: %s", e)
+
+# init lần đầu
+r = create_redis()
 
 # ---- Helpers & cấu hình tối giản ----
 def null0(v):
@@ -69,23 +108,25 @@ def normalize_buy_sell(content: dict):
 
 def publish(payload: dict, channel: str = CHANNEL):
     global r
-    try:
-        r.publish(channel, json.dumps(payload, ensure_ascii=False))
-    except Exception as e:
-        logging.warning("Redis publish fail (%s): %s", channel, e)
+    data = json.dumps(payload, ensure_ascii=False)
+
+    for attempt in range(1, 4):  # thử tối đa 3 lần
         try:
-            r = redis.Redis(connection_pool=POOL)
-            r.publish(channel, json.dumps(payload, ensure_ascii=False))
-            logging.info("Redis reconnected and published successfully")
-        except Exception as e2:
-            logging.error("Redis retry failed (%s): %s", channel, e2)
+            r.publish(channel, data)
+            return  # thành công → thoát
+        except Exception as e:
+            logging.warning("Redis publish fail (%s) attempt %d/3: %s", channel, attempt, e)
+            if attempt == 2:  # 👈
+                notify(f"⚠️ [{GROUP_KEY}] Redis publish fail ({channel}) attempt 2/3", level="warning")
+            reconnect_redis()
+            time.sleep(1)
+
+    # hết 3 lần vẫn lỗi
+    logging.error("Redis publish give up (%s), exiting...", channel)
+    notify(f"🔴 [{GROUP_KEY}] Redis publish give up ({channel}), restarting...", level="error")  # 👈
+    sys.exit(1)
 
 def save_redis_alert(msg: dict, tz_name: str = "Asia/Ho_Chi_Minh") -> bool:
-    """
-    Overwrite hoàn toàn (upsert kiểu replace): luôn chỉ còn 1 JSON mới nhất.
-    Key: latest_message:{symbol}
-    """
-    # Lấy symbol từ content
     symbol = (msg.get("symbol") or "").strip()
     if not symbol:
         logging.warning(f"save_redis_alert: missing symbol in msg={msg}")
@@ -94,8 +135,21 @@ def save_redis_alert(msg: dict, tz_name: str = "Asia/Ho_Chi_Minh") -> bool:
     key = f"latest_message:{symbol}"
     payload = json.dumps(msg, ensure_ascii=False)
 
-    r.set(key, payload)
-    return True
+    for attempt in range(1, 4):  # thử tối đa 3 lần
+        try:
+            r.set(key, payload)
+            return True  # thành công → thoát
+        except Exception as e:
+            logging.warning("Redis SET fail attempt %d/3: %s", attempt, e)
+            if attempt == 2:  # 👈
+                notify(f"⚠️ [{GROUP_KEY}] Redis SET fail attempt 2/3", level="warning")
+            reconnect_redis()
+            time.sleep(1)
+
+    # hết 3 lần vẫn lỗi
+    logging.error("Redis SET give up, exiting...")
+    notify(f"🔴 [{GROUP_KEY}] Redis SET give up, restarting...", level="error")  # 👈
+    sys.exit(1)
         
 def find_indices(symbol: str) -> list[str] | None:
     res = [idx for idx, symbols in indices_map.items() if symbol in symbols]
@@ -177,6 +231,7 @@ def on_close():
 
 def main():
     logging.info("Producer X | stream=%s | publish=%s", STREAM_CODE, CHANNEL)
+    # notify(f"✅ [{GROUP_KEY}] Container started", level="info")  # 👈 thêm dòng này
 
     # graceful shutdown
     signal.signal(signal.SIGINT,  lambda *_: sys.exit(0))

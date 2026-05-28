@@ -3,6 +3,7 @@ from datetime import datetime, time as dtime
 from zoneinfo import ZoneInfo
 from sqlalchemy import create_engine, text
 from sqlalchemy.pool import QueuePool
+from notify import notify
 
 # ====== SSI stream ======
 from ssi_fc_data.fc_md_stream import MarketDataStream
@@ -60,16 +61,29 @@ POOL = redis.BlockingConnectionPool.from_url(
 r = redis.Redis(connection_pool=POOL)
 
 def publish(payload: dict):
-    try:
-        r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
-    except Exception as e:
-        log.warning("Redis publish fail (%s): %s", CHANNEL, e)
+    global r
+    data = json.dumps(payload, ensure_ascii=False)
+
+    for attempt in range(1, 4):  # thử tối đa 3 lần
         try:
-            rr = redis.Redis(connection_pool=POOL)
-            rr.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
-            log.info("Redis reconnected & published")
-        except Exception as e2:
-            log.error("Redis retry failed: %s", e2)
+            r.publish(CHANNEL, data)
+            return  # thành công → thoát
+        except Exception as e:
+            log.warning("Redis publish fail (%s) attempt %d/3: %s", CHANNEL, attempt, e)
+            if attempt == 2:  # 👈
+                notify(f"⚠️ [{GROUP_KEY}] Redis publish fail ({CHANNEL}) attempt 2/3", level="warning")
+            try:
+                r = redis.Redis(connection_pool=POOL)
+                r.ping()
+                log.info("Redis reconnect OK")
+            except Exception as re:
+                log.error("Redis reconnect failed: %s", re)
+            time.sleep(1)
+
+    # hết 3 lần vẫn lỗi
+    log.error("Redis publish give up (%s), exiting...", CHANNEL)
+    notify(f"🔴 [{GROUP_KEY}] Redis publish give up ({CHANNEL}), restarting...", level="error")  # 👈
+    sys.exit(1)
 
 # -------------- Postgres --------------
 engine = create_engine(

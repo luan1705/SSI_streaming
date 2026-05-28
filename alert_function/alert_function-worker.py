@@ -1,5 +1,5 @@
 import redis
-import os
+import os ,sys
 import json
 import pandas as pd
 from indicator import calculate_indicators
@@ -8,6 +8,7 @@ from collections.abc import Mapping, Sequence
 import requests
 from upsert_alert import upsert_alert_status
 from streaming.List.exchange import EBOARD_GROUPS
+from notify import notify
 
 WEBHOOK_URL = "https://n8n.videv.cloud/webhook/redis_alert" 
 ALERT_INPUT_CHANNEL = os.getenv("ALERT_INPUT_CHANNEL", "asset")
@@ -88,16 +89,31 @@ def main():
     pubsub = r.pubsub()
     pubsub.subscribe(ALERT_INPUT_CHANNEL)
     print(f"STATUS CONSUMER: listening on channel: {ALERT_INPUT_CHANNEL} ...")
-    while True:
+
+    redis_errors = 0
+
+    while True: 
         try:
             msg = pubsub.get_message(ignore_subscribe_messages=True, timeout=1.0)
+            redis_errors = 0
+        except Exception as e:
+            redis_errors += 1
+            print(f"Redis get_message error ({redis_errors}/3): {e}")
+            if redis_errors == 2:  # 👈
+                notify(f"⚠️ [{ALERT_INPUT_CHANNEL}] Redis get_message fail attempt 2/3", level="warning")
+            if redis_errors >= 3:
+                print("Redis lost, exiting...")
+                notify(f"🔴 [{ALERT_INPUT_CHANNEL}] Redis lost, restarting...", level="error")  # 👈
+                sys.exit(1)
+            time.sleep(1)
+            continue
 
-            if msg is None:
-                continue
+        if msg is None:
+            continue
 
-            if msg["type"] != "message":
-                continue
-
+        if msg["type"] != "message":
+            continue
+        try:
             latest_by_symbol = {}
 
             # message đầu tiên

@@ -1,8 +1,9 @@
-import os
+import os,sys
 import json
 import time
 import logging
 import redis
+from notify import notify
 
 from sqlalchemy import create_engine, MetaData, Table, text
 from sqlalchemy.dialects.postgresql import insert as pg_insert
@@ -182,8 +183,11 @@ def main():
     last_log = time.time()
     processed = 0
 
+    redis_errors = 0
+    flush_errors = 0
+
     def flush():
-        nonlocal last_flush, asset_buf, active_buf, indices_buf, foreign_buf, price_buf
+        nonlocal last_flush, asset_buf, active_buf, indices_buf, foreign_buf, price_buf, flush_errors
 
         if not (asset_buf or active_buf or indices_buf or foreign_buf or price_buf):
             last_flush = time.time()
@@ -213,7 +217,17 @@ def main():
                     conn.execute(SQL_UPSERT_PRICE_NOW, p_rows)
 
         except Exception as e:
-            logging.error("FLUSH error: %s", e)
+            flush_errors += 1
+            logging.error("FLUSH error (%d/3): %s", flush_errors, e)
+            if flush_errors == 2:  # 👈
+                notify(f"⚠️ [db_writer] DB flush fail attempt 2/3", level="warning")
+            if flush_errors >= 3:
+                logging.error("DB flush failed 3 times, exiting...")
+                notify(f"🔴 [db_writer] DB flush failed 3 times, restarting...", level="error")  # 👈
+                sys.exit(1)
+            return
+
+        flush_errors = 0  # reset khi thành công
 
         dt = (time.time() - t0) * 1000
         last_flush = time.time()
@@ -222,7 +236,20 @@ def main():
 
     while True:
         # blocking hơn get_message loop (ít CPU)
-        msg = pubsub.get_message(ignore_subscribe_messages=True, timeout=1.0)
+        try:
+            msg = pubsub.get_message(ignore_subscribe_messages=True, timeout=1.0)
+            redis_errors = 0
+        except Exception as e:
+            redis_errors += 1
+            logging.warning("Redis get_message error (%d/3): %s", redis_errors, e)
+            if redis_errors == 2:
+                notify(f"⚠️ [db_writer] Redis get_message fail attempt 2/3", level="warning")
+            if redis_errors >= 3:
+                logging.error("Redis subscribe lost, exiting...")
+                notify(f"🔴 [db_writer] Redis lost, restarting...", level="error")
+                sys.exit(1)
+            time.sleep(1)
+            continue
         if msg is None:
             # không có message nhưng vẫn flush định kỳ
             if (time.time() - last_flush) * 1000 >= FLUSH_INTERVAL_MS:

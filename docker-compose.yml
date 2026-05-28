@@ -8,6 +8,8 @@ x-streaming: &streaming
   image: ssi_streaming:latest
   networks: [appnet]
   restart: unless-stopped
+  volumes:                           # 👈 thêm
+    - ./notify.py:/app/notify.py:ro # 👈 thêm
 
 x-table-others: &table_others
   <<: *streaming
@@ -42,6 +44,7 @@ x-alert-worker: &alert_worker
   command: ["python3", "-u", "alert_function-worker.py"]
   volumes:
     - ./streaming/List:/app/streaming/List:ro
+    - ./notify.py:/app/notify.py:ro  # 👈 thêm
 
 x-db-writer: &db_writer
   build:
@@ -50,6 +53,8 @@ x-db-writer: &db_writer
   image: db_writer:latest
   networks: [appnet]
   restart: unless-stopped
+  volumes:                           # 👈 thêm
+    - ./notify.py:/app/notify.py:ro # 👈 thêm
 
 services:
   #---------------------------------------------EBOARD TABLE------------------------------------------------

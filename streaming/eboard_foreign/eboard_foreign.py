@@ -1,6 +1,7 @@
 import os, json, time, logging, signal, sys, redis, threading
 from ssi_fc_data.fc_md_stream import MarketDataStream
 from ssi_fc_data.fc_md_client import MarketDataClient
+from notify import notify
 
 from List import confighao as config
 #from List.upsert import update_eboard
@@ -34,19 +35,28 @@ r = redis.Redis(connection_pool=POOL)
 
 def publish(payload: dict):
     global r
-    # if "source" not in payload:
-    #     payload["source"] = CHANNEL
-    try:
-        r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
-    except Exception as e:
-        logging.warning("Redis publish fail (%s): %s", CHANNEL, e)
+    data = json.dumps(payload, ensure_ascii=False)
+
+    for attempt in range(1, 4):  # thử tối đa 3 lần
         try:
-            # reconnect Redis
-            r = redis.Redis(connection_pool=POOL)
-            r.publish(CHANNEL, json.dumps(payload, ensure_ascii=False))
-            logging.info("Redis reconnected and published successfully")
-        except Exception as e2:
-            logging.error("Redis retry failed: %s", e2)
+            r.publish(CHANNEL, data)
+            return  # thành công → thoát
+        except Exception as e:
+            logging.warning("Redis publish fail (%s) attempt %d/3: %s", CHANNEL, attempt, e)
+            if attempt == 2:  # 👈
+                notify(f"⚠️ [{GROUP_KEY}] Redis publish fail ({CHANNEL}) attempt 2/3", level="warning")
+            try:
+                r = redis.Redis(connection_pool=POOL)
+                r.ping()
+                logging.info("Redis reconnect OK")
+            except Exception as re:
+                logging.error("Redis reconnect failed: %s", re)
+            time.sleep(1)
+
+    # hết 3 lần vẫn lỗi
+    logging.error("Redis publish give up (%s), exiting...", CHANNEL)
+    notify(f"🔴 [{GROUP_KEY}] Redis publish give up ({CHANNEL}), restarting...", level="error")  # 👈
+    sys.exit(1)
 
 def null0(v):
     """0 -> None (null). Giữ nguyên các giá trị khác."""
