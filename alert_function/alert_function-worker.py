@@ -9,6 +9,7 @@ import requests
 from upsert_alert import upsert_alert_status
 from streaming.List.exchange import EBOARD_GROUPS
 from notify import notify
+import time
 
 WEBHOOK_URL = "https://n8n.videv.cloud/webhook/redis_alert" 
 ALERT_INPUT_CHANNEL = os.getenv("ALERT_INPUT_CHANNEL", "asset")
@@ -99,12 +100,18 @@ def main():
         except Exception as e:
             redis_errors += 1
             print(f"Redis get_message error ({redis_errors}/3): {e}")
-            if redis_errors == 2:  # 👈
-                notify(f"⚠️ [{ALERT_INPUT_CHANNEL}] Redis get_message fail attempt 2/3", level="warning")
+            if redis_errors == 2:
+                try:
+                    notify(f"⚠️ [{ALERT_INPUT_CHANNEL}] Redis get_message fail attempt 2/3", level="warning")
+                except Exception:
+                    pass
             if redis_errors >= 3:
                 print("Redis lost, exiting...")
-                notify(f"🔴 [{ALERT_INPUT_CHANNEL}] Redis lost, restarting...", level="error")  # 👈
-                sys.exit(1)
+                try:
+                    notify(f"🔴 [{ALERT_INPUT_CHANNEL}] Redis lost, restarting...", level="error")
+                except Exception:
+                    pass
+                os._exit(1)
             time.sleep(1)
             continue
 

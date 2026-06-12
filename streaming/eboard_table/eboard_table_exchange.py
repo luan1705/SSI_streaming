@@ -116,15 +116,21 @@ def publish(payload: dict, channel: str = CHANNEL):
             return  # thành công → thoát
         except Exception as e:
             logging.warning("Redis publish fail (%s) attempt %d/3: %s", channel, attempt, e)
-            if attempt == 2:  # 👈
-                notify(f"⚠️ [{GROUP_KEY}] Redis publish fail ({channel}) attempt 2/3", level="warning")
+            if attempt == 2:
+                try:
+                    notify(f"⚠️ [{GROUP_KEY}] Redis publish fail ({channel}) attempt 2/3", level="warning")
+                except Exception:
+                    pass
             reconnect_redis()
             time.sleep(1)
 
     # hết 3 lần vẫn lỗi
     logging.error("Redis publish give up (%s), exiting...", channel)
-    notify(f"🔴 [{GROUP_KEY}] Redis publish give up ({channel}), restarting...", level="error")  # 👈
-    sys.exit(1)
+    try:
+        notify(f"🔴 [{GROUP_KEY}] Redis publish give up ({channel}), restarting...", level="error")
+    except Exception:
+        pass
+    os._exit(1)
 
 def save_redis_alert(msg: dict, tz_name: str = "Asia/Ho_Chi_Minh") -> bool:
     symbol = (msg.get("symbol") or "").strip()
@@ -141,15 +147,21 @@ def save_redis_alert(msg: dict, tz_name: str = "Asia/Ho_Chi_Minh") -> bool:
             return True  # thành công → thoát
         except Exception as e:
             logging.warning("Redis SET fail attempt %d/3: %s", attempt, e)
-            if attempt == 2:  # 👈
-                notify(f"⚠️ [{GROUP_KEY}] Redis SET fail attempt 2/3", level="warning")
+            if attempt == 2:
+                try:
+                    notify(f"⚠️ [{GROUP_KEY}] Redis publish fail ({channel}) attempt 2/3", level="warning")
+                except Exception:
+                    pass
             reconnect_redis()
             time.sleep(1)
 
     # hết 3 lần vẫn lỗi
     logging.error("Redis SET give up, exiting...")
-    notify(f"🔴 [{GROUP_KEY}] Redis SET give up, restarting...", level="error")  # 👈
-    sys.exit(1)
+    try:
+        notify(f"🔴 [{GROUP_KEY}] Redis SET give up, restarting...", level="error")
+    except Exception:
+        pass
+    os._exit(1)
         
 def find_indices(symbol: str) -> list[str] | None:
     res = [idx for idx, symbols in indices_map.items() if symbol in symbols]

@@ -43,8 +43,11 @@ def publish(payload: dict):
             return  # thành công → thoát
         except Exception as e:
             logging.warning("Redis publish fail (%s) attempt %d/3: %s", CHANNEL, attempt, e)
-            if attempt == 2:  # 👈
-                notify(f"⚠️ [{GROUP_KEY}] Redis publish fail ({CHANNEL}) attempt 2/3", level="warning")
+            if attempt == 2:
+                try:
+                    notify(f"⚠️ [{GROUP_KEY}] Redis publish fail ({CHANNEL}) attempt 2/3", level="warning")
+                except Exception:
+                    pass
             try:
                 r = redis.Redis(connection_pool=POOL)
                 r.ping()
@@ -55,8 +58,11 @@ def publish(payload: dict):
 
     # hết 3 lần vẫn lỗi
     logging.error("Redis publish give up (%s), exiting...", CHANNEL)
-    notify(f"🔴 [{GROUP_KEY}] Redis publish give up ({CHANNEL}), restarting...", level="error")  # 👈
-    sys.exit(1)
+    try:
+        notify(f"🔴 [{GROUP_KEY}] Redis publish give up ({CHANNEL}), restarting...", level="error")
+    except Exception:
+        pass
+    os._exit(1)
 
 def null0(v):
     """0 -> None (null). Giữ nguyên các giá trị khác."""

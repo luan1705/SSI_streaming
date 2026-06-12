@@ -219,12 +219,18 @@ def main():
         except Exception as e:
             flush_errors += 1
             logging.error("FLUSH error (%d/3): %s", flush_errors, e)
-            if flush_errors == 2:  # 👈
-                notify(f"⚠️ [db_writer] DB flush fail attempt 2/3", level="warning")
+            if flush_errors == 2:
+                try:
+                    notify(f"⚠️ [db_writer] DB flush fail attempt 2/3", level="warning")
+                except Exception:
+                    pass
             if flush_errors >= 3:
                 logging.error("DB flush failed 3 times, exiting...")
-                notify(f"🔴 [db_writer] DB flush failed 3 times, restarting...", level="error")  # 👈
-                sys.exit(1)
+                try:
+                    notify(f"🔴 [db_writer] DB flush failed 3 times, restarting...", level="error")
+                except Exception:
+                    pass
+                os._exit(1)
             return
 
         flush_errors = 0  # reset khi thành công
@@ -243,11 +249,17 @@ def main():
             redis_errors += 1
             logging.warning("Redis get_message error (%d/3): %s", redis_errors, e)
             if redis_errors == 2:
-                notify(f"⚠️ [db_writer] Redis get_message fail attempt 2/3", level="warning")
+                try:
+                    notify(f"⚠️ [db_writer] Redis get_message fail attempt 2/3", level="warning")
+                except Exception:
+                    pass
             if redis_errors >= 3:
                 logging.error("Redis subscribe lost, exiting...")
-                notify(f"🔴 [db_writer] Redis lost, restarting...", level="error")
-                sys.exit(1)
+                try:
+                    notify(f"🔴 [db_writer] Redis lost, restarting...", level="error")
+                except Exception:
+                    pass
+                os._exit(1)
             time.sleep(1)
             continue
         if msg is None:
