@@ -20,7 +20,7 @@ GROUP_KEY = os.getenv("EBOARD_GROUP") # vd: hose1, hnx3, upcom2, cw...
 SYMBOL_LIST = EBOARD_GROUPS2.get(GROUP_KEY)
 if not SYMBOL_LIST:
     raise RuntimeError(f"Unknown EBOARD_GROUP={GROUP_KEY}. Check EBOARD_GROUPS in List.exchange")
-REDIS_URL   = "redis://default:%40Vns123456@videv.cloud:6379/1"
+REDIS_URL   = "redis://default:%40Vns123456@tanhungsoft.com:6379/1"
 STREAM_CODE = "X:" + "-".join(SYMBOL_LIST)
 CHANNEL = "asset"
 ACTIVE_CHANNEL = "active"

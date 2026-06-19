@@ -10,7 +10,7 @@ from upsert_alert import upsert_alert_status
 # from SSI_streaming.streaming.List.indices_map import indices_map
 # from SSI_streaming.streaming.List.exchange import EXCHANGE_LISTS
 
-WEBHOOK_URL = "https://n8n.videv.cloud/webhook/redis_alert" 
+WEBHOOK_URL = "https://n8n.tanhungsoft.com/webhook/redis_alert" 
 
 # ✅ NEW: hàm đổi NaN / inf -> None (lúc json.dumps sẽ ra null)
 def to_native(o):
@@ -27,7 +27,7 @@ def to_native(o):
     return o
 
 
-REDIS_URL = os.getenv("REDIS_URL", "redis://default:%40Vns123456@videv.cloud:6379/1")
+REDIS_URL = os.getenv("REDIS_URL", "redis://default:%40Vns123456@tanhungsoft.com:6379/1")
 POOL = redis.BlockingConnectionPool.from_url(
     REDIS_URL, decode_responses=True,
     socket_timeout=60, socket_connect_timeout=5,

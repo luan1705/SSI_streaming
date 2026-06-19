@@ -2,7 +2,7 @@
 import requests
 
 TELEGRAM_AUTH = "Basic ZG5sOjEyMzQ1Ng=="
-TELEGRAM_BASE = "https://smb.videv.cloud/webhook"
+TELEGRAM_BASE = "https://smb.tanhungsoft.com/webhook"
 
 def notify(message: str, level: str = "error"):
     """

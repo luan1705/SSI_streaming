@@ -11,7 +11,7 @@ from streaming.List.exchange import EBOARD_GROUPS
 from notify import notify
 import time
 
-WEBHOOK_URL = "https://n8n.videv.cloud/webhook/redis_alert" 
+WEBHOOK_URL = "https://n8n.tanhungsoft.com/webhook/redis_alert" 
 ALERT_INPUT_CHANNEL = os.getenv("ALERT_INPUT_CHANNEL", "asset")
 PRELOAD_GROUP = os.getenv("PRELOAD_GROUP", "")
 
@@ -30,7 +30,7 @@ def to_native(o):
     return o
 
 
-REDIS_URL = os.getenv("REDIS_URL", "redis://default:%40Vns123456@videv.cloud:6379/1")
+REDIS_URL = os.getenv("REDIS_URL", "redis://default:%40Vns123456@tanhungsoft.com:6379/1")
 POOL = redis.BlockingConnectionPool.from_url(
     REDIS_URL, decode_responses=True,
     socket_timeout=60, socket_connect_timeout=5,

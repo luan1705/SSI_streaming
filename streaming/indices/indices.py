@@ -29,9 +29,9 @@ if not SYMBOL_LIST:
 suffix = GROUP_KEY.replace("indices", "").strip()  # "1".."5"
 # ------------------------------------------------------
 
-REDIS_URL   = os.getenv("REDIS_URL", "redis://default:%40Vns123456@videv.cloud:6379/1")
+REDIS_URL   = os.getenv("REDIS_URL", "redis://default:%40Vns123456@tanhungsoft.com:6379/1")
 CHANNEL     = "indices"
-PG_URL      = os.getenv("PG_URL", "postgresql+psycopg2://vnsfintech:Vns_123456@videv.cloud:5433/vnsfintech")
+PG_URL      = os.getenv("PG_URL", "postgresql+psycopg2://vnsfintech:Vns_123456@tanhungsoft.com:5433/vnsfintech")
 
 STREAM_CODE = "MI:" + "-".join(SYMBOL_LIST)
 
