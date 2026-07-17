@@ -178,6 +178,7 @@ def main():
     indices_buf: dict[str, dict] = {}
     foreign_buf: dict[str, dict] = {}
     price_buf: dict[str, float]  = {}
+    val_buf: dict[str, float]    = {} 
 
     last_flush = time.time()
     last_log = time.time()
@@ -187,9 +188,9 @@ def main():
     flush_errors = 0
 
     def flush():
-        nonlocal last_flush, asset_buf, active_buf, indices_buf, foreign_buf, price_buf, flush_errors
+        nonlocal last_flush, asset_buf, active_buf, indices_buf, foreign_buf, price_buf, flush_errors, val_buf
 
-        if not (asset_buf or active_buf or indices_buf or foreign_buf or price_buf):
+        if not (asset_buf or active_buf or indices_buf or foreign_buf or price_buf or val_buf):
             last_flush = time.time()
             return
 
@@ -199,6 +200,7 @@ def main():
         i_rows = list(indices_buf.values()); indices_buf.clear()
         f_rows = list(foreign_buf.values()); foreign_buf.clear()
         p_rows = [{"symbol": k, "value": v} for k, v in price_buf.items()]; price_buf.clear()
+        v_rows = [{"symbol": k, "value": v} for k, v in val_buf.items()]; val_buf.clear()
 
         t0 = time.time()
         try:
@@ -215,6 +217,13 @@ def main():
                 # price_now: executemany upsert
                 if p_rows:
                     conn.execute(SQL_UPSERT_PRICE_NOW, p_rows)
+
+                for row in v_rows:
+                    conn.execute(text(f"""
+                        UPDATE ohlcv."{row['symbol']}_1D"
+                        SET "value" = :value
+                        WHERE time::date = CURRENT_DATE
+                    """), {"value": row["value"]})
 
         except Exception as e:
             flush_errors += 1
@@ -294,6 +303,10 @@ def main():
                 px = content.get("matchPrice")
                 if px is not None:
                     price_buf[symbol] = px
+
+                tv = content.get("totalVal")
+                if tv is not None:
+                    val_buf[symbol] = tv
 
             # ====== FOREIGN (asset) ======
             elif any(k in content for k in ("foreignBuyVol", "foreignSellVol", "foreignRoom", "foreignBuyVal", "foreignSellVal")):
