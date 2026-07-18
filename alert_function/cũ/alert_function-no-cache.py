@@ -27,7 +27,7 @@ def to_native(o):
     return o
 
 
-REDIS_URL = os.getenv("REDIS_URL", "redis://default:%40Vns123456@tanhungsoft.com:6379/1")
+REDIS_URL = os.getenv("REDIS_URL", "redis://root:Dnl_123456@tanhungsoft.com:6379")
 POOL = redis.BlockingConnectionPool.from_url(
     REDIS_URL, decode_responses=True,
     socket_timeout=60, socket_connect_timeout=5,

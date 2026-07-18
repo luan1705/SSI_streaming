@@ -1,0 +1,712 @@
+2025-10-28 15:55:45,578 [INFO] ✅ HNX30 -> refPoint=569.69
+2025-10-28 15:55:45,579 [INFO] ✅ HNXINDEX -> refPoint=267.28
+2025-10-28 15:55:45,580 [INFO] ✅ UPCOMINDEX -> refPoint=111.13
+2025-10-28 15:55:45,582 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-10-28 15:55:45,582 [INFO] 🔒 Đã đóng kết nối DB
+2025-10-28 15:57:24,443 [INFO] ✅ HNX30 -> refPoint=569.69
+2025-10-28 15:57:24,445 [INFO] ✅ HNXINDEX -> refPoint=267.28
+2025-10-28 15:57:24,446 [INFO] ✅ UPCOMINDEX -> refPoint=111.13
+2025-10-28 15:57:24,448 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-10-28 15:57:24,448 [INFO] 🔒 Đã đóng kết nối DB
+2025-10-29 08:30:02,908 [INFO] ✅ HNX30 -> refPoint=576.19
+2025-10-29 08:30:02,921 [INFO] ✅ HNXINDEX -> refPoint=267.28
+2025-10-29 08:30:02,922 [INFO] ✅ UPCOMINDEX -> refPoint=111.13
+2025-10-29 08:30:02,923 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-10-29 08:30:02,923 [INFO] 🔒 Đã đóng kết nối DB
+2025-10-30 08:30:02,601 [INFO] ✅ UPCOMINDEX -> refPoint=111.51
+2025-10-30 08:30:02,604 [INFO] ✅ HNX30 -> refPoint=581.41
+2025-10-30 08:30:02,606 [INFO] ✅ HNXINDEX -> refPoint=266.78
+2025-10-30 08:30:02,607 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-10-30 08:30:02,607 [INFO] 🔒 Đã đóng kết nối DB
+2025-10-31 08:30:02,887 [INFO] ✅ HNX30 -> refPoint=582.78
+2025-10-31 08:30:02,889 [INFO] ✅ UPCOMINDEX -> refPoint=113.31
+2025-10-31 08:30:02,890 [INFO] ✅ HNXINDEX -> refPoint=266.96
+2025-10-31 08:30:02,891 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-10-31 08:30:02,892 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-01 08:30:02,610 [INFO] ✅ HNX30 -> refPoint=573.22
+2025-11-01 08:30:02,610 [INFO] ✅ UPCOMINDEX -> refPoint=113.22
+2025-11-01 08:30:02,612 [INFO] ✅ HNXINDEX -> refPoint=265.85
+2025-11-01 08:30:02,613 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-01 08:30:02,613 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-02 08:30:02,071 [INFO] ✅ HNX30 -> refPoint=573.22
+2025-11-02 08:30:02,082 [INFO] ✅ HNXINDEX -> refPoint=265.85
+2025-11-02 08:30:02,090 [INFO] ✅ UPCOMINDEX -> refPoint=113.22
+2025-11-02 08:30:02,092 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-02 08:30:02,092 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-03 08:30:02,776 [INFO] ✅ HNX30 -> refPoint=573.22
+2025-11-03 08:30:02,815 [INFO] ✅ UPCOMINDEX -> refPoint=113.22
+2025-11-03 08:30:02,817 [INFO] ✅ HNXINDEX -> refPoint=265.85
+2025-11-03 08:30:02,818 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-03 08:30:02,818 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-04 08:30:02,075 [INFO] ✅ HNX30 -> refPoint=550.34
+2025-11-04 08:30:02,086 [INFO] ✅ UPCOMINDEX -> refPoint=114.84
+2025-11-04 08:30:02,091 [INFO] ✅ HNXINDEX -> refPoint=259.18
+2025-11-04 08:30:02,092 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-04 08:30:02,092 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-05 08:30:02,812 [INFO] ✅ HNX30 -> refPoint=547.04
+2025-11-05 08:30:02,813 [INFO] ✅ UPCOMINDEX -> refPoint=116.08
+2025-11-05 08:30:02,818 [INFO] ✅ HNXINDEX -> refPoint=265.91
+2025-11-05 08:30:02,819 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-05 08:30:02,820 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-06 08:30:02,626 [INFO] ✅ HNX30 -> refPoint=575.73
+2025-11-06 08:30:02,630 [INFO] ✅ HNXINDEX -> refPoint=266.7
+2025-11-06 08:30:02,637 [INFO] ✅ UPCOMINDEX -> refPoint=116.36
+2025-11-06 08:30:02,638 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-06 08:30:02,639 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-07 08:30:02,292 [INFO] ✅ HNX30 -> refPoint=575.73
+2025-11-07 08:30:02,300 [INFO] ✅ UPCOMINDEX -> refPoint=115.23
+2025-11-07 08:30:02,306 [INFO] ✅ HNXINDEX -> refPoint=266.15
+2025-11-07 08:30:02,307 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-07 08:30:02,308 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-08 08:30:02,133 [INFO] ✅ HNX30 -> refPoint=558.85
+2025-11-08 08:30:02,138 [INFO] ✅ HNXINDEX -> refPoint=260.11
+2025-11-08 08:30:02,145 [INFO] ✅ UPCOMINDEX -> refPoint=116.59
+2025-11-08 08:30:02,146 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-08 08:30:02,146 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-09 08:30:02,893 [INFO] ✅ HNXINDEX -> refPoint=260.11
+2025-11-09 08:30:02,894 [INFO] ✅ HNX30 -> refPoint=558.85
+2025-11-09 08:30:02,895 [INFO] ✅ UPCOMINDEX -> refPoint=116.59
+2025-11-09 08:30:02,897 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-09 08:30:02,898 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-10 08:30:02,543 [INFO] ✅ HNXINDEX -> refPoint=260.11
+2025-11-10 08:30:02,544 [INFO] ✅ UPCOMINDEX -> refPoint=116.59
+2025-11-10 08:30:02,545 [INFO] ✅ HNX30 -> refPoint=558.85
+2025-11-10 08:30:02,546 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-10 08:30:02,546 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-11 08:30:02,582 [INFO] ✅ HNX30 -> refPoint=554.31
+2025-11-11 08:30:02,583 [INFO] ✅ UPCOMINDEX -> refPoint=117.28
+2025-11-11 08:30:02,587 [INFO] ✅ HNXINDEX -> refPoint=258.18
+2025-11-11 08:30:02,588 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-11 08:30:02,588 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-18 08:30:02,569 [INFO] ✅ HNXINDEX -> refPoint=261.08
+2025-11-18 08:30:02,573 [INFO] ✅ HNX30 -> refPoint=565.22
+2025-11-18 08:30:02,582 [INFO] ✅ UPCOMINDEX -> refPoint=117.97
+2025-11-18 08:30:02,583 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-18 08:30:02,584 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-19 08:30:02,258 [INFO] ✅ HNXINDEX -> refPoint=267.36
+2025-11-19 08:30:02,259 [INFO] ✅ HNX30 -> refPoint=588.56
+2025-11-19 08:30:02,260 [INFO] ✅ UPCOMINDEX -> refPoint=119.85
+2025-11-19 08:30:02,262 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-19 08:30:02,262 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-20 08:30:02,855 [INFO] ✅ HNX30 -> refPoint=580.81
+2025-11-20 08:30:02,856 [INFO] ✅ UPCOMINDEX -> refPoint=119.53
+2025-11-20 08:30:02,861 [INFO] ✅ HNXINDEX -> refPoint=265.03
+2025-11-20 08:30:02,862 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-20 08:30:02,863 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-21 08:30:03,067 [INFO] ✅ HNX30 -> refPoint=577.77
+2025-11-21 08:30:03,068 [INFO] ✅ UPCOMINDEX -> refPoint=119.58
+2025-11-21 08:30:03,069 [INFO] ✅ HNXINDEX -> refPoint=264.23
+2025-11-21 08:30:03,071 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-21 08:30:03,071 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-22 08:30:07,832 [INFO] ✅ HNX30 -> refPoint=577.84
+2025-11-22 08:30:07,838 [INFO] ✅ HNXINDEX -> refPoint=263.13
+2025-11-22 08:30:07,843 [INFO] ✅ UPCOMINDEX -> refPoint=118.73
+2025-11-22 08:30:07,845 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-22 08:30:07,845 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-23 08:30:20,075 [ERROR] Lỗi đọc bảng history_tradingview."UPCOMINDEX_1D"
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "videv.cloud" to address: Name or service not known
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/www/server/FastAPI_Websocket/newmulti/indices/get_refpoint.py", line 57, in tradingview
+    with ENGINE.connect() as conn:
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3277, in connect
+    return self._connection_cls(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "videv.cloud" to address: Name or service not known
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-11-23 08:30:20,076 [ERROR] Lỗi đọc bảng history_tradingview."HNXINDEX_1D"
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "videv.cloud" to address: Name or service not known
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/www/server/FastAPI_Websocket/newmulti/indices/get_refpoint.py", line 57, in tradingview
+    with ENGINE.connect() as conn:
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3277, in connect
+    return self._connection_cls(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "videv.cloud" to address: Name or service not known
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-11-23 08:30:20,076 [ERROR] Lỗi đọc bảng history_tradingview."HNX30_1D"
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "videv.cloud" to address: Name or service not known
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/www/server/FastAPI_Websocket/newmulti/indices/get_refpoint.py", line 57, in tradingview
+    with ENGINE.connect() as conn:
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3277, in connect
+    return self._connection_cls(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "videv.cloud" to address: Name or service not known
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-11-23 08:30:20,085 [WARNING] ⚠️ Không lấy được refPoint cho UPCOMINDEX
+2025-11-23 08:30:20,085 [WARNING] ⚠️ Không lấy được refPoint cho HNXINDEX
+2025-11-23 08:30:20,087 [WARNING] ⚠️ Không lấy được refPoint cho HNX30
+2025-11-23 08:30:20,088 [WARNING] 📛 Chi tiết lỗi:
+2025-11-23 08:30:20,088 [WARNING] ⚠️ Không lấy được refPoint cho UPCOMINDEX
+2025-11-23 08:30:20,088 [WARNING] ⚠️ Không lấy được refPoint cho HNXINDEX
+2025-11-23 08:30:20,088 [WARNING] ⚠️ Không lấy được refPoint cho HNX30
+2025-11-23 08:30:20,089 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-23 08:30:20,090 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-24 08:30:03,155 [INFO] ✅ HNX30 -> refPoint=577.84
+2025-11-24 08:30:03,173 [INFO] ✅ UPCOMINDEX -> refPoint=118.73
+2025-11-24 08:30:03,175 [INFO] ✅ HNXINDEX -> refPoint=263.13
+2025-11-24 08:30:03,176 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-24 08:30:03,177 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-25 08:30:02,892 [INFO] ✅ UPCOMINDEX -> refPoint=118.96
+2025-11-25 08:30:02,894 [INFO] ✅ HNXINDEX -> refPoint=261.22
+2025-11-25 08:30:02,903 [INFO] ✅ HNX30 -> refPoint=571.06
+2025-11-25 08:30:02,904 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-25 08:30:02,905 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-26 08:30:02,286 [INFO] ✅ HNXINDEX -> refPoint=257.3
+2025-11-26 08:30:02,291 [INFO] ✅ HNX30 -> refPoint=558.56
+2025-11-26 08:30:02,302 [INFO] ✅ UPCOMINDEX -> refPoint=118.72
+2025-11-26 08:30:02,303 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-26 08:30:02,303 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-27 08:30:02,740 [INFO] ✅ HNXINDEX -> refPoint=261.91
+2025-11-27 08:30:02,743 [INFO] ✅ UPCOMINDEX -> refPoint=119.26
+2025-11-27 08:30:02,744 [INFO] ✅ HNX30 -> refPoint=573.64
+2025-11-27 08:30:02,745 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-27 08:30:02,746 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-28 08:30:02,242 [INFO] ✅ HNXINDEX -> refPoint=261.43
+2025-11-28 08:30:02,243 [INFO] ✅ UPCOMINDEX -> refPoint=119.39
+2025-11-28 08:30:02,248 [INFO] ✅ HNX30 -> refPoint=571.13
+2025-11-28 08:30:02,249 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-28 08:30:02,250 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-29 08:30:02,496 [INFO] ✅ HNXINDEX -> refPoint=259.91
+2025-11-29 08:30:02,508 [INFO] ✅ UPCOMINDEX -> refPoint=119.34
+2025-11-29 08:30:02,513 [INFO] ✅ HNX30 -> refPoint=567.54
+2025-11-29 08:30:02,514 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-29 08:30:02,514 [INFO] 🔒 Đã đóng kết nối DB
+2025-11-30 08:30:02,175 [INFO] ✅ HNX30 -> refPoint=567.54
+2025-11-30 08:30:02,176 [INFO] ✅ UPCOMINDEX -> refPoint=119.34
+2025-11-30 08:30:02,178 [INFO] ✅ HNXINDEX -> refPoint=259.91
+2025-11-30 08:30:02,179 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-11-30 08:30:02,180 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-01 08:30:02,853 [INFO] ✅ UPCOMINDEX -> refPoint=119.34
+2025-12-01 08:30:02,854 [INFO] ✅ HNX30 -> refPoint=567.54
+2025-12-01 08:30:02,855 [INFO] ✅ HNXINDEX -> refPoint=259.91
+2025-12-01 08:30:02,856 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-01 08:30:02,856 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-02 08:30:02,329 [INFO] ✅ UPCOMINDEX -> refPoint=119.39
+2025-12-02 08:30:02,330 [INFO] ✅ HNX30 -> refPoint=561.21
+2025-12-02 08:30:33,906 [INFO] ✅ HNXINDEX -> refPoint=257.91
+2025-12-02 08:30:33,907 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-02 08:30:33,908 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-03 08:30:02,431 [INFO] ✅ HNXINDEX -> refPoint=258.87
+2025-12-03 08:30:02,440 [INFO] ✅ HNX30 -> refPoint=566.79
+2025-12-03 08:30:02,446 [INFO] ✅ UPCOMINDEX -> refPoint=119.69
+2025-12-03 08:30:02,448 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-03 08:30:02,448 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-04 08:30:02,914 [INFO] ✅ HNXINDEX -> refPoint=258.76
+2025-12-04 08:30:02,915 [INFO] ✅ HNX30 -> refPoint=568.85
+2025-12-04 08:30:02,916 [INFO] ✅ UPCOMINDEX -> refPoint=120.05
+2025-12-04 08:30:02,918 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-04 08:30:02,918 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-05 08:30:02,334 [INFO] ✅ HNX30 -> refPoint=577.49
+2025-12-05 08:30:02,344 [INFO] ✅ HNXINDEX -> refPoint=262.31
+2025-12-05 08:30:02,346 [INFO] ✅ UPCOMINDEX -> refPoint=121.27
+2025-12-05 08:30:02,347 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-05 08:30:02,348 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-06 08:30:02,794 [INFO] ✅ HNXINDEX -> refPoint=260.65
+2025-12-06 08:30:02,795 [INFO] ✅ UPCOMINDEX -> refPoint=120.65
+2025-12-06 08:30:02,796 [INFO] ✅ HNX30 -> refPoint=569.11
+2025-12-06 08:30:02,797 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-06 08:30:02,798 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-07 08:30:02,694 [INFO] ✅ HNX30 -> refPoint=569.11
+2025-12-07 08:30:02,695 [INFO] ✅ UPCOMINDEX -> refPoint=120.65
+2025-12-07 08:30:02,696 [INFO] ✅ HNXINDEX -> refPoint=260.65
+2025-12-07 08:30:02,698 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-07 08:30:02,698 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-08 08:30:03,078 [INFO] ✅ HNXINDEX -> refPoint=260.65
+2025-12-08 08:30:03,079 [INFO] ✅ UPCOMINDEX -> refPoint=120.65
+2025-12-08 08:30:03,080 [INFO] ✅ HNX30 -> refPoint=569.11
+2025-12-08 08:30:03,081 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-08 08:30:03,082 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-09 08:30:02,865 [INFO] ✅ HNX30 -> refPoint=566.78
+2025-12-09 08:30:02,875 [INFO] ✅ HNXINDEX -> refPoint=260.65
+2025-12-09 08:30:02,898 [INFO] ✅ UPCOMINDEX -> refPoint=120.65
+2025-12-09 08:30:02,899 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-09 08:30:02,900 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-10 08:30:02,111 [INFO] ✅ UPCOMINDEX -> refPoint=119.92
+2025-12-10 08:30:02,112 [INFO] ✅ HNXINDEX -> refPoint=257.14
+2025-12-10 08:30:02,113 [INFO] ✅ HNX30 -> refPoint=556.23
+2025-12-10 08:30:02,115 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-10 08:30:02,115 [INFO] 🔒 Đã đóng kết nối DB
+2025-12-11 08:30:02,739 [ERROR] Lỗi đọc bảng history_tradingview."UPCOMINDEX_1D"
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "videv.cloud" (27.74.116.238), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/www/server/FastAPI_Websocket/newmulti/indices/get_refpoint.py", line 57, in tradingview
+    with ENGINE.connect() as conn:
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3277, in connect
+    return self._connection_cls(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "videv.cloud" (27.74.116.238), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-12-11 08:30:02,740 [ERROR] Lỗi đọc bảng history_tradingview."HNX30_1D"
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "videv.cloud" (27.74.116.238), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/www/server/FastAPI_Websocket/newmulti/indices/get_refpoint.py", line 57, in tradingview
+    with ENGINE.connect() as conn:
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3277, in connect
+    return self._connection_cls(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "videv.cloud" (27.74.116.238), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-12-11 08:30:02,740 [ERROR] Lỗi đọc bảng history_tradingview."HNXINDEX_1D"
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "videv.cloud" (27.74.116.238), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/www/server/FastAPI_Websocket/newmulti/indices/get_refpoint.py", line 57, in tradingview
+    with ENGINE.connect() as conn:
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3277, in connect
+    return self._connection_cls(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.10/dist-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "videv.cloud" (27.74.116.238), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-12-11 08:30:02,747 [WARNING] ⚠️ Không lấy được refPoint cho UPCOMINDEX
+2025-12-11 08:30:02,749 [WARNING] ⚠️ Không lấy được refPoint cho HNX30
+2025-12-11 08:30:02,750 [WARNING] ⚠️ Không lấy được refPoint cho HNXINDEX
+2025-12-11 08:30:02,751 [WARNING] 📛 Chi tiết lỗi:
+2025-12-11 08:30:02,751 [WARNING] ⚠️ Không lấy được refPoint cho UPCOMINDEX
+2025-12-11 08:30:02,751 [WARNING] ⚠️ Không lấy được refPoint cho HNX30
+2025-12-11 08:30:02,751 [WARNING] ⚠️ Không lấy được refPoint cho HNXINDEX
+2025-12-11 08:30:02,752 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2025-12-11 08:30:02,752 [INFO] 🔒 Đã đóng kết nối DB

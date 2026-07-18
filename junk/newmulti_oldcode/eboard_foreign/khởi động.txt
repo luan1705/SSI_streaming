@@ -1,0 +1,27 @@
+docker compose up --build -d \
+eboardfr_cw \
+eboardfr_derivatives \
+eboardfr_etfhose \
+eboardfr_hnx1 \
+eboardfr_hnx2 \
+eboardfr_hnx3 \
+eboardfr_hnx4 \
+eboardfr_hnx5 \
+eboardfr_hnx6 \
+eboardfr_hnx7 \
+eboardfr_hnx8 \
+eboardfr_hnxbond \
+eboardfr_hose1 \
+eboardfr_hose2 \
+eboardfr_hose3 \
+eboardfr_hose4 \
+eboardfr_hose5 \
+eboardfr_hose6 \
+eboardfr_hose7 \
+eboardfr_hose8 \
+eboardfr_hose9 \
+eboardfr_hose10 \
+eboardfr_upcom1 \
+eboardfr_upcom2 \
+eboardfr_upcom3 \
+eboardfr_upcom4 

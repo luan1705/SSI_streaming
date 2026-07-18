@@ -1,0 +1,671 @@
+services:
+
+#=============================================PRODUCER================================================
+#---------------------------------------------EBOARD TABLE------------------------------------------------
+  eboardtb_cw:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_cw
+    command: python3 eboard_table/eboard_table_cw.py
+    networks:
+      - appnet
+    restart: unless-stopped
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  eboardtb_derivatives:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_derivatives
+    command: python3 eboard_table/eboard_table_derivatives.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_etfhose:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_etfhose
+    command: python3 eboard_table/eboard_table_etfhose.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hnx1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hnx1
+    command: python3 eboard_table/eboard_table_hnx1.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hnx2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hnx2
+    command: python3 eboard_table/eboard_table_hnx2.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hnx3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hnx3
+    command: python3 eboard_table/eboard_table_hnx3.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hnx4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hnx4
+    command: python3 eboard_table/eboard_table_hnx4.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hnx5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hnx5
+    command: python3 eboard_table/eboard_table_hnx5.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hnx6:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hnx6
+    command: python3 eboard_table/eboard_table_hnx6.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hnx7:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hnx7
+    command: python3 eboard_table/eboard_table_hnx7.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hnx8:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hnx8
+    command: python3 eboard_table/eboard_table_hnx8.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hnxbond:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hnxbond
+    command: python3 eboard_table/eboard_table_hnxbond.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hose1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hose1
+    command: python3 eboard_table/eboard_table_hose1.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hose2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hose2
+    command: python3 eboard_table/eboard_table_hose2.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hose3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hose3
+    command: python3 eboard_table/eboard_table_hose3.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hose4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hose4
+    command: python3 eboard_table/eboard_table_hose4.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hose5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hose5
+    command: python3 eboard_table/eboard_table_hose5.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hose6:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hose6
+    command: python3 eboard_table/eboard_table_hose6.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hose7:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hose7
+    command: python3 eboard_table/eboard_table_hose7.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hose8:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hose8
+    command: python3 eboard_table/eboard_table_hose8.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hose9:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hose9
+    command: python3 eboard_table/eboard_table_hose9.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_hose10:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_hose10
+    command: python3 eboard_table/eboard_table_hose10.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_upcom1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_upcom1
+    command: python3 eboard_table/eboard_table_upcom1.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_upcom2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_upcom2
+    command: python3 eboard_table/eboard_table_upcom2.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_upcom3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_upcom3
+    command: python3 eboard_table/eboard_table_upcom3.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardtb_upcom4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardtb_upcom4
+    command: python3 eboard_table/eboard_table_upcom4.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+
+
+#---------------------------------------------EBOARD FOREIGN------------------------------------------------
+  eboardfr_cw:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_cw
+    command: python3 eboard_foreign/eboard_foreign_cw.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_derivatives:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_derivatives
+    command: python3 eboard_foreign/eboard_foreign_derivatives.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_etfhose:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_etfhose
+    command: python3 eboard_foreign/eboard_foreign_etfhose.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hnx1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hnx1
+    command: python3 eboard_foreign/eboard_foreign_hnx1.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hnx2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hnx2
+    command: python3 eboard_foreign/eboard_foreign_hnx2.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hnx3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hnx3
+    command: python3 eboard_foreign/eboard_foreign_hnx3.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hnx4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hnx4
+    command: python3 eboard_foreign/eboard_foreign_hnx4.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hnx5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hnx5
+    command: python3 eboard_foreign/eboard_foreign_hnx5.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hnx6:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hnx6
+    command: python3 eboard_foreign/eboard_foreign_hnx6.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hnx7:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hnx7
+    command: python3 eboard_foreign/eboard_foreign_hnx7.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hnx8:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hnx8
+    command: python3 eboard_foreign/eboard_foreign_hnx8.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hnxbond:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hnxbond
+    command: python3 eboard_foreign/eboard_foreign_hnxbond.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hose1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hose1
+    command: python3 eboard_foreign/eboard_foreign_hose1.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hose2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hose2
+    command: python3 eboard_foreign/eboard_foreign_hose2.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hose3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hose3
+    command: python3 eboard_foreign/eboard_foreign_hose3.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hose4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hose4
+    command: python3 eboard_foreign/eboard_foreign_hose4.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hose5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hose5
+    command: python3 eboard_foreign/eboard_foreign_hose5.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hose6:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hose6
+    command: python3 eboard_foreign/eboard_foreign_hose6.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hose7:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hose7
+    command: python3 eboard_foreign/eboard_foreign_hose7.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hose8:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hose8
+    command: python3 eboard_foreign/eboard_foreign_hose8.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hose9:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hose9
+    command: python3 eboard_foreign/eboard_foreign_hose9.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_hose10:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_hose10
+    command: python3 eboard_foreign/eboard_foreign_hose10.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_upcom1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_upcom1
+    command: python3 eboard_foreign/eboard_foreign_upcom1.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_upcom2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_upcom2
+    command: python3 eboard_foreign/eboard_foreign_upcom2.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_upcom3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_upcom3
+    command: python3 eboard_foreign/eboard_foreign_upcom3.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  eboardfr_upcom4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: eboardfr_upcom4
+    command: python3 eboard_foreign/eboard_foreign_upcom4.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+
+#---------------------------------------------INDICES------------------------------------------------
+  indices1:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: indices1
+    command: python3 indices/indices1.py
+    networks:
+      - appnet
+    restart: unless-stopped
+    
+  indices2:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: indices2
+    command: python3 indices/indices2.py
+    networks:
+      - appnet
+    restart: unless-stopped
+        
+  indices3:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: indices3
+    command: python3 indices/indices3.py
+    networks:
+      - appnet
+    restart: unless-stopped
+        
+  indices4:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: indices4
+    command: python3 indices/indices4.py
+    networks:
+      - appnet
+    restart: unless-stopped
+        
+  indices5:
+    build:
+      context: ./newmulti
+      dockerfile: Dockerfile
+    image: fastapi-newmulti:latest
+    container_name: indices5
+    command: python3 indices/indices5.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+
+
+#---------------------------------------------ALERT_FUNCTION------------------------------------------------
+  alert_function:
+    build:
+      context: ./alert_function
+      dockerfile: Dockerfile
+    image: alert_function:latest
+    container_name: alert_function
+    command: python3 alert_function.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  alert_webhook:
+    build:
+      context: ./alert_function
+      dockerfile: Dockerfile
+    image: alert_webhook:latest
+    container_name: alert_webhook
+    command: python3 alert_webhook.py
+    networks:
+      - appnet
+    restart: unless-stopped
+
+# =============================================bổ sung ở đây============================================
+
+#
+networks:
+  appnet:
+    driver: bridge

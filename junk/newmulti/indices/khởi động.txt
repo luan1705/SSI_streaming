@@ -1,0 +1,12 @@
+docker compose up --build -d \
+indices1 \
+indices2 \
+indices3 \
+indices4 \
+indices5
+# \
+#indicesolchv1 \
+#indicesolchv2 \
+#indicesolchv3 \
+#indicesolchv4 \
+#indicesolchv5

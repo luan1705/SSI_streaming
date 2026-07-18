@@ -15,7 +15,7 @@ import threading
 # =========================================
 
 # ---------- Cấu hình qua ENV ----------
-REDIS_URL   = "redis://default:%40Vns123456@tanhungsoft.com:6379/1"
+REDIS_URL   = "redis://root:Dnl_123456@tanhungsoft.com:6379"
 STREAM_CODE = "X:" + "-".join(DERIVATIVES)
 CHANNEL = "asset"
 ACTIVE_CHANNEL = "active"

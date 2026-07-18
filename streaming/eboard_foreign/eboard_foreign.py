@@ -16,7 +16,7 @@ if not SYMBOL_LIST:
     raise RuntimeError(f"Unknown EBOARD_GROUP={GROUP_KEY}. Check EBOARD_GROUPS in List.exchange")
 
 # ---------- Cấu hình qua ENV ----------
-REDIS_URL   = "redis://default:%40Vns123456@tanhungsoft.com:6379/1"
+REDIS_URL   = "redis://root:Dnl_123456@tanhungsoft.com:6379"
 STREAM_CODE = "R:" + "-".join(SYMBOL_LIST)
 CHANNEL = "asset"
 # --------------------------------------
