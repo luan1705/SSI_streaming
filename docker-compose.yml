@@ -10,6 +10,7 @@ x-streaming: &streaming
   restart: unless-stopped
   volumes:                           # 👈 thêm
     - ./notify.py:/app/notify.py:ro # 👈 thêm
+    - ./streaming/List:/app/List:ro 
 
 x-table-others: &table_others
   <<: *streaming
