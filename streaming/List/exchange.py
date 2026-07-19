@@ -339,3 +339,11 @@ EBOARD_GROUPS3 = {
 }
 
 EBOARD_GROUPS = {**EBOARD_GROUPS1, **EBOARD_GROUPS2, **EBOARD_GROUPS3}
+
+
+INDICE = ['HNX Construction Index','HNX Financials Index','HNX Large Cap Index',
+    'HNX Manufacturing Index','HNX Mid/Small Cap Index','HNX30','HNXIndex',
+    'HNXUpcomIndex','UPCOM Large Index','UPCOM Medium Index','UPCOM Small Index',
+    'VN100','VN30','VNALLSHARE','VNCOND','VNCONS','VNDIAMOND','VNENE','VNFIN',
+    'VNFINLEAD','VNFINSELECT','VNHEAL','VNIND','VNINDEX','VNIT','VNMAT',
+    'VNMIDCAP','VNREAL','VNSI','VNSMALLCAP','VNUTI','VNX50','VNXALLSHARE']

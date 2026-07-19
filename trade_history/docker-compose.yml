@@ -1,0 +1,204 @@
+# ===================== BASE CONFIG =====================
+x-base: &base
+  build: .
+  restart: always
+  environment:
+    PYTHONPATH: /app
+  volumes:
+    - ../streaming/List:/app/List:ro
+    - ../streaming/ssi_fc_data:/app/ssi_fc_data:ro
+
+services:
+
+  # ===================== HNX =====================
+  hnx1:
+    <<: *base
+    container_name: trade_history_hnx1
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HNX1
+
+  hnx2:
+    <<: *base
+    container_name: trade_history_hnx2
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HNX2
+
+  hnx3:
+    <<: *base
+    container_name: trade_history_hnx3
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HNX3
+
+  hnx4:
+    <<: *base
+    container_name: trade_history_hnx4
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HNX4
+
+  hnx5:
+    <<: *base
+    container_name: trade_history_hnx5
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HNX5
+
+  hnx6:
+    <<: *base
+    container_name: trade_history_hnx6
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HNX6
+
+  hnx7:
+    <<: *base
+    container_name: trade_history_hnx7
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HNX7
+
+  hnx8:
+    <<: *base
+    container_name: trade_history_hnx8
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HNX8
+
+  # ===================== HOSE =====================
+  hose1:
+    <<: *base
+    container_name: trade_history_hose1
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HOSE1
+
+  hose2:
+    <<: *base
+    container_name: trade_history_hose2
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HOSE2
+
+  hose3:
+    <<: *base
+    container_name: trade_history_hose3
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HOSE3
+
+  hose4:
+    <<: *base
+    container_name: trade_history_hose4
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HOSE4
+
+  hose5:
+    <<: *base
+    container_name: trade_history_hose5
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HOSE5
+
+  hose6:
+    <<: *base
+    container_name: trade_history_hose6
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HOSE6
+
+  hose7:
+    <<: *base
+    container_name: trade_history_hose7
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HOSE7
+
+  hose8:
+    <<: *base
+    container_name: trade_history_hose8
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HOSE8
+
+  hose9:
+    <<: *base
+    container_name: trade_history_hose9
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HOSE9
+
+  hose10:
+    <<: *base
+    container_name: trade_history_hose10
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HOSE10
+
+  # ===================== UPCOM =====================
+  upcom1:
+    <<: *base
+    container_name: trade_history_upcom1
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: UPCOM1
+
+  upcom2:
+    <<: *base
+    container_name: trade_history_upcom2
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: UPCOM2
+
+  upcom3:
+    <<: *base
+    container_name: trade_history_upcom3
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: UPCOM3
+
+  upcom4:
+    <<: *base
+    container_name: trade_history_upcom4
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: UPCOM4
+
+  # ===================== DERIVATIVES & OTHERS =====================
+  derivatives:
+    <<: *base
+    container_name: trade_history_derivatives
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: DERIVATIVES
+
+  cw:
+    <<: *base
+    container_name: trade_history_cw
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: CW
+
+  indice:
+    <<: *base
+    container_name: trade_history_indice
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: INDICE
+
+  etfhose:
+    <<: *base
+    container_name: trade_history_etfhose
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: ETFHOSE
+
+  hnxbond:
+    <<: *base
+    container_name: trade_history_hnxbond
+    environment:
+      PYTHONPATH: /app
+      SYMBOL_NAME: HNXBOND
