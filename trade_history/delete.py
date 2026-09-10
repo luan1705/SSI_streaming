@@ -2,10 +2,9 @@ import redis
 import json
 from datetime import datetime, timedelta
 from sqlalchemy import create_engine, text, inspect
+from config import REDIS_URL, POSTGRES_URL
 
 # ================= CONFIG =================
-REDIS_URL = "redis://root:Dnl_123456@tanhungsoft.com:6379"
-POSTGRES_URL = "postgresql://root:Dnl_123456@tanhungsoft.com:5432/dnl"
 
 SCHEMA = "trade_history"
 REDIS_PREFIX = "trade_history:"

@@ -11,6 +11,7 @@ x-streaming: &streaming
   volumes:                           # 👈 thêm
     - ./notify.py:/app/notify.py:ro # 👈 thêm
     - ./streaming/List:/app/List:ro 
+    - ../config.py:/app/config.py:ro
 
 x-table-others: &table_others
   <<: *streaming
@@ -46,6 +47,7 @@ x-alert-worker: &alert_worker
   volumes:
     - ./streaming/List:/app/streaming/List:ro
     - ./notify.py:/app/notify.py:ro  # 👈 thêm
+    - ../config.py:/app/config.py:ro
 
 x-db-writer: &db_writer
   build:
@@ -56,6 +58,7 @@ x-db-writer: &db_writer
   restart: unless-stopped
   volumes:                           # 👈 thêm
     - ./notify.py:/app/notify.py:ro # 👈 thêm
+    - ../config.py:/app/config.py:ro
 
 services:
   #---------------------------------------------EBOARD TABLE------------------------------------------------
@@ -175,6 +178,8 @@ services:
     image: alert_webhook:latest
     container_name: alert_webhook
     command: ["python3", "-u", "alert_webhook.py"]
+    volumes:
+    - ../config.py:/app/config.py:ro
 
   #---------------------------------------------DB_WRITER------------------------------------------------
 

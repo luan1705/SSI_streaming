@@ -6,6 +6,7 @@ from datetime import datetime, time as dtime , timezone
 from zoneinfo import ZoneInfo
 import pandas as pd
 from notify import notify
+from config import REDIS_URL
 
 # ====== IMPORTS THEO DỰ ÁN CỦA BẠN ======
 from List import configviet as config
@@ -21,7 +22,6 @@ GROUP_KEY = os.getenv("EBOARD_GROUP") # vd: hose1, hnx3, upcom2, cw...
 SYMBOL_LIST = EBOARD_GROUPS1.get(GROUP_KEY)
 if not SYMBOL_LIST:
     raise RuntimeError(f"Unknown EBOARD_GROUP={GROUP_KEY}. Check EBOARD_GROUPS in List.exchange")
-REDIS_URL   = "redis://root:Dnl_123456@tanhungsoft.com:6379"
 STREAM_CODE = "X:" + "-".join(SYMBOL_LIST)
 CHANNEL = "asset"
 ACTIVE_CHANNEL = "active"

@@ -8,13 +8,13 @@ from notify import notify
 from sqlalchemy import create_engine, MetaData, Table, text
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
+from config import REDIS_URL, POSTGRES_URL
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
 # ======================
 # ENV
 # ======================
-REDIS_URL = os.getenv("REDIS_URL", "redis://root:Dnl_123456@tanhungsoft.com:6379")
-DB_URL    = os.getenv("DB_URL", "postgresql+psycopg2://root:Dnl_123456@tanhungsoft.com:5432/dnl")
 
 PATTERNS = os.getenv( 
     "PATTERNS",
@@ -43,7 +43,7 @@ r = redis.Redis(connection_pool=POOL)
 # Postgres
 # ======================
 engine = create_engine(
-    DB_URL,
+    POSTGRES_URL,
     pool_pre_ping=True,
     pool_size=int(os.getenv("DB_POOL_SIZE", "10")),
     max_overflow=int(os.getenv("DB_MAX_OVERFLOW", "0")),
@@ -163,6 +163,15 @@ def upsert_many(conn, tbl: Table, rows: list[dict], pk: str = "symbol"):
 
     conn.execute(stmt)
 
+# ======================
+# OHLCV value batch
+# ======================
+SQL_UPDATE_OHLCV_VALUES = text("""
+    SELECT ohlcv.update_ohlcv_values(
+        CAST(:symbols AS text[]),
+        CAST(:values AS double precision[])
+    )
+""")
 
 # ======================
 # Main (coalesce + flush)
@@ -218,12 +227,22 @@ def main():
                 if p_rows:
                     conn.execute(SQL_UPSERT_PRICE_NOW, p_rows)
 
-                for row in v_rows:
-                    conn.execute(text(f"""
-                        UPDATE ohlcv."{row['symbol']}_1D"
-                        SET "value" = :value
-                        WHERE time::date = CURRENT_DATE
-                    """), {"value": row["value"]})
+                if v_rows:
+                    symbols = [row["symbol"] for row in v_rows]
+                    values = [row["value"] for row in v_rows]
+
+                    conn.execute(
+                        SQL_UPDATE_OHLCV_VALUES,
+                        {
+                            "symbols": symbols,
+                            "values": values,
+                        }
+                    )
+            if v_rows:        
+                    logging.info(
+                        "✅ OHLCV value batch success: %d symbols",
+                        len(symbols)
+                    )
 
         except Exception as e:
             flush_errors += 1
@@ -327,7 +346,7 @@ def main():
         processed += 1
 
         # tránh buffer phình nếu DB quá chậm
-        if (len(asset_buf) + len(active_buf) + len(indices_buf) + len(foreign_buf) + len(price_buf)) >= MAX_BUFFER_SIZE:
+        if (len(asset_buf) + len(active_buf) + len(indices_buf) + len(foreign_buf) + len(price_buf) + len(val_buf)) >= MAX_BUFFER_SIZE:
             flush()
 
         # flush theo thời gian
@@ -336,8 +355,8 @@ def main():
 
         # log throughput
         if time.time() - last_log >= 5:
-            logging.info("processed=%d buffers: e=%d a=%d i=%d f=%d p=%d",
-                         processed, len(asset_buf), len(active_buf), len(indices_buf), len(foreign_buf), len(price_buf))
+            logging.info("processed=%d buffers: e=%d a=%d i=%d f=%d p=%d v=%d",
+                         processed, len(asset_buf), len(active_buf), len(indices_buf), len(foreign_buf), len(price_buf), len(val_buf))
             last_log = time.time()
 
 if __name__ == "__main__":

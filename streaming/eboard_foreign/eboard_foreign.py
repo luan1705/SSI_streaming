@@ -2,6 +2,7 @@ import os, json, time, logging, signal, sys, redis, threading
 from ssi_fc_data.fc_md_stream import MarketDataStream
 from ssi_fc_data.fc_md_client import MarketDataClient
 from notify import notify
+from config import REDIS_URL
 
 from List import confighao as config
 #from List.upsert import update_eboard
@@ -16,7 +17,6 @@ if not SYMBOL_LIST:
     raise RuntimeError(f"Unknown EBOARD_GROUP={GROUP_KEY}. Check EBOARD_GROUPS in List.exchange")
 
 # ---------- Cấu hình qua ENV ----------
-REDIS_URL   = "redis://root:Dnl_123456@tanhungsoft.com:6379"
 STREAM_CODE = "R:" + "-".join(SYMBOL_LIST)
 CHANNEL = "asset"
 # --------------------------------------

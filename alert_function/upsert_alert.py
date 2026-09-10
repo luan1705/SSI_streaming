@@ -4,6 +4,7 @@ from sqlalchemy import create_engine, MetaData, Table, Column, String, Integer, 
 from sqlalchemy.dialects.postgresql import insert as pg_insert, DOUBLE_PRECISION
 import numpy as np
 import pandas as pd
+from config import POSTGRES_URL
 
 # ============ Logging ============
 logging.basicConfig(
@@ -13,7 +14,7 @@ logging.basicConfig(
 
 # ============ DB ============
 engine = create_engine(
-    "postgresql+psycopg2://root:Dnl_123456@tanhungsoft.com:5432/dnl",
+    POSTGRES_URL,
     echo=False,
     pool_pre_ping=True,
 )

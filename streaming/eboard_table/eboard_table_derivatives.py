@@ -5,6 +5,7 @@ from ssi_fc_data.fc_md_client import MarketDataClient
 from datetime import datetime, time as dtime
 from zoneinfo import ZoneInfo
 from notify import notify
+from config import REDIS_URL
 
 # ====== IMPORTS THEO DỰ ÁN CỦA BẠN ======
 from List import configvi as config
@@ -15,7 +16,6 @@ import threading
 # =========================================
 
 # ---------- Cấu hình qua ENV ----------
-REDIS_URL   = "redis://root:Dnl_123456@tanhungsoft.com:6379"
 STREAM_CODE = "X:" + "-".join(DERIVATIVES)
 CHANNEL = "asset"
 ACTIVE_CHANNEL = "active"

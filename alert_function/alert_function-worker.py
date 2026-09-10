@@ -10,6 +10,7 @@ from upsert_alert import upsert_alert_status
 from streaming.List.exchange import EBOARD_GROUPS
 from notify import notify
 import time
+from config import REDIS_URL
 
 WEBHOOK_URL = "https://n8n.tanhungsoft.com/webhook/redis_alert" 
 ALERT_INPUT_CHANNEL = os.getenv("ALERT_INPUT_CHANNEL", "asset")
@@ -29,8 +30,6 @@ def to_native(o):
 
     return o
 
-
-REDIS_URL = os.getenv("REDIS_URL", "redis://root:Dnl_123456@tanhungsoft.com:6379")
 POOL = redis.BlockingConnectionPool.from_url(
     REDIS_URL, decode_responses=True,
     socket_timeout=60, socket_connect_timeout=5,

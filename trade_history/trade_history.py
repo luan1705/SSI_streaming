@@ -14,6 +14,7 @@ from ssi_fc_data.fc_md_stream import MarketDataStream
 from ssi_fc_data.fc_md_client import MarketDataClient
 from sqlalchemy import create_engine, text
 from List import configviet as config
+from config import REDIS_URL, POSTGRES_URL
 
 VN_TZ = ZoneInfo("Asia/Ho_Chi_Minh")
 
@@ -62,9 +63,7 @@ else:
 # ==================================================
 # CONFIG
 # ==================================================
-DB_URL         = os.getenv("DB_URL",          "postgresql://root:Dnl_123456@tanhungsoft.com:5432/dnl")
 SCHEMA         = os.getenv("DB_SCHEMA",        "trade_history")
-REDIS_URL      = os.getenv("REDIS_URL",        "redis://root:Dnl_123456@tanhungsoft.com:6379")
 REDIS_CHANNEL  = os.getenv("REDIS_CHANNEL",    "trade_history")
 
 logging.basicConfig(
@@ -76,7 +75,7 @@ logging.basicConfig(
 # POSTGRES
 # ==================================================
 engine = create_engine(
-    DB_URL,
+    POSTGRES_URL,
     pool_size=5,
     max_overflow=5,
     pool_timeout=20,

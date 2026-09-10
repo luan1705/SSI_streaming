@@ -10,9 +10,9 @@ import math
 import time
 import pandas as pd
 from sqlalchemy import create_engine
+from config import POSTGRES_URL
 
 # ================== CẤU HÌNH ==================
-PG_URL = "postgresql+psycopg2://root:Dnl_123456@tanhungsoft.com:5432/dnl"
 
 # Danh sách symbol cần lấy refPoint (dùng thẳng, không map)
 SYMBOLS = ["HNXINDEX", "UPCOMINDEX", "HNX30"]
@@ -29,7 +29,7 @@ log = logging.getLogger("get_refpoint")
 
 # ---------- Engine (giữ sống tới cuối chương trình) ----------
 ENGINE = create_engine(
-    PG_URL,
+    POSTGRES_URL,
     pool_pre_ping=True,
     pool_recycle=1800,
 )

@@ -4,6 +4,7 @@ from zoneinfo import ZoneInfo
 from sqlalchemy import create_engine, text
 from sqlalchemy.pool import QueuePool
 from notify import notify
+from config import REDIS_URL, POSTGRES_URL
 
 # ====== SSI stream ======
 from ssi_fc_data.fc_md_stream import MarketDataStream
@@ -29,9 +30,7 @@ if not SYMBOL_LIST:
 suffix = GROUP_KEY.replace("indices", "").strip()  # "1".."5"
 # ------------------------------------------------------
 
-REDIS_URL   = os.getenv("REDIS_URL", "redis://root:Dnl_123456@tanhungsoft.com:6379")
 CHANNEL     = "indices"
-PG_URL      = os.getenv("PG_URL", "postgresql+psycopg2://root:Dnl_123456@tanhungsoft.com:5432/dnl")
 
 STREAM_CODE = "MI:" + "-".join(SYMBOL_LIST)
 
@@ -93,7 +92,7 @@ def publish(payload: dict):
 
 # -------------- Postgres --------------
 engine = create_engine(
-    PG_URL,
+    POSTGRES_URL,
     poolclass=QueuePool,
     pool_size=8,
     max_overflow=8,

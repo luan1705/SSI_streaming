@@ -473,3 +473,488 @@ sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to serve
 2026-08-12 08:30:02,767 [INFO] ✅ HNX30 -> refPoint=463.65
 2026-08-12 08:30:02,769 [INFO] ✅ Hoàn thành tạo file refpoint.py.
 2026-08-12 08:30:02,769 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-13 08:30:02,206 [INFO] ✅ UPCOMINDEX -> refPoint=127.51
+2026-08-13 08:30:02,210 [INFO] ✅ HNXINDEX -> refPoint=288.45
+2026-08-13 08:30:02,211 [INFO] ✅ HNX30 -> refPoint=465.17
+2026-08-13 08:30:02,213 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-13 08:30:02,214 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-14 08:30:02,661 [INFO] ✅ UPCOMINDEX -> refPoint=128.06
+2026-08-14 08:30:02,664 [INFO] ✅ HNX30 -> refPoint=461.21
+2026-08-14 08:30:02,663 [INFO] ✅ HNXINDEX -> refPoint=283.34
+2026-08-14 08:30:02,666 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-14 08:30:02,666 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-15 08:30:02,208 [INFO] ✅ HNXINDEX -> refPoint=279.99
+2026-08-15 08:30:02,209 [INFO] ✅ UPCOMINDEX -> refPoint=127.17
+2026-08-15 08:30:02,228 [INFO] ✅ HNX30 -> refPoint=454.91
+2026-08-15 08:30:02,229 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-15 08:30:02,230 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-16 08:30:03,068 [INFO] ✅ HNX30 -> refPoint=454.91
+2026-08-16 08:30:03,074 [INFO] ✅ HNXINDEX -> refPoint=279.99
+2026-08-16 08:30:03,081 [INFO] ✅ UPCOMINDEX -> refPoint=127.17
+2026-08-16 08:30:03,083 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-16 08:30:03,084 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-17 08:30:02,534 [INFO] ✅ HNX30 -> refPoint=454.91
+2026-08-17 08:30:02,537 [INFO] ✅ HNXINDEX -> refPoint=279.99
+2026-08-17 08:30:02,536 [INFO] ✅ UPCOMINDEX -> refPoint=127.17
+2026-08-17 08:30:02,539 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-17 08:30:02,540 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-18 08:30:02,340 [INFO] ✅ HNX30 -> refPoint=450.25
+2026-08-18 08:30:02,343 [INFO] ✅ HNXINDEX -> refPoint=277.03
+2026-08-18 08:30:02,345 [INFO] ✅ UPCOMINDEX -> refPoint=126.81
+2026-08-18 08:30:02,346 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-18 08:30:02,348 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-19 08:30:03,782 [INFO] ✅ HNX30 -> refPoint=448.84
+2026-08-19 08:30:03,784 [INFO] ✅ UPCOMINDEX -> refPoint=127.46
+2026-08-19 08:30:03,783 [INFO] ✅ HNXINDEX -> refPoint=282.32
+2026-08-19 08:30:03,786 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-19 08:30:03,787 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-20 08:30:02,617 [INFO] ✅ UPCOMINDEX -> refPoint=127.19
+2026-08-20 08:30:02,620 [INFO] ✅ HNX30 -> refPoint=445.44
+2026-08-20 08:30:02,622 [INFO] ✅ HNXINDEX -> refPoint=279.98
+2026-08-20 08:30:02,624 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-20 08:30:02,625 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-21 08:30:02,981 [INFO] ✅ HNXINDEX -> refPoint=278.55
+2026-08-21 08:30:02,983 [INFO] ✅ HNX30 -> refPoint=445.61
+2026-08-21 08:30:02,982 [INFO] ✅ UPCOMINDEX -> refPoint=127.55
+2026-08-21 08:30:02,985 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-21 08:30:02,986 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-22 08:30:03,079 [INFO] ✅ HNXINDEX -> refPoint=284.07
+2026-08-22 08:30:03,084 [INFO] ✅ UPCOMINDEX -> refPoint=128.18
+2026-08-22 08:30:03,085 [INFO] ✅ HNX30 -> refPoint=460.95
+2026-08-22 08:30:03,086 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-22 08:30:03,087 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-23 08:30:02,356 [INFO] ✅ HNXINDEX -> refPoint=284.07
+2026-08-23 08:30:02,359 [INFO] ✅ HNX30 -> refPoint=460.95
+2026-08-23 08:30:02,361 [INFO] ✅ UPCOMINDEX -> refPoint=128.18
+2026-08-23 08:30:02,363 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-23 08:30:02,363 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-24 08:30:02,922 [INFO] ✅ UPCOMINDEX -> refPoint=128.18
+2026-08-24 08:30:02,923 [INFO] ✅ HNX30 -> refPoint=460.95
+2026-08-24 08:30:02,924 [INFO] ✅ HNXINDEX -> refPoint=284.07
+2026-08-24 08:30:02,926 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-24 08:30:02,927 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-25 08:30:02,466 [INFO] ✅ HNXINDEX -> refPoint=283.19
+2026-08-25 08:30:02,469 [INFO] ✅ UPCOMINDEX -> refPoint=127.84
+2026-08-25 08:30:02,471 [INFO] ✅ HNX30 -> refPoint=463.11
+2026-08-25 08:30:02,473 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-25 08:30:02,474 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-26 08:30:02,702 [INFO] ✅ HNXINDEX -> refPoint=282.65
+2026-08-26 08:30:02,704 [INFO] ✅ UPCOMINDEX -> refPoint=127.04
+2026-08-26 08:30:02,706 [INFO] ✅ HNX30 -> refPoint=463.74
+2026-08-26 08:30:02,707 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-26 08:30:02,708 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-27 08:30:02,113 [INFO] ✅ HNXINDEX -> refPoint=281.96
+2026-08-27 08:30:02,116 [INFO] ✅ HNX30 -> refPoint=467.28
+2026-08-27 08:30:02,115 [INFO] ✅ UPCOMINDEX -> refPoint=127.27
+2026-08-27 08:30:02,118 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-27 08:30:02,119 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-28 08:30:02,514 [INFO] ✅ UPCOMINDEX -> refPoint=127.46
+2026-08-28 08:30:02,518 [INFO] ✅ HNXINDEX -> refPoint=282.64
+2026-08-28 08:30:02,519 [INFO] ✅ HNX30 -> refPoint=465.78
+2026-08-28 08:30:02,521 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-28 08:30:02,522 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-29 08:30:03,098 [INFO] ✅ UPCOMINDEX -> refPoint=127.86
+2026-08-29 08:30:03,104 [INFO] ✅ HNXINDEX -> refPoint=284.77
+2026-08-29 08:30:03,123 [INFO] ✅ HNX30 -> refPoint=465.88
+2026-08-29 08:30:03,124 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-29 08:30:03,126 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-30 08:30:02,280 [INFO] ✅ HNX30 -> refPoint=465.88
+2026-08-30 08:30:02,283 [INFO] ✅ HNXINDEX -> refPoint=284.77
+2026-08-30 08:30:02,282 [INFO] ✅ UPCOMINDEX -> refPoint=127.86
+2026-08-30 08:30:02,285 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-30 08:30:02,286 [INFO] 🔒 Đã đóng kết nối DB
+2026-08-31 08:30:02,313 [INFO] ✅ HNX30 -> refPoint=465.88
+2026-08-31 08:30:02,314 [INFO] ✅ UPCOMINDEX -> refPoint=127.86
+2026-08-31 08:30:02,315 [INFO] ✅ HNXINDEX -> refPoint=284.77
+2026-08-31 08:30:02,317 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-08-31 08:30:02,318 [INFO] 🔒 Đã đóng kết nối DB
+2026-09-01 08:30:02,536 [ERROR] Lỗi đọc bảng ohlcv."UPCOMINDEX_1D"
+Traceback (most recent call last):
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 176, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "tanhungsoft.com" (27.77.180.229), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/resources/data/SSI_streaming/streaming/indices/get_refpoint.py", line 57, in tradingview
+    with ENGINE.connect() as conn:
+         ~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3295, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        err, dialect, engine
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2450, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 176, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "tanhungsoft.com" (27.77.180.229), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-09-01 08:30:02,537 [ERROR] Lỗi đọc bảng ohlcv."HNXINDEX_1D"
+Traceback (most recent call last):
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 176, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "tanhungsoft.com" (27.77.180.229), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/resources/data/SSI_streaming/streaming/indices/get_refpoint.py", line 57, in tradingview
+    with ENGINE.connect() as conn:
+         ~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3295, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        err, dialect, engine
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2450, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 176, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "tanhungsoft.com" (27.77.180.229), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-09-01 08:30:02,537 [ERROR] Lỗi đọc bảng ohlcv."HNX30_1D"
+Traceback (most recent call last):
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 176, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "tanhungsoft.com" (27.77.180.229), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/resources/data/SSI_streaming/streaming/indices/get_refpoint.py", line 57, in tradingview
+    with ENGINE.connect() as conn:
+         ~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3295, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        err, dialect, engine
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2450, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 176, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/resources/data/venv/lib/python3.14/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "tanhungsoft.com" (27.77.180.229), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-09-01 08:30:02,555 [WARNING] ⚠️ Không lấy được refPoint cho HNXINDEX
+2026-09-01 08:30:02,547 [WARNING] ⚠️ Không lấy được refPoint cho UPCOMINDEX
+2026-09-01 08:30:02,562 [WARNING] ⚠️ Không lấy được refPoint cho HNX30
+2026-09-01 08:30:02,562 [WARNING] 📛 Chi tiết lỗi:
+2026-09-01 08:30:02,563 [WARNING] ⚠️ Không lấy được refPoint cho HNXINDEX
+2026-09-01 08:30:02,563 [WARNING] ⚠️ Không lấy được refPoint cho UPCOMINDEX
+2026-09-01 08:30:02,563 [WARNING] ⚠️ Không lấy được refPoint cho HNX30
+2026-09-01 08:30:02,563 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-09-01 08:30:02,564 [INFO] 🔒 Đã đóng kết nối DB
+2026-09-02 08:30:02,345 [INFO] ✅ UPCOMINDEX -> refPoint=127.86
+2026-09-02 08:30:02,346 [INFO] ✅ HNXINDEX -> refPoint=284.77
+2026-09-02 08:30:02,359 [INFO] ✅ HNX30 -> refPoint=465.88
+2026-09-02 08:30:02,360 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-09-02 08:30:02,362 [INFO] 🔒 Đã đóng kết nối DB
+2026-09-03 08:30:03,004 [INFO] ✅ HNXINDEX -> refPoint=284.77
+2026-09-03 08:30:03,005 [INFO] ✅ UPCOMINDEX -> refPoint=127.5
+2026-09-03 08:30:03,014 [INFO] ✅ HNX30 -> refPoint=465.88
+2026-09-03 08:30:03,016 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-09-03 08:30:03,017 [INFO] 🔒 Đã đóng kết nối DB
+2026-09-04 08:30:02,849 [INFO] ✅ HNX30 -> refPoint=459.41
+2026-09-04 08:30:02,852 [INFO] ✅ UPCOMINDEX -> refPoint=128.0
+2026-09-04 08:30:02,850 [INFO] ✅ HNXINDEX -> refPoint=282.24
+2026-09-04 08:30:02,853 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-09-04 08:30:02,854 [INFO] 🔒 Đã đóng kết nối DB
+2026-09-05 08:30:03,060 [INFO] ✅ HNXINDEX -> refPoint=282.53
+2026-09-05 08:30:03,062 [INFO] ✅ UPCOMINDEX -> refPoint=128.36
+2026-09-05 08:30:03,088 [INFO] ✅ HNX30 -> refPoint=458.43
+2026-09-05 08:30:03,090 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-09-05 08:30:03,091 [INFO] 🔒 Đã đóng kết nối DB
+2026-09-06 08:30:02,748 [INFO] ✅ UPCOMINDEX -> refPoint=128.36
+2026-09-06 08:30:02,751 [INFO] ✅ HNX30 -> refPoint=458.43
+2026-09-06 08:30:02,749 [INFO] ✅ HNXINDEX -> refPoint=282.53
+2026-09-06 08:30:02,753 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-09-06 08:30:02,753 [INFO] 🔒 Đã đóng kết nối DB
+2026-09-07 08:30:02,815 [INFO] ✅ HNX30 -> refPoint=458.43
+2026-09-07 08:30:02,816 [INFO] ✅ HNXINDEX -> refPoint=282.53
+2026-09-07 08:30:02,816 [INFO] ✅ UPCOMINDEX -> refPoint=128.36
+2026-09-07 08:30:02,818 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-09-07 08:30:02,819 [INFO] 🔒 Đã đóng kết nối DB
+2026-09-08 08:30:02,029 [INFO] ✅ UPCOMINDEX -> refPoint=127.52
+2026-09-08 08:30:02,031 [INFO] ✅ HNXINDEX -> refPoint=280.6
+2026-09-08 08:30:02,032 [INFO] ✅ HNX30 -> refPoint=451.39
+2026-09-08 08:30:02,034 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-09-08 08:30:02,035 [INFO] 🔒 Đã đóng kết nối DB
+2026-09-09 08:30:02,238 [INFO] ✅ HNXINDEX -> refPoint=281.11
+2026-09-09 08:30:02,334 [INFO] ✅ HNX30 -> refPoint=455.81
+2026-09-09 08:30:02,336 [INFO] ✅ UPCOMINDEX -> refPoint=127.87
+2026-09-09 08:30:02,337 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-09-09 08:30:02,339 [INFO] 🔒 Đã đóng kết nối DB
+2026-09-10 08:30:02,983 [INFO] ✅ HNX30 -> refPoint=452.21
+2026-09-10 08:30:02,986 [INFO] ✅ HNXINDEX -> refPoint=279.48
+2026-09-10 08:30:02,987 [INFO] ✅ UPCOMINDEX -> refPoint=127.51
+2026-09-10 08:30:02,988 [INFO] ✅ Hoàn thành tạo file refpoint.py.
+2026-09-10 08:30:02,989 [INFO] 🔒 Đã đóng kết nối DB
