@@ -1,0 +1,27 @@
+docker compose up --build -d \
+ebtb_cw \
+ebtb_derivatives \
+ebtb_etfhose \
+ebtb_hnx1 \
+ebtb_hnx2 \
+ebtb_hnx3 \
+ebtb_hnx4 \
+ebtb_hnx5 \
+ebtb_hnx6 \
+ebtb_hnx7 \
+ebtb_hnx8 \
+ebtb_hnxbond \
+ebtb_hose1 \
+ebtb_hose2 \
+ebtb_hose3 \
+ebtb_hose4 \
+ebtb_hose5 \
+ebtb_hose6 \
+ebtb_hose7 \
+ebtb_hose8 \
+ebtb_hose9 \
+ebtb_hose10 \
+ebtb_upcom1 \
+ebtb_upcom2 \
+ebtb_upcom3 \
+ebtb_upcom4 

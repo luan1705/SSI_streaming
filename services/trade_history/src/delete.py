@@ -1,0 +1,83 @@
+import redis
+import json
+from datetime import datetime, timedelta
+from sqlalchemy import create_engine, text, inspect
+import os
+
+# ================= CONFIG =================
+
+SCHEMA = "trade_history"
+REDIS_PREFIX = "trade_history:"
+DAYS_TO_KEEP = 9
+redis_url=os.getenv("redis_url") 
+db_url=os.getenv("postgres_url")
+# cutoff time
+cutoff = datetime.utcnow() - timedelta(days=DAYS_TO_KEEP)
+
+print("Cutoff:", cutoff)
+
+# =====================================================
+# REDIS CLEAN
+# =====================================================
+print("\n====== REDIS CLEANING ======")
+
+r = redis.Redis.from_url(redis_url, decode_responses=True)
+deleted_redis = 0
+
+for key in r.scan_iter(match=f"{REDIS_PREFIX}*"):
+    try:
+        val = r.get(key)
+        if not val:
+            continue
+
+        data = json.loads(val)
+
+        if "time" not in data:
+            continue
+
+        ts = datetime.fromisoformat(data["time"].replace("Z",""))
+
+        if ts < cutoff:
+            r.delete(key)
+            deleted_redis += 1
+
+    except Exception:
+        continue
+
+print("Redis deleted:", deleted_redis)
+
+
+# =====================================================
+# POSTGRES CLEAN
+# =====================================================
+print("\n====== POSTGRES CLEANING ======")
+
+engine = create_engine(db_url)
+inspector = inspect(engine)
+
+tables = inspector.get_table_names(schema=SCHEMA)
+
+print("Tables found:", len(tables))
+
+deleted_rows = 0
+
+with engine.begin() as conn:
+    for table in tables:
+        try:
+            result = conn.execute(text(f"""
+                DELETE FROM "{SCHEMA}"."{table}"
+                WHERE "time" < NOW() - INTERVAL '{DAYS_TO_KEEP} days'
+            """))
+
+            count = result.rowcount if result.rowcount else 0
+            deleted_rows += count
+
+            print(f"{table:<25} deleted {count}")
+
+        except Exception as e:
+            print(f"{table:<25} ERROR -> {e}")
+
+print("\nTOTAL PG rows deleted:", deleted_rows)
+
+# =====================================================
+print("\nDONE CLEANING OLD DATA")

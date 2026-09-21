@@ -1,0 +1,5 @@
+ssi-sdk
+redis
+SQLAlchemy
+psycopg2-binary
+python-dotenv
